@@ -99,11 +99,11 @@
     <p>
       Open PHACTS does not care about:
     </p>
-    <ol>
+    <ul>
       <li>Redundancy in RDF</li>
       <li>Prefers Turtle, but also accepts N3, N-Triples and RDF/XML</li>
       <li>Within Open PHACTS data providers either use preselected vocabularies, or provide a mapping file to these vocabularies</li>
-    </ol>
+    </ul>
   </section>
   <section>
     <h2>Step 0: determine who owns the copyright of the data and under what license you are sharing it</h2>
@@ -122,7 +122,7 @@
     <p>
       The Dublin Core ontology [Nilsson2008] should be used to provide this information, such as in
       the following example:<br />
-      <img src="img/licenseData.png" width="80%"/>
+      <img src="img/licenseData.png" width="60%"/>
     </p>
   </section>
   <section> 
@@ -291,6 +291,10 @@ Freddy;Fish;Goldfish;Erika Schmidt;Hauptstr. 5 Berlin;Oats
     <h4>Pathways</h4>
     <ul>
       <li>BioPax - http://www.biopax.org/release/biopax-level3.owl#</li>
+    </ul>
+    <h4>Pharmacology</h4>
+    <ul>
+      <li>BioAssay Ontology (BAO) - http://www.bioassayontology.org/bao/BAO_v1.4b1080.owl</li>
     </ul>
     <h4>Diseases</h4>
     <ul>
@@ -474,7 +478,75 @@ ex:methane rdfs:label “methaan”@nl .
   </section>
   <section>
     <h2>Step 8: choose the methods with which people will access the data </h2>
-    <p> 
+    <p>
+      There are various ways to make your data available for others to use.
+      Linked Open Data requires the data to be linked, and requires URIs to be
+      dereferencable [BernersLee2006, Hausenblas2012]. Dereferencable means that IRIs
+      identifying resources can be used using the web design (via domain name and web
+      servers) resolve in triples about that resources. For example, the following
+      resource IRI for methane is dereferencable:
+    </p>
+    <pre>
+http://rdf.openmolecules.net/?InChI=1S/CH4/h1H4
+    </pre>
+    <p>
+      Alternatively, all triples can be archived into a .zip or .tar.bz2 file, and
+      shared via a HTTP and FTP server, allowing others to download all triples and
+      use that locally.
+    </p>
+    <p>
+      However, the third option we recommend highly as a minimal way to make the
+      triples accessible: via a SPARQL end point. Various tools are available for this
+      purpose, including tools mentioned earlier to create triples, such as Sesame and
+      Jena. These both provide store functionality, including SPARQL functionality,
+      but are APIs primarily, and can wrap around triple stores that scale better,
+      such as Virtuoso and Owlim. A comparison of some triple stores was done by the
+      FU Berlin and can be found here. Information about the capacity of triple stores
+      can be found at w3.org (link). We note that these statistics change every half
+      year, and the reader is strongly encouraged to look up recent numbers.
+    </p>
+    <p>
+      The list of tools that provide SPARQL end point functionality include:
+    </p>
+    <h4>Sesame</h4>
+    <p>
+      Homepage: http://www.openrdf.org/<br />
+      Documentation: http://www.openrdf.org/documentation.jsp
+    </p>
+    <h4>Jena</h4>
+    <p>
+      Homepage: http://jena.sourceforge.net/<br />
+      Documentation: http://jena.sourceforge.net/documentation.html
+    </p>
+    <h4>Virtuoso</h4>
+    <p>
+      Homepage: http://virtuoso.openlinksw.com/<br />
+      Documentation: http://docs.openlinksw.com/virtuoso/
+    </p>
+    <h4>Owlim</h4>
+    <p>
+      Homepage: http://www.ontotext.com/owlim<br />
+      Documentation: http://owlim.ontotext.com/display/OWLIMv42/Home
+    </p>
+    <h4>4store</h4>
+    <p>
+      Homepage: http://4store.org/<br />
+      Documentation: http://4store.org/trac/wiki/Documentation
+    </p>
+    <h4>Mulgara</h4>
+    <p>
+      Homepage: http://www.mulgara.org/<br />
+      Documentation: http://www.mulgara.org/documentation.html
+    </p>
+    <h4>Bigdata</h4>
+    <p>
+      Homepage: http://www.systap.com/bigdata.htm<br />
+      Documentation: http://sourceforge.net/apps/mediawiki/bigdata/index.php?title=GettingStarted
+    </p>
+    <h4>ARC</h4>
+    <p>
+      Homepage: https://github.com/semsol/arc2/wiki<br />
+      Documentation: https://github.com/semsol/arc2/wiki/Getting-started-with-ARC2
     </p>
   </section>
   <section>
