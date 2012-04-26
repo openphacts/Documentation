@@ -166,6 +166,26 @@
   <section> 
     <h2>Step 6: converting your data into RDF</h2>
     <p>
+      These first steps ensure you have IRIs for all resources and predicates, and know where to put all
+      relations, it is time to create triples. It is irrelevant to the triple creation process and thus up
+      to the user to pick whatever tool they find most convenient. Triples can be created with dedicated
+      semantic web tools, as listed below, but also using simple regular expressions, or scripting tools in
+      any language. Of course, generated triples should be validated, but the tool to create them is merely
+      tool; there is nothing semantic about that. The output in which the triples are serialized can be in
+      any of the standardized or proposed RDF serialization formats, such as RDF/XML, Notation3,
+      Turtle (preferred), or plain N-Triples.
+    </p>
+    <p>
+      Importantly, this process should be well documented. You must keep track of what versions of the input
+      data was used, who created the RDF data, when that was done, and preferable what tools were used. This
+      information should be available to users along with the data itself.
+    </p>
+    <p>
+      Last, it is important that for all texts, like labels and definitions, the language it is represented in
+      is explicitly identified. For example (not a full RDF serialization):
+      <pre>
+ex:methane rdfs:label “methaan”@nl .
+      </pre>
     </p>
   </section>
   <section>
