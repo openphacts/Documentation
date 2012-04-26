@@ -972,7 +972,15 @@ berjon.respec.prototype = {
         var mat = (this.status2maturity[this.specStatus]) ? this.status2maturity[this.specStatus] : this.specStatus;
         var custom = document.getElementById("sotd");
 
-        if (this.specStatus == "unofficial") {
+        if (this.customorg) {
+          sotd = "<section id='sotd' class='introductory'><h2>Status of This Document</h2>" +
+            "<p>This document is a specification by " + this.customorg + ". It has " +
+            "no official standing of any kind and does not represent the support or consensus of any " +
+            "standards organisation.</p>";
+          if (custom) sotd += custom.innerHTML;
+          sotd += "</section>";
+        }
+        else if (this.specStatus == "unofficial") {
             sotd = "<section id='sotd' class='introductory'><h2>Status of This Document</h2>" +
             "<p>This document is merely a public working draft of a potential specification. It has " +
             "no official standing of any kind and does not represent the support or consensus of any " +
