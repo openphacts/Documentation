@@ -19,6 +19,6 @@ INSTALL
 To make this documentation available online, you can follow these instructions. This example is for the RDF Guidelines (on GNU/Linux or compatible):
 
     git clone git://github.com/openphacts/Documentation.git
-    cd rdfGuidelines
+    cd rdfguide
     ln -s ../js
 
