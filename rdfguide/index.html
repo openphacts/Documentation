@@ -276,10 +276,100 @@ Freddy;Fish;Goldfish;Erika Schmidt;Hauptstr. 5 Berlin;Oats
       The use of the CHEMINF ontology is encouraged for these identifiers [Hastings2011].
       Also, you should register small molecule names with ChemSpider.
     </p>
+    <h4>Structures / Hierarchies</h4>
+    <ul>
+      <li>Simple Knowledge Organization System (SKOS) - http://www.w3.org/2004/02/skos/core# - Strongly recommended</li>
+      <li>RDF Schema (RDFS) - http://www.w3.org/2000/01/rdf-schema#</li>
+      <li>Web Ontology Language (OWL) - http://www.w3.org/2002/07/owl#</li>
+    </ul>
+    <h4>Genomic data</h4>
+    <ul>
+      <li>Simple Knowledge Organization System (SKOS) - http://www.w3.org/2004/02/skos/core# - Strongly recommended</li>
+      <li>RDF Schema (RDFS) - http://www.w3.org/2000/01/rdf-schema#</li>
+      <li>Web Ontology Language (OWL) - http://www.w3.org/2002/07/owl#</li>
+    </ul>
+    <h4>Pathways</h4>
+    <ul>
+      <li>BioPax - http://www.biopax.org/release/biopax-level3.owl#</li>
+    </ul>
+    <h4>Diseases</h4>
+    <ul>
+      <li>Medical Subject Headings (MeSH) - http://www.nlm.nih.gov/cgi/mesh/2011/MB_cgi?field=uid&amp;term=$</li>
+    </ul>
+    <h4>TextMining and Manual Annotations</h4>
+    <ul>
+      <li>String - http://nlp2rdf.lod2.eu/schema/string/</li>
+      <li>Structured Sentence Ontology (SSO) - http://nlp2rdf.lod2.eu/schema/sso/</li>
+      <li>Annotation Ontology (AO) - http://purl.org/ao/</li>
+    </ul>
+    <h4>Units</h4>
+    <ul>
+      <li>Quantities, Units, Dimensions and Data Types (QUDT) - http://qudt.org/</li>
+    </ul>
+    <h4>Licenses</h4>
+    <ul>
+      <li>Dublin Core - http://purl.org/dc/terms</li>
+    </ul>
+    <h3>Ontology search engines</h3>
+    <p>The following search engines can be useful to find suitable ontologies.</p>
+    <ul>
+      <li>LOV - http://labs.mondeca.com/dataset/lov/</li>
+      <li>Prefix.cc - http://prefix.cc/</li>
+      <li>Sindice - http://sindice.com/</li>
+      <li>CKAN - http://ckan.org/</li>
+      <li>Bioportal - http://bioportal.bioontology.org/ </li>
+    </ul>
   </section>
   <section> 
     <h2>Step 5: linking out to other Linked Data</h2>
     <p>
+      The next step is to explore what related data sets are available as Linked (Open) Data,
+      and link out to those data sets. For example, if your data contains ChemSpider, ChEBI,
+      ChEMBL, PubChem, DrugBank, KEGG, Uniprot, and PDB identifiers, you can link to the
+      respective RDF variants of those databases. Various RDF versions of these databases are
+      around, including Bio2RDF [Belleau2008], LODD [Samwald2011], and Chem2Bio2RDF [Chen2010],
+      but preferably to the original source directly. The figure below (CC-BY-SA, [Cyganiak2011])
+      shows a diagram of the larger network, including Linked Data relevant the Open PHACTS:
+      <img src="xx.png" />
+    </p>
+    <p>
+      Careful consideration must be taken here in to what relation (predicate) is used. In the
+      table below various options are outlined, the specific meaning, and how and when which
+      predicate should be used.
+      <table border="1">
+        <tr>
+          <td>rdf:seeAlso</td>
+          <td>General link, that indicates that the resource linked to is relevant to the subject.
+            See http://www.w3.org/TR/rdf-schema/.</td>
+        </tr>
+        <tr>
+          <td>skos:closeMatch</td>
+          <td>This link indicates that the linked resources are the same, under some assumptions or
+            applications. This link is not transitive. See http://www.w3.org/2004/02/skos/core.html.</td>
+        </tr>
+        <tr>
+          <td>skos:exactMatch</td>
+          <td>This link subclasses skos:closeMatch but is stronger, and the same as now applies to a
+            wide range of applications, implying that the link is transitive. See
+            http://www.w3.org/2004/02/skos/core.html.</td>
+        </tr>
+        <tr>
+          <td>owl:sameAs</td>
+          <td>Link that indicates that the subject is an instance, and that the object resource is an
+            instance too, and the same resources as the subject. This link is transitive. See
+            http://www.w3.org/TR/owl-ref/.</td>
+        </tr>
+        <tr>
+          <td>owl:equivalentClass</td>
+          <td>The same as owl:sameAs but then for OWL classes instead of instances. This link is
+            transitive. See http://www.w3.org/TR/owl-ref/.</td>
+        </tr>
+      </table>
+    </p>
+    <p>
+      The owl:sameAs and owl:equivalentClass predicates are very powerful and should be used with
+      care since all attributes and relations of two therewith connected entities are merged
+      together. In Open PHACTS the use of the less restrictive skos:exactMatch is recommended.
     </p>
   </section>
   <section> 
@@ -305,6 +395,43 @@ Freddy;Fish;Goldfish;Erika Schmidt;Hauptstr. 5 Berlin;Oats
       <pre>
 ex:methane rdfs:label “methaan”@nl .
       </pre>
+    </p>
+    <h3>Tools available for triple generation</h3>
+    <p>Below is a brief overview of tools that may assist the triple generation.</p>
+    <h4>Sesame</h4>
+    <p>
+      Description: Sesame is a Java framework for handling RDF data. It includes functionality for parsing, storing, inferencing and querying of RDF data. Development is support by the Dutch company Aduna.<br />
+      Homepage: http://www.openrdf.org<br />
+      Audience: Java programmers<br />
+      Tutorial: http://www.openrdf.org/doc/sesame2/users/
+    </p>
+    <h4>Jena Semantic Web framework</h4>
+    <p>
+      Description: “Jena is another Java framework for building Semantic Web applications, originally developed by HP, now under the Apache umbrella. It provides am environment for handling RDF, RDFS and OWL, SPARQL.<br />
+      Homepage: http://jena.sourceforge.net/<br />
+      Audience: Java programmers<br />
+      Tutorial: http://www.ibm.com/developerworks/xml/library/j-jena/
+    </p>
+    <h4>Tripliser</h4>
+    <p>
+      Description: Tripliser is a Java library and command-line tool for creating triple graphs from XML. It is particularly suitable for data exhibiting any of the following characteristics: messy - missing data, badly formatted data, changeable structure; bulky - large volumes; and volatile - ongoing changes to data and structure.<br />
+      Homepage: http://daverog.github.com/tripliser/<br />
+      Audience: Java programmers<br />
+      Tutorial: http://daverog.github.com/tripliser/
+    </p>
+    <h4>RDF.rb</h4>
+    <p>
+      Description: A Ruby library for working with RDF data.<br />
+      Homepage: http://rdf.rubyforge.org/<br />
+      Audience: Ruby programmers<br />
+      Tutorial: http://rdf.rubyforge.org/
+    </p>
+    <h4>Any23</h4>
+    <p>
+      Description: A tool than can convert anything to triples, supporting microformats, RDFa, Microdata, RDF/XML, Turtle, N-Triples and NQuads.<br />
+      Homepage: http://any23.org<br />
+      Audience: Everybody<br />
+      Tutorial: http://any23.org
     </p>
   </section>
   <section>
