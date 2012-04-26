@@ -69,6 +69,8 @@ berjon.respec = function () {
     }
 };
 berjon.respec.prototype = {
+    orguri:         "http://www.w3.org/TR/",
+
     title:          null,
     additionalCopyrightHolders: null,
     overrideCopyright: null,
@@ -785,28 +787,28 @@ berjon.respec.prototype = {
 
     makeNormalHeaders:    function () {
         var mat = (this.status2maturity[this.specStatus]) ? this.status2maturity[this.specStatus] : this.specStatus;
-        var thisVersion = "http://www.w3.org/TR/" + this.publishDate.getFullYear() + "/" + mat + "-" +
+        var thisVersion = this.orguri + this.publishDate.getFullYear() + "/" + mat + "-" +
                           this.shortName + "-" + this._concatDate(this.publishDate) + "/";
         if (this.specStatus == "ED") thisVersion = this.edDraftURI;
         var latestVersion, prevVersion;
         if (this.previousPublishDate) {
             var pmat = (this.status2maturity[this.previousMaturity]) ? this.status2maturity[this.previousMaturity] : this.previousMaturity;
             if (!this.previousURI) {
-                this.previousURI = "http://www.w3.org/TR/" + this.previousPublishDate.getFullYear() + "/" + pmat + "-" + this.shortName + "-" + this._concatDate(this.previousPublishDate) + "/";
+                this.previousURI = this.orguri + this.previousPublishDate.getFullYear() + "/" + pmat + "-" + this.shortName + "-" + this._concatDate(this.previousPublishDate) + "/";
             }
             if (this.doRDFa) {
                 prevVersion = "<a rel='dcterms:replaces' href='" + this.previousURI + "'>" + this.previousURI + "</a>";
             } else {
                 prevVersion = "<a href='" + this.previousURI + "'>" + this.previousURI + "</a>";
             }
-            // var latestURI = "http://www.w3.org/TR/" + this.shortName + "/";
+            // var latestURI = this.orguri + this.shortName + "/";
             // latestVersion = "<a href='" + latestURI + "'>" + latestURI + "</a>";
         }
         else {
             prevVersion = "none";
             // latestVersion = "none";
         }
-        var latestURI = "http://www.w3.org/TR/" + this.shortName + "/";
+        var latestURI = this.orguri + this.shortName + "/";
         latestVersion = "<a href='" + latestURI + "'>" + latestURI + "</a>";
         var header = "<div class='head'><p>";
         if (this.specStatus != "unofficial")
@@ -855,7 +857,7 @@ berjon.respec.prototype = {
         }
 
         if (this.prevRecShortname) {
-            var prevRecURI = "http://www.w3.org/TR/" + this.prevRecShortname + "/";
+            var prevRecURI = this.orguri + this.prevRecShortname + "/";
             header += "<dt>Latest recommendation:</dt><dd>" + 
                 '<a href="' + prevRecURI + '">' + prevRecURI + "</a></dd>";
         }
