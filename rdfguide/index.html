@@ -1,4 +1,4 @@
-\<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -83,6 +83,152 @@
     <p>
       The most important message is to use RDF not find the best representation for your data, but to be
       explicit in how you represent your data.
+    </p>
+  </section>
+  <section>
+    <h2>General Principles</h2>
+    <p>
+      Open PHACTS requires:
+    </p>
+    <ol>
+      <li>Resource Description Framework (RDF) to be used</li>
+      <li>Every concept should be typed, and have a label (we recommend rdfs:label and skos:prefLabel), including language specification</li>
+      <li>Used ontologies (classes and predicates) must be openly available</li>
+      <li>A semantic sitemap of your data: <a href="http://sw.deri.org/2007/07/sitemapextension/">http://sw.deri.org/2007/07/sitemapextension/</a></li>
+    </ol>
+    <p>
+      Open PHACTS does not care about:
+    </p>
+    <ol>
+      <li>Redundancy in RDF</li>
+      <li>Prefers Turtle, but also accepts N3, N-Triples and RDF/XML</li>
+      <li>Within Open PHACTS data providers either use preselected vocabularies, or provide a mapping file to these vocabularies</li>
+    </ol>
+  </section>
+  <section>
+    <h2>Step 0: determine who owns the copyright of the data and under what license you are sharing it</h2>
+    <p>
+      Before you start thinking about converting something into RDF, the first two questions you
+      should ask yourself, who owns the data (if anyone), and under what license or waiver can you modify
+      and reshare the data, because that is exactly what you are going to do if you convert it into RDF
+      and share that version with others.
+    </p>
+    <p>
+      Because this information is also important for all people who will want to use your data, you must
+      specify as metadata these pieces of crucial information along with the shared data. This step does not
+      imply that the data must be Open, but it does simplify a lot of things when it is. The least you must
+      do is to provide clarity as to whether the data is Open or not. 
+    </p>
+    <p>
+      The Dublin Core ontology [Nilsson2008] should be used to provide this information, such as in
+      the following example:<br />
+      <img src="img/licenseData.png" width="80%"/>
+    </p>
+  </section>
+  <section> 
+    <h2>Step 1: think in terms of meaning, rather than structure</h2>
+    <p>
+      When creating triples from your data, it is important to think about the data in terms of concepts and
+      their relations in scientific terms, not in terms of database terminologies. The triples must in no way
+      reflect concepts like database tables or other details that originate from the format in which the
+      data was previously stored.
+    </p>
+    <p>
+      So, the following code example shows bad practices. This generated example RDF shows a pet database,
+      listing pets living in the same household in European capitals, including the food these pets eat. The
+      RDF output, created with Any23 [Any23], reflects the original data structure, and adds little useful
+      meaning (i.e. the semantics) to the data:
+    </p>
+    <p>
+      
+    </p>
+  </section>
+  <section> 
+    <h2>Step 2: what are the concepts in your data?</h2>
+    <p>
+    </p>
+  </section>
+  <section> 
+    <h2>Step 3: what are the relations that link those concepts?</h2>
+    <p>
+    </p>
+  </section>
+  <section> 
+    <h2>Step 4: identify common vocabularies matching your concepts and relations.</h2>
+    <p>
+    </p>
+  </section>
+  <section> 
+    <h2>Step 5: linking out to other Linked Data</h2>
+    <p>
+    </p>
+  </section>
+  <section> 
+    <h2>Step 6: converting your data into RDF</h2>
+    <p>
+    </p>
+  </section>
+  <section>
+    <h2>Step 7: validate your triples</h2>
+    <p> 
+      While dedicated semantic web tools make it hard to introduce syntactic errors, it is still possible to
+      make mistakes in the resulting RDF, and the generated triples should be validated.
+    </p>
+    <p>
+      There are various levels at which the data should be validated. First, it should be validated that
+      the created syntax notation is correct, for which various online services are available. Remark:
+      Some encodings of special characters may pose problems and may have to converted or be replaced. One
+      such validator tool is the W3C RDF Validation Service, at
+      <a href="http://www.w3.org/RDF/Validator/.">http://www.w3.org/RDF/Validator/</a>.
+    </p>
+    <p>
+      Second, the output should be checked that the selected common ontologies are correctly used. For
+      example, that predicates with literal domains are indeed used for such in the output. An example of
+      common misuse, is using the wrong Dublin Core namespace [Nilsson2008]; there are two, both defining a
+      dc:title predicate, but only one namespace should be used with literal values.
+    </p>
+    <p>
+      This also applies to the use of links as outlined in step 5, where these linking predicates can make
+      claims of the nature of resources. For example, skos:closeMatch implies that the subject and object
+      resources are also SKOS concepts. That should not conflict with other triples.
+    </p>
+    <p>
+      One aspect here is that the resulting data should be verified for internal consistency. This is
+      particularly important if the used common ontologies define relations (predicates) that specify
+      what types of objects it links (RDF domain and range). Tools like Protégé
+      (<a href="http://protege.stanford.edu/plugins/owl/api/">http://protege.stanford.edu/plugins/owl/api/</a>)
+      and Pellet (<a href="http://clarkparsia.com/pellet/">http://clarkparsia.com/pellet/</a>) can be used for that.
+    </p>
+    <p>
+      Last but not least, the whole transformation should be unit tested. This testing can be done as part
+      of this step, or after later steps. These tests make assertions regarding number of resources in the
+      RDF data, testing that they match those in the original data. Additionally, the tests should test
+      that the anticipated RDF structure is accurately reflected in the triple data set.
+    </p>
+  </section>
+  <section>
+    <h2>Step 8: choose the methods with which people will access the data </h2>
+    <p> 
+    </p>
+  </section>
+  <section>
+    <h2>Step 9: advertise your data (in Open PHACTS)</h2>
+    <p>
+      The final step in creating RDF, is to advertise your RDF as to get it used, and to get it linked
+      to. Various options can be considered, such as announcing the data on mailing lists, or presenting
+      a poster on a conference.
+    </p>
+    <p>
+      Like with conference posters, advertising RDF goes with certain requirements. Conference posters
+      must be of a certain size; similarly, RDF data set advertisement must include license information
+      (see step 0), what ontologies are used (see step 4), and their embedding in the Linked Open Data
+      network (see step 5). For example, this can be done by providing a semantic site map
+      (<a href="http://sw.deri.org/2007/07/sitemapextension/">http://sw.deri.org/2007/07/sitemapextension/</a>)
+      or VoID (Vocabulary of Interlinked Datasets, <a href="http://vocab.deri.ie/void">http://vocab.deri.ie/void</a>).
+    </p>
+    <p>
+      Additionally, your data point should be registered with the appropriate registries. One of these is the
+      Data Hub, formerly know as CKAN (<a href="http://thedatahub.org/">http://thedatahub.org/</a>).
     </p>
   </section>
 </body>
