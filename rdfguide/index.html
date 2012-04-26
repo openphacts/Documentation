@@ -137,25 +137,144 @@
       So, the following code example shows bad practices. This generated example RDF shows a pet database,
       listing pets living in the same household in European capitals, including the food these pets eat. The
       RDF output, created with Any23 [Any23], reflects the original data structure, and adds little useful
-      meaning (i.e. the semantics) to the data:
+      meaning (i.e. the semantics) to the data.
     </p>
     <p>
-      
+      Input:
+      <pre>
+Pet;Species;Subspecies;Owner;Address;Food
+Doger;Dog;Dachshund;Frank Smith;Mainstreet 1 London;Bones
+Freddy;Fish;Goldfish;Erika Schmidt;Hauptstr. 5 Berlin;Oats
+      </pre>
+    </p>
+    <p> 
+      Output:
+      <pre>
+@prefix any23: &lt;http://any23.org/tmp/> .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#> .
+@prefix csv: &lt;http://vocab.sindice.net/csv/> .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
+
+&lt;any23:pet> &lt;rdfs:label> "Pet" ;
+   &lt;csv:columnPosition> "0"^^xsd:integer .
+
+&lt;any23:species> &lt;rdfs:label> "Species" ;
+   &lt;csv:columnPosition> "1"^^xsd:integer .
+
+&lt;any23:subspecies> &lt;rdfs:label> "Subspecies" ;
+   &lt;csv:columnPosition> "2"^^xsd:integer .
+
+&lt;any23:owner> &lt;rdfs:label> "Owner" ;
+   &lt;csv:columnPosition> "3"^^xsd:integer .
+
+&lt;any23:address> &lt;rdfs:label> "Address" ;
+   &lt;csv:columnPosition> "4"^^xsd:integer .
+
+&lt;any23:food> &lt;rdfs:label> "Food" ;
+   &lt;csv:columnPosition> "5"^^xsd:integer .
+
+&lt;any23:row/0> a &lt;csv:Row> ;
+   &lt;any23:pet> "Doger"^^xsd:string ;
+   &lt;any23:species> "Dog"^^xsd:string ;
+   &lt;any23:subspecies> "Dachshund"^^xsd:string ;
+   &lt;any23:owner> "Frank Smith"^^xsd:string ;
+   &lt;any23:address> "Mainstreet 1 London"^^xsd:string ;
+   &lt;any23:food> "Bones"^^xsd:string .
+
+&lt;any23:> &lt;csv:row> &lt;any23:row/0> .
+      </pre>
     </p>
   </section>
   <section> 
     <h2>Step 2: what are the concepts in your data?</h2>
     <p>
+      The first step in creating your RDF is to create a list of all concepts that are found in your
+      data. Are there proteins, metabolites, cell cultures, organisms, targets, assays? At what level are
+      those concepts represented in your data? Are they protein names without exactly known point
+      mutations, are the accurate masses resulting from metabolomics experiments, are the exact metabolic
+      structures known? Are there multiple identifiers known? Does your data contain references with a
+      PubMed identifier or a DOI?
+    </p>
+    <p>
+      For each concept, the list should provide a human readable label, and a short definition, both in
+      English. Here too, the underlying rule is that everything must have an explicit and well-defined
+      meaning.
     </p>
   </section>
   <section> 
     <h2>Step 3: what are the relations that link those concepts?</h2>
     <p>
+      Once you know what concepts are found in your data, it is time to identify how those concepts are
+      linked in your data set. These relations must be identified and listed too. These relations
+      preferably have a verb form. For example, a predicate label <i>has name</i> is preferred over just
+      <i>name</i>.
+    </p>
+    <p>
+      For each relation, the list should provide a human readable label, and a short definition, again in
+      English.
     </p>
   </section>
   <section> 
     <h2>Step 4: identify common vocabularies matching your concepts and relations.</h2>
     <p>
+      Because existing software already knows about existing, common ontologies, you
+      should use those existing, common ontologies, if you care about having an
+      impact. This sections lists below a number of suggestions, for the various data
+      types that will be covered in Open PHACTS. You should explore those ontologies
+      and check if for each concept and relation you find matching entries in those
+      existing, common ontologies. If you find that only a minor amount of items are
+      missing, you should contact the ontology authors, and see if the missing terms
+      can be added. Only if that failed, you should be looking for less common
+      ontologies and see if these provide a substantial higher coverage. Services that
+      allow you to find uncommon ontologies are listed below. You can use the skos
+      vocabulary to express relatedness to existing concepts. It is OK to keep a
+      number of entries not mapped to existing ontologies. In this case the entries
+      have to be made openly available, i.e at <a href="http://purl.org">purl.org</a>.
+      This of course also applies for creating a new ontology.
+     </p>
+     <p>
+      In all cases, you  must never use ontologies that you are not allowed to share
+      with your data, as that will effectively leave you with triplified data, of
+      which your users have no means in the future to figure out what is what, and
+      thus is &quot;meaningless&quot;.
+    </p>
+    <h3>Suggested vocabularies and ontologies</h3>
+    <p>
+      Below is a list of pointers to ontologies and vocabularies related to the scope
+      of Open PHACTS. Additionally, a list of search engines is provided where further
+      ontologies and vocabularies can be found.
+    </p>
+    <h4>Bibliographic</h4>
+    <ul>
+      <li>Dublin Core (DC) - http://purl.org/dc/terms</li>
+      <li>Bibliographic Ontology (BIBO) - http://bibliontology.com/</li>
+      <li>Semantic Publishing and Referencing Ontologies (SPAR) -http://purl.org/spar/</li>
+      <li>Semantic Web Applications in Neuromedicine (SWAN) - http://purl.org/swan/1.2/pav/</li>
+      <li>Annotation Ontology (AO) - http://purl.org/ao/wiki</li>
+    </ul>
+    <p>For document identifiers use (in order, if existing)</p>
+    <ol>
+      <li>DOI - http://dx.doi.org/$</li>
+      <li>PubMed - http://www.ncbi.nlm.nih.gov/pubmed/$</li>
+      <li>PMC - http://www.ncbi.nlm.nih.gov/pmc/$</li>
+      <li>Webpage</li>
+    </ol>
+    <h4>ChemSpider</h4>
+    <ul>
+      <li>ChemSpider ID - http://rdf.chemspider.com/$</li>
+    </ul>
+    <p>
+      This requires that the structures have been deposited with ChemSpider already. If not,
+      then use in descending order of preference:
+    </p>
+    <ol>
+      <li>InChI String</li>
+      <li>InChI Key</li>
+      <li>SMILES</li>
+    </ol>
+    <p>
+      The use of the CHEMINF ontology is encouraged for these identifiers [Hastings2011].
+      Also, you should register small molecule names with ChemSpider.
     </p>
   </section>
   <section> 
