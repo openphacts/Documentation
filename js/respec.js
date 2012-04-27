@@ -746,11 +746,16 @@ berjon.respec.prototype = {
     },
     
     makeTAGHeaders:    function () {
+        if (this.orgicon) {
+            var icon = this.orgicon;
+        } else {
+            var icon = 
+                "<a href='http://www.w3.org/'><img width='72' height='48' src='http://www.w3.org/Icons/w3c_home' alt='W3C'/></a>";
+        }
         var base = "http://www.w3.org/2001/tag/doc/",
             latestVersion = base + this.shortName,
             thisVersion = latestVersion + "-" + this._concatDate(this.publishDate, "-"),
-            header = "<div class='head'><p>" +
-                     "<a href='http://www.w3.org/'><img width='72' height='48' src='http://www.w3.org/Icons/w3c_home' alt='W3C'/></a>";
+            header = "<div class='head'><p>" + icon;
         header += "<h1 class='title' id='title'>" + this.title + "</h1>";
         if (this.subtitle) header += "<h2 id='subtitle'>" + this.subtitle + "</h2>";
         header += "<h2>" + this.status2text[this.specStatus] + " " + this._humanDate(this.publishDate) + "</h2><dl>";
@@ -811,10 +816,13 @@ berjon.respec.prototype = {
         var latestURI = this.orguri + this.shortName + "/";
         latestVersion = "<a href='" + latestURI + "'>" + latestURI + "</a>";
         var header = "<div class='head'><p>";
-        if (this.specStatus != "unofficial")
+        if (this.orgicon) {
+            header += this.orgicon;
+        } else if (this.specStatus != "unofficial") {
             header += "<a href='http://www.w3.org/'><img width='72' height='48' src='http://www.w3.org/Icons/w3c_home' alt='W3C'/></a>";
-        if (this.specStatus == 'XGR') 
+        } else if (this.specStatus == 'XGR') {
             header += "<a href='http://www.w3.org/2005/Incubator/XGR/'><img alt='W3C Incubator Report' src='http://www.w3.org/2005/Incubator/images/XGR' height='48' width='160'/></a>";
+        }
         if ( this.doRDFa ) {
             header +=
                 "<h1 property='dcterms:title' class='title' id='title'>" + this.title + "</h1>" ;
