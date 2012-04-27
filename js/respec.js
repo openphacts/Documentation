@@ -610,6 +610,9 @@ berjon.respec.prototype = {
         else if (statStyle == "base") {
             css = "http://www.w3.org/StyleSheets/TR/base";
         }
+        else if (this.customcss) {
+            css = this.customcss;
+        }
         else {
             css = "http://www.w3.org/StyleSheets/TR/W3C-" + statStyle;// + ".css";
         }
@@ -830,7 +833,7 @@ berjon.respec.prototype = {
                 header += "<h2 property='bibo:subtitle' id='subtitle'>" + this.subtitle + "</h2>" ;
             }
             header +=
-                "<h2 property='dcterms:issued' datatype='xsd:dateTime' content='" + this._ISODate(this.publishDate) + "'>" + (this.specStatus == "unofficial" ? "" : "W3C ") + 
+                "<h2 property='dcterms:issued' datatype='xsd:dateTime' content='" + this._ISODate(this.publishDate) + "'>" + (this.specStatus == "unofficial" ? "" : this.customorg + " ") + 
                 this.status2text[this.specStatus] + " " + this._humanDate(this.publishDate) + "</h2><dl>";
         } else {
             header +=
@@ -839,7 +842,7 @@ berjon.respec.prototype = {
                 header += "<h2 id='subtitle'>" + this.subtitle + "</h2>" ;
             }
             header +=
-                "<h2>" + (this.specStatus == "unofficial" ? "" : "W3C ") + 
+                "<h2>" + (this.specStatus == "unofficial" ? "" : this.customorg + " ") + 
                 this.status2text[this.specStatus] + " " + this._humanDate(this.publishDate) + "</h2><dl>";
         }
         if (!this.isNoTrack) {
