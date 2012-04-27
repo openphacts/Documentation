@@ -11,7 +11,9 @@ your inbox.
 REQUIREMENTS
 ============
 
-It uses RefSpec.js ([license](http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231)) from http://www.w3.org/TR/respec-js/
+It uses RefSpec.js and a customized version of the matching CSS
+([license](http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231))
+from http://www.w3.org/TR/respec-js/
 
 INSTALL
 =======
