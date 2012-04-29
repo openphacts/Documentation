@@ -58,7 +58,7 @@
   </section>
   <section id="abstract">
     This is a “how to” guide for exposing your data in RDF in the Open PHACTS system. The guidelines build upon
-    [Marshall2012]. For an extensive explanation on RDF see the Introduction section below.
+    [[Marshall2012]]. For an extensive explanation on RDF see the Introduction section below.
   </section>
   <section id="sotd">
     <h2>Intended audience</h2>
@@ -125,7 +125,7 @@
       do is to provide clarity as to whether the data is Open or not. 
     </p>
     <p>
-      The Dublin Core ontology [Nilsson2008] should be used to provide this information, such as in
+      The Dublin Core ontology [[Nilsson2008]] should be used to provide this information, such as in
       the following example:<br />
       <img src="img/licenseData.png" width="60%"/>
     </p>
@@ -141,7 +141,7 @@
     <p>
       So, the following code example shows bad practices. This generated example RDF shows a pet database,
       listing pets living in the same household in European capitals, including the food these pets eat. The
-      RDF output, created with Any23 [Any23], reflects the original data structure, and adds little useful
+      RDF output, created with Any23 [[Any23]], reflects the original data structure, and adds little useful
       meaning (i.e. the semantics) to the data.
     </p>
     <p>
@@ -278,7 +278,7 @@ Freddy;Fish;Goldfish;Erika Schmidt;Hauptstr. 5 Berlin;Oats
       <li>SMILES</li>
     </ol>
     <p>
-      The use of the CHEMINF ontology is encouraged for these identifiers [Hastings2011].
+      The use of the CHEMINF ontology is encouraged for these identifiers [[Hastings2011]].
       Also, you should register small molecule names with ChemSpider.
     </p>
     <h4>Structures / Hierarchies</h4>
@@ -336,8 +336,8 @@ Freddy;Fish;Goldfish;Erika Schmidt;Hauptstr. 5 Berlin;Oats
       and link out to those data sets. For example, if your data contains ChemSpider, ChEBI,
       ChEMBL, PubChem, DrugBank, KEGG, Uniprot, and PDB identifiers, you can link to the
       respective RDF variants of those databases. Various RDF versions of these databases are
-      around, including Bio2RDF [Belleau2008], LODD [Samwald2011], and Chem2Bio2RDF [Chen2010],
-      but preferably to the original source directly. The figure below (CC-BY-SA, [Cyganiak2011])
+      around, including Bio2RDF [[Belleau2008]], LODD [[Samwald2011]], and Chem2Bio2RDF [[Chen2010]],
+      but preferably to the original source directly. The figure below (CC-BY-SA, [[Cyganiak2011]])
       shows a diagram of the larger network, including Linked Data relevant the Open PHACTS:
       <img src="xx.png" />
     </p>
@@ -459,7 +459,7 @@ ex:methane rdfs:label “methaan”@nl .
     <p>
       Second, the output should be checked that the selected common ontologies are correctly used. For
       example, that predicates with literal domains are indeed used for such in the output. An example of
-      common misuse, is using the wrong Dublin Core namespace [Nilsson2008]; there are two, both defining a
+      common misuse, is using the wrong Dublin Core namespace [[Nilsson2008]]; there are two, both defining a
       dc:title predicate, but only one namespace should be used with literal values.
     </p>
     <p>
@@ -486,7 +486,7 @@ ex:methane rdfs:label “methaan”@nl .
     <p>
       There are various ways to make your data available for others to use.
       Linked Open Data requires the data to be linked, and requires URIs to be
-      dereferencable [BernersLee2006, Hausenblas2012]. Dereferencable means that IRIs
+      dereferencable [[BernersLee2006]],[[Hausenblas2012]]. Dereferencable means that IRIs
       identifying resources can be used using the web design (via domain name and web
       servers) resolve in triples about that resources. For example, the following
       resource IRI for methane is dereferencable:
