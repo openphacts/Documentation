@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Open PHACTS Mapping Specification</title>
+    <script src='js/respec.js' class='remove'></script>
+    <meta http-equiv='Content-Type' content='text/html;charset=utf-8' />
+    <script class='remove'>
+      var respecConfig = {
+          // document info
+          orguri:               "http://www.openphacts.org/specs/",
+          orgicon:              "<a href='http://www.openphacts.org/'><img height='100' src='../logo/ops.png' alt='Open PHACTS'/></a>",
+          customorg:            "Open PHACTS",
+          customcss:            "../css/ops.css",
+          specStatus:           "WD",
+          shortName:            "mappingspec",
+          publishDate:   "2012-04-30",
+          // previousMaturity: "WD",
+          // previousPublishDate:  "2009-03-15",
+          // previousURI : "http://dev.w3.org/2009/dap/ReSpec.js/documentation.html",
+          copyrightStart:       "2012",
+          overrideCopyright:    "<p class='copyright'>This document is licensed under a <a class='subfoot' href='http://creativecommons.org/licenses/sa-by/3.0/' rel='license'>Creative Commons ShareAlike Attribution 3.0 License</a>.</p>",
+          // edDraftURI:           "http://dev.w3.org/2009/dap/ReSpec.js/documentation.html",
+          // lcEnd:  "2010-08-06",
+          // extraCSS:             ["../css/respec.css"],
+          extraCSS:             ["http://dev.w3.org/2009/dap/ReSpec.js/css/respec.css"],
+
+          // editors
+          editors:  [
+             { name: "Alasdair J G Gray", url: "http://www.cs.man.ac.uk/~graya",
+                company: "University of Manchester", companyURL: "http://www.manchester.ac.uk/" },
+          ],
+          authors:  [
+             { name: "Christian Brenninkmeijer",
+				company: "University of Manchester", companyURL: "http://www.manchester.ac.uk/" },
+             { name: "Chris Evelo",
+                company: "Maastricht University", companyURL: "http://www.maastrichtuniversity.nl/" },
+			 { name: "Carole Goble",
+    			company: "University of Manchester", companyURL: "http://www.manchester.ac.uk/" },
+    		 { name: "Alasdair J G Gray", url: "http://www.cs.man.ac.uk/~graya",
+                company: "University of Manchester", companyURL: "http://www.manchester.ac.uk/" },
+             { name: "Andra Waagmeester",
+                company: "Maastricht University", companyURL: "http://www.maastrichtuniversity.nl/" },
+             { name: "Egon Willighagen", url: "http://chem-bla-ics.blogpost.com/",
+                company: "Maastricht University", companyURL: "http://www.maastrichtuniversity.nl/" },
+          ],
+          
+          // WG
+          //wg:           "People Who Like To Write Specs Help Group",
+          //wgURI:        "http://berjon.com/",
+          //wgPublicList: "spec-writers-anonymous",
+          //wgPatentURI:  "",
+      };
+    </script>
+</head>
+
+<body>
+  <section id="abstract">
+    This is a “how to” guide for exposing your data in RDF in the Open PHACTS system. The guidelines build upon
+    [[Marshall2012]]. For an extensive explanation on RDF see the Introduction section below.
+  </section>
+  <section id="sotd">
+    <h4>Disclaimer</h4>
+    <p>
+      The research leading to these results has received
+      support from the Innovative Medicines Initiative
+      (<a href="http://www.imi.europa.eu/">IMI</a>) Joint Undertaking under
+      grant agreement n° 115191, resources of which are composed of financial
+      contribution from the European Union's Seventh Framework Programme
+      (FP7/2007-2013) and EFPIA companies’ in kind contribution.<br />
+      <img src="../logo/imi.jpg" height="80"/>
+      <img src="../logo/eu.jpg" height="80"/>
+      <img src="../logo/efpia.jpg" height="80"/>
+    </p>
+    <h4>Intended audience</h4>
+    <p>
+      These RDF-guidelines are intended for data providers who want to expose their data as RDF to the Open
+      PHACTS platform.
+    </p>
+  </section>
+  <section class="informative">
+    <h2>Introduction</h2>
+    <p>
+      There are many sides to making data semantic. This guidelines document restricts itself to using RDF,
+      and will not go into ontological discussions, such as when to use a class or an instance. The document will
+      also be limited to giving pointers, and some rules of thumb, and the reader is most invited to read the
+      below-listed further reading.
+    </p>
+    <ul>
+      <li>Advantages and Myths about RDF: <a href="http://www.mkbergman.com/483/advantages-and-myths-of-rdf/">http://www.mkbergman.com/483/advantages-and-myths-of-rdf/</a></li>
+      <li>RDF about: <a href="http://www.rdfabout.net/">http://www.rdfabout.net/</a></li>
+      <li>RDF applications in chemistry: <a href="http://www.jcheminf.com/series/acsrdf2010">http://www.jcheminf.com/series/acsrdf2010</a></li>
+      <li>Linked Data: <a href="http://www.w3.org/DesignIssues/LinkedData.html">http://www.w3.org/DesignIssues/LinkedData.html</a></li>
+      <li>Linked data patterns: <a href="http://patterns.dataincubator.org/book/">http://patterns.dataincubator.org/book/</a></li>
+      <li>M.S. Marshall, R. Boyce, H.F. Deus, J. Zhao, E.L. Willighagen, M. Samwald, E. Pichler, J. Hajagos, E. Prud’hommeaux, S. Stephens. Emerging practices for mapping and linking life sciences data using RDF - a case series.</li>
+      <li>Semantic Web, Ch. 15 in: J.E.S. Wikberg, M. Eklund, E.L. Willighagen, O. Spjuth, M. Lapins, O. Engkvist, J. Alvarsson, Introduction into Pharmaceutical Bioinformatics, 2011,  Oakleaf Academic Publishing House, Stockholm, Sweden.</li>
+      <li>M. Hausenblas, Linked Open Data star scheme by example, 2012, <a href="http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/</a></li>
+    </ul>
+    <p>
+      The most important message is to use RDF not find the best representation for your data, but to be
+      explicit in how you represent your data.
+    </p>
+  </section>
+  <section>
+    <h2>General Principles</h2>
+    <p>
+      Open PHACTS requires:
+    </p>
+    <ol>
+      <li>Resource Description Framework (RDF) to be used</li>
+      <li>Every concept should be typed, and have a label (we recommend rdfs:label and skos:prefLabel), including language specification</li>
+      <li>Used ontologies (classes and predicates) must be openly available</li>
+      <li>A semantic sitemap of your data: <a href="http://sw.deri.org/2007/07/sitemapextension/">http://sw.deri.org/2007/07/sitemapextension/</a></li>
+    </ol>
+    <p>
+      Open PHACTS does not care about:
+    </p>
+    <ul>
+      <li>Redundancy in RDF</li>
+      <li>Prefers Turtle, but also accepts N3, N-Triples and RDF/XML</li>
+      <li>Within Open PHACTS data providers either use preselected vocabularies, or provide a mapping file to these vocabularies</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Step 0: determine who owns the copyright of the data and under what license you are sharing it</h2>
+    <p>
+      Before you start thinking about converting something into RDF, the first two questions you
+      should ask yourself, who owns the data (if anyone), and under what license or waiver can you modify
+      and reshare the data, because that is exactly what you are going to do if you convert it into RDF
+      and share that version with others.
+    </p>
+    <p>
+      Because this information is also important for all people who will want to use your data, you must
+      specify as metadata these pieces of crucial information along with the shared data. This step does not
+      imply that the data must be Open, but it does simplify a lot of things when it is. The least you must
+      do is to provide clarity as to whether the data is Open or not. 
+    </p>
+    <p>
+      The Dublin Core ontology [[Nilsson2008]] should be used to provide this information, such as in
+      the following example:<br />
+      <img src="img/licenseData.png" width="60%"/>
+    </p>
+  </section>
+  <section> 
+    <h2>Step 1: think in terms of meaning, rather than structure</h2>
+    <p>
+      When creating triples from your data, it is important to think about the data in terms of concepts and
+      their relations in scientific terms, not in terms of database terminologies. The triples must in no way
+      reflect concepts like database tables or other details that originate from the format in which the
+      data was previously stored.
+    </p>
+    <p>
+      So, the following code example shows bad practices. This generated example RDF shows a pet database,
+      listing pets living in the same household in European capitals, including the food these pets eat. The
+      RDF output, created with Any23 [[Any23]], reflects the original data structure, and adds little useful
+      meaning (i.e. the semantics) to the data.
+    </p>
+    <p>
+      Input:
+      <pre>
+Pet;Species;Subspecies;Owner;Address;Food
+Doger;Dog;Dachshund;Frank Smith;Mainstreet 1 London;Bones
+Freddy;Fish;Goldfish;Erika Schmidt;Hauptstr. 5 Berlin;Oats
+      </pre>
+    </p>
+    <p> 
+      Output:
+      <pre>
+@prefix any23: &lt;http://any23.org/tmp/> .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#> .
+@prefix csv: &lt;http://vocab.sindice.net/csv/> .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
+
+&lt;any23:pet> &lt;rdfs:label> "Pet" ;
+   &lt;csv:columnPosition> "0"^^xsd:integer .
+
+&lt;any23:species> &lt;rdfs:label> "Species" ;
+   &lt;csv:columnPosition> "1"^^xsd:integer .
+
+&lt;any23:subspecies> &lt;rdfs:label> "Subspecies" ;
+   &lt;csv:columnPosition> "2"^^xsd:integer .
+
+&lt;any23:owner> &lt;rdfs:label> "Owner" ;
+   &lt;csv:columnPosition> "3"^^xsd:integer .
+
+&lt;any23:address> &lt;rdfs:label> "Address" ;
+   &lt;csv:columnPosition> "4"^^xsd:integer .
+
+&lt;any23:food> &lt;rdfs:label> "Food" ;
+   &lt;csv:columnPosition> "5"^^xsd:integer .
+
+&lt;any23:row/0> a &lt;csv:Row> ;
+   &lt;any23:pet> "Doger"^^xsd:string ;
+   &lt;any23:species> "Dog"^^xsd:string ;
+   &lt;any23:subspecies> "Dachshund"^^xsd:string ;
+   &lt;any23:owner> "Frank Smith"^^xsd:string ;
+   &lt;any23:address> "Mainstreet 1 London"^^xsd:string ;
+   &lt;any23:food> "Bones"^^xsd:string .
+
+&lt;any23:> &lt;csv:row> &lt;any23:row/0> .
+      </pre>
+    </p>
+  </section>
+  <section> 
+    <h2>Step 2: what are the concepts in your data?</h2>
+    <p>
+      The first step in creating your RDF is to create a list of all concepts that are found in your
+      data. Are there proteins, metabolites, cell cultures, organisms, targets, assays? At what level are
+      those concepts represented in your data? Are they protein names without exactly known point
+      mutations, are the accurate masses resulting from metabolomics experiments, are the exact metabolic
+      structures known? Are there multiple identifiers known? Does your data contain references with a
+      PubMed identifier or a DOI?
+    </p>
+    <p>
+      For each concept, the list should provide a human readable label, and a short definition, both in
+      English. Here too, the underlying rule is that everything must have an explicit and well-defined
+      meaning.
+    </p>
+  </section>
+  <section> 
+    <h2>Step 3: what are the relations that link those concepts?</h2>
+    <p>
+      Once you know what concepts are found in your data, it is time to identify how those concepts are
+      linked in your data set. These relations must be identified and listed too. These relations
+      preferably have a verb form. For example, a predicate label <i>has name</i> is preferred over just
+      <i>name</i>.
+    </p>
+    <p>
+      For each relation, the list should provide a human readable label, and a short definition, again in
+      English.
+    </p>
+  </section>
+  <section> 
+    <h2>Step 4: identify common vocabularies matching your concepts and relations.</h2>
+    <p>
+      Because existing software already knows about existing, common ontologies, you
+      should use those existing, common ontologies, if you care about having an
+      impact. This sections lists below a number of suggestions, for the various data
+      types that will be covered in Open PHACTS. You should explore those ontologies
+      and check if for each concept and relation you find matching entries in those
+      existing, common ontologies. If you find that only a minor amount of items are
+      missing, you should contact the ontology authors, and see if the missing terms
+      can be added. Only if that failed, you should be looking for less common
+      ontologies and see if these provide a substantial higher coverage. Services that
+      allow you to find uncommon ontologies are listed below. You can use the skos
+      vocabulary to express relatedness to existing concepts. It is OK to keep a
+      number of entries not mapped to existing ontologies. In this case the entries
+      have to be made openly available, i.e at <a href="http://purl.org">purl.org</a>.
+      This of course also applies for creating a new ontology.
+     </p>
+     <p>
+      In all cases, you  must never use ontologies that you are not allowed to share
+      with your data, as that will effectively leave you with triplified data, of
+      which your users have no means in the future to figure out what is what, and
+      thus is &quot;meaningless&quot;.
+    </p>
+    <h3>Suggested vocabularies and ontologies</h3>
+    <p>
+      Below is a list of pointers to ontologies and vocabularies related to the scope
+      of Open PHACTS. Additionally, a list of search engines is provided where further
+      ontologies and vocabularies can be found.
+    </p>
+    <h4>Bibliographic</h4>
+    <ul>
+      <li>Dublin Core (DC) - <a href="http://purl.org/dc/terms">http://purl.org/dc/terms</a></li>
+      <li>Bibliographic Ontology (BIBO) - <a href="http://bibliontology.com/">http://bibliontology.com/</a></li>
+      <li>Semantic Publishing and Referencing Ontologies (SPAR) - <a href="http://purl.org/spar/">http://purl.org/spar/</a></li>
+      <li>Semantic Web Applications in Neuromedicine (SWAN) - <a href="http://purl.org/swan/1.2/pav/">http://purl.org/swan/1.2/pav/</a></li>
+      <li>Annotation Ontology (AO) - <a href="http://purl.org/ao/wiki">http://purl.org/ao/wiki</a></li>
+    </ul>
+    <p>For document identifiers use (in order, if existing)</p>
+    <ol>
+      <li>DOI - http://dx.doi.org/$</li>
+      <li>PubMed - http://www.ncbi.nlm.nih.gov/pubmed/$</li>
+      <li>PMC - http://www.ncbi.nlm.nih.gov/pmc/$</li>
+      <li>Webpage</li>
+    </ol>
+    <h4>ChemSpider</h4>
+    <ul>
+      <li>ChemSpider ID - http://rdf.chemspider.com/$</li>
+    </ul>
+    <p>
+      This requires that the structures have been deposited with ChemSpider already. If not,
+      then use in descending order of preference:
+    </p>
+    <ol>
+      <li>InChI String</li>
+      <li>InChI Key</li>
+      <li>SMILES</li>
+    </ol>
+    <p>
+      The use of the CHEMINF ontology is encouraged for these identifiers [[Hastings2011]].
+      Also, you should register small molecule names with ChemSpider.
+    </p>
+    <h4>Structures / Hierarchies</h4>
+    <ul>
+      <li>Simple Knowledge Organization System (SKOS) - http://www.w3.org/2004/02/skos/core# - Strongly recommended</li>
+      <li>RDF Schema (RDFS) - http://www.w3.org/2000/01/rdf-schema#</li>
+      <li>Web Ontology Language (OWL) - http://www.w3.org/2002/07/owl#</li>
+    </ul>
+    <h4>Genomic data</h4>
+    <ul>
+      <li>Simple Knowledge Organization System (SKOS) - http://www.w3.org/2004/02/skos/core# - Strongly recommended</li>
+      <li>RDF Schema (RDFS) - http://www.w3.org/2000/01/rdf-schema#</li>
+      <li>Web Ontology Language (OWL) - http://www.w3.org/2002/07/owl#</li>
+    </ul>
+    <h4>Pathways</h4>
+    <ul>
+      <li>BioPax - http://www.biopax.org/release/biopax-level3.owl#</li>
+    </ul>
+    <h4>Pharmacology</h4>
+    <ul>
+      <li>BioAssay Ontology (BAO) - http://www.bioassayontology.org/bao/BAO_v1.4b1080.owl</li>
+    </ul>
+    <h4>Diseases</h4>
+    <ul>
+      <li>Medical Subject Headings (MeSH) - http://www.nlm.nih.gov/cgi/mesh/2011/MB_cgi?field=uid&amp;term=$</li>
+    </ul>
+    <h4>TextMining and Manual Annotations</h4>
+    <ul>
+      <li>String - http://nlp2rdf.lod2.eu/schema/string/</li>
+      <li>Structured Sentence Ontology (SSO) - http://nlp2rdf.lod2.eu/schema/sso/</li>
+      <li>Annotation Ontology (AO) - http://purl.org/ao/</li>
+    </ul>
+    <h4>Units</h4>
+    <ul>
+      <li>Quantities, Units, Dimensions and Data Types (QUDT) - http://qudt.org/</li>
+    </ul>
+    <h4>Licenses</h4>
+    <ul>
+      <li>Dublin Core - http://purl.org/dc/terms</li>
+    </ul>
+    <h3>Ontology search engines</h3>
+    <p>The following search engines can be useful to find suitable ontologies.</p>
+    <ul>
+      <li>LOV - <a href="http://labs.mondeca.com/dataset/lov/">http://labs.mondeca.com/dataset/lov/</a></li>
+      <li>Prefix.cc - <a href="http://prefix.cc/">http://prefix.cc/</a></li>
+      <li>Sindice - <a href="http://sindice.com/">http://sindice.com/</a></li>
+      <li>CKAN - <a href="http://ckan.org/">http://ckan.org/</a></li>
+      <li>Bioportal - <a href="http://bioportal.bioontology.org/">http://bioportal.bioontology.org/</a></li>
+    </ul>
+  </section>
+  <section> 
+    <h2>Step 5: linking out to other Linked Data</h2>
+    <p>
+      The next step is to explore what related data sets are available as Linked (Open) Data,
+      and link out to those data sets. For example, if your data contains ChemSpider, ChEBI,
+      ChEMBL, PubChem, DrugBank, KEGG, Uniprot, and PDB identifiers, you can link to the
+      respective RDF variants of those databases. Various RDF versions of these databases are
+      around, including Bio2RDF [[Belleau2008]], LODD [[Samwald2011]], and Chem2Bio2RDF [[Chen2010]],
+      but preferably to the original source directly. The figure below (CC-BY-SA, [[Cyganiak2011]])
+      shows a diagram of the larger network, including Linked Data relevant the Open PHACTS:<br />
+      <img src="img/lod-datasets_2011-09-19_colored.png" width="60%"/>
+    </p>
+    <p>
+      Careful consideration must be taken here in to what relation (predicate) is used. In the
+      table below various options are outlined, the specific meaning, and how and when which
+      predicate should be used.
+      <table border="1">
+        <tr>
+          <td>rdf:seeAlso</td>
+          <td>General link, that indicates that the resource linked to is relevant to the subject.
+            See <a href="http://www.w3.org/TR/rdf-schema/">http://www.w3.org/TR/rdf-schema/</a>.</td>
+        </tr>
+        <tr>
+          <td>skos:closeMatch</td>
+          <td>This link indicates that the linked resources are the same, under some assumptions or
+            applications. This link is not transitive. See <a href="http://www.w3.org/2004/02/skos/core.html">http://www.w3.org/2004/02/skos/core.html</a>.</td>
+        </tr>
+        <tr>
+          <td>skos:exactMatch</td>
+          <td>This link subclasses skos:closeMatch but is stronger, and the same as now applies to a
+            wide range of applications, implying that the link is transitive. See
+            <a href="http://www.w3.org/2004/02/skos/core.html">http://www.w3.org/2004/02/skos/core.html</a>.</td>
+        </tr>
+        <tr>
+          <td>owl:sameAs</td>
+          <td>Link that indicates that the subject is an instance, and that the object resource is an
+            instance too, and the same resources as the subject. This link is transitive. See
+            <a href="http://www.w3.org/TR/owl-ref/">http://www.w3.org/TR/owl-ref/</a>.</td>
+        </tr>
+        <tr>
+          <td>owl:equivalentClass</td>
+          <td>The same as owl:sameAs but then for OWL classes instead of instances. This link is
+            transitive. See <a href="http://www.w3.org/TR/owl-ref/">http://www.w3.org/TR/owl-ref/</a>.</td>
+        </tr>
+      </table>
+    </p>
+    <p>
+      The owl:sameAs and owl:equivalentClass predicates are very powerful and should be used with
+      care since all attributes and relations of two therewith connected entities are merged
+      together. In Open PHACTS the use of the less restrictive skos:exactMatch is recommended.
+    </p>
+  </section>
+  <section> 
+    <h2>Step 6: converting your data into RDF</h2>
+    <p>
+      These first steps ensure you have IRIs for all resources and predicates, and know where to put all
+      relations, it is time to create triples. It is irrelevant to the triple creation process and thus up
+      to the user to pick whatever tool they find most convenient. Triples can be created with dedicated
+      semantic web tools, as listed below, but also using simple regular expressions, or scripting tools in
+      any language. Of course, generated triples should be validated, but the tool to create them is merely
+      tool; there is nothing semantic about that. The output in which the triples are serialized can be in
+      any of the standardized or proposed RDF serialization formats, such as RDF/XML, Notation3,
+      Turtle (preferred), or plain N-Triples.
+    </p>
+    <p>
+      Importantly, this process should be well documented. You must keep track of what versions of the input
+      data was used, who created the RDF data, when that was done, and preferable what tools were used. This
+      information should be available to users along with the data itself.
+    </p>
+    <p>
+      Last, it is important that for all texts, like labels and definitions, the language it is represented in
+      is explicitly identified. For example (not a full RDF serialization):
+      <pre>
+ex:methane rdfs:label “methaan”@nl .
+      </pre>
+    </p>
+    <h3>Tools available for triple generation</h3>
+    <p>Below is a brief overview of tools that may assist the triple generation.</p>
+    <h4>Sesame</h4>
+    <p>
+      Description: Sesame is a Java framework for handling RDF data. It includes functionality for parsing, storing, inferencing and querying of RDF data. Development is support by the Dutch company Aduna.<br />
+      Homepage: <a href="http://www.openrdf.org">http://www.openrdf.org</a><br />
+      Audience: Java programmers<br />
+      Tutorial: <a href="http://www.openrdf.org/doc/sesame2/users/">http://www.openrdf.org/doc/sesame2/users/</a>
+    </p>
+    <h4>Jena Semantic Web framework</h4>
+    <p>
+      Description: “Jena is another Java framework for building Semantic Web applications, originally developed by HP, now under the Apache umbrella. It provides am environment for handling RDF, RDFS and OWL, SPARQL.<br />
+      Homepage: <a href="http://jena.sourceforge.net/">http://jena.sourceforge.net/</a><br />
+      Audience: Java programmers<br />
+      Tutorial: <a href="http://www.ibm.com/developerworks/xml/library/j-jena/">http://www.ibm.com/developerworks/xml/library/j-jena/</a>
+    </p>
+    <h4>Tripliser</h4>
+    <p>
+      Description: Tripliser is a Java library and command-line tool for creating triple graphs from XML. It is particularly suitable for data exhibiting any of the following characteristics: messy - missing data, badly formatted data, changeable structure; bulky - large volumes; and volatile - ongoing changes to data and structure.<br />
+      Homepage: <a href="http://daverog.github.com/tripliser/">http://daverog.github.com/tripliser/</a><br />
+      Audience: Java programmers<br />
+      Tutorial: <a href="http://daverog.github.com/tripliser/">http://daverog.github.com/tripliser/</a>
+    </p>
+    <h4>RDF.rb</h4>
+    <p>
+      Description: A Ruby library for working with RDF data.<br />
+      Homepage: <a href="http://rdf.rubyforge.org/">http://rdf.rubyforge.org/</a><br />
+      Audience: Ruby programmers<br />
+      Tutorial: <a href="http://rdf.rubyforge.org/">http://rdf.rubyforge.org/</a>
+    </p>
+    <h4>Any23</h4>
+    <p>
+      Description: A tool than can convert anything to triples, supporting microformats, RDFa, Microdata, RDF/XML, Turtle, N-Triples and NQuads.<br />
+      Homepage: <a href="http://any23.org">http://any23.org</a><br />
+      Audience: Everybody<br />
+      Tutorial: <a href="http://any23.org">http://any23.org</a>
+    </p>
+  </section>
+  <section>
+    <h2>Step 7: validate your triples</h2>
+    <p> 
+      While dedicated semantic web tools make it hard to introduce syntactic errors, it is still possible to
+      make mistakes in the resulting RDF, and the generated triples should be validated.
+    </p>
+    <p>
+      There are various levels at which the data should be validated. First, it should be validated that
+      the created syntax notation is correct, for which various online services are available. Remark:
+      Some encodings of special characters may pose problems and may have to converted or be replaced. One
+      such validator tool is the W3C RDF Validation Service, at
+      <a href="http://www.w3.org/RDF/Validator/.">http://www.w3.org/RDF/Validator/</a>.
+    </p>
+    <p>
+      Second, the output should be checked that the selected common ontologies are correctly used. For
+      example, that predicates with literal domains are indeed used for such in the output. An example of
+      common misuse, is using the wrong Dublin Core namespace [[Nilsson2008]]; there are two, both defining a
+      dc:title predicate, but only one namespace should be used with literal values.
+    </p>
+    <p>
+      This also applies to the use of links as outlined in step 5, where these linking predicates can make
+      claims of the nature of resources. For example, skos:closeMatch implies that the subject and object
+      resources are also SKOS concepts. That should not conflict with other triples.
+    </p>
+    <p>
+      One aspect here is that the resulting data should be verified for internal consistency. This is
+      particularly important if the used common ontologies define relations (predicates) that specify
+      what types of objects it links (RDF domain and range). Tools like Protégé
+      (<a href="http://protege.stanford.edu/plugins/owl/api/">http://protege.stanford.edu/plugins/owl/api/</a>)
+      and Pellet (<a href="http://clarkparsia.com/pellet/">http://clarkparsia.com/pellet/</a>) can be used for that.
+    </p>
+    <p>
+      Last but not least, the whole transformation should be unit tested. This testing can be done as part
+      of this step, or after later steps. These tests make assertions regarding number of resources in the
+      RDF data, testing that they match those in the original data. Additionally, the tests should test
+      that the anticipated RDF structure is accurately reflected in the triple data set.
+    </p>
+  </section>
+  <section>
+    <h2>Step 8: choose the methods with which people will access the data </h2>
+    <p>
+      There are various ways to make your data available for others to use.
+      Linked Open Data requires the data to be linked, and requires URIs to be
+      dereferencable [[BernersLee2006]],[[Hausenblas2012]]. Dereferencable means that IRIs
+      identifying resources can be used using the web design (via domain name and web
+      servers) resolve in triples about that resources. For example, the following
+      resource IRI for methane is dereferencable:
+    </p>
+    <pre>
+http://rdf.openmolecules.net/?InChI=1S/CH4/h1H4
+    </pre>
+    <p>
+      Alternatively, all triples can be archived into a .zip or .tar.bz2 file, and
+      shared via a HTTP and FTP server, allowing others to download all triples and
+      use that locally.
+    </p>
+    <p>
+      However, the third option we recommend highly as a minimal way to make the
+      triples accessible: via a SPARQL end point. Various tools are available for this
+      purpose, including tools mentioned earlier to create triples, such as Sesame and
+      Jena. These both provide store functionality, including SPARQL functionality,
+      but are APIs primarily, and can wrap around triple stores that scale better,
+      such as Virtuoso and Owlim. A comparison of some triple stores was done by the
+      FU Berlin and can be found here. Information about the capacity of triple stores
+      can be found at w3.org (link). We note that these statistics change every half
+      year, and the reader is strongly encouraged to look up recent numbers.
+    </p>
+    <p>
+      The list of tools that provide SPARQL end point functionality include:
+    </p>
+    <h4>Sesame</h4>
+    <p>
+      Homepage: <a href="http://www.openrdf.org/">http://www.openrdf.org/</a><br />
+      Documentation: <a href="http://www.openrdf.org/documentation.jsp">http://www.openrdf.org/documentation.jsp</a>
+    </p>
+    <h4>Jena</h4>
+    <p>
+      Homepage: <a href="http://jena.sourceforge.net/">http://jena.sourceforge.net/</a><br />
+      Documentation: <a href="http://jena.sourceforge.net/documentation.html">http://jena.sourceforge.net/documentation.html</a>
+    </p>
+    <h4>Virtuoso</h4>
+    <p>
+      Homepage: <a href="http://virtuoso.openlinksw.com/">http://virtuoso.openlinksw.com/</a><br />
+      Documentation: <a href="http://docs.openlinksw.com/virtuoso/">http://docs.openlinksw.com/virtuoso/</a>
+    </p>
+    <h4>Owlim</h4>
+    <p>
+      Homepage: <a href="http://www.ontotext.com/owlim">http://www.ontotext.com/owlim</a><br />
+      Documentation: <a href="http://owlim.ontotext.com/display/OWLIMv42/Home">http://owlim.ontotext.com/display/OWLIMv42/Home</a>
+    </p>
+    <h4>4store</h4>
+    <p>
+      Homepage: <a href="http://4store.org/">http://4store.org/</a><br />
+      Documentation: <a href="http://4store.org/trac/wiki/Documentation">http://4store.org/trac/wiki/Documentation</a>
+    </p>
+    <h4>Mulgara</h4>
+    <p>
+      Homepage: <a href="http://www.mulgara.org/">http://www.mulgara.org/</a><br />
+      Documentation: <a href="http://www.mulgara.org/documentation.html">http://www.mulgara.org/documentation.html</a>
+    </p>
+    <h4>Bigdata</h4>
+    <p>
+      Homepage: <a href="http://www.systap.com/bigdata.htm">http://www.systap.com/bigdata.htm</a><br />
+      Documentation: <a href="http://sourceforge.net/apps/mediawiki/bigdata/index.php?title=GettingStarted">http://sourceforge.net/apps/mediawiki/bigdata/index.php?title=GettingStarted</a>
+    </p>
+    <h4>ARC</h4>
+    <p>
+      Homepage: <a href="https://github.com/semsol/arc2/wiki">https://github.com/semsol/arc2/wiki</a><br />
+      Documentation: <a href="https://github.com/semsol/arc2/wiki/Getting-started-with-ARC2">https://github.com/semsol/arc2/wiki/Getting-started-with-ARC2</a>
+    </p>
+  </section>
+  <section>
+    <h2>Step 9: advertise your data (in Open PHACTS)</h2>
+    <p>
+      The final step in creating RDF, is to advertise your RDF as to get it used, and to get it linked
+      to. Various options can be considered, such as announcing the data on mailing lists, or presenting
+      a poster on a conference.
+    </p>
+    <p>
+      Like with conference posters, advertising RDF goes with certain requirements. Conference posters
+      must be of a certain size; similarly, RDF data set advertisement must include license information
+      (see step 0), what ontologies are used (see step 4), and their embedding in the Linked Open Data
+      network (see step 5). For example, this can be done by providing a semantic site map
+      (<a href="http://sw.deri.org/2007/07/sitemapextension/">http://sw.deri.org/2007/07/sitemapextension/</a>)
+      or VoID (Vocabulary of Interlinked Datasets, <a href="http://vocab.deri.ie/void">http://vocab.deri.ie/void</a>).
+    </p>
+    <p>
+      Additionally, your data point should be registered with the appropriate registries. One of these is the
+      Data Hub, formerly know as CKAN (<a href="http://thedatahub.org/">http://thedatahub.org/</a>).
+    </p>
+  </section>
+</body>
+
+</html>
