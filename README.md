@@ -15,6 +15,13 @@ It uses RefSpec.js and a customized version of the matching CSS
 ([license](http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231))
 from http://www.w3.org/TR/respec-js/
 
+DOCUMENTATION
+=============
+
+Details of using the ReSpec are available from http://dev.w3.org/2009/dap/ReSpec.js/documentation.html. It is strongly recommended that you read that document and look at its HTML source code.
+
+You may also find looking that the source code of other specifications within this repository a helpful source of information on how to work with the framework.
+
 INSTALL
 =======
 
