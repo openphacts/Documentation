@@ -418,6 +418,19 @@ Freddy;Fish;Goldfish;Erika Schmidt;Hauptstr. 5 Berlin;Oats
 ex:methane rdfs:label “methaan”@nl .
       </pre>
     </p>
+    <h3>No blank nodes</h3>
+    <p>
+      Blank nodes must not be used, following for example the Banff Manifesto [[banffmanifesto]];
+      each concept or thing should have a unique IRI, which may be similar to
+      those of more principle resources. For example, the following CHEMINF example describes a molecule with
+      one of its properties, where the property is an instance itself and has a IRI quite similar to that
+      of the molecule it characterizes:
+      <pre>
+ex:m1 cheminf:CHEMINF_000200 ex:m1/full_mwt .
+ex:m1/full_mwt a cheminf:CHEMINF_000198 .
+ex:m1/full_mwt cheminf:SIO_000300 "341.748" .
+      </pre>
+    </p>
     <h3>Tools available for triple generation</h3>
     <p>Below is a brief overview of tools that may assist the triple generation.</p>
     <h4>Sesame</h4>

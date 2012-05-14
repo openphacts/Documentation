@@ -11,5 +11,6 @@ berjon.biblio = {
    "BernersLee2006": "T. Berners-Lee, Linked Data, 2006, <a href=\"http://www.w3.org/DesignIssues/LinkedData.html\">http://www.w3.org/DesignIssues/LinkedData.html</a>",
    "Gil2012": "Y. Gil, S. Miles, PROV Model Primer, 2012, <a href=\"http://www.w3.org/TR/2012/WD-prov-primer-20120503/\">http://www.w3.org/TR/2012/WD-prov-primer-20120503/</a>",
    "Cyganiak2011b": "R. Cyganiak, J. Zhao, K. Alexander, M. Hausenblas, Vocabulary of Interlinked Datasets (VoID), 2011, <a href=\"http://vocab.deri.ie/void\">http://vocab.deri.ie/void</a>",
-   "Gray2012"     : "A.J.G. Gray, Open PHACTS Identity Mapping Specification, version 0.2, 2012, in preparation"
+   "Gray2012"     : "A.J.G. Gray, Open PHACTS Identity Mapping Specification, version 0.2, 2012, in preparation",
+   "banffmanifesto": "P. Ansell, 2011, Banff Manifesto, <a href=\"http://sourceforge.net/apps/mediawiki/bio2rdf/index.php?title=Banff_Manifesto\">http://sourceforge.net/apps/mediawiki/bio2rdf/index.php?title=Banff_Manifesto</a>"
 }
