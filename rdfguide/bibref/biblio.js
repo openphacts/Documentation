@@ -9,5 +9,7 @@ berjon.biblio = {
    "Cyganiak2011" : "R. Cyganiak, A. Jentzsch, Linking Open Data cloud diagram, 2011. <a href=\"http://lod-cloud.net/\">http://lod-cloud.net/</a>",
    "Hausenblas2012": "M. Hausenblas, Linked Open Data star scheme by example, 2012, <a href=\"http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/\">http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/</a>",
    "BernersLee2006": "T. Berners-Lee, Linked Data, 2006, <a href=\"http://www.w3.org/DesignIssues/LinkedData.html\">http://www.w3.org/DesignIssues/LinkedData.html</a>",
-   "Gil2012": "Y. Gil, S. Miles, PROV Model Primerm 2012, <a href=\"http://www.w3.org/TR/2012/WD-prov-primer-20120503/\">http://www.w3.org/TR/2012/WD-prov-primer-20120503/</a>"
+   "Gil2012": "Y. Gil, S. Miles, PROV Model Primer, 2012, <a href=\"http://www.w3.org/TR/2012/WD-prov-primer-20120503/\">http://www.w3.org/TR/2012/WD-prov-primer-20120503/</a>",
+   "Cyganiak2011b": "R. Cyganiak, J. Zhao, K. Alexander, M. Hausenblas, Vocabulary of Interlinked Datasets (VoID), 2011, <a href=\"http://vocab.deri.ie/void\">http://vocab.deri.ie/void</a>",
+   "Gray2012"     : "A.J.G. Gray, Open PHACTS Identity Mapping Specification, version 0.2, 2012, in preparation"
 }
