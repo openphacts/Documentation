@@ -8,5 +8,6 @@ berjon.biblio = {
    "Samwald2011"  : "Samwald, M., Jentzsch, A., Bouton, C., Kallesoe, C., Willighagen, E., Hajagos, J., Marshall, M., Prud'hommeaux, E., Hassanzadeh, O., Pichler, E., Stephens, S., 2011. Linked open drug data for pharmaceutical research and development. Journal of Cheminformatics 3 (1), 19. <a href=\"http://dx.doi.org/10.1186/1758-2946-3-19\">http://dx.doi.org/10.1186/1758-2946-3-19</a>",
    "Cyganiak2011" : "R. Cyganiak, A. Jentzsch, Linking Open Data cloud diagram, 2011. <a href=\"http://lod-cloud.net/\">http://lod-cloud.net/</a>",
    "Hausenblas2012": "M. Hausenblas, Linked Open Data star scheme by example, 2012, <a href=\"http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/\">http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/</a>",
-   "BernersLee2006": "T. Berners-Lee, Linked Data, 2006, <a href=\"http://www.w3.org/DesignIssues/LinkedData.html\">http://www.w3.org/DesignIssues/LinkedData.html</a>"
+   "BernersLee2006": "T. Berners-Lee, Linked Data, 2006, <a href=\"http://www.w3.org/DesignIssues/LinkedData.html\">http://www.w3.org/DesignIssues/LinkedData.html</a>",
+   "Gil2012": "Y. Gil, S. Miles, PROV Model Primerm 2012, <a href=\"http://www.w3.org/TR/2012/WD-prov-primer-20120503/\">http://www.w3.org/TR/2012/WD-prov-primer-20120503/</a>"
 }
