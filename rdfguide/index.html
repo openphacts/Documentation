@@ -510,7 +510,7 @@ ex:methane rdfs:label “methaan”@nl .
     <h2>Step 8: choose the methods with which people will access the data </h2>
     <p>
       There are various ways to make your data available for others to use.
-      Linked Open Data requires the data to be linked, and requires URIs to be
+      Linked Open Data requires the data to be linkable, and therefore that URIs are
       dereferencable [[BernersLee2006]],[[Hausenblas2012]]. Dereferencable means that IRIs
       identifying resources can be used using the web design (via domain name and web
       servers) resolve in triples about that resources. For example, the following
@@ -520,12 +520,14 @@ ex:methane rdfs:label “methaan”@nl .
 http://rdf.openmolecules.net/?InChI=1S/CH4/h1H4
     </pre>
     <p>
-      Alternatively, all triples can be archived into a .zip or .tar.bz2 file, and
+      However, because data used in Open PHACTS will be loaded into a central cache,
+      all data must be available als bulk downloade. This means that
+      all triples, including provenance, etc, are archived into a .zip or .tar.bz2 file, and
       shared via a HTTP and FTP server, allowing others to download all triples and
       use that locally.
     </p>
     <p>
-      However, the third option we recommend highly as a minimal way to make the
+      Additionally, a third option is highly recommend as a minimal way to make the
       triples accessible: via a SPARQL end point. Various tools are available for this
       purpose, including tools mentioned earlier to create triples, such as Sesame and
       Jena. These both provide store functionality, including SPARQL functionality,
