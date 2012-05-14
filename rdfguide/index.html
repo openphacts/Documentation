@@ -148,15 +148,13 @@
     <p>
       So, the following code example shows bad practices. This generated example RDF shows a pet database,
       listing pets living in the same household in European capitals, including the food these pets eat. The
-      RDF output, created with Any23 [[Any23]], reflects the original data structure, and adds little useful
+      RDF output reflects the original data structure, and adds little useful
       meaning (i.e. the semantics) to the data.
     </p>
     <p>
       Input:
       <pre>
-Pet;Species;Subspecies;Owner;Address;Food
 Doger;Dog;Dachshund;Frank Smith;Mainstreet 1 London;Bones
-Freddy;Fish;Goldfish;Erika Schmidt;Hauptstr. 5 Berlin;Oats
       </pre>
     </p>
     <p> 
@@ -167,33 +165,56 @@ Freddy;Fish;Goldfish;Erika Schmidt;Hauptstr. 5 Berlin;Oats
 @prefix csv: &lt;http://vocab.sindice.net/csv/> .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-&lt;any23:pet> &lt;rdfs:label> "Pet" ;
+&lt;any23:col0> &lt;rdfs:label> "Pet" ;
    &lt;csv:columnPosition> "0"^^xsd:integer .
 
-&lt;any23:species> &lt;rdfs:label> "Species" ;
+&lt;any23:col1> &lt;rdfs:label> "Species" ;
    &lt;csv:columnPosition> "1"^^xsd:integer .
 
-&lt;any23:subspecies> &lt;rdfs:label> "Subspecies" ;
+&lt;any23:col2> &lt;rdfs:label> "Subspecies" ;
    &lt;csv:columnPosition> "2"^^xsd:integer .
 
-&lt;any23:owner> &lt;rdfs:label> "Owner" ;
+&lt;any23:col3> &lt;rdfs:label> "Owner" ;
    &lt;csv:columnPosition> "3"^^xsd:integer .
 
-&lt;any23:address> &lt;rdfs:label> "Address" ;
+&lt;any23:col4> &lt;rdfs:label> "Address" ;
    &lt;csv:columnPosition> "4"^^xsd:integer .
 
-&lt;any23:food> &lt;rdfs:label> "Food" ;
+&lt;any23:col5> &lt;rdfs:label> "Food" ;
    &lt;csv:columnPosition> "5"^^xsd:integer .
 
 &lt;any23:row/0> a &lt;csv:Row> ;
-   &lt;any23:pet> "Doger"^^xsd:string ;
-   &lt;any23:species> "Dog"^^xsd:string ;
-   &lt;any23:subspecies> "Dachshund"^^xsd:string ;
-   &lt;any23:owner> "Frank Smith"^^xsd:string ;
-   &lt;any23:address> "Mainstreet 1 London"^^xsd:string ;
-   &lt;any23:food> "Bones"^^xsd:string .
+   &lt;any23:col0> "Doger"^^xsd:string ;
+   &lt;any23:col1> "Dog"^^xsd:string ;
+   &lt;any23:col2> "Dachshund"^^xsd:string ;
+   &lt;any23:col3> "Frank Smith"^^xsd:string ;
+   &lt;any23:col4> "Mainstreet 1 London"^^xsd:string ;
+   &lt;any23:col5> "Bones"^^xsd:string .
 
 &lt;any23:> &lt;csv:row> &lt;any23:row/0> .
+      </pre>
+    </p>
+    <p>
+      Importantly, the use of columns and rows in the RDF must be removed. Better would be:
+      <pre>
+@prefix any23: &lt;http://any23.org/tmp/> .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
+
+&lt;any23:Pet> &lt;rdfs:label> "Pet" .
+&lt;any23:species> &lt;rdfs:label> "Species" .
+&lt;any23:subspecies> &lt;rdfs:label> "Subspecies" .
+&lt;any23:owner> &lt;rdfs:label> "Owner" .
+&lt;any23:address> &lt;rdfs:label> "Address" .
+&lt;any23:food> &lt;rdfs:label> "Food" .
+
+&lt;any23:doger> a &lt;any23:Pet> ;
+&lt;rdfs:label> "Doger"^^xsd:string ;
+&lt;any23:species> "Dog"^^xsd:string ;
+&lt;any23:subspecies> "Dachshund"^^xsd:string ;
+&lt;any23:owner> "Frank Smith"^^xsd:string ;
+&lt;any23:address> "Mainstreet 1 London"^^xsd:string ;
+&lt;any23:food> "Bones"^^xsd:string .
       </pre>
     </p>
   </section>
