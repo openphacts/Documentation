@@ -8,5 +8,11 @@ berjon.biblio = {
    "Samwald2011"  : "Samwald, M., Jentzsch, A., Bouton, C., Kallesoe, C., Willighagen, E., Hajagos, J., Marshall, M., Prud'hommeaux, E., Hassanzadeh, O., Pichler, E., Stephens, S., 2011. Linked open drug data for pharmaceutical research and development. Journal of Cheminformatics 3 (1), 19. <a href=\"http://dx.doi.org/10.1186/1758-2946-3-19\">http://dx.doi.org/10.1186/1758-2946-3-19</a>",
    "Cyganiak2011" : "R. Cyganiak, A. Jentzsch, Linking Open Data cloud diagram, 2011. <a href=\"http://lod-cloud.net/\">http://lod-cloud.net/</a>",
    "Hausenblas2012": "M. Hausenblas, Linked Open Data star scheme by example, 2012, <a href=\"http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/\">http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/</a>",
-   "BernersLee2006": "T. Berners-Lee, Linked Data, 2006, <a href=\"http://www.w3.org/DesignIssues/LinkedData.html\">http://www.w3.org/DesignIssues/LinkedData.html</a>"
+   "BernersLee2006": "T. Berners-Lee, Linked Data, 2006, <a href=\"http://www.w3.org/DesignIssues/LinkedData.html\">http://www.w3.org/DesignIssues/LinkedData.html</a>",
+   "Gil2012": "Y. Gil, S. Miles, PROV Model Primer, 2012, <a href=\"http://www.w3.org/TR/2012/WD-prov-primer-20120503/\">http://www.w3.org/TR/2012/WD-prov-primer-20120503/</a>",
+   "Cyganiak2011b": "R. Cyganiak, J. Zhao, K. Alexander, M. Hausenblas, Vocabulary of Interlinked Datasets (VoID), 2011, <a href=\"http://vocab.deri.ie/void\">http://vocab.deri.ie/void</a>",
+   "Gray2012"     : "A.J.G. Gray, Open PHACTS Identity Mapping Specification, version 0.2, 2012, in preparation",
+   "banffmanifesto": "P. Ansell, 2011, Banff Manifesto, <a href=\"http://sourceforge.net/apps/mediawiki/bio2rdf/index.php?title=Banff_Manifesto\">http://sourceforge.net/apps/mediawiki/bio2rdf/index.php?title=Banff_Manifesto</a>",
+   "D16D17"       : "Deliverable 1.6 / 1.7, 2012",
+   "SKOS"         : "A. Miles, S. Bechhofer, SKOS Simple Knowledge Organization System Namespace Document - HTML Variant, 2009, <a href=\"http://www.w3.org/2009/08/skos-reference/skos.html\">http://www.w3.org/2009/08/skos-reference/skos.html</a>"
 }

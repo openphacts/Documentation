@@ -31,12 +31,12 @@
                 company: "Maastricht University", companyURL: "http://www.maastrichtuniversity.nl/" },
           ],
           authors:  [
-             { name: "Carine Haupt",
-                company: "SCAI", companyURL: "http://www.scai.fraunhofer.de/" },
+             { name: "Carina Haupt",
+                company: "University of Bonn", companyURL: "http://www.b-it-center.de/" },
              { name: "Andra Waagmeester",
                 company: "Maastricht University", companyURL: "http://www.maastrichtuniversity.nl/" },
-             { name: "Mark Zimmerman",
-                company: "SCAI", companyURL: "http://www.scai.fraunhofer.de/" },
+             { name: "Marc Zimmerman",
+                company: "Fraunhofer SCAI", companyURL: "http://www.scai.fraunhofer.de/" },
              { name: "Egon Willighagen", url: "http://chem-bla-ics.blogpost.com/",
                 company: "Maastricht University", companyURL: "http://www.maastrichtuniversity.nl/" },
           ],
@@ -48,6 +48,13 @@
           //wgPatentURI:  "",
       };
     </script>
+    <style type="text/css">
+      .stars {
+		color: gold; 
+		font-size: 18pt; 
+		text-align: right; 
+	}
+	 </style>
 </head>
 
 <body>
@@ -109,7 +116,7 @@
       <li>A semantic sitemap of your data: <a href="http://sw.deri.org/2007/07/sitemapextension/">http://sw.deri.org/2007/07/sitemapextension/</a></li>
     </ol>
     <p>
-      Open PHACTS does not care about:
+      Open PHACTS does not specify requirements or guidelines around:
     </p>
     <ul>
       <li>Redundancy in RDF</li>
@@ -119,12 +126,15 @@
   </section>
   <section>
     <h2>Step 0: determine who owns the copyright of the data and under what license you are sharing it</h2>
+    <p>This step results in your data to be: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;, &#x2605;&#x2605;, &#x2605;&#x2605;&#x2605;</a></span>
+</p>
     <p>
       Before you start thinking about converting something into RDF, the first two questions you
       should ask yourself, who owns the data (if anyone), and under what license or waiver can you modify
       and reshare the data, because that is exactly what you are going to do if you convert it into RDF
       and share that version with others.
     </p>
+
     <p>
       Because this information is also important for all people who will want to use your data, you must
       specify as metadata these pieces of crucial information along with the shared data. This step does not
@@ -139,24 +149,27 @@
   </section>
   <section> 
     <h2>Step 1: think in terms of meaning, rather than structure</h2>
-    <p>
+   <p>Data should already be: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;, &#x2605;&#x2605;, &#x2605;&#x2605;&#x2605;</a></span><br>
+      working towards: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;&#x2605;&#x2605;&#x2605;</a></span> 
+    </p> 
+  <p>
       When creating triples from your data, it is important to think about the data in terms of concepts and
       their relations in scientific terms, not in terms of database terminologies. The triples must in no way
       reflect concepts like database tables or other details that originate from the format in which the
       data was previously stored.
     </p>
+
+
     <p>
       So, the following code example shows bad practices. This generated example RDF shows a pet database,
       listing pets living in the same household in European capitals, including the food these pets eat. The
-      RDF output, created with Any23 [[Any23]], reflects the original data structure, and adds little useful
+      RDF output reflects the original data structure, and adds little useful
       meaning (i.e. the semantics) to the data.
     </p>
     <p>
       Input:
       <pre>
-Pet;Species;Subspecies;Owner;Address;Food
 Doger;Dog;Dachshund;Frank Smith;Mainstreet 1 London;Bones
-Freddy;Fish;Goldfish;Erika Schmidt;Hauptstr. 5 Berlin;Oats
       </pre>
     </p>
     <p> 
@@ -167,67 +180,120 @@ Freddy;Fish;Goldfish;Erika Schmidt;Hauptstr. 5 Berlin;Oats
 @prefix csv: &lt;http://vocab.sindice.net/csv/> .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-&lt;any23:pet> &lt;rdfs:label> "Pet" ;
+&lt;any23:col0> &lt;rdfs:label> "Pet" ;
    &lt;csv:columnPosition> "0"^^xsd:integer .
 
-&lt;any23:species> &lt;rdfs:label> "Species" ;
+&lt;any23:col1> &lt;rdfs:label> "Species" ;
    &lt;csv:columnPosition> "1"^^xsd:integer .
 
-&lt;any23:subspecies> &lt;rdfs:label> "Subspecies" ;
+&lt;any23:col2> &lt;rdfs:label> "Subspecies" ;
    &lt;csv:columnPosition> "2"^^xsd:integer .
 
-&lt;any23:owner> &lt;rdfs:label> "Owner" ;
+&lt;any23:col3> &lt;rdfs:label> "Owner" ;
    &lt;csv:columnPosition> "3"^^xsd:integer .
 
-&lt;any23:address> &lt;rdfs:label> "Address" ;
+&lt;any23:col4> &lt;rdfs:label> "Address" ;
    &lt;csv:columnPosition> "4"^^xsd:integer .
 
-&lt;any23:food> &lt;rdfs:label> "Food" ;
+&lt;any23:col5> &lt;rdfs:label> "Food" ;
    &lt;csv:columnPosition> "5"^^xsd:integer .
 
 &lt;any23:row/0> a &lt;csv:Row> ;
-   &lt;any23:pet> "Doger"^^xsd:string ;
-   &lt;any23:species> "Dog"^^xsd:string ;
-   &lt;any23:subspecies> "Dachshund"^^xsd:string ;
-   &lt;any23:owner> "Frank Smith"^^xsd:string ;
-   &lt;any23:address> "Mainstreet 1 London"^^xsd:string ;
-   &lt;any23:food> "Bones"^^xsd:string .
+   &lt;any23:col0> "Doger"^^xsd:string ;
+   &lt;any23:col1> "Dog"^^xsd:string ;
+   &lt;any23:col2> "Dachshund"^^xsd:string ;
+   &lt;any23:col3> "Frank Smith"^^xsd:string ;
+   &lt;any23:col4> "Mainstreet 1 London"^^xsd:string ;
+   &lt;any23:col5> "Bones"^^xsd:string .
 
 &lt;any23:> &lt;csv:row> &lt;any23:row/0> .
+      </pre>
+    </p>
+    <p>
+      Importantly, the use of columns and rows in the RDF must be removed. Better would be:
+      <pre>
+@prefix any23: &lt;http://any23.org/tmp/> .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
+
+&lt;any23:Pet> &lt;rdfs:label> "Pet" .
+&lt;any23:species> &lt;rdfs:label> "Species" .
+&lt;any23:subspecies> &lt;rdfs:label> "Subspecies" .
+&lt;any23:owner> &lt;rdfs:label> "Owner" .
+&lt;any23:address> &lt;rdfs:label> "Address" .
+&lt;any23:food> &lt;rdfs:label> "Food" .
+
+&lt;any23:doger> a &lt;any23:Pet> ;
+&lt;rdfs:label> "Doger"^^xsd:string ;
+&lt;any23:species> "Dog"^^xsd:string ;
+&lt;any23:subspecies> "Dachshund"^^xsd:string ;
+&lt;any23:owner> "Frank Smith"^^xsd:string ;
+&lt;any23:address> "Mainstreet 1 London"^^xsd:string ;
+&lt;any23:food> "Bones"^^xsd:string .
       </pre>
     </p>
   </section>
   <section> 
     <h2>Step 2: what are the concepts in your data?</h2>
+   <p>Data should already be: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;, &#x2605;&#x2605;, &#x2605;&#x2605;&#x2605;</a></span><br>
+      Working towards: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;&#x2605;&#x2605;&#x2605;</a></span> 
+    </p>
     <p>
       The first step in creating your RDF is to create a list of all concepts that are found in your
       data. Are there proteins, metabolites, cell cultures, organisms, targets, assays? At what level are
       those concepts represented in your data? Are they protein names without exactly known point
       mutations, are the accurate masses resulting from metabolomics experiments, are the exact metabolic
       structures known? Are there multiple identifiers known? Does your data contain references with a
-      PubMed identifier or a DOI?
+      PubMed identifier or a DOI? In this step you define the types, rather than the entities: you
+      observe that their are proteins, but do not enumerate each of them.
     </p>
     <p>
-      For each concept, the list should provide a human readable label, and a short definition, both in
-      English. Here too, the underlying rule is that everything must have an explicit and well-defined
-      meaning.
+      The purpose here is not to develop an ontology, but to get clear what the content of your data is,
+      allowing you to identify existing ontologies (see Step 4) that capture that information. To support this process,
+      for each concept found in your data a human readable label and a short definition must be provided,
+      both in English. Here too, the underlying rule is that everything must have an explicit and well-defined
+      meaning. This list may be in a Word document, Excel spreadsheet, but also in RDF itself, for example
+      using SKOS [[SKOS]]. The choice, however, must be chosen such to improve the thinking about the concepts.
+    </p>
+    <p>
+      For example:
+      <table border="1">
+        <tr><td>"Activity"</td><td>Biochemical property that chemical entities exhibit in some experiment.</td></tr>
+      </table>
     </p>
   </section>
   <section> 
     <h2>Step 3: what are the relations that link those concepts?</h2>
+   <p>Data should already be: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;, &#x2605;&#x2605;, &#x2605;&#x2605;&#x2605;</a></span><br>
+      working towards: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;&#x2605;&#x2605;&#x2605;</a></span> 
+    </p>
     <p>
       Once you know what concepts are found in your data, it is time to identify how those concepts are
-      linked in your data set. These relations must be identified and listed too. These relations
-      preferably have a verb form. For example, a predicate label <i>has name</i> is preferred over just
-      <i>name</i>.
+      linked in your data set. These relations must be identified and listed too, and in the same manner
+      as in Step 2. These relations preferably have a verb form, making them easier to understand.
+       For example, a predicate label <i>has name</i> is preferred over just <i>name</i>.
     </p>
     <p>
       For each relation, the list should provide a human readable label, and a short definition, again in
-      English.
+      English. Again, the method of recording the list of relations and properties must be chosen such to
+      improve the thinking about the information in the data.
+    </p>
+    <p>
+      For example:
+      <table border="1">
+        <tr><td>"has sequence"</td><td>Protein property linking an amino acid sequence to a protein.</td></tr>
+        <tr><td>"binds to"</td><td>Relation between a drug and a drug target reflecting a chemical interaction.</td></tr>
+      </table>
+    </p>
+    <p>
+      Like in Step 2, you focus on the types only, not in actual binding interactions, etc.
     </p>
   </section>
   <section> 
     <h2>Step 4: identify common vocabularies matching your concepts and relations.</h2>
+   <p>Data should already be: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;, &#x2605;&#x2605;, &#x2605;&#x2605;&#x2605;</a></span><br>
+      working towards: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;&#x2605;&#x2605;&#x2605;</a></span> 
+    </p>
     <p>
       Because existing software already knows about existing, common ontologies, you
       should use those existing, common ontologies, if you care about having an
@@ -255,6 +321,13 @@ Freddy;Fish;Goldfish;Erika Schmidt;Hauptstr. 5 Berlin;Oats
       Below is a list of pointers to ontologies and vocabularies related to the scope
       of Open PHACTS. Additionally, a list of search engines is provided where further
       ontologies and vocabularies can be found.
+    </p>
+    <p>
+      Importantly, the following two resources must be watched with respect to
+      recommended vocabularies: first, Open PHACTS project deliverables, such as
+      D1.6 and D1.7 [[D16D17]]. second, the Open PHACTS project on BioPortal:
+      <a href="http://bioportal.bioontology.org/projects/163">http://bioportal.bioontology.org/projects/163</a>.
+      Thse documents precede the following suggestions.
     </p>
     <h4>Bibliographic</h4>
     <ul>
@@ -338,6 +411,9 @@ Freddy;Fish;Goldfish;Erika Schmidt;Hauptstr. 5 Berlin;Oats
   </section>
   <section> 
     <h2>Step 5: linking out to other Linked Data</h2>
+	<p>Data should already be: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;, &#x2605;&#x2605;, &#x2605;&#x2605;&#x2605;</a></span><br>
+	      working towards: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;&#x2605;&#x2605;&#x2605;</a></span> 
+	    </p>
     <p>
       The next step is to explore what related data sets are available as Linked (Open) Data,
       and link out to those data sets. For example, if your data contains ChemSpider, ChEBI,
@@ -351,7 +427,8 @@ Freddy;Fish;Goldfish;Erika Schmidt;Hauptstr. 5 Berlin;Oats
     <p>
       Careful consideration must be taken here in to what relation (predicate) is used. In the
       table below various options are outlined, the specific meaning, and how and when which
-      predicate should be used.
+      predicate can be used; the guidelines around the use of these predicates in Open PHACTS
+      is under development, and will supercede this table when available.
       <table border="1">
         <tr>
           <td>rdf:seeAlso</td>
@@ -390,6 +467,9 @@ Freddy;Fish;Goldfish;Erika Schmidt;Hauptstr. 5 Berlin;Oats
   </section>
   <section> 
     <h2>Step 6: converting your data into RDF</h2>
+   <p>Data should already be: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;, &#x2605;&#x2605;, &#x2605;&#x2605;&#x2605;</a></span><br>
+      working towards: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;&#x2605;&#x2605;&#x2605;</a></span> 
+    </p>
     <p>
       These first steps ensure you have IRIs for all resources and predicates, and know where to put all
       relations, it is time to create triples. It is irrelevant to the triple creation process and thus up
@@ -399,17 +479,45 @@ Freddy;Fish;Goldfish;Erika Schmidt;Hauptstr. 5 Berlin;Oats
       tool; there is nothing semantic about that. The output in which the triples are serialized can be in
       any of the standardized or proposed RDF serialization formats, such as RDF/XML, Notation3,
       Turtle (preferred), or plain N-Triples.
+      These guidelines do not encourage nor disallow named graphs; the user is free them, but it is not
+      required.
     </p>
     <p>
       Importantly, this process should be well documented. You must keep track of what versions of the input
       data was used, who created the RDF data, when that was done, and preferable what tools were used. This
-      information should be available to users along with the data itself.
+      information should be available to users along with the data itself. The exact guidelines for tracking
+      provenance information is outside the scope of this document, and future Open PHACTS guidelines will
+      document in detail how it is captured. The reader is refered to the W3C PROV Model Primer as reference
+      for now [[Gil2012]].
     </p>
     <p>
-      Last, it is important that for all texts, like labels and definitions, the language it is represented in
+      Because the Open PHACTS GUI is human language oriented, all entities in the data must be associated
+      with a human readable label.
+      It is important that for all texts, like labels and definitions, the language it is represented in
       is explicitly identified. For example (not a full RDF serialization):
       <pre>
 ex:methane rdfs:label “methaan”@nl .
+      </pre>
+    </p>
+    <p>
+      Occassionally, there are concepts in your data that do not have labels in the data source. For example,
+      the interaction between two proteins or the property of a molecule. Labels like "The interaction
+      between protein A and protein B" and "The molecular weight of molecule A" can be autogenerated.
+      If this label follows implicitly from the semantic typing of the entities and relations between 
+      those entities, then a label may be omitted. An example is the molecular weight property in
+      the next section.
+    </p>
+    <h3>No blank nodes</h3>
+    <p>
+      Blank nodes must not be used, following for example the Banff Manifesto [[banffmanifesto]];
+      each concept or thing should have a unique IRI, which may be similar to
+      those of more principle resources. For example, the following CHEMINF example describes a molecule with
+      one of its properties, where the property is an instance itself and has a IRI quite similar to that
+      of the molecule it characterizes:
+      <pre>
+ex:m1 cheminf:CHEMINF_000200 ex:m1/full_mwt .
+ex:m1/full_mwt a cheminf:CHEMINF_000198 .
+ex:m1/full_mwt cheminf:SIO_000300 "341.748" .
       </pre>
     </p>
     <h3>Tools available for triple generation</h3>
@@ -452,6 +560,9 @@ ex:methane rdfs:label “methaan”@nl .
   </section>
   <section>
     <h2>Step 7: validate your triples</h2>
+   <p>Data should already be: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;, &#x2605;&#x2605;, &#x2605;&#x2605;&#x2605;</a></span><br>
+      working towards: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;&#x2605;&#x2605;&#x2605;</a></span> 
+    </p>
     <p> 
       While dedicated semantic web tools make it hard to introduce syntactic errors, it is still possible to
       make mistakes in the resulting RDF, and the generated triples should be validated.
@@ -461,7 +572,7 @@ ex:methane rdfs:label “methaan”@nl .
       the created syntax notation is correct, for which various online services are available. Remark:
       Some encodings of special characters may pose problems and may have to converted or be replaced. One
       such validator tool is the W3C RDF Validation Service, at
-      <a href="http://www.w3.org/RDF/Validator/.">http://www.w3.org/RDF/Validator/</a>.
+      <a href="http://www.w3.org/RDF/Validator/">http://www.w3.org/RDF/Validator/</a>.
     </p>
     <p>
       Second, the output should be checked that the selected common ontologies are correctly used. For
@@ -487,12 +598,24 @@ ex:methane rdfs:label “methaan”@nl .
       RDF data, testing that they match those in the original data. Additionally, the tests should test
       that the anticipated RDF structure is accurately reflected in the triple data set.
     </p>
+    <h3>Tools available for validation</h3>
+    <p>Below is a brief overview of tools that may assist the triple generation.</p>
+    <h4>W3C RDF Validation</h4>
+    <p>
+      Description: Webpage that accepts raw triple content and URLs pointing to RDF documents.<br />
+      Homepage: <a href="http://www.w3.org/RDF/Validator/">http://www.w3.org/RDF/Validator/</a><br />
+    </p>
+    <h4>Rapper</h4>
+    <p>
+      Description: Command line utility.<br />
+      Homepage: <a href="http://librdf.org/raptor/rapper.html">http://librdf.org/raptor/rapper.html</a><br />
+    </p>
   </section>
   <section>
     <h2>Step 8: choose the methods with which people will access the data </h2>
     <p>
       There are various ways to make your data available for others to use.
-      Linked Open Data requires the data to be linked, and requires URIs to be
+      Linked Open Data requires the data to be linkable, and therefore that URIs are
       dereferencable [[BernersLee2006]],[[Hausenblas2012]]. Dereferencable means that IRIs
       identifying resources can be used using the web design (via domain name and web
       servers) resolve in triples about that resources. For example, the following
@@ -502,12 +625,14 @@ ex:methane rdfs:label “methaan”@nl .
 http://rdf.openmolecules.net/?InChI=1S/CH4/h1H4
     </pre>
     <p>
-      Alternatively, all triples can be archived into a .zip or .tar.bz2 file, and
+      However, because data used in Open PHACTS will be loaded into a central cache,
+      all data must be available als bulk downloade. This means that
+      all triples, including provenance, etc, are archived into a .zip or .tar.bz2 file, and
       shared via a HTTP and FTP server, allowing others to download all triples and
       use that locally.
     </p>
     <p>
-      However, the third option we recommend highly as a minimal way to make the
+      Additionally, a third option is highly recommend as a minimal way to make the
       triples accessible: via a SPARQL end point. Various tools are available for this
       purpose, including tools mentioned earlier to create triples, such as Sesame and
       Jena. These both provide store functionality, including SPARQL functionality,
@@ -563,6 +688,9 @@ http://rdf.openmolecules.net/?InChI=1S/CH4/h1H4
   </section>
   <section>
     <h2>Step 9: advertise your data (in Open PHACTS)</h2>
+   <p>Data should already be: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;, &#x2605;&#x2605;, &#x2605;&#x2605;&#x2605;, &#x2605;&#x2605;&#x2605;&#x2605;</a></span><br>
+      working towards: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</a></span> 
+    </p>
     <p>
       The final step in creating RDF, is to advertise your RDF as to get it used, and to get it linked
       to. Various options can be considered, such as announcing the data on mailing lists, or presenting
@@ -574,12 +702,16 @@ http://rdf.openmolecules.net/?InChI=1S/CH4/h1H4
       (see step 0), what ontologies are used (see step 4), and their embedding in the Linked Open Data
       network (see step 5). For example, this can be done by providing a semantic site map
       (<a href="http://sw.deri.org/2007/07/sitemapextension/">http://sw.deri.org/2007/07/sitemapextension/</a>)
-      or VoID (Vocabulary of Interlinked Datasets, <a href="http://vocab.deri.ie/void">http://vocab.deri.ie/void</a>).
+      or VoID (Vocabulary of Interlinked Datasets [[Cyganiak2011b]]; the latter is the Open PHACTS selection,
+      as specified in the Open PHACTS Identity Mapping Specification [[Gray2012]].
     </p>
     <p>
       Additionally, your data point should be registered with the appropriate registries. One of these is the
       Data Hub, formerly know as CKAN (<a href="http://thedatahub.org/">http://thedatahub.org/</a>).
     </p>
+
+	<p>
+	After following these steps your data is <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</a></span>
   </section>
 </body>
 
