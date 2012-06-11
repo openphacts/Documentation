@@ -1,6 +1,7 @@
 berjon.biblio = {
 	"DCTERMS": "DCMI Metadata Terms, Dublin Core Metadata Initiative, 11 October 2010. <a href=\"http://dublincore.org/documents/2010/10/11/dcmi-terms/\">http://dublincore.org/documents/2010/10/11/dcmi-terms/</a>",
 	"Chem2Bio2RDF": "B. Chen, X. Dong, D. Jiao, H. Wang, Q. Zhu, Y. Ding, and D.J. Wild. Chem2Bio2RDF: a semantic framework for linking and data mining chemogenomic and systems chemical biology data. BMC Bioinformatics, 11(1):255, 2010.",
+	"Halpin2010": "H. Halpin, P. J. Hayes, J. P. McCusker, D. L. McGuinness, and H. S. Thompson. When owl:sameAs Isn’t the Same: An Analysis of Identity in Linked Data. In International Semantic Web Conference (1), Shanghai, China: Springer, p. 305-320.",
 	"IMS": "Identity Mapping Service, <a href=\"https://wiki.openphacts.org/index.php/IMS_API\">https://wiki.openphacts.org/index.php/IMS_API</a>",
 	"OPM": " ",
 	"OPS-ARCH": "Lee Harland, Paul Groth, Steve Pettifer, Christine Chichester, and Antony Williams. Provide a documented first functional design and a detailed technical design of the first version of OPS. Open PHACTS Deliverable D3.2.3, version 1.0, August 2011.",

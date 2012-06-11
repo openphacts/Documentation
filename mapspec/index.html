@@ -12,11 +12,11 @@
           orgicon:              "<a href='http://www.openphacts.org/'><img height='100' src='../logo/ops.png' alt='Open PHACTS'/></a>",
           customorg:            "Open PHACTS",
           customcss:            "../css/ops.css",
-          specStatus:           "WD",
+          specStatus:           "ED",
           shortName:            "mappingspec",
-          publishDate:   "2012-04-30",
-          // previousMaturity: "WD",
-          // previousPublishDate:  "2009-03-15",
+          publishDate:   "2012-06-11",
+          previousMaturity: "WD",
+          previousPublishDate:  "2012-04-30",
           // previousURI : "http://dev.w3.org/2009/dap/ReSpec.js/documentation.html",
           copyrightStart:       "2012",
           overrideCopyright:    "<p class='copyright'>This document is licensed under a <a class='subfoot' href='http://creativecommons.org/licenses/sa-by/3.0/' rel='license'>Creative Commons ShareAlike Attribution 3.0 License</a>.</p>",
@@ -231,7 +231,50 @@
     ChemSpider resources. <a href="#CS2C2B2RChemblLinkset">Appendix A.2</a> 
     presents a more complex example which relates the ChemSpider dataset to 
     the ChEMBL compounds dataset as represented by the Chem2Bio2RDF conversion 
-    of ChEMBL version 2 [CDJ+2010].</p>
+    of ChEMBL version 2 [[Chem2Bio2RDF]].</p>
+    
+    <section id="mapping-representation">
+      <h3>Representing a Mapping</h3>
+      
+      <p>A mapping must be represented as a VoID link, i.e. it is an RDF triple 
+      that relates an identifier in one dataset with an identifier in another 
+      dataset with some predicate which provides the meaning of the mapping.</p>
+      
+      <p>The mapping predicate captures the way in which the two identifiers are 
+      related. The mapping should respect the semantics of the relationship, i.e. 
+      the owl:sameAs relationship must only be used when the two identifiers are 
+      completely interchangeable.</p>
+      
+      <p>Halpin et al [[Halpin2010]] propose a mapping relationship ontology 
+      with eight levels of equivalence: </p>
+      <ul>
+        <li>Identical (equivalent to owl:sameAs): always interchangeable</li>
+        <li>Claims Identical: inverse does not hold</li>
+        <li>Matches (equivalent to skos:exactMatch): share many properties, 
+        interchangeable in most cases</li>
+        <li>Claims Matches: inverse does not hold</li>
+        <li>Similar (equivalent to skos:closeMatch): share some properties, not 
+        interchangeable</li>
+        <li>Claims Similar: inverse does not hold</li>
+        <li>Related (equivalent to skos:related): distinct things with an 
+        association</li>
+        <li>Claims Related (equivalent to rdfs:seeAlso)</li>
+      </ul>
+      
+      <h4>Examples</h4>
+      <p>The following example declares that the ChemSpider α-Ketoisovaleric acid
+      concept with the <a href="http://www.chemspider.com/48">CSID 48</a> shares 
+      many properties with the ChEMBL 3-Methyl-2-oxobutanoic acid concept with 
+      the Chem2Bio2RDF 
+      <a href="http://cheminfov.informatics.indiana.edu:8080/chembl/page/chembl_compounds/289013">
+      ChEMBL ID 289013</a>. The relationship is drawn from ChemSpider based on 
+      the compounds sharing the same structure based on their InChI Keys (in 
+      this case the compound has the InChI Key QHKABHOOEWYVLI-UHFFFAOYSA-N).</p>
+        <pre class="turtle">
+@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
+http://rdf.chemspider.com/48 skos:exactMatch http://chem2bio2rdf.org/chembl/resource/chembl_compounds/289013 .
+        </pre>
+    </section>
   </section>
   <section id="example-linksets" class="appendix">
   	<h2>Example Linksets</h2>
