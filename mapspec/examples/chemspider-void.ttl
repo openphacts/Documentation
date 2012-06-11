@@ -1,0 +1,82 @@
+@prefix : <http://rdf.chemspider.com/void-example.rdf#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix pav: <http://purl.org/pav/2.0/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix void: <http://rdfs.org/ns/void#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+# Metadata about this file
+<http://rdf.chemspider.com/void-example.rdf> 
+	a void:DatasetDescription;
+	dcterms:title "A VoID Description of the ChemSpider Dataset"^^xsd:string;
+	dcterms:description 
+		"""This is an example VoID description for the ChemSpider dataset. 
+		   It is derived from the existing VoID description and updating it to the latest
+		   version of the VoID specification.""";
+	pav:createdBy [ 
+		a foaf:Person ; 
+		foaf:name "Alasdair Gray"^^xsd:string . 
+		];
+	pav:createdOn "2012-05-02"^^xsd:date;
+	pav:lastUpdateOn "2012-05-03"^^xsd:date;
+	pav:derivedFrom <http://rdf.chemspider.com/void.rdf>;
+	foaf:primaryTopic :chemSpiderDataset;
+	.
+
+# Description of the ChemSpider dataset
+:chemSpiderDataset 
+	# Declare as a dataset
+	a void:Dataset;
+	# Provide links to the datasets home page
+	## Is the rdf representation different from the dataset?
+	foaf:homepage <http://rdf.chemspider.com/>;
+	foaf:page <http://www.chemspider.com/>;
+	# Basic dublin core metadata
+	dcterms:title "ChemSpider"^^xsd:string;
+	dcterms:description "ChemSpider's Public Dataset"^^xsd:string;
+	dcterms:source <http://www.chemspider.com/>;
+	# Contact information
+	dcterms:publisher <http://www.chemspider.com/>;	
+	# License declaration	
+	dcterms:license <http://www.chemspider.com/Disclaimer.aspx>;
+	# Datasets subject for categorizing, can have multiple
+	dcterms:subject <http://dbpedia.org/resource/Molecule>;
+	# Technical features
+	void:feature <http://www.w3.org/ns/formats/RDF_XML>;
+	# Access metadata
+	void:sparqlEndpoint <http://rdf.chemspider.com/sparql>;
+	## Should include details of data dumps
+	# Structural Metadata
+	# Example resources, can have multiple
+	void:exampleResource <http://rdf.chemspider.com/2157>;
+	void:uriSpace "http://rdf.chemspider.com/"^^xsd:string;
+	# Vocabularies used
+	void:vocabulary <http://purl.org/dc/elements/1.1/>,
+		dcterms:,
+		<http://www.openarchives.org/ore/terms/>,
+		<http://www.polymerinformatics.com/ChemAxiom/ChemDomain.owl#>,
+		<http://xmlns.com/foaf/0.1/>;
+	# Partitioned datasets
+	void:subset :chemSpiderDataset_chembl_subset,
+		:chemSpiderDataset_drugbank_subset;
+	# Dataset statistics
+	void:triples "1157624328"^^xsd:nonNegativeInteger;
+	.
+
+# Description of the ChemSpider subset relating to ChEMBL
+:chemSpiderDataset_chembl_subset
+	a void:Dataset;
+	dcterms:description "Data corresponding to ChEMBL."^^xsd:string;
+	## Would be good for the dump location to be on chemspider domain 
+	void:dataDump <https://www.dropbox.com/s/e902iyohbtj32ov/ChEMBL20120426.zip>;
+	.
+
+# Description of the ChemSPider subset relating to DrugBank
+:chemSpiderDataset_drugbank_subset
+	a void:Dataset;
+	dcterms:description "Data corresponding to DrugBank."^^xsd:string;
+	void:dataDump <https://www.dropbox.com/s/1slf6m5qi4gr2cc/DrugBank20120426.zip>;
+	.
