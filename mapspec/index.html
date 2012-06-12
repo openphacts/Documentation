@@ -14,7 +14,7 @@
           customcss:            "../css/ops.css",
           specStatus:           "ED",
           shortName:            "mappingspec",
-          publishDate:   "2012-06-11",
+          publishDate:   "2012-06-12",
           previousMaturity: "WD",
           previousPublishDate:  "2012-04-30",
           // previousURI : "http://dev.w3.org/2009/dap/ReSpec.js/documentation.html",
@@ -179,13 +179,13 @@
 	  following are examples of some of the multiple linksets that can 
 	  exist between datasets ChemSpider and ChEMBL:</p>
 	  <ul>
-		<li>ChemSpider cs:extUrl ChEMBL as
+		<li>ChemSpider <code>cs:extUrl</code> ChEMBL as
 				published in the ChemSpider dataset</li>
-		<li>ChemSpider cs:... ChEMBL as
+		<li>ChemSpider <code>cs:...</code> ChEMBL as
 				published in the ChemSpider dataset</li>
-		<li>ChEMBL :csid ChemSpider as
+		<li>ChEMBL <code>:csid</code> ChemSpider as
 				published in the ChEMBL dataset</li>
-		<li>ChEMBL :somePredicate
+		<li>ChEMBL <code>:somePredicate</code>
 				ChemSpider as published by some third party</li>
 	</ul>
 	
@@ -248,20 +248,20 @@
       <p>Halpin et al [[Halpin2010]] propose a mapping relationship ontology 
       with eight levels of equivalence: </p>
       <ul>
-        <li>Identical (equivalent to owl:sameAs): always interchangeable</li>
+        <li>Identical (equivalent to <code>owl:sameAs</code>): always interchangeable</li>
         <li>Claims Identical: inverse does not hold</li>
-        <li>Matches (equivalent to skos:exactMatch): share many properties, 
+        <li>Matches (equivalent to <code>skos:exactMatch</code>): share many properties, 
         interchangeable in most cases</li>
         <li>Claims Matches: inverse does not hold</li>
-        <li>Similar (equivalent to skos:closeMatch): share some properties, not 
+        <li>Similar (equivalent to <code>skos:closeMatch</code>): share some properties, not 
         interchangeable</li>
         <li>Claims Similar: inverse does not hold</li>
-        <li>Related (equivalent to skos:related): distinct things with an 
+        <li>Related (equivalent to <code>skos:related</code>): distinct things with an 
         association</li>
-        <li>Claims Related (equivalent to rdfs:seeAlso)</li>
+        <li>Claims Related (equivalent to <code>rdfs:seeAlso</code>)</li>
       </ul>
       
-      <h4>Examples</h4>
+      <h4>Example</h4>
       <p>The following example declares that the ChemSpider α-Ketoisovaleric acid
       concept with the <a href="http://www.chemspider.com/48">CSID 48</a> shares 
       many properties with the ChEMBL 3-Methyl-2-oxobutanoic acid concept with 
@@ -269,14 +269,217 @@
       <a href="http://cheminfov.informatics.indiana.edu:8080/chembl/page/chembl_compounds/289013">
       ChEMBL ID 289013</a>. The relationship is drawn from ChemSpider based on 
       the compounds sharing the same structure based on their InChI Keys (in 
-      this case the compound has the InChI Key QHKABHOOEWYVLI-UHFFFAOYSA-N).</p>
-        <pre class="turtle">
+      this case the compound has the same InChI Key QHKABHOOEWYVLI-UHFFFAOYSA-N 
+      in both data sets.).</p>
+      <pre class="turtle">
 @prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
-http://rdf.chemspider.com/48 skos:exactMatch http://chem2bio2rdf.org/chembl/resource/chembl_compounds/289013 .
-        </pre>
+&lt;http://rdf.chemspider.com/48&gt; skos:exactMatch &lt;http://chem2bio2rdf.org/chembl/resource/chembl_compounds/289013&gt; .
+      </pre>
+    </section>
+    <section id=metadata>
+      <h3>Metadata</h3>
+      
+      <p>The metadata associated with a link is essential for enabling its reuse
+      by others. It enables a consumer of the link to understand who claimed the
+      link, under what circumstances, and which (if any) tools were used to 
+      generate the link (e.g. [[SILK]]).</p>
+      
+      <p>The metadata is split into metadata about the dataset and the metadata
+      about the links themselves. Note that the dataset metadata should be
+      provided by the dataset provider as part of the dataset publishing process
+      [[OPS-RDF]], although it can be augmented for the purposes of providing
+      additional information about the link.</p>
+      
+      <section id=dataset-metadata>
+      <h3>Dataset Metadata</h3>
+      
+      <p>A linkset associates two datasets via a single mapping predicate. For 
+      each dataset in the linkset, the following metadata must be included:</p>
+      
+      <p style="font-weight: bold;">Type</p>
+      <ul>
+      <li>Declare that we have a dataset using <code>void:dataset</code>.</li>
+      </ul>
+
+      <p style="font-weight: bold;">License</p>
+      <ul>
+      <li>Provide details of the licence under which the dataset is published 
+      using the <code>dcterms:license</code> property.</li>
+      </ul>
+
+      <p style="font-weight: bold;">Version</p>
+      <ul>
+      <li>If the dataset has the notion of publication versions then this must 
+      be captured using the <code>pav:Version</code> property.</li>
+      </ul>
+      
+      <p style="font-weight: bold;">Source Provenance</p>
+      <ul>
+      <li>If the dataset is derived from another data source, i.e. the knowledge 
+      content has changed, then the following properties should be given:
+        <ul>
+          <li><code>pav:derivedFrom</code> to capture the relationship to the 
+          original source.</li>
+          <li><code>pav:derivedOn</code> to capture when the derivation was made.</li>
+          <li><code>pav:derivedBy</code> to capture who made the derivation. The
+          object of this triple is a URI, currently we recommend using FOAF [[FOAF]].</li>          
+        </ul>
+      </li>
+      <li>If the dataset has been retrieved from another location, i.e. it is 
+      used in exactly the same form, then the following properties should be given:
+        <ul>
+          <li><code>pav:retrievedFrom</code> to capture the location of the 
+          original source.</li>
+          <li><code>pav:retrievedOn</code> to capture when the retrieval was made.</li>
+          <li><code>pav:retrievedBy</code> to capture who made the retrieval. The
+          object of this triple is a URI, currently we recommend using FOAF [[FOAF]].</li>          
+        </ul>
+      </li>
+      <li>If the dataset is imported from another data source, i.e. the 
+      knowledge content is unchanged but the format of the data has been changed 
+      (e.g. XML to RDF transformation), then the following properties should be given:
+        <ul>
+          <li><code>pav:importedFrom</code> to capture the location of the 
+          original source.</li>
+          <li><code>pav:importedOn</code> to capture when the import was made.</li>
+          <li><code>pav:importedBy</code> to capture who made the import. The
+          object of this triple is a URI, currently we recommend using FOAF [[FOAF]].</li>          
+        </ul>
+      </li>
+      <li>If the dataset and its description are accessed from their original 
+      location, then the no properties are required. However it is good practice
+      to include the following:
+        <ul>
+          <li>Details of who is publishing the dataset using the 
+          <code>dcterms:publisher</code> property.</li>
+          <li>Details of when the dataset was created using the 
+          <code>dcterms:created</code> property.</li>
+          <li>When appropriate, details of when the last update was made using
+          the <code>dcterms:modified</code> property.</li>
+        </ul>
+      </ul>
+      <p class="note">We currently recommend the use of FOAF to capture the
+      person or entity that made a dataset available. In the future, we anticipate
+      the use of ORCID Identifiers [[ORCID]].</p>
+      
+      <p style="font-weight: bold;">Namespace</p>
+      <ul>
+      <li>The URI namespace for the resources being linked is declared using the
+       <code>void:uriSpace</code> property. Note that the object of the triple
+       is a literal, not a URI.</li>
+      </ul>
+      
+      <p style="font-weight: bold;">Resource Type</p>
+      <ul>
+      <li>The type of the resource being linked is declared with the 
+      <code>dcterm:subject</code> predicate.</li>
+      </ul>
+      
+      <p>In order to support applications using the linkset to understand and 
+      present the data, the following additional metadata should be included:</p>
+      
+      <p style="font-weight: bold;">Title</p>
+      <ul>
+      <li>The title of the dataset using 
+      <code>dcterm:title</code> predicate.</li>
+      </ul>
+      
+      <p style="font-weight: bold;">Description</p>
+      <ul>
+      <li>A description of the dataset using  
+      <code>dcterm:description</code> predicate.</li>
+      </ul>
+
+      <p style="font-weight: bold;">Links to further information</p>
+      <ul>
+        <li>A link to the homepage for the dataset <code>foaf:hompage</code>.</li>
+        <li>Other pages that discuss the dataset may be included with the 
+        <code>foaf:page</code> relationship.</li>
+      </ul>
+      
+      <p style="font-weight: bold;">Data source</p>
+      <ul>
+        <li>If the dataset contains distinguishable subsets, e.g. ChEMBL Compounds
+        or ChemSpider to ChEMBL links, then these should be declared as subsets 
+        of the main dataset using the <code>void:subset</code> predicate. 
+        The metadata that is common between the datasets can be declared for the 
+        parent only.</li>
+      </ul>
+      
+      <p class="note">In the VoID note [[VOID]], the <code>void:subset</code> 
+      propterty is used for both <em>subset of</em> and <em>has subset</em>. 
+      The declared semantics for the property is <em>has subset</em>. Within 
+      OPS, the property must be used with the <em>has subset</em> semantics.
+      Therefore, if a linkset appears as a subset of a dataset, then it should
+      be declared in the dataset metadata.</p>
+
+      <p>Other metadata that can be associated with a dataset may be included, 
+      see the RDF publishing guidelines [[OPS-RDF]], the VoID specification [[VOID]], 
+      and the provenance, authorship and versioning vocabulary [[PAV]] for 
+      additional metadata that may be incorporated. The dataset may also have a 
+      provenance graph associated with it providing more detailed information 
+      about the creation, authorship, and derivation of the dataset.</p>
+      
+      <h4>Examples</h4>
+      
+      <pre class="turtle">
+:chemspider
+    a void:dataset ;
+    dcterms:license &lt;http://www.chemspider.com/Disclaimer.aspx&gt; ;
+    void:uriSpace "http://rdf.chemspider.com/" ;
+    dcterms:subject &lt;http://dbpedia.org/resource/Molecule&gt; ;
+    dcterms:title "ChemSpider"^^xsd:string ;
+    dcterms:description "ChemSpider's Public Dataset"^^xsd:string ;
+    dcterms:publisher &lt;http://www.chemspider.com/&gt; ;
+    foaf:homepage &lt;http://rdf.chemspider.com/&gt; ;
+    foaf:page &lt;http://www.chemspider.com/&gt; ;
+      </pre>
+      <p>In the example the homepage has been set to the RDF representation of 
+      ChemSpider as that is the dataset being described. The 
+      normal web interface has been given as an alternative web page.</p> 
+      
+      <p>The following example provides the metadata for the conversion of the 
+      ChEMBL database in RDF. This requires that provenance information about 
+      which version of ChEMBL has been converted are captured. The example also 
+      shows the use of subsets within the data.</p>
+      <pre class="turtle">
+:chembl-rdf
+    a void:dataset ;
+    dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
+    pav:importedFrom [
+        foaf:homepage &lt;http://www.ebi.ac.uk/chembl/&gt; ;
+        pav:version "13"^^xsd:integer ;
+        dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; . ] ;
+    pav:importedOn "2012-04-12"^^xsd:date ;
+    pav:importedBy :egon ;
+    void:uriSpace "http://data.kasabi.com/dataset/chembl-rdf"^^xsd:string ;
+    dcterms:title "ChEMBL-RDF"^^xsd:string ;
+    dcterms:description "The ChEMBL-RDF dataset"^^xsd:string ;
+    foaf:homepage &lt;http://kasabi.com/dataset/chembl-rdf&gt; ;
+    void:subset :chembl-rdf_compounds, :chembl-rdf_targets ;
+    void:sparqlEndpoint &lt;http://api.kasabi.com/dataset/chembl-rdf/apis/sparql&gt;
+    void:distinctSubjects "18018451"^^xsd:integer .
+    
+:chembl-rdf_compounds
+    a void:dataset;
+    void:uriSpace "http://data.kasabi.com/dataset/chembl-rdf/molecule/"^^xsd:string ;
+    dcterms:subject &lt;http://dbpedia.org/resource/Molecule&gt; .
+    
+:chembl-rdf_targets
+    a void:dataset;
+    void:uriSpace "http://data.kasabi.com/dataset/chembl-rdf/target/"^^xsd:string ;
+    dcterms:subject &lt;http://dbpedia.org/resource/Protein&gt; .
+      </pre>
+      
+      <p class="note">The above example shows the use of a blank node for stating
+      where the data has been imported from. This could alternatively be 
+      captured through the declaration of another dataset containing the 
+      appropriate properties. It also assumes the existence of a local description
+      of the concept <code>:egon</code>.</p>
+      </section> 
     </section>
   </section>
-  <section id="example-linksets" class="appendix">
+  <section id="appendix-example-linksets" class="appendix">
   	<h2>Example Linksets</h2>
     <section id="CW2CSLinkset">
       <h3>ConceptWiki to ChemSpider Linkset</h3>
