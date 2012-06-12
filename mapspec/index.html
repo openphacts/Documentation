@@ -358,7 +358,7 @@
           the <code>dcterms:modified</code> property.</li>
         </ul>
       </ul>
-      <p class="note">We currently recommend the use of FOAF to capture the
+      <p id="orcid-note" class="note">We currently recommend the use of FOAF to capture the
       person or entity that made a dataset available. In the future, we anticipate
       the use of ORCID Identifiers [[ORCID]].</p>
       
@@ -477,6 +477,121 @@
       appropriate properties. It also assumes the existence of a local description
       of the concept <code>:egon</code>.</p>
       </section> 
+
+      
+      <section id="linkset-metadata">
+      <h3>Linkset Metadata</h3>
+      
+      <p>A linkset is itself a dataset, and as such should provide the metadata 
+      one would associate with a dataset, as stated 
+      <a href="#dataset-metadata">above</a>. Specifically, the following 
+      metadata must be included:</p>
+
+      <p style="font-weight: bold;">Type</p>
+      <ul>
+      <li>Declare that we have a linkset using <code>void:linkset</code>.</li>
+      </ul>
+      
+      <p class="note">The <code>void:linkset</code> predicate is a sub-property
+      of the <code>void:dataset</code> property.</p>
+
+      <p style="font-weight: bold;">License</p>
+      <ul>
+      <li>Provide details of the licence under which the linkset is published 
+      using the <code>dcterms:license</code> property.</li>
+      </ul>
+      
+      <p class="note">The license under which a linkset is published may be 
+      different from that of the dataset.</p>
+
+      <p style="font-weight: bold;">Linkset Provenance</p>
+      <ul>
+      <li>If the linkset is a subset of another dataset, then this is captured 
+      with the <code>void:subset</code> predicate, with the linkset URI as the
+      object of the triple.</li>
+      <li>The linkset authorship, i.e. the agent that generated the intellectual 
+      knowledge, is captured with the following properties:
+        <ul>
+          <li><code>pav:authoredBy</code> to capture who authored the links.
+          Currently we recommend the use of FOAF [[FOAF]] for the objects of
+          these triples, see <a href="#orcid-note">note</a> above about future
+          use of ORCID identifiers.</li>
+          <li><code>pav:authorOn</code> to capture when the links were generated.</li>
+        </ul>
+      </li>
+      <li>The linkset creator, i.e. the entity responsible for converting the 
+      links to the linkset format, is captured with the following properties:
+        <ul>
+          <li><code>pav:createdBy</code> to capture who converted the links into
+          the current digital format.
+          Currently we recommend the use of FOAF [[FOAF]] for the objects of
+          these triples, see <a href="#orcid-note">note</a> above about future
+          use of ORCID identifiers.</li>
+          <li><code>pav:createdOn</code> to capture when the links were converted
+          to their digital form.</li>
+        </ul>
+      </li>
+      </ul>    
+      <p>Additional information about how the links were created should be stated.
+      For example, if the links were created using a tool such as Silk [[SILK]].
+      The links may also contain provenance information represented using
+      PROV-O [[PROV-O]] and captured in a separate provenance graph.</p>  
+      
+      <p style="font-weight: bold;">Linkset Metadata</p>
+      <ul>
+      <li>A declaration must be made about the datasets that are linked using
+      the <code>void:subjectsTarget</code> and <code>void:objectsTarget</code>
+      properties.</li>
+      <li>The link predicate is declared using <code>void:linkPredicate</code>.</li>
+      <li>The number of links in the linkset is declared using 
+      <code>void:triples</code>. This allows for validation that the entire 
+      linkset has been successfully loaded.
+      </ul>
+      
+      <p>In order to support applications using the linkset to understand and 
+      present the data, the following additional metadata should be included:</p>
+      
+      <p style="font-weight: bold;">Title</p>
+      <ul>
+      <li>The title of the linkset using 
+      <code>dcterm:title</code> predicate.</li>
+      </ul>
+      
+      <p style="font-weight: bold;">Description</p>
+      <ul>
+      <li>A description of the linkset using  
+      <code>dcterm:description</code> predicate.</li>
+      </ul>
+      
+      <p>Note that for linksets there is unlikely to be a web page directly 
+      dedicated to the linkset, as such that part of the dataset metadata is 
+      not stated as a requirement.</p>
+      
+      <h4>Example</h4>
+      
+      <p>The following example is the metadata associated with a link connecting
+      a ChemSpider compound with a ChEMBL molecule. It reuses the dataset 
+      descriptions given in the examples <a href="#dataset-metadata">above</a>.</p>
+      
+      <pre class="turtle">
+:chemspider_chembl-rdf_compounds
+    a void:Linkset ;
+    dcterms:license &lt;http://www.opendatacommons.org/licenses/odbl/&gt; ;
+    pav:authoredOn "2012-02-22"^^xsd:date ;
+    pav:authoredBy :egon ;
+    pav:createdOn "2012-05-29"^^xsd:date ;
+    pav:createdBy :christian ;
+    void:subjectsTarget :chemspider ;
+    void:targetsTarget :chembl-rdf_compounds ;
+    void:linkPredicate skos:exactMatch ;
+    void:triples "1015111"^^xsd:integer ;
+    dcterms:title "ChEMBL-RDF Compounds ChemSpider Linkset"^^xsd:string ;
+    dcterms:description "Linkset relating ChEMBL compounds to ChemSpider compounds."^^xsd:string .
+    
+:chembl-rdf_compounds void:subset :chemspider_chembl-rdf_compounds .
+      </pre>
+      </section>
+
     </section>
   </section>
   <section id="appendix-example-linksets" class="appendix">
