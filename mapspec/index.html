@@ -682,6 +682,48 @@
     <h2>Example Dataset VoID Descriptors</h2>
     <section id="ChemSpider-VoID-Descriptor">
     <h3>ChemSpider VoID Descriptor</h3>
+    <p>The ChemSpider site already has a VoID descriptor available from
+    <a href="http://rdf.chemspider.com/void.rdf">http://rdf.chemspider.com/void.rdf</a>.
+    In this case, it is recommended to use the descriptor as is, although the linksets 
+    below will augment it with additional information, e.g. when and who accessed
+    the ChemSpider dataset.</p>
+    <p>Note that the descriptor uses an old form of VoID, noticiable in the
+    way that the number of triples is declared. Also, the descriptor is lacking
+    a metadata header, as discussed in <a href="#deploying-void">Section 5.1</a>.
+    Additionally, the descriptor is published as RDF/XML rather than the VoID
+    recommendation of using RDF/turtle, although systems should be able to read
+    both interchangeably.</p>
+    <pre class="RDF" title="ChemSpiders VoID Descriptor as published in RDF/XML">
+<?xml version="1.0" encoding="UTF-8" ?>
+&lt;rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+        xmlns:void="http://rdfs.org/ns/void#"
+        xmlns:scovo="http://purl.org/NET/scovo#">
+  &lt;void:Dataset rdf:about="http://rdf.chemspider.com/void.rdf#chemSpiderDataset">
+    &lt;dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChemSpider&lt;/dcterms:title>
+    &lt;dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChemSpider's Public Dataset&lt;/dcterms:description>
+    &lt;dcterms:source rdf:resource="http://www.chemspider.com/"/>
+    &lt;dcterms:license rdf:resource="http://www.chemspider.com/Disclaimer.aspx"/>
+    &lt;dcterms:publisher rdf:resource="http://www.chemspider.com/"/>
+    &lt;dcterms:subject rdf:resource="http://dbpedia.org/resource/Molecule"/>
+    &lt;void:statItem>
+      &lt;scovo:Item>
+        &lt;scovo:dimension rdf:resource="http://rdfs.org/ns/void#noOfTriples"/>
+        &lt;rdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1157624328&lt;/rdf:value>
+      &lt;/scovo:Item>
+    &lt;/void:statItem>
+    &lt;void:exampleResource rdf:resource="http://www.chemspider.com/Chemical-Structure.2157.rdf"/>
+    &lt;void:sparqlEndpoint rdf:resource="http://rdf.chemspider.com/sparql"/>
+    &lt;void:vocabulary rdf:resource="http://purl.org/dc/terms/"/>
+    &lt;void:vocabulary rdf:resource="http://purl.org/dc/elements/1.1/"/>
+    &lt;void:vocabulary rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    &lt;void:vocabulary rdf:resource="http://www.openarchives.org/ore/terms/"/>
+    &lt;void:vocabulary rdf:resource="http://www.polymerinformatics.com/ChemAxiom/ChemDomain.owl#"/>
+  &lt;/void:Dataset>
+&lt;/rdf:RDF>    
+    </pre>
     </section>
     <section id="ChEMBL-RDF-VoID-Descriptor">
     <h3>ChEBML-RDF VoID Descriptor</h3>
