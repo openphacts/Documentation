@@ -630,7 +630,8 @@
     <pre class="turtle">
 &lt;&gt; a void:DatasetDescription ;
     dcterms:title "ChemSpider VoID Description"^^xsd:string ;
-    dcterms:creator &lt;http://www.chemspider.com/&gt; .    
+    dcterms:creator &lt;http://www.chemspider.com/&gt; ;
+    foaf:primaryTopic :chemSpiderDataset .    
     </pre>
         
     <section id="deploying-void">
@@ -727,6 +728,56 @@
     </section>
     <section id="ChEMBL-RDF-VoID-Descriptor">
     <h3>ChEBML-RDF VoID Descriptor</h3>
+ 
+    <p>Below we provide the VoID document for the ChEMBL-RDF dataset, which is
+    a conversion of the ChEMBL database. The VoID file would be located at
+    <code>http://data.kasabi.com/dataset/chembl-rdf/void.ttl</code>.</p>
+    
+    <pre class="turtle">
+&lt;> 
+    a void:DatasetDescription;
+    dcterms:title "ChEMBL-RDF VoID Description"^^xsd:string;
+    dcterms:description 
+        """This is the VoID description for a ChEMBL-RDF dataset."""^^xsd:string;
+    pav:createdBy &lt;http://egonw.github.com/#me> ;
+    pav:createdOn "2012-05-15"^^xsd:date;
+    foaf:primaryTopic :chemblrdf_dataset;
+
+:chemblrdf_dataset
+    a void:Dataset;
+    dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/> ;
+    pav:importedFrom :chembl_dataset;
+    pav:importedBy &lt;http://egonw.github.com/#me> ;
+    pav:importedOn "2012-05-15"^^xsd:date;
+    pav:createdBy &lt;http://egonw.github.com/#me> ;
+    pav:createdOn "2012-05-15"^^xsd:date;
+    void:uriSpace "http://data.kasabi.com/dataset/chembl-rdf"^^xsd:string ;
+    dcterms:title "ChEMBL-RDF 13.OPS.2"^^xsd:string;
+    dcterms:description "The ChEMBL database in RDF format." ;
+    foaf:homepage &lt;http://github.com/egonw/chembl.rdf/>;
+    void:dataDump &lt;https://semantics.bigcat.unimaas.nl/chembl12/...> ;
+    void:sparqlEndpoint &lt;http://api.kasabi.com/dataset/chembl-rdf/apis/sparql> ;
+    void:distinctSubjects "18018451"^^xsd:integer ;
+    void:subset :chemblrdf_compounds :chemblrdf_targets .
+
+:chembl_dataset
+    a void:Dataset;
+    foaf:homepage &lt;http://www.ebi.ac.uk/chembl/>;
+    dcterms:title "ChEMBL";
+    dcterms:description "The ChEMBL database.";
+    pav:version "13"^^xsd:integer ;
+    dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/> .
+
+:chemblrdf_compounds
+    a void:Dataset ;
+    void:uriSpace "http://data.kasabi.com/dataset/chembl-rdf/molecule/"^^xsd:string ;
+    dcterms:subject &lt;http://dbpedia.org/resource/Molecule> .
+  
+:chemblrdf_targets
+    a void:Dataset ;   
+    void:uriSpace "http://data.kasabi.com/dataset/chembl-rdf/target/"^^xsd:string ;
+    dcterms:subject &lt;http://dbpedia.org/resource/Protein> .
+    </pre>
     </section>
   </section>
   <section id="appendix-example-linksets" class="appendix">
@@ -735,7 +786,7 @@
       <h3>ConceptWiki to ChemSpider Linkset</h3>
     </section>
     <section id="CS2C2B2RChemblLinkset">
-      <h3>ChemSpider to Chem2Bio2RDF ChEMBL Linkset</h3>
+      <h3>ChemSpider to ChEMBL-RDF Compounds Linkset</h3>
     </section>
   </section>
 </body>
