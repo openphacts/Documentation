@@ -226,9 +226,9 @@
   	and the specific versions of the datasets related.</p>
 
 	<p>Example linksets are given in <a href="#example-linksets">Appendix B</a>. 
-    The example linkset in <a href="#CW2CSLinkset">Appendix B.1</a> presents a 
+    The example linkset in <a href="#CS2DBLinkset">Appendix B.1</a> presents a 
     simple case where a set of ConceptWiki resources are mapped to a set of 
-    ChemSpider resources. <a href="#CS2C2B2RChemblLinkset">Appendix B.2</a> 
+    ChemSpider resources. <a href="#CS2ChEMBLLinkset">Appendix B.2</a> 
     presents a more complex example which relates the ChemSpider dataset to 
     the ChEMBL compounds dataset as represented by the Chem2Bio2RDF conversion 
     of ChEMBL version 2 [[Chem2Bio2RDF]].</p>
@@ -674,6 +674,11 @@
     information about the dataset, e.g. the specific version used or when it was 
     accessed, to be declared.</p>
     
+    <p class="note">This is problematic. What happend if the dataset description
+    is updated? Need some way of referencing a specific version of the VoID
+    description. This issue does not seem to have been addressed in the VoID
+    document.</p>
+    
     <p>Where a dataset does not provide a VoID description that can be reused, 
     then the required metadata should be included in the linkset document.</p>
     </section>
@@ -782,11 +787,114 @@
   </section>
   <section id="appendix-example-linksets" class="appendix">
   	<h2>Example Linksets</h2>
-    <section id="CW2CSLinkset">
-      <h3>ConceptWiki to ChemSpider Linkset</h3>
-    </section>
-    <section id="CS2C2B2RChemblLinkset">
+    <section id="CS2ChEMBLLinkset">
       <h3>ChemSpider to ChEMBL-RDF Compounds Linkset</h3>
+      
+     <p>Below is the start of the linkset file relating ChemSpider compounds with
+     ChEMBL-RDF compounds. The linkset reuses the VoID descriptions already 
+     provided for the datasets, but augments these with additional metadata.</p>
+     
+     <pre class="turtle">
+@prefix chembl: &lt;http://data.kasabi.com/dataset/chembl-rdf/chemblid/> .
+
+<>
+    a void:DatasetDescription;
+    dcterms:title "ChEMBL-RDF Compounds to ChemSpider linkset"^^xsd:string  ;
+    dcterms:descriptions """A VoID linkset that links compounds in ChEMBL-RDF
+        with compounds in ChemSpider."""^^xsd:string ; 
+    pav:createdBy &lt;http://egonw.github.com/#me> ;
+    pav:createdOn "2012-05-15"^^xsd:date ;
+    foaf:primaryTopic :chembl-rdf-compounds_cs_linkset ;
+    
+&lt;http://rdf.chemspider.com/void.rdf#chemSpiderDataset>
+    pav:accessedOn "2012-02-22"^^xsd:date .
+    
+&lt;http://data.kasabi.com/dataset/chembl-rdf/void.ttl#chemblrdf_compounds>
+    void:subset :chembl-rdf-compounds_cs_linkset .
+
+:chembl-rdf-compounds_cs_linkset
+    a void:Linkset ;
+    dcterms:title "ChEMBL-RDF Compounds ChemSpider Linkset"^^xsd:string ;
+    dcterms:description "Linkset relating ChEMBL-RDF compounds to ChemSpider compounds."^^xsd:string ;
+    dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/> ;
+    pav:authoredOn "2012-02-22"^^xsd:date ;
+    pav:authoredBy &lt;www.chemspider.com/> ;
+    pav:createdBy &lt;http://egonw.github.com/#me> ;
+    pav:createdOn "2012-05-15"^^xsd:date ;
+    void:subjectsTarget &lt;http://data.kasabi.com/dataset/chembl-rdf/void.ttl#chemblrdf_compounds> ;
+    void:objectsTarget &lt;http://rdf.chemspider.com/void.rdf#chemSpiderDataset> ;
+    void:linkPredicate skos:exactMatch ;
+    void:triples "1073967"^^xsd:integer ;
+
+chembl:CHEMBL1236438 skos:exactMatch &lt;http://rdf.chemspider.com/43> .
+chembl:CHEMBL144103 skos:exactMatch &lt;http://rdf.chemspider.com/60> .
+...
+     </pre>
+     
+     <p>Note that since the linkset is declared to be a subset of the ChEMBL-RDF
+     datasets, then no explicit license statement is required since this is
+     inherited from its parent dataset.</p>
+     
+     <p class="note">There is probably a whole mine field of issues here around
+     licenses, particularly if we consider transitive links computed manually
+     or even on-the-fly. What is the appropriate license if the two datasets
+     have different and conflicting licensing conditions?</p>
+    </section>
+    <section id="CS2DBLinkset">
+      <h3>ChemSpider to DrugBank Linkset</h3>
+      <p>Below is the start of the linkset file relating ChemSpider compounds
+      to DrugBank drugs. As there is no VoID file available for the DrugBank
+      dataset, the VoID information is included in the linkset. For ChemSpider, 
+      the VoID information is imported from the ChemSpider location.</p>
+      
+      <pre class="turtle">
+@prefix db: &lt;http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/> .
+
+<>
+    a void:DatasetDescription;
+    dcterms:title "ChemSpider to DrugBank Drugs Linkset"^^xsd:string  ;
+    dcterms:descriptions """A VoID linkset that links compounds in ChemSpider
+        with drugs in the linked open drug data representation of DrugBank."""^^xsd:string ; 
+    pav:createdBy :alasdair ;
+    pav:createdOn "2012-06-15"^^xsd:date ;
+    foaf:primaryTopic :cs_db-drugs_linkset ;
+    
+&lt;http://rdf.chemspider.com/void.rdf#chemSpiderDataset>
+    pav:accessedOn "2012-02-22"^^xsd:date . 
+    
+:db a void:Dataset ;
+    dcterms:title "DrugBank"^^xsd:string ;
+    dcterms:license &lt;http://www.drugbank.ca/downloads> ;
+    pav:version "3"^^xsd:integer ;
+    pav:retrievedFrom &lt;ftp://ftp.ontotext.com/pub/lld/drugbank.tar.gz> ;
+    pav:retrievedBy :spyros ;
+    pav:retrievedOn "2011-07-04"^^xsd:date ;
+    void:uriSpace "http://www4.wiwiss.fu-berlin.de/drugbank/resource/"^^xsd:string ;
+    foaf:homepage &lt;http://www.drugbank.ca/> ;
+    void:subset :db-drugs .
+    
+:db-drugs a void:Dataset ;
+    void:uriSpace "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/"^^xsd:string ;
+    dcterms:subject &lt;http://dbpedia.org/resource/Pharmaceutical_drug> ;
+    void:triples "4772"^^xsd:integer .
+    
+:cs_db-drugs_linkset a void:Linkset ;
+    dcterms:title "ChemSpider to DrugBank Drugs Linkset"^^xsd:string ;
+    dcterms:description "Linkset relating ChemSpider compounds with drugs from DrugBank 3."^^xsd:string ;
+    dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/> ;
+    pav:createdOn "2012-02-23"^^xsd:date ;
+    pav:createdBy :alasdair ;
+    pav:authoredOn "2012-02-22"^^xsd:date ;
+    pav:authoredBy &lt;http://www.chemspider.com/> ;
+    void:subjectsTarget &lt;http://rdf.chemspider.com/void.rdf#chemSpiderDataset> ;
+    void:objectsTarget :db-drugs ;
+    void:linkPredicate skos:exactMatch ;
+    void:triples "6428"^^xsd:integer .
+
+&lt;http://rdf.chemspider.com/14> skos:exactMatch db:DB02901 .
+&lt;http://rdf.chemspider.com/18> skos:exactMatch db:DB01672 .
+...
+      </pre>
     </section>
   </section>
 </body>
