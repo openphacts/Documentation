@@ -293,7 +293,7 @@
       
       <p style="font-weight: bold;">Type</p>
       <ul>
-      <li>Declare that we have a dataset using <code>void:dataset</code>.</li>
+      <li>Declare that we have a dataset using <code>void:Dataset</code>.</li>
       </ul>
 
       <p style="font-weight: bold;">License</p>
@@ -305,7 +305,7 @@
       <p style="font-weight: bold;">Version</p>
       <ul>
       <li>If the dataset has the notion of publication versions then this must 
-      be captured using the <code>pav:Version</code> property.</li>
+      be captured using the <code>pav:version</code> property.</li>
       </ul>
       
       <p style="font-weight: bold;">Source Provenance</p>
@@ -367,7 +367,7 @@
       <p style="font-weight: bold;">Resource Type</p>
       <ul>
       <li>The type of the resource being linked is declared with the 
-      <code>dcterm:subject</code> predicate.</li>
+      <code>dcterms:subject</code> predicate.</li>
       </ul>
       
       <p>In order to support applications using the linkset to understand and 
@@ -376,13 +376,13 @@
       <p style="font-weight: bold;">Title</p>
       <ul>
       <li>The title of the dataset using 
-      <code>dcterm:title</code> predicate.</li>
+      <code>dcterms:title</code> predicate.</li>
       </ul>
       
       <p style="font-weight: bold;">Description</p>
       <ul>
       <li>A description of the dataset using  
-      <code>dcterm:description</code> predicate.</li>
+      <code>dcterms:description</code> predicate.</li>
       </ul>
 
       <p style="font-weight: bold;">Links to further information</p>
@@ -430,7 +430,7 @@
  <!-- 
       <pre class="turtle">
 :chemspider
-    a void:dataset ;
+    a void:Dataset ;
     dcterms:license &lt;http://www.chemspider.com/Disclaimer.aspx&gt; ;
     void:uriSpace "http://rdf.chemspider.com/" ;
     dcterms:subject &lt;http://dbpedia.org/resource/Molecule&gt; ;
@@ -450,7 +450,7 @@
       shows the use of subsets within the data.</p>
       <pre class="turtle">
 :chembl-rdf
-    a void:dataset ;
+    a void:Dataset ;
     dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
     pav:importedFrom [
         foaf:homepage &lt;http://www.ebi.ac.uk/chembl/&gt; ;
@@ -467,12 +467,12 @@
     void:distinctSubjects "18018451"^^xsd:integer .
     
 :chembl-rdf_compounds
-    a void:dataset;
+    a void:Dataset;
     void:uriSpace "http://data.kasabi.com/dataset/chembl-rdf/molecule/"^^xsd:string ;
     dcterms:subject &lt;http://dbpedia.org/resource/Molecule&gt; .
     
 :chembl-rdf_targets
-    a void:dataset;
+    a void:Dataset;
     void:uriSpace "http://data.kasabi.com/dataset/chembl-rdf/target/"^^xsd:string ;
     dcterms:subject &lt;http://dbpedia.org/resource/Protein&gt; .
       </pre>
@@ -496,11 +496,11 @@
 
       <p style="font-weight: bold;">Type</p>
       <ul>
-      <li>Declare that we have a linkset using <code>void:linkset</code>.</li>
+      <li>Declare that we have a linkset using <code>void:Linkset</code>.</li>
       </ul>
       
-      <p class="note">The <code>void:linkset</code> predicate is a sub-property
-      of the <code>void:dataset</code> property.</p>
+      <p class="note">The <code>void:Linkset</code> predicate is a sub-property
+      of the <code>void:Dataset</code> property.</p>
 
       <p style="font-weight: bold;">License</p>
       <ul>
@@ -561,13 +561,13 @@
       <p style="font-weight: bold;">Title</p>
       <ul>
       <li>The title of the linkset using 
-      <code>dcterm:title</code> predicate.</li>
+      <code>dcterms:title</code> predicate.</li>
       </ul>
       
       <p style="font-weight: bold;">Description</p>
       <ul>
       <li>A description of the linkset using  
-      <code>dcterm:description</code> predicate.</li>
+      <code>dcterms:description</code> predicate.</li>
       </ul>
       
       <p>Note that for linksets there is unlikely to be a web page directly 
