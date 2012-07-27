@@ -103,10 +103,10 @@
       The most important message is to use RDF not find the best representation for your data, but to be
       explicit in how you represent your data.
     </p>
-    <h3>Linked Open Data stars</h3>
+    <h3><a name="#lodstars">Linked Open Data stars</a></h3>
     <p>
       As an additional feature, the steps are complemented with details on how that step addresses the requirements
-      for Linked Open Data outlined by Berners-Lee, and popularized as the Linked Open Data start Scheme by
+      for Linked Open Data outlined by Berners-Lee [[BernersLee2006]], and popularized as the Linked Open Data start Scheme by
       Hausenblas [[Hausenblas2012]] and can be found at
       <a href="http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/</a>.
       These are provided as further information on the context of those steps, rather than requirements
@@ -624,13 +624,17 @@ ex:m1/full_mwt cheminf:SIO_000300 "341.748" .
   </section>
   <section>
     <h2>Step 8: choose the methods with which people will access the data </h2>
-    <ul style="font-style: italic">Before this step, your data should already be <span class="stars">&#x2605;&#x2605;&#x2605;</span>, and
-      if you make your data dereferencable, then
-      your data will be <span class="stars">&#x2605;&#x2605;&#x2605;&#x2605;</span>.</ul>
     <p>
-      There are various ways to make your data available for others to use.
+      There are various ways to make your data available for others to use:
+      <ul>
+        <li>trpile archive (minimal Open PHACTS requirement)</li>
+        <li>linked data</li>
+        <li>SPARQL end point</li>
+      </ul>
+    </p>
+    <p>   
       Linked Open Data requires the data to be linkable, and therefore that URIs are
-      dereferencable [[BernersLee2006]],[[Hausenblas2012]]. Dereferencable means that IRIs
+      dereferencable (see the <a href="#lodstars">Linked Open Data</a> star system). Dereferencable means that IRIs
       identifying resources can be used using the web design (via domain name and web
       servers) resolve in triples about that resources. For example, the following
       resource IRI for methane is dereferencable:
