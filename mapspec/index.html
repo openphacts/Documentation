@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Open PHACTS Identity Mapping Specification</title>
+  <title>Open PHACTS Dataset Description Specification</title>
     <script src='js/respec.js' class='remove'></script>
     <meta http-equiv='Content-Type' content='text/html;charset=utf-8' />
     <script class='remove'>
@@ -14,10 +14,10 @@
           customcss:            "../css/ops.css",
           specStatus:           "WD",
           shortName:            "mappingspec",
-          publishDate:   "2012-06-15",
+          publishDate:   "2012-07-31",
           previousMaturity: "WD",
-          previousPublishDate:  "2012-04-30",
-          previousURI : "https://docs.google.com/document/d/1Rb8Wo-VMZUnY0kyP2SMcuEiSW8k1B8yDvqTvbxdxBro/edit",
+          previousPublishDate:  "2012-06-15",
+          previousURI : "http://www.cs.manchester.ac.uk/~graya/ops/2012/WD-mappingspec-20120615/",
           copyrightStart:       "2012",
           overrideCopyright:    "<p class='copyright'>This document is licensed under a <a class='subfoot' href='http://creativecommons.org/licenses/sa-by/3.0/' rel='license'>Creative Commons ShareAlike Attribution 3.0 License</a>.</p>",
           // edDraftURI:           "http://dev.w3.org/2009/dap/ReSpec.js/documentation.html",
@@ -59,8 +59,9 @@
 
 <body>
   <section id="abstract">
-    This is a specification for the links between datasets in Open PHACTS and 
-    their exchange format.
+    This is a specification for the metadata to described datasets, and the 
+    linksets that relate them. The specification defines the properties that 
+    are expected and the exchange format for the files. 
   </section>
   <section id="sotd">
     <h4>Disclaimer</h4>
@@ -77,13 +78,30 @@
     </p>
     <h4>Intended audience</h4>
     <p>
-      These mapping specifications are intended for data providers who want to 
-      interlink their RDF published data on the Open PHACTS platform with
-      other RDF datasets.
+      This dataset and linkset description specification is intended for data providers 
+      who want to publish their data as RDF, and link it to other datasets, for use in 
+      the Open PHACTS platform. 
     </p>
   </section>
   <section id="introduction" class="informative">
     <h2>Introduction</h2>
+    
+    <p>The Open PHACTS platform relies on data and the interlinks published by a variety of 
+    sources. This specification provides details of the metadata expected to describe
+    the datasets and their links. </p>
+    
+    <p>The Open PHACTS project has produced a set of guidelines aimed at
+    data providers for publishing their data within the OPS system [[!OPS-RDF]].
+    The RDF guide provides details about modelling your data as RDF. This specification
+    builds on the RDF Guidelines by defining the metadata that should be published to 
+    describe the dataset and the links to other datasets.</p>
+    
+    <p>The dataset description defined in this specification declares the properties
+    that should be included in the description of dataset or its links. The information
+    is exchanged using the Vocabulary of Interlinked Datasets [[VOID]].</p>
+      
+      <p>Note that there is a close relationship with the nanopublication format [[NANOPUB]].</p>
+      
     <section id="ops-arch">
       <h3>Role in the OPS Architecture</h3>
 
@@ -96,6 +114,8 @@
       loaded in OPS. The provenance and metadata guidelines about the linksets given 
       in this specification should be used in conjunction with the equivalent 
       statements in the RDF publication guidelines [[OPS-RDF]].</p>
+      
+      <p><strong>ToDo:</strong> Talk about the role of the data cache and datasets.</p>
 
       <p>The identity mapping linksets will predominantly be used as the means 
       to import data to the Identity Mapping Service (IMS) [[IMS]] through the 
@@ -103,14 +123,6 @@
       will also form the basis of the information model returned through the 
       Identity Mapping Service query interface defined in 
       Section 4.4.1 of [[OPS-IV]].</p>
-    </section>
-    <section id="ops-rdf">
-      <h3>Open PHACTS RDF Guidelines</h3>
-      <p>The Open PHACTS project has produced a set of guidelines aimed at
-      data providers for publishing their data within the OPS system [[!OPS-RDF]].
-      The guide provides details about data licenses and publishing a dataset
-      description using VoID. This mapping specification exploits these 
-      existing VoID descriptions.</p>
     </section>
 
   </section>
