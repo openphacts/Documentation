@@ -14,10 +14,10 @@
           customcss:            "../css/ops.css",
           specStatus:           "WD",
           shortName:            "rdfguide",
-          publishDate:   "2012-03-27",
-          // previousMaturity: "WD",
-          // previousPublishDate:  "2009-03-15",
-          // previousURI : "http://dev.w3.org/2009/dap/ReSpec.js/documentation.html",
+          publishDate:   "2012-08-03",
+          previousMaturity: "WD",
+          previousPublishDate:  "2012-03-27",
+          previousURI : "http://www.openphacts.org/specs/2012/WD-rdfguide-20120327/",
           copyrightStart:       "2012",
           overrideCopyright:    "<p class='copyright'>This document is licensed under a <a class='subfoot' href='http://creativecommons.org/licenses/sa-by/3.0/' rel='license'>Creative Commons ShareAlike Attribution 3.0 License</a>.</p>",
           // edDraftURI:           "http://dev.w3.org/2009/dap/ReSpec.js/documentation.html",
@@ -103,6 +103,22 @@
       The most important message is to use RDF not find the best representation for your data, but to be
       explicit in how you represent your data.
     </p>
+    <h3><a name="#lodstars">Linked Open Data stars</a></h3>
+    <p>
+      As an additional feature, the steps are complemented with details on how that step addresses the requirements
+      for Linked Open Data outlined by Berners-Lee [[BernersLee2006]], and popularized as the Linked Open Data start Scheme by
+      Hausenblas [[Hausenblas2012]] and can be found at
+      <a href="http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/</a>.
+      These are provided as further information on the context of those steps, rather than requirements
+      resulting from these guidelines. In short, the starts have the following meaning according to Hausenblas:
+      <table>
+        <tr><td><span class="stars">&#x2605;</span></td><td>make your stuff available on the Web (whatever format) under an open license</td></tr>
+        <tr><td><span class="stars">&#x2605;&#x2605;</span></td><td>make it available as structured data (e.g., Excel instead of image scan of a table)</td></tr>
+        <tr><td><span class="stars">&#x2605;&#x2605;&#x2605;</span></td><td>use non-proprietary formats (e.g., CSV instead of Excel)</td></tr>
+        <tr><td><span class="stars">&#x2605;&#x2605;&#x2605;&#x2605;</span></td><td>use URIs to identify things, so that people can point at your stuff</td></tr>
+        <tr><td><span class="stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</span></td><td>link your data to other data to provide context</td></tr>
+      </table>
+    </p>
   </section>
   <section>
     <h2>General Principles</h2>
@@ -111,7 +127,8 @@
     </p>
     <ol>
       <li>Resource Description Framework (RDF) to be used</li>
-      <li>Every concept should be typed, and have a label (we recommend rdfs:label and skos:prefLabel), including language specification</li>
+      <li>Every primary concept should be typed, and have a label (we recommend rdfs:label and skos:prefLabel), including language specification</li>
+      <li>Concepts that match relations, like interactions, do not require a label</li>
       <li>Used ontologies (classes and predicates) must be openly available</li>
       <li>A semantic sitemap of your data: <a href="http://sw.deri.org/2007/07/sitemapextension/">http://sw.deri.org/2007/07/sitemapextension/</a></li>
     </ol>
@@ -126,8 +143,6 @@
   </section>
   <section>
     <h2>Step 0: determine who owns the copyright of the data and under what license you are sharing it</h2>
-    <p>This step results in your data to be: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;, &#x2605;&#x2605;, &#x2605;&#x2605;&#x2605;</a></span>
-</p>
     <p>
       Before you start thinking about converting something into RDF, the first two questions you
       should ask yourself, who owns the data (if anyone), and under what license or waiver can you modify
@@ -146,20 +161,16 @@
       the following example:<br />
       <img src="img/licenseData.png" width="60%"/>
     </p>
+    <ul style="font-style: italic">If an Open license or waiver is chosen, this step results in your data to be <span class="stars">&#x2605;</span>.</ul>
   </section>
   <section> 
     <h2>Step 1: think in terms of meaning, rather than structure</h2>
-   <p>Data should already be: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;, &#x2605;&#x2605;, &#x2605;&#x2605;&#x2605;</a></span><br>
-      working towards: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;&#x2605;&#x2605;&#x2605;</a></span> 
-    </p> 
-  <p>
+    <p>
       When creating triples from your data, it is important to think about the data in terms of concepts and
       their relations in scientific terms, not in terms of database terminologies. The triples must in no way
       reflect concepts like database tables or other details that originate from the format in which the
       data was previously stored.
     </p>
-
-
     <p>
       So, the following code example shows bad practices. This generated example RDF shows a pet database,
       listing pets living in the same household in European capitals, including the food these pets eat. The
@@ -232,12 +243,11 @@ Doger;Dog;Dachshund;Frank Smith;Mainstreet 1 London;Bones
 &lt;any23:food> "Bones"^^xsd:string .
       </pre>
     </p>
+    <ul style="font-style: italic">If your data already was <span class="stars">&#x2605;</span>, then this steps
+      works towards <span class="stars">&#x2605;&#x2605;</span>.</ul>
   </section>
   <section> 
     <h2>Step 2: what are the concepts in your data?</h2>
-   <p>Data should already be: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;, &#x2605;&#x2605;, &#x2605;&#x2605;&#x2605;</a></span><br>
-      Working towards: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;&#x2605;&#x2605;&#x2605;</a></span> 
-    </p>
     <p>
       The first step in creating your RDF is to create a list of all concepts that are found in your
       data. Are there proteins, metabolites, cell cultures, organisms, targets, assays? At what level are
@@ -261,12 +271,11 @@ Doger;Dog;Dachshund;Frank Smith;Mainstreet 1 London;Bones
         <tr><td>"Activity"</td><td>Biochemical property that chemical entities exhibit in some experiment.</td></tr>
       </table>
     </p>
+    <ul style="font-style: italic">If your data already was <span class="stars">&#x2605;</span>, then this steps
+      works towards <span class="stars">&#x2605;&#x2605;</span>.</ul>
   </section>
   <section> 
     <h2>Step 3: what are the relations that link those concepts?</h2>
-   <p>Data should already be: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;, &#x2605;&#x2605;, &#x2605;&#x2605;&#x2605;</a></span><br>
-      working towards: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;&#x2605;&#x2605;&#x2605;</a></span> 
-    </p>
     <p>
       Once you know what concepts are found in your data, it is time to identify how those concepts are
       linked in your data set. These relations must be identified and listed too, and in the same manner
@@ -288,12 +297,11 @@ Doger;Dog;Dachshund;Frank Smith;Mainstreet 1 London;Bones
     <p>
       Like in Step 2, you focus on the types only, not in actual binding interactions, etc.
     </p>
+    <ul style="font-style: italic">If your data already was <span class="stars">&#x2605;</span>, then this steps
+      works towards <span class="stars">&#x2605;&#x2605;</span>.</ul>
   </section>
   <section> 
     <h2>Step 4: identify common vocabularies matching your concepts and relations.</h2>
-   <p>Data should already be: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;, &#x2605;&#x2605;, &#x2605;&#x2605;&#x2605;</a></span><br>
-      working towards: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;&#x2605;&#x2605;&#x2605;</a></span> 
-    </p>
     <p>
       Because existing software already knows about existing, common ontologies, you
       should use those existing, common ontologies, if you care about having an
@@ -359,7 +367,10 @@ Doger;Dog;Dachshund;Frank Smith;Mainstreet 1 London;Bones
     </ol>
     <p>
       The use of the CHEMINF ontology is encouraged for these identifiers [[Hastings2011]].
-      Also, you should register small molecule names with ChemSpider.
+      Also, you should register small molecule names with ChemSpider. Documentationon how to deposit individual
+      structures in ChemSpider can be found at <a href="https://www.chemspider.com/Help_DepositStructures.aspx">https://www.chemspider.com/Help_DepositStructures.aspx</a>.
+      Larger sets of compounds can be deposited as SD files, but if the purpose is to have those exposed
+      via Open PHACTS, the Scientific Advisory Board should be contacted to give permission for that exposure.
     </p>
     <h4>Structures / Hierarchies</h4>
     <ul>
@@ -408,12 +419,11 @@ Doger;Dog;Dachshund;Frank Smith;Mainstreet 1 London;Bones
       <li>CKAN - <a href="http://ckan.org/">http://ckan.org/</a></li>
       <li>Bioportal - <a href="http://bioportal.bioontology.org/">http://bioportal.bioontology.org/</a></li>
     </ul>
+    <ul style="font-style: italic">If your data already was <span class="stars">&#x2605;&#x2605;</span>, then by using
+      standardized ontologies makes your data <span class="stars">&#x2605;&#x2605;&#x2605;</span>.</ul>
   </section>
   <section> 
     <h2>Step 5: linking out to other Linked Data</h2>
-	<p>Data should already be: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;, &#x2605;&#x2605;, &#x2605;&#x2605;&#x2605;</a></span><br>
-	      working towards: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;&#x2605;&#x2605;&#x2605;</a></span> 
-	    </p>
     <p>
       The next step is to explore what related data sets are available as Linked (Open) Data,
       and link out to those data sets. For example, if your data contains ChemSpider, ChEBI,
@@ -464,12 +474,11 @@ Doger;Dog;Dachshund;Frank Smith;Mainstreet 1 London;Bones
       care since all attributes and relations of two therewith connected entities are merged
       together. In Open PHACTS the use of the less restrictive skos:exactMatch is recommended.
     </p>
+    <ul style="font-style: italic">This step is required but not sufficient to make your data
+      <span class="stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</span>.</ul>
   </section>
   <section> 
     <h2>Step 6: converting your data into RDF</h2>
-   <p>Data should already be: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;, &#x2605;&#x2605;, &#x2605;&#x2605;&#x2605;</a></span><br>
-      working towards: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;&#x2605;&#x2605;&#x2605;</a></span> 
-    </p>
     <p>
       These first steps ensure you have IRIs for all resources and predicates, and know where to put all
       relations, it is time to create triples. It is irrelevant to the triple creation process and thus up
@@ -557,12 +566,12 @@ ex:m1/full_mwt cheminf:SIO_000300 "341.748" .
       Audience: Everybody<br />
       Tutorial: <a href="http://any23.org">http://any23.org</a>
     </p>
+    <ul style="font-style: italic">By using RDF you are using very structured data, with IRIs to identify concepts
+      and properties. If your data was <span class="stars">&#x2605;&#x2605;&#x2605;</span>, then this step works towards
+      making it <span class="stars">&#x2605;&#x2605;&#x2605;&#x2605;</span>.</ul>
   </section>
   <section>
     <h2>Step 7: validate your triples</h2>
-   <p>Data should already be: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;, &#x2605;&#x2605;, &#x2605;&#x2605;&#x2605;</a></span><br>
-      working towards: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;&#x2605;&#x2605;&#x2605;</a></span> 
-    </p>
     <p> 
       While dedicated semantic web tools make it hard to introduce syntactic errors, it is still possible to
       make mistakes in the resulting RDF, and the generated triples should be validated.
@@ -610,13 +619,22 @@ ex:m1/full_mwt cheminf:SIO_000300 "341.748" .
       Description: Command line utility.<br />
       Homepage: <a href="http://librdf.org/raptor/rapper.html">http://librdf.org/raptor/rapper.html</a><br />
     </p>
+    <ul style="font-style: italic">If your data was <span class="stars">&#x2605;&#x2605;&#x2605;</span>, and
+      is valid RDF, then this step works towards making it <span class="stars">&#x2605;&#x2605;&#x2605;&#x2605;</span>.</ul>
   </section>
   <section>
     <h2>Step 8: choose the methods with which people will access the data </h2>
     <p>
-      There are various ways to make your data available for others to use.
+      There are various ways to make your data available for others to use:
+      <ul>
+        <li>triple archive (minimal Open PHACTS requirement)</li>
+        <li>linked data</li>
+        <li>SPARQL end point</li>
+      </ul>
+    </p>
+    <p>   
       Linked Open Data requires the data to be linkable, and therefore that URIs are
-      dereferencable [[BernersLee2006]],[[Hausenblas2012]]. Dereferencable means that IRIs
+      dereferencable (see the <a href="#lodstars">Linked Open Data</a> star system). Dereferencable means that IRIs
       identifying resources can be used using the web design (via domain name and web
       servers) resolve in triples about that resources. For example, the following
       resource IRI for methane is dereferencable:
@@ -638,7 +656,9 @@ http://rdf.openmolecules.net/?InChI=1S/CH4/h1H4
       Jena. These both provide store functionality, including SPARQL functionality,
       but are APIs primarily, and can wrap around triple stores that scale better,
       such as Virtuoso and Owlim. A comparison of some triple stores was done by the
-      FU Berlin and can be found here. Information about the capacity of triple stores
+      FU Berlin and can be found <a href="http://www4.wiwiss.fu-berlin.de/bizer/BerlinSPARQLBenchmark/">here</a>,
+      but we also node that performance depends strongly in your use case [[Erling2011]].
+      Information about the capacity of triple stores
       can be found at w3.org (link). We note that these statistics change every half
       year, and the reader is strongly encouraged to look up recent numbers.
     </p>
@@ -685,12 +705,13 @@ http://rdf.openmolecules.net/?InChI=1S/CH4/h1H4
       Homepage: <a href="https://github.com/semsol/arc2/wiki">https://github.com/semsol/arc2/wiki</a><br />
       Documentation: <a href="https://github.com/semsol/arc2/wiki/Getting-started-with-ARC2">https://github.com/semsol/arc2/wiki/Getting-started-with-ARC2</a>
     </p>
+    <ul style="font-style: italic">If your data was <span class="stars">&#x2605;&#x2605;&#x2605;</span>, and
+      you have chosen to make the IRIs dereferencable, then this step makes it <span class="stars">&#x2605;&#x2605;&#x2605;&#x2605;</span>.
+      If you also linked out to other data (see Step 6), then your data is now
+      <span class="stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</span>.</ul>
   </section>
   <section>
     <h2>Step 9: advertise your data (in Open PHACTS)</h2>
-   <p>Data should already be: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;, &#x2605;&#x2605;, &#x2605;&#x2605;&#x2605;, &#x2605;&#x2605;&#x2605;&#x2605;</a></span><br>
-      working towards: <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</a></span> 
-    </p>
     <p>
       The final step in creating RDF, is to advertise your RDF as to get it used, and to get it linked
       to. Various options can be considered, such as announcing the data on mailing lists, or presenting
@@ -709,9 +730,9 @@ http://rdf.openmolecules.net/?InChI=1S/CH4/h1H4
       Additionally, your data point should be registered with the appropriate registries. One of these is the
       Data Hub, formerly know as CKAN (<a href="http://thedatahub.org/">http://thedatahub.org/</a>).
     </p>
-
-	<p>
-	After following these steps your data is <span class="stars"><a href = "http://lab.linkeddata.deri.ie/2010/star-scheme-by-example/">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</a></span>
+    <ul style="font-style: italic">Linked Data is also about people linking to your data. If your data was already
+      <span class="stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</span>, then this step will further support that,
+      because others can find your data, and link to your resources, growing the linked open data network.</ul>
   </section>
 </body>
 

@@ -14,5 +14,6 @@ berjon.biblio = {
    "Gray2012"     : "A.J.G. Gray, Open PHACTS Identity Mapping Specification, version 0.2, 2012, in preparation",
    "banffmanifesto": "P. Ansell, 2011, Banff Manifesto, <a href=\"http://sourceforge.net/apps/mediawiki/bio2rdf/index.php?title=Banff_Manifesto\">http://sourceforge.net/apps/mediawiki/bio2rdf/index.php?title=Banff_Manifesto</a>",
    "D16D17"       : "Deliverable 1.6 / 1.7, 2012",
-   "SKOS"         : "A. Miles, S. Bechhofer, SKOS Simple Knowledge Organization System Namespace Document - HTML Variant, 2009, <a href=\"http://www.w3.org/2009/08/skos-reference/skos.html\">http://www.w3.org/2009/08/skos-reference/skos.html</a>"
+   "SKOS"         : "A. Miles, S. Bechhofer, SKOS Simple Knowledge Organization System Namespace Document - HTML Variant, 2009, <a href=\"http://www.w3.org/2009/08/skos-reference/skos.html\">http://www.w3.org/2009/08/skos-reference/skos.html</a>",
+   "Erling2011"   : "O. Erling, Benchmarks, Redux (part 1): On RDF Benchmarks, 2011, <a href=\"http://www.openlinksw.com/weblog/oerling/?id=1658\">http://www.openlinksw.com/weblog/oerling/?id=1658</a>"
 }
