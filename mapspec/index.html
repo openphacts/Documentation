@@ -2,10 +2,10 @@
 <html>
 
 <head>
-  <title>Open PHACTS Identity Mapping Specification</title>
-    <script src='js/respec.js' class='remove'></script>
-    <meta http-equiv='Content-Type' content='text/html;charset=utf-8' />
-    <script class='remove'>
+<title>Open PHACTS Dataset Description Specification</title>
+<script src='js/respec.js' class='remove'></script>
+<meta http-equiv='Content-Type' content='text/html;charset=utf-8' />
+<script class='remove'>
       var respecConfig = {
           // document info
           orguri:               "http://www.cs.manchester.ac.uk/~graya/ops/",//"http://www.openphacts.org/specs/",
@@ -14,10 +14,10 @@
           customcss:            "../css/ops.css",
           specStatus:           "WD",
           shortName:            "mappingspec",
-          publishDate:   "2012-06-15",
+          publishDate:   "2012-07-31",
           previousMaturity: "WD",
-          previousPublishDate:  "2012-04-30",
-          previousURI : "https://docs.google.com/document/d/1Rb8Wo-VMZUnY0kyP2SMcuEiSW8k1B8yDvqTvbxdxBro/edit",
+          previousPublishDate:  "2012-06-15",
+          previousURI : "http://www.cs.manchester.ac.uk/~graya/ops/2012/WD-mappingspec-20120615/",
           copyrightStart:       "2012",
           overrideCopyright:    "<p class='copyright'>This document is licensed under a <a class='subfoot' href='http://creativecommons.org/licenses/sa-by/3.0/' rel='license'>Creative Commons ShareAlike Attribution 3.0 License</a>.</p>",
           // edDraftURI:           "http://dev.w3.org/2009/dap/ReSpec.js/documentation.html",
@@ -52,79 +52,102 @@
           //wgPatentURI:  "",
       };
     </script>
-    <style type="text/css">
-    	pre { background: #d0ddee; padding: 1.3em 2em; margin-left: 0; }
-    </style>
+<style type="text/css">
+pre {
+	background: #d0ddee;
+	padding: 1.3em 2em;
+	margin-left: 0;
+}
+</style>
 </head>
 
 <body>
-  <section id="abstract">
-    This is a specification for the links between datasets in Open PHACTS and 
-    their exchange format.
-  </section>
-  <section id="sotd">
-    <h4>Disclaimer</h4>
-    <p>
-      The research leading to these results has received
-      support from the Innovative Medicines Initiative
-      (<a href="http://www.imi.europa.eu/">IMI</a>) Joint Undertaking under
-      grant agreement n° 115191, resources of which are composed of financial
-      contribution from the European Union's Seventh Framework Programme
-      (FP7/2007-2013) and EFPIA companies’ in kind contribution.<br />
-      <img src="../logo/imi.jpg" height="80"/>
-      <img src="../logo/eu.jpg" height="80"/>
-      <img src="../logo/efpia.jpg" height="80"/>
-    </p>
-    <h4>Intended audience</h4>
-    <p>
-      These mapping specifications are intended for data providers who want to 
-      interlink their RDF published data on the Open PHACTS platform with
-      other RDF datasets.
-    </p>
-  </section>
-  <section id="introduction" class="informative">
-    <h2>Introduction</h2>
-    <section id="ops-arch">
-      <h3>Role in the OPS Architecture</h3>
+	<section id="abstract">This is a specification for the
+		metadata to described datasets, and the linksets that relate them. The
+		specification defines the properties that are expected and the
+		exchange format for the files.</section>
+	<section id="sotd">
+		<h4>Disclaimer</h4>
+		<p>
+			The research leading to these results has received support from the
+			Innovative Medicines Initiative (<a href="http://www.imi.europa.eu/">IMI</a>)
+			Joint Undertaking under grant agreement n° 115191, resources of which
+			are composed of financial contribution from the European Union's
+			Seventh Framework Programme (FP7/2007-2013) and EFPIA companies’ in
+			kind contribution.<br /> <img src="../logo/imi.jpg" height="80" /> <img
+				src="../logo/eu.jpg" height="80"
+			/> <img src="../logo/efpia.jpg" height="80" />
+		</p>
+		<h4>Intended audience</h4>
+		<p>This dataset and linkset description specification is intended
+			for data providers who want to publish their data as RDF, and link it
+			to other datasets, for use in the Open PHACTS platform.</p>
+	</section>
+	<section id="introduction" class="informative">
+		<h2>Introduction</h2>
 
-      <p>The OPS Architecture [[OPS-ARCH]] provides a high-level view of the 
-      Open PHACTS framework, with a detailed specification of the identity and 
-      vocabulary services given in [[OPS-IV]]. The Open PHACTS RDF guidelines 
-      [[OPS-RDF]] specify the vocabularies that are recommended for publishing 
-      datasets for use in the OPS system. This specification defines the format 
-      of identity mapping linksets that relate the concepts in the various datasets 
-      loaded in OPS. The provenance and metadata guidelines about the linksets given 
-      in this specification should be used in conjunction with the equivalent 
-      statements in the RDF publication guidelines [[OPS-RDF]].</p>
+		<p>The Open PHACTS platform relies on data and the interlinks
+			published by a variety of sources. This specification provides
+			details of the metadata expected to describe the datasets and their
+			links.</p>
 
-      <p>The identity mapping linksets will predominantly be used as the means 
-      to import data to the Identity Mapping Service (IMS) [[IMS]] through the 
-      interface defined in Section 4.4.2 of [[OPS-IV]]. The mapping specification 
-      will also form the basis of the information model returned through the 
-      Identity Mapping Service query interface defined in 
-      Section 4.4.1 of [[OPS-IV]].</p>
-    </section>
-    <section id="ops-rdf">
-      <h3>Open PHACTS RDF Guidelines</h3>
-      <p>The Open PHACTS project has produced a set of guidelines aimed at
-      data providers for publishing their data within the OPS system [[!OPS-RDF]].
-      The guide provides details about data licenses and publishing a dataset
-      description using VoID. This mapping specification exploits these 
-      existing VoID descriptions.</p>
-    </section>
+		<p>The Open PHACTS project has produced a set of guidelines aimed
+			at data providers for publishing their data within the OPS system
+			[[!OPS-RDF]]. The RDF guide provides details about modelling your
+			data as RDF. This specification builds on the RDF Guidelines by
+			defining the metadata that should be published to describe the
+			dataset and the links to other datasets.</p>
 
-  </section>
-    
-  <section id="conventions">
-    <h2>Document Conventions</h2>
-    <section id="conformance"></section>
-    <section id="rdf-syntax">
-    <h3>RDF Syntax Used for Examples</h3>
-    <p>All examples in this document are written in the 
-    <a href="http://www.w3.org/TR/turtle/">Turtle RDF syntax</a> 
-    [[TURTLE]]. Throughout the document, the following namespaces are used:</p>
+		<p>The dataset description defined in this specification declares
+			the properties that should be included in the description of dataset
+			or its links. The information is exchanged using the Vocabulary of
+			Interlinked Datasets [[VOID]].</p>
 
-	<pre class="turtle">
+		<p>Note that there is a close relationship with the
+			nanopublication format [[NANOPUB]].</p>
+
+		<section id="ops-arch">
+			<h3>Role in the OPS Architecture</h3>
+
+			<p>The OPS Architecture [[OPS-ARCH]] provides a high-level view
+				of the Open PHACTS framework, with a detailed specification of the
+				identity and vocabulary services given in [[OPS-IV]]. The Open
+				PHACTS RDF guidelines [[OPS-RDF]] specify the vocabularies that are
+				recommended for publishing datasets for use in the OPS system. This
+				specification defines the format of identity mapping linksets that
+				relate the concepts in the various datasets loaded in OPS. The
+				provenance and metadata guidelines about the linksets given in this
+				specification should be used in conjunction with the equivalent
+				statements in the RDF publication guidelines [[OPS-RDF]].</p>
+
+			<p>
+				<strong>ToDo:</strong> Talk about the role of the data cache and
+				datasets.
+			</p>
+
+			<p>The identity mapping linksets will predominantly be used as
+				the means to import data to the Identity Mapping Service (IMS)
+				[[IMS]] through the interface defined in Section 4.4.2 of
+				[[OPS-IV]]. The mapping specification will also form the basis of
+				the information model returned through the Identity Mapping Service
+				query interface defined in Section 4.4.1 of [[OPS-IV]].</p>
+		</section>
+
+	</section>
+
+	<section id="conventions">
+		<h2>Document Conventions</h2>
+		<section id="conformance"></section>
+		<section id="rdf-syntax">
+			<h3>RDF Syntax Used for Examples</h3>
+			<p>
+				All examples in this document are written in the <a
+					href="http://www.w3.org/TR/turtle/"
+				>Turtle RDF syntax</a> [[TURTLE]]. Throughout the document, the
+				following namespaces are used:
+			</p>
+
+			<pre class="turtle">
 @prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 @prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
@@ -137,452 +160,561 @@
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 	</pre>
 
-	<p>Furthermore, we assume that the empty prefix is bound to the base URL 
-	of the current file like this:</p>
+			<p>Furthermore, we assume that the empty prefix is bound to the
+				base URL of the current file like this:</p>
 
-	<pre class="turtle">@prefix : &lt;#&gt; .</pre>
+			<pre class="turtle">@prefix : &lt;#&gt; .</pre>
 
-	<p>This allows us to quickly mint new identifiers in the local 
-	namespace.</p>
+			<p>This allows us to quickly mint new identifiers in the local
+				namespace.</p>
+		</section>
 	</section>
-  </section>
-	
-  <section id="standards" class="informative">
-    <h2>Related Standards</h2>
-    <section>
-      <h3>Vocabulary of Interlinked Datasets (VoID)</h3>
-      <p>The Vocabulary of Interlinked Datasets (VoID) [[!VOID]] is a W3C 
-      interest group note that specifies a vocabulary for describing the 
-      metadata about a dataset and its relationship with other datasets. 
-      The vocabulary builds upon existing metadata vocabularies, e.g. 
-      Dublin Core Terms [[DCTERMS]].</p>
 
-	  <p>The VoID specification [[VOID]] provides the following 
-	  definitions:</p>
-	  <dl>
-	  	<dt>Dataset</dt>
-	  	<dd>A set of RDF triples that are published, maintained 
-	  	or aggregated by a single provider.</dd>
-	  	<dt>Link</dt>
-	  	<dd>An RDF triple whose subject and object are described in 
-	  	different datasets.</dd>
-	  	<dt>Linkset</dt>
-	  	<dd>A collection of such RDF links between two datasets.</dd>
-	  </dl>
+	<section id="standards" class="informative">
+		<h2>Related Standards</h2>
+		<section>
+			<h3>Vocabulary of Interlinked Datasets (VoID)</h3>
+			<p>The Vocabulary of Interlinked Datasets (VoID) [[!VOID]] is a
+				W3C interest group note that specifies a vocabulary for describing
+				the metadata about a dataset and its relationship with other
+				datasets. The vocabulary builds upon existing metadata vocabularies,
+				e.g. Dublin Core Terms [[DCTERMS]].</p>
 
-	  <p>The VoID specification enables a separation between (1) the 
-	  datasets involved in a link, and (2) who publishes the link.</p>
+			<p>The VoID specification [[VOID]] provides the following
+				definitions:</p>
+			<dl>
+				<dt>Dataset</dt>
+				<dd>A set of RDF triples that are published, maintained or
+					aggregated by a single provider.</dd>
+				<dt>Link</dt>
+				<dd>An RDF triple whose subject and object are described in
+					different datasets.</dd>
+				<dt>Linkset</dt>
+				<dd>A collection of such RDF links between two datasets.</dd>
+			</dl>
 
-	  <p>Note that a VoID linkset is defined to link two datasets via a 
-	  single link predicate (void:linkPredicate). As such, there can 
-	  exist multiple linksets relating the same pair of datasets. The 
-	  following are examples of some of the multiple linksets that can 
-	  exist between datasets ChemSpider and ChEMBL:</p>
-	  <ul>
-		<li>ChemSpider <code>cs:extUrl</code> ChEMBL as
-				published in the ChemSpider dataset</li>
-		<li>ChemSpider <code>cs:...</code> ChEMBL as
-				published in the ChemSpider dataset</li>
-		<li>ChEMBL <code>:csid</code> ChemSpider as
-				published in the ChEMBL dataset</li>
-		<li>ChEMBL <code>:somePredicate</code>
-				ChemSpider as published by some third party</li>
-	</ul>
-	
-      <h4>Vocabulary for Data and Dataset Provenance (voidp)</h4>
-      <p>Defined as an extension to VoID, the vocabulary for data and dataset 
-	  provenance (voidp) [[VOIDP]] is a vocabulary for defining provenance 
-	  relationships of data and datasets. The vocabulary focuses on four 
-      specific pieces of provenance information:</p>
-	  <blockquote>"for a piece of data, x : 
-	  <ul>
-		<li>when was x derived,</li>
-		<li>how was x derived,</li>
-		<li>what data had been used to derive x,</li>
-		<li>who carried out the transformations that resulted in the current 
-		value of x." [[VOIDP]]</li>
-	  </ul>
-      </blockquote>
-	  <p>These are a subset of the information that needs to be captured for 
-      the Open PHACTS linksets.</p>
+			<p>The VoID specification enables a separation between (1) the
+				datasets involved in a link, and (2) who publishes the link.</p>
 
-	  <p>The vocabulary provides its own predicates for capturing these 
-      provenance relationships, rather than reusing existing vocabularies for 
-      capturing provenance metadata, e.g. the open provenance model [[OPM]] or 
-      Provenance Authoring and Versioning ontology [[PAV]]. There is now also 
-      a W3C group working on a provenance ontology [[PROV-O]].</p>
-    </section>
-   <section>
-      <h3>Nanopublications</h3>
-    </section>
-  </section>
-  <section id="mapping-specification">
-  	<h2>Anatomy of a Mapping Specification</h2>
-  	
-  	<p>A data instance mapping is a claim that an identifier in one dataset is 
-  	related in some way to an identifier in another dataset. The mapping 
-  	specification captures the type of relationship and the metadata associated 
-  	with the mapping, e.g. provenance information about who created the mapping 
-  	and the specific versions of the datasets related.</p>
+			<p>Note that a VoID linkset is defined to link two datasets via a
+				single link predicate (void:linkPredicate). As such, there can exist
+				multiple linksets relating the same pair of datasets. The following
+				are examples of some of the multiple linksets that can exist between
+				datasets ChemSpider and ChEMBL:</p>
+			<ul>
+				<li>ChemSpider <code>cs:extUrl</code> ChEMBL as published in
+					the ChemSpider dataset
+				</li>
+				<li>ChemSpider <code>cs:...</code> ChEMBL as published in the
+					ChemSpider dataset
+				</li>
+				<li>ChEMBL <code>:csid</code> ChemSpider as published in the
+					ChEMBL dataset
+				</li>
+				<li>ChEMBL <code>:somePredicate</code> ChemSpider as published
+					by some third party
+				</li>
+			</ul>
 
-	<p>Example linksets are given in <a href="#example-linksets">Appendix B</a>.</p>
-    
-    <section id="mapping-representation">
-      <h3>Representing a Mapping</h3>
-      
-      <p>A mapping must be represented as a VoID link, i.e. it is an RDF triple 
-      that relates an identifier in one dataset with an identifier in another 
-      dataset with some predicate which provides the meaning of the mapping.</p>
-      
-      <p>The mapping predicate captures the way in which the two identifiers are 
-      related. The mapping should respect the semantics of the relationship, i.e. 
-      the owl:sameAs relationship must only be used when the two identifiers are 
-      completely interchangeable.</p>
-      
-      <p>Halpin et al [[Halpin2010]] propose a mapping relationship ontology 
-      with eight levels of equivalence: </p>
-      <ul>
-        <li>Identical (equivalent to <code>owl:sameAs</code>): always interchangeable</li>
-        <li>Claims Identical: inverse does not hold</li>
-        <li>Matches (equivalent to <code>skos:exactMatch</code>): share many properties, 
-        interchangeable in most cases</li>
-        <li>Claims Matches: inverse does not hold</li>
-        <li>Similar (equivalent to <code>skos:closeMatch</code>): share some properties, not 
-        interchangeable</li>
-        <li>Claims Similar: inverse does not hold</li>
-        <li>Related (equivalent to <code>skos:related</code>): distinct things with an 
-        association</li>
-        <li>Claims Related (equivalent to <code>rdfs:seeAlso</code>)</li>
-      </ul>
-      
-      <h4>Example</h4>
-      <p>The following example declares that the ChemSpider α-Ketoisovaleric acid
-      concept with the <a href="http://www.chemspider.com/48">CSID 48</a> shares 
-      many properties with the ChEMBL 3-Methyl-2-oxobutanoic acid concept with 
-      the ChEMBL-RDF 
-      <a href="http://data.kasabi.com/dataset/chembl-rdf/chemblid/CHEMBL146554">
-      ChEMBL ID CHEMBL146554</a>. The relationship is drawn from ChemSpider based on 
-      the compounds sharing the same structure based on their InChI Keys (in 
-      this case the compound has the same InChI Key QHKABHOOEWYVLI-UHFFFAOYSA-N 
-      in both data sets.).</p>
-      <pre class="turtle">
+			<h4>Vocabulary for Data and Dataset Provenance (voidp)</h4>
+			<p>Defined as an extension to VoID, the vocabulary for data and
+				dataset provenance (voidp) [[VOIDP]] is a vocabulary for defining
+				provenance relationships of data and datasets. The vocabulary
+				focuses on four specific pieces of provenance information:</p>
+			<blockquote>
+				"for a piece of data, x :
+				<ul>
+					<li>when was x derived,</li>
+					<li>how was x derived,</li>
+					<li>what data had been used to derive x,</li>
+					<li>who carried out the transformations that resulted in the
+						current value of x." [[VOIDP]]</li>
+				</ul>
+			</blockquote>
+			<p>These are a subset of the information that needs to be
+				captured for the Open PHACTS linksets.</p>
+
+			<p>The vocabulary provides its own predicates for capturing these
+				provenance relationships, rather than reusing existing vocabularies
+				for capturing provenance metadata, e.g. the open provenance model
+				[[OPM]] or Provenance Authoring and Versioning ontology [[PAV]].
+				There is now also a W3C group working on a provenance ontology
+				[[PROV-O]].</p>
+		</section>
+		<section>
+			<h3>Nanopublications</h3>
+		</section>
+	</section>
+
+	<section id="dataset-decscription">
+		<h2>Describing Datasets</h2>
+
+		<p>
+			We assume that the dataset has been converted into RDF according to 
+			the Open PHACTS RDF Guidelines [[OPS-RDF]]. This section describes 
+			the the information  that must appear in the VoID description for 
+			the dataset.
+		</p>
+
+		<p>
+			Examples of dataset descriptions that conform to this specification
+			can be found in <a href="#appendix-dataset-examples">Appendix 
+			A.1</a>. The
+			<a href="http://openphacts.cs.man.ac.uk/Void-Editor/">VoID 
+			Generator</a> supports the creation of dataset descriptions that 
+			conform with this specification.
+		</p>
+
+		<section id="dataset-metadata">
+			<h3>General Dataset Metadata</h3>
+
+			<p style="font-weight: bold;">Type</p>
+			<ul>
+				<li>
+					Must declare that we have a dataset using <code>
+					void:Dataset</code>.
+				</li>
+			</ul>
+
+			<p style="font-weight: bold;">Title</p>
+			<ul>
+				<li>
+					Must provide a name for the dataset using the 
+					<code>dcterms:title</code> predicate.
+				</li>
+			</ul>
+
+			<p style="font-weight: bold;">Description</p>
+			<ul>
+				<li>
+					Must provide a description of the dataset using the 
+					<code>dcterms:description</code> predicate.
+				</li>
+			</ul>
+
+			<p style="font-weight: bold;">Links to further information</p>
+			<ul>
+				<li>
+					Must provide a link to the homepage for the dataset using 
+					the <code>foaf:hompage</code> predicate.
+				</li>
+				<li>
+					May provide links to other pages that discuss the dataset 
+					using the <code>foaf:page</code> predicate.
+				</li>
+			</ul>
+
+			<p style="font-weight: bold;">License</p>
+			<ul>
+				<li>
+					Must declare the licence under which the dataset is
+					published using the <code>dcterms:license</code> predicate.
+				</li>
+			</ul>
+
+			<p>
+				Where possible, we recommend publishing data under an open license
+				to enable reuse of the data with appropriate acknowledgement. For
+				Open PHACTS, the recommended license is <a
+					href="http://creativecommons.org/licenses/by-sa/3.0/"
+				>CC-BY-SA</a>. A list of alternative licenses are available in <a
+					href="http://www.w3.org/TR/void/#license"
+				>Section 2.4</a> of the W3C note on VoID.
+			</p>
+
+			<p style="font-weight: bold;">Namespace</p>
+			<ul>
+				<li>
+					Must declare the URI namespace for the resources in the 
+					dataset using the <code>void:uriSpace</code> predicate.
+				</li>
+			</ul>
+
+			<p>
+				Note that the object of the <code>void:uriSpace</code> predicate
+				is a literal, not a URI.
+			</p>
+			
+		</section>
+		<section id="dataset-prov-version">
+			<h3>Provenance and Version</h3>
+
+			<p style="font-weight: bold;">Version</p>
+			<ul>
+				<li>
+					Must declare the version of the dataset using the 
+					<code>pav:version</code> predicate, where this exists for
+					the dataset.
+				</li>
+			</ul>
+			
+			<p>
+				Not all dataset have the notion of a version number. Where the
+				dataset does have this notion, it must be given in the 
+				description. For other datasets, the versioning information will
+				be inferred by the last modified date provided as part of the
+				provenace information.
+			</p>
+
+			<p style="font-weight: bold;">Provenance of Data Origin</p>
+			
+			<ul>
+				<li>
+					If the dataset and its description are accessed from their
+					original location, then the the following metadata should be
+					available from the VoID description at that site:
+					<ul>
+						<li>
+							<code>dcterms:publisher</code> to capture who 
+							published the data.
+						</li>
+						<li>
+							<code>dcterms:created</code> to capture when the
+							dataset was created.
+						</li>
+						<li>
+							<code>dcterms:modified</code> to capture when the 
+							last update was made.
+						</li>
+					</ul>
+				</li>
+				<li>
+					If the dataset has been retrieved from another location,
+					i.e. it has already been published as RDF and this is a 
+					replica of that datam, then the following metadata must
+					be given:
+					<ul>
+						<li>
+							<code>pav:retrievedFrom</code> to capture the 
+							location of the original source.
+						</li>
+						<li>
+							<code>pav:retrievedOn</code> to capture when the
+							retrieval was made.
+						</li>
+						<li>
+							<code>pav:retrievedBy</code> to capture who made the
+							retrieval. 
+						</li>
+					</ul>
+				</li>
+				<li>
+					If the dataset is imported from another data source, i.e.
+					the knowledge content is unchanged but the format of the 
+					data has been changed (e.g. XML to RDF transformation), then 
+					the following metadata must be given:
+					<ul>
+						<li>
+							<code>pav:importedFrom</code> to capture the 
+							location of the original source.
+						</li>
+						<li>
+							<code>pav:importedOn</code> to capture when the 
+							import was made.
+						</li>
+						<li>
+							<code>pav:importedBy</code> to capture who made the
+							import.
+						</li>
+					</ul>
+				</li>
+				<li>
+					If the dataset is derived from another data source, i.e.
+					the knowledge content has changed, then the following 
+					metadata must be provided:
+					<ul>
+						<li>
+							<code>pav:derivedFrom</code> to capture the 
+							relationship to the original data source.
+						</li>
+						<li>
+							<code>pav:derivedOn</code> to capture when the 
+							derivation was made.
+						</li>
+						<li>
+							<code>pav:derivedBy</code> to capture who made the
+							derivation. 
+						</li>
+					</ul>
+				</li>
+			</ul>
+			
+			<p>
+				Note that the object of the <code>pav:xxxBy</code> predicate is 
+				a URI. 
+			</p>
+			
+			<p id="orcid-note" class="note">
+				We currently do not require a specific form of URI for capturing
+				the details of a perosn or entity. Future versions of this
+				specification may recommend the use of ORCID Identifiers 
+				[[ORCID]].
+			</p>
+
+
+		</section>
+		<section id="dataset-topic">
+			<h3>Topics and Example Resources</h3>
+			<p style="font-weight: bold;">Resource Type</p>
+			<ul>
+				<li>The type of the resource being linked is declared with the
+					<code>dcterms:subject</code> predicate.
+				</li>
+			</ul>
+
+		</section>
+		<section id="dataset-subsets">
+			<h3>Distinguishing Subsets</h3>
+
+			<p style="font-weight: bold;">Data source</p>
+			<ul>
+				<li>If the dataset contains distinguishable subsets, e.g.
+					ChEMBL Compounds or ChemSpider to ChEMBL links, then these should
+					be declared as subsets of the main dataset using the <code>void:subset</code>
+					predicate. The metadata that is common between the datasets can be
+					declared for the parent only.
+				</li>
+			</ul>
+
+			<p class="note">
+				In the VoID note [[VOID]], the
+				<code>void:subset</code>
+				propterty is used for both <em>subset of</em> and <em>has
+					subset</em>. The declared semantics for the property is <em>has
+					subset</em>. Within OPS, the property must be used with the <em>has
+					subset</em> semantics. Therefore, if a linkset appears as a subset of a
+				dataset, then it should be declared in the dataset metadata.
+			</p>
+
+			<p>Other metadata that can be associated with a dataset may be
+				included, see the RDF publishing guidelines [[OPS-RDF]], the VoID
+				specification [[VOID]], and the provenance, authorship and
+				versioning vocabulary [[PAV]] for additional metadata that may be
+				incorporated. The dataset may also have a provenance graph
+				associated with it providing more detailed information about the
+				creation, authorship, and derivation of the dataset.</p>
+
+			<h4>Examples</h4>
+
+			<p>
+				Example VoID dataset descriptions can be found in <a
+					href="#appendix-dataset-examples"
+				>Appendix A</a>. The first example is a pre-existing VoID file deployed
+				by ChemSpider (see <a href="#ChemSpider-VoID-Descriptor">Appendix
+					A.1</a>). Note this example does not conform with the recommendations
+				made here. However it is included as an existing VoID file. The
+				second example is for the RDF representation of the ChEMBL database,
+				given in <a href="#ChEMBL-RDF-VoID-Descriptor"> Appendix A.2</a>.
+				This demonstrates the level of information required to track the
+				provenance from a source dataset through to the RDF representation.
+				It also contains subset definitions.
+			</p>
+		</section>
+
+	</section>
+
+	<section id="mapping-specification">
+		<h2>Anatomy of a Mapping Specification</h2>
+
+		<p>A data instance mapping is a claim that an identifier in one
+			dataset is related in some way to an identifier in another dataset.
+			The mapping specification captures the type of relationship and the
+			metadata associated with the mapping, e.g. provenance information
+			about who created the mapping and the specific versions of the
+			datasets related.</p>
+
+		<p>
+			Example linksets are given in <a href="#example-linksets">Appendix
+				B</a>.
+		</p>
+
+		<section id="mapping-representation">
+			<h3>Representing a Mapping</h3>
+
+			<p>A mapping must be represented as a VoID link, i.e. it is an
+				RDF triple that relates an identifier in one dataset with an
+				identifier in another dataset with some predicate which provides the
+				meaning of the mapping.</p>
+
+			<p>The mapping predicate captures the way in which the two
+				identifiers are related. The mapping should respect the semantics of
+				the relationship, i.e. the owl:sameAs relationship must only be used
+				when the two identifiers are completely interchangeable.</p>
+
+			<p>Halpin et al [[Halpin2010]] propose a mapping relationship
+				ontology with eight levels of equivalence:</p>
+			<ul>
+				<li>Identical (equivalent to <code>owl:sameAs</code>): always
+					interchangeable
+				</li>
+				<li>Claims Identical: inverse does not hold</li>
+				<li>Matches (equivalent to <code>skos:exactMatch</code>): share
+					many properties, interchangeable in most cases
+				</li>
+				<li>Claims Matches: inverse does not hold</li>
+				<li>Similar (equivalent to <code>skos:closeMatch</code>): share
+					some properties, not interchangeable
+				</li>
+				<li>Claims Similar: inverse does not hold</li>
+				<li>Related (equivalent to <code>skos:related</code>): distinct
+					things with an association
+				</li>
+				<li>Claims Related (equivalent to <code>rdfs:seeAlso</code>)
+				</li>
+			</ul>
+
+			<h4>Example</h4>
+			<p>
+				The following example declares that the ChemSpider α-Ketoisovaleric
+				acid concept with the <a href="http://www.chemspider.com/48">CSID
+					48</a> shares many properties with the ChEMBL 3-Methyl-2-oxobutanoic
+				acid concept with the ChEMBL-RDF <a
+					href="http://data.kasabi.com/dataset/chembl-rdf/chemblid/CHEMBL146554"
+				> ChEMBL ID CHEMBL146554</a>. The relationship is drawn from ChemSpider
+				based on the compounds sharing the same structure based on their
+				InChI Keys (in this case the compound has the same InChI Key
+				QHKABHOOEWYVLI-UHFFFAOYSA-N in both data sets.).
+			</p>
+			<pre class="turtle">
 @prefix chembl: &lt;http://data.kasabi.com/dataset/chembl-rdf/chemblid/&gt; .
 
 &lt;http://rdf.chemspider.com/48&gt; skos:exactMatch chembl:CHEMBL146554 .
       </pre>
-    </section>
-    <section id=metadata>
-      <h3>Metadata</h3>
-      
-      <p>The metadata associated with a link is essential for enabling its reuse
-      by others. It enables a consumer of the link to understand who claimed the
-      link, under what circumstances, and which (if any) tools were used to 
-      generate the link (e.g. [[SILK]]).</p>
-      
-      <p>The metadata is split into metadata about the dataset and the metadata
-      about the links themselves. Note that the dataset metadata should be
-      provided by the dataset provider as part of the dataset publishing process
-      [[OPS-RDF]], although it can be augmented for the purposes of providing
-      additional information about the link.</p>
-      
-      <section id=dataset-metadata>
-      <h3>Dataset Metadata</h3>
-      
-      <p>A linkset associates two datasets via a single mapping predicate. For 
-      each dataset in the linkset, the following metadata must be included:</p>
-      
-      <p style="font-weight: bold;">Type</p>
-      <ul>
-      <li>Declare that we have a dataset using <code>void:dataset</code>.</li>
-      </ul>
+		</section>
+		<section id=metadata>
+			<h3>Metadata</h3>
 
-      <p style="font-weight: bold;">License</p>
-      <ul>
-      <li>Provide details of the licence under which the dataset is published 
-      using the <code>dcterms:license</code> property.</li>
-      </ul>
+			<p>The metadata associated with a link is essential for enabling
+				its reuse by others. It enables a consumer of the link to understand
+				who claimed the link, under what circumstances, and which (if any)
+				tools were used to generate the link (e.g. [[SILK]]).</p>
 
-      <p style="font-weight: bold;">Version</p>
-      <ul>
-      <li>If the dataset has the notion of publication versions then this must 
-      be captured using the <code>pav:Version</code> property.</li>
-      </ul>
-      
-      <p style="font-weight: bold;">Source Provenance</p>
-      <ul>
-      <li>If the dataset is derived from another data source, i.e. the knowledge 
-      content has changed, then the following properties should be given:
-        <ul>
-          <li><code>pav:derivedFrom</code> to capture the relationship to the 
-          original source.</li>
-          <li><code>pav:derivedOn</code> to capture when the derivation was made.</li>
-          <li><code>pav:derivedBy</code> to capture who made the derivation. The
-          object of this triple is a URI, currently we recommend using FOAF [[FOAF]].</li>          
-        </ul>
-      </li>
-      <li>If the dataset has been retrieved from another location, i.e. it is 
-      used in exactly the same form, then the following properties should be given:
-        <ul>
-          <li><code>pav:retrievedFrom</code> to capture the location of the 
-          original source.</li>
-          <li><code>pav:retrievedOn</code> to capture when the retrieval was made.</li>
-          <li><code>pav:retrievedBy</code> to capture who made the retrieval. The
-          object of this triple is a URI, currently we recommend using FOAF [[FOAF]].</li>          
-        </ul>
-      </li>
-      <li>If the dataset is imported from another data source, i.e. the 
-      knowledge content is unchanged but the format of the data has been changed 
-      (e.g. XML to RDF transformation), then the following properties should be given:
-        <ul>
-          <li><code>pav:importedFrom</code> to capture the location of the 
-          original source.</li>
-          <li><code>pav:importedOn</code> to capture when the import was made.</li>
-          <li><code>pav:importedBy</code> to capture who made the import. The
-          object of this triple is a URI, currently we recommend using FOAF [[FOAF]].</li>          
-        </ul>
-      </li>
-      <li>If the dataset and its description are accessed from their original 
-      location, then the no properties are required. However it is good practice
-      to include the following:
-        <ul>
-          <li>Details of who is publishing the dataset using the 
-          <code>dcterms:publisher</code> property.</li>
-          <li>Details of when the dataset was created using the 
-          <code>dcterms:created</code> property.</li>
-          <li>When appropriate, details of when the last update was made using
-          the <code>dcterms:modified</code> property.</li>
-        </ul>
-      </ul>
-      <p id="orcid-note" class="note">We currently recommend the use of FOAF to capture the
-      person or entity that made a dataset available. In the future, we anticipate
-      the use of ORCID Identifiers [[ORCID]].</p>
-      
-      <p style="font-weight: bold;">Namespace</p>
-      <ul>
-      <li>The URI namespace for the resources being linked is declared using the
-       <code>void:uriSpace</code> property. Note that the object of the triple
-       is a literal, not a URI.</li>
-      </ul>
-      
-      <p style="font-weight: bold;">Resource Type</p>
-      <ul>
-      <li>The type of the resource being linked is declared with the 
-      <code>dcterm:subject</code> predicate.</li>
-      </ul>
-      
-      <p>In order to support applications using the linkset to understand and 
-      present the data, the following additional metadata should be included:</p>
-      
-      <p style="font-weight: bold;">Title</p>
-      <ul>
-      <li>The title of the dataset using 
-      <code>dcterm:title</code> predicate.</li>
-      </ul>
-      
-      <p style="font-weight: bold;">Description</p>
-      <ul>
-      <li>A description of the dataset using  
-      <code>dcterm:description</code> predicate.</li>
-      </ul>
+			<p>The metadata is split into metadata about the dataset and the
+				metadata about the links themselves. Note that the dataset metadata
+				should be provided by the dataset provider as part of the dataset
+				publishing process [[OPS-RDF]], although it can be augmented for the
+				purposes of providing additional information about the link.</p>
 
-      <p style="font-weight: bold;">Links to further information</p>
-      <ul>
-        <li>A link to the homepage for the dataset <code>foaf:hompage</code>.</li>
-        <li>Other pages that discuss the dataset may be included with the 
-        <code>foaf:page</code> relationship.</li>
-      </ul>
-      
-      <p style="font-weight: bold;">Data source</p>
-      <ul>
-        <li>If the dataset contains distinguishable subsets, e.g. ChEMBL Compounds
-        or ChemSpider to ChEMBL links, then these should be declared as subsets 
-        of the main dataset using the <code>void:subset</code> predicate. 
-        The metadata that is common between the datasets can be declared for the 
-        parent only.</li>
-      </ul>
-      
-      <p class="note">In the VoID note [[VOID]], the <code>void:subset</code> 
-      propterty is used for both <em>subset of</em> and <em>has subset</em>. 
-      The declared semantics for the property is <em>has subset</em>. Within 
-      OPS, the property must be used with the <em>has subset</em> semantics.
-      Therefore, if a linkset appears as a subset of a dataset, then it should
-      be declared in the dataset metadata.</p>
 
-      <p>Other metadata that can be associated with a dataset may be included, 
-      see the RDF publishing guidelines [[OPS-RDF]], the VoID specification [[VOID]], 
-      and the provenance, authorship and versioning vocabulary [[PAV]] for 
-      additional metadata that may be incorporated. The dataset may also have a 
-      provenance graph associated with it providing more detailed information 
-      about the creation, authorship, and derivation of the dataset.</p>
-      
-      <h4>Examples</h4>
-      
-      <p>Example VoID dataset descriptions can be found in 
-      <a href="#appendix-dataset-examples">Appendix A</a>. The first example
-      is a pre-existing VoID file deployed by ChemSpider (see 
-      <a href="#ChemSpider-VoID-Descriptor">Appendix A.1</a>). Note this example
-      does not conform with the recommendations made here. However it is included
-      as an existing VoID file. The second example is for the RDF representation
-      of the ChEMBL database, given in <a href="#ChEMBL-RDF-VoID-Descriptor">
-      Appendix A.2</a>. This demonstrates the level of information required to
-      track the provenance from a source dataset through to the RDF representation.
-      It also contains subset definitions.</p>
- <!-- 
-      <pre class="turtle">
-:chemspider
-    a void:dataset ;
-    dcterms:license &lt;http://www.chemspider.com/Disclaimer.aspx&gt; ;
-    void:uriSpace "http://rdf.chemspider.com/" ;
-    dcterms:subject &lt;http://dbpedia.org/resource/Molecule&gt; ;
-    dcterms:title "ChemSpider"^^xsd:string ;
-    dcterms:description "ChemSpider's Public Dataset"^^xsd:string ;
-    dcterms:publisher &lt;http://www.chemspider.com/&gt; ;
-    foaf:homepage &lt;http://rdf.chemspider.com/&gt; ;
-    foaf:page &lt;http://www.chemspider.com/&gt; ;
-      </pre>
-      <p>In the example the homepage has been set to the RDF representation of 
-      ChemSpider as that is the dataset being described. The 
-      normal web interface has been given as an alternative web page.</p> 
-      
-      <p>The following example provides the metadata for the conversion of the 
-      ChEMBL database in RDF. This requires that provenance information about 
-      which version of ChEMBL has been converted are captured. The example also 
-      shows the use of subsets within the data.</p>
-      <pre class="turtle">
-:chembl-rdf
-    a void:dataset ;
-    dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
-    pav:importedFrom [
-        foaf:homepage &lt;http://www.ebi.ac.uk/chembl/&gt; ;
-        pav:version "13"^^xsd:integer ;
-        dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; . ] ;
-    pav:importedOn "2012-04-12"^^xsd:date ;
-    pav:importedBy :egon ;
-    void:uriSpace "http://data.kasabi.com/dataset/chembl-rdf"^^xsd:string ;
-    dcterms:title "ChEMBL-RDF"^^xsd:string ;
-    dcterms:description "The ChEMBL-RDF dataset"^^xsd:string ;
-    foaf:homepage &lt;http://kasabi.com/dataset/chembl-rdf&gt; ;
-    void:subset :chembl-rdf_compounds, :chembl-rdf_targets ;
-    void:sparqlEndpoint &lt;http://api.kasabi.com/dataset/chembl-rdf/apis/sparql&gt;
-    void:distinctSubjects "18018451"^^xsd:integer .
-    
-:chembl-rdf_compounds
-    a void:dataset;
-    void:uriSpace "http://data.kasabi.com/dataset/chembl-rdf/molecule/"^^xsd:string ;
-    dcterms:subject &lt;http://dbpedia.org/resource/Molecule&gt; .
-    
-:chembl-rdf_targets
-    a void:dataset;
-    void:uriSpace "http://data.kasabi.com/dataset/chembl-rdf/target/"^^xsd:string ;
-    dcterms:subject &lt;http://dbpedia.org/resource/Protein&gt; .
-      </pre>
-      
-      <p class="note">The above example shows the use of a blank node for stating
-      where the data has been imported from. This could alternatively be 
-      captured through the declaration of another dataset containing the 
-      appropriate properties. It also assumes the existence of a local description
-      of the concept <code>:egon</code>.</p>
-  -->     
-      </section> 
 
-      
-      <section id="linkset-metadata">
-      <h3>Linkset Metadata</h3>
-      
-      <p>A linkset is itself a dataset, and as such should provide the metadata 
-      one would associate with a dataset, as stated 
-      <a href="#dataset-metadata">above</a>. Specifically, the following 
-      metadata must be included:</p>
+			<section id="linkset-metadata">
+				<h3>Linkset Metadata</h3>
 
-      <p style="font-weight: bold;">Type</p>
-      <ul>
-      <li>Declare that we have a linkset using <code>void:linkset</code>.</li>
-      </ul>
-      
-      <p class="note">The <code>void:linkset</code> predicate is a sub-property
-      of the <code>void:dataset</code> property.</p>
+				<p>
+					A linkset is itself a dataset, and as such should provide the
+					metadata one would associate with a dataset, as stated <a
+						href="#dataset-metadata"
+					>above</a>. Specifically, the following metadata must be included:
+				</p>
 
-      <p style="font-weight: bold;">License</p>
-      <ul>
-      <li>Provide details of the licence under which the linkset is published 
-      using the <code>dcterms:license</code> property.</li>
-      </ul>
-      
-      <p class="note">The license under which a linkset is published may be 
-      different from that of the dataset.</p>
+				<p style="font-weight: bold;">Type</p>
+				<ul>
+					<li>Declare that we have a linkset using <code>void:Linkset</code>.
+					</li>
+				</ul>
 
-      <p style="font-weight: bold;">Linkset Provenance</p>
-      <ul>
-      <li>If the linkset is a subset of another dataset, then this is captured 
-      with the <code>void:subset</code> predicate, with the linkset URI as the
-      object of the triple.</li>
-      <li>The linkset authorship, i.e. the agent that generated the intellectual 
-      knowledge, is captured with the following properties:
-        <ul>
-          <li><code>pav:authoredBy</code> to capture who authored the links.
-          Currently we recommend the use of FOAF [[FOAF]] for the objects of
-          these triples, see <a href="#orcid-note">note</a> above about future
-          use of ORCID identifiers.</li>
-          <li><code>pav:authorOn</code> to capture when the links were generated.</li>
-        </ul>
-      </li>
-      <li>The linkset creator, i.e. the entity responsible for converting the 
-      links to the linkset format, is captured with the following properties:
-        <ul>
-          <li><code>pav:createdBy</code> to capture who converted the links into
-          the current digital format.
-          Currently we recommend the use of FOAF [[FOAF]] for the objects of
-          these triples, see <a href="#orcid-note">note</a> above about future
-          use of ORCID identifiers.</li>
-          <li><code>pav:createdOn</code> to capture when the links were converted
-          to their digital form.</li>
-        </ul>
-      </li>
-      </ul>    
-      <p>Additional information about how the links were created should be stated.
-      For example, if the links were created using a tool such as Silk [[SILK]].
-      The links may also contain provenance information represented using
-      PROV-O [[PROV-O]] and captured in a separate provenance graph.</p>  
-      
-      <p style="font-weight: bold;">Linkset Metadata</p>
-      <ul>
-      <li>A declaration must be made about the datasets that are linked using
-      the <code>void:subjectsTarget</code> and <code>void:objectsTarget</code>
-      properties.</li>
-      <li>The link predicate is declared using <code>void:linkPredicate</code>.</li>
-      <li>The number of links in the linkset is declared using 
-      <code>void:triples</code>. This allows for validation that the entire 
-      linkset has been successfully loaded.
-      </ul>
-      
-      <p>In order to support applications using the linkset to understand and 
-      present the data, the following additional metadata should be included:</p>
-      
-      <p style="font-weight: bold;">Title</p>
-      <ul>
-      <li>The title of the linkset using 
-      <code>dcterm:title</code> predicate.</li>
-      </ul>
-      
-      <p style="font-weight: bold;">Description</p>
-      <ul>
-      <li>A description of the linkset using  
-      <code>dcterm:description</code> predicate.</li>
-      </ul>
-      
-      <p>Note that for linksets there is unlikely to be a web page directly 
-      dedicated to the linkset, as such that part of the dataset metadata is 
-      not stated as a requirement.</p>
-      
-      <h4>Examples</h4>
-      
-      <p>Example VoID linkset descriptions can be found in 
-      <a href="#example-linksets">Appendix B</a>. The first example shows how
-      existing dataset descriptors can be reused (see 
-      <a href="#CS2ChEMBLLinkset">Appendix B.1</a>). The second example shows
-      the declaration of a dataset's metadata in the linkset file (see 
-      <a href="#CS2DBLinkset">Appendix B.2</a>).</p>
-<!--       
+				<p class="note">
+					The
+					<code>void:Linkset</code>
+					predicate is a sub-property of the
+					<code>void:Dataset</code>
+					property.
+				</p>
+
+				<p style="font-weight: bold;">License</p>
+				<ul>
+					<li>Provide details of the licence under which the linkset is
+						published using the <code>dcterms:license</code> property.
+					</li>
+				</ul>
+
+				<p class="note">The license under which a linkset is published
+					may be different from that of the dataset.</p>
+
+				<p style="font-weight: bold;">Linkset Provenance</p>
+				<ul>
+					<li>If the linkset is a subset of another dataset, then this
+						is captured with the <code>void:subset</code> predicate, with the
+						linkset URI as the object of the triple.
+					</li>
+					<li>The linkset authorship, i.e. the agent that generated the
+						intellectual knowledge, is captured with the following properties:
+						<ul>
+							<li><code>pav:authoredBy</code> to capture who authored the
+								links. Currently we recommend the use of FOAF [[FOAF]] for the
+								objects of these triples, see <a href="#orcid-note">note</a>
+								above about future use of ORCID identifiers.</li>
+							<li><code>pav:authorOn</code> to capture when the links were
+								generated.</li>
+						</ul>
+					</li>
+					<li>The linkset creator, i.e. the entity responsible for
+						converting the links to the linkset format, is captured with the
+						following properties:
+						<ul>
+							<li><code>pav:createdBy</code> to capture who converted the
+								links into the current digital format. Currently we recommend
+								the use of FOAF [[FOAF]] for the objects of these triples, see <a
+								href="#orcid-note"
+							>note</a> above about future use of ORCID identifiers.</li>
+							<li><code>pav:createdOn</code> to capture when the links
+								were converted to their digital form.</li>
+						</ul>
+					</li>
+				</ul>
+				<p>Additional information about how the links were created
+					should be stated. For example, if the links were created using a
+					tool such as Silk [[SILK]]. The links may also contain provenance
+					information represented using PROV-O [[PROV-O]] and captured in a
+					separate provenance graph.</p>
+
+				<p style="font-weight: bold;">Linkset Metadata</p>
+				<ul>
+					<li>A declaration must be made about the datasets that are
+						linked using the <code>void:subjectsTarget</code> and <code>void:objectsTarget</code>
+						properties.
+					</li>
+					<li>The link predicate is declared using <code>void:linkPredicate</code>.
+					</li>
+					<li>The number of links in the linkset is declared using <code>void:triples</code>.
+						This allows for validation that the entire linkset has been
+						successfully loaded.
+				</ul>
+
+				<p>In order to support applications using the linkset to
+					understand and present the data, the following additional metadata
+					should be included:</p>
+
+				<p style="font-weight: bold;">Title</p>
+				<ul>
+					<li>The title of the linkset using <code>dcterms:title</code>
+						predicate.
+					</li>
+				</ul>
+
+				<p style="font-weight: bold;">Description</p>
+				<ul>
+					<li>A description of the linkset using <code>dcterms:description</code>
+						predicate.
+					</li>
+				</ul>
+
+				<p>Note that for linksets there is unlikely to be a web page
+					directly dedicated to the linkset, as such that part of the dataset
+					metadata is not stated as a requirement.</p>
+
+				<h4>Examples</h4>
+
+				<p>
+					Example VoID linkset descriptions can be found in <a
+						href="#example-linksets"
+					>Appendix B</a>. The first example shows how existing dataset
+					descriptors can be reused (see <a href="#CS2ChEMBLLinkset">Appendix
+						B.1</a>). The second example shows the declaration of a dataset's
+					metadata in the linkset file (see <a href="#CS2DBLinkset">Appendix
+						B.2</a>).
+				</p>
+				<!--       
       <p>The following example is the metadata associated with a link connecting
       a ChemSpider compound with a ChEMBL molecule. It reuses the dataset 
       descriptions given in the examples <a href="#dataset-metadata">above</a>.</p>
@@ -604,114 +736,140 @@
 :chembl-rdf_compounds void:subset :chemspider_chembl-rdf_compounds .
       </pre>
  -->
-      </section>
+			</section>
 
-    </section>
-  </section>
-  
-  <section id="exchanging-linksets">
-    <h2>Exchanging Mapping Documents</h2>
-    
-    <p>It is anticpated that links between datasets will not be created and 
-    shared in isolation, i.e. multiple links relating concepts in two datasets 
-    with the same predicate will be created at the same time using the same 
-    mechanism. A collection of links that meet the following requirements can be 
-    shared as a single VoID linkset:</p>
-    <ul>
-      <li>The resulting document must be a valid VoID linkset:
-        <ul>
-          <li>The subject of all of the mapping triples are from the same dataset;</li>
-          <li>The object of all the mapping triples are from the same dataset;</li>
-          <li>The predicate of all the mapping triples are the same.</li>
-        </ul>
-      </li>
-      <li>The metadata of all the mapping triples is the same.</li>
-    </ul>
+		</section>
+	</section>
 
-    <p>The interpretation must be that each link in the linkset is a mapping 
-    with the metadata given in the heading of the VoID linkset. The linkset 
-    should include the metadata specified in <a href="#mapping-specification">
-    Section 4.2</a>.</p>
+	<section id="exchanging-linksets">
+		<h2>Exchanging Mapping Documents</h2>
 
-    <p>As stated in <a href="http://www.w3.org/TR/void/#void-file">Section 6.2</a> 
-    of the VoID specification [[VOID]], the VoID documents describing datasets
-    and linksets should contain a metadata block describing the document. An 
-    example is given below for the ChemSpider deployment. Note the use of an 
-    empty-string relative URI (<>) as a syntactic shortcut for the URI of the 
-    document that contains the statements.</p>
-    <pre class="turtle">
+		<p>It is anticipated that links between datasets will not be
+			created and shared in isolation, i.e. multiple links relating
+			concepts in two datasets with the same predicate will be created at
+			the same time using the same mechanism. A collection of links that
+			meet the following requirements can be shared as a single VoID
+			linkset:</p>
+		<ul>
+			<li>The resulting document must be a valid VoID linkset:
+				<ul>
+					<li>The subject of all of the mapping triples are from the
+						same dataset;</li>
+					<li>The object of all the mapping triples are from the same
+						dataset;</li>
+					<li>The predicate of all the mapping triples are the same.</li>
+				</ul>
+			</li>
+			<li>The metadata of all the mapping triples is the same.</li>
+		</ul>
+
+		<p>
+			The interpretation must be that each link in the linkset is a mapping
+			with the metadata given in the heading of the VoID linkset. The
+			linkset should include the metadata specified in <a
+				href="#mapping-specification"
+			> Section 4.2</a>.
+		</p>
+
+		<p>
+			As stated in <a href="http://www.w3.org/TR/void/#void-file">Section
+				6.2</a> of the VoID specification [[VOID]], the VoID documents
+			describing datasets and linksets should contain a metadata block
+			describing the document. An example is given below for the ChemSpider
+			deployment. Note the use of an empty-string relative URI (<>) as a
+			syntactic shortcut for the URI of the document that contains the
+			statements.
+		</p>
+		<pre class="turtle">
 &lt;&gt; a void:DatasetDescription ;
     dcterms:title "ChemSpider VoID Description"^^xsd:string ;
     dcterms:creator &lt;http://www.chemspider.com/&gt; ;
     foaf:primaryTopic :chemSpiderDataset .    
     </pre>
-        
-    <section id="deploying-void">
-      <h3>Deploying VoID Descriptions</h3>
-      
-      <p>Several mechanisms for deploying VoID descriptions are given in
-      <a href="http://www.w3.org/TR/void/#deploying">Section 6</a> of [[VOID]].</p>
-      
-      <p>For datasets that are being published in their own domain, with 
-      dereferenceable URIs, then we recommend placing the dataset's VoID description
-      in the root directory in a file called <code>void.ttl</code>, with a local
-      "hash URI" for the dataset (and any subsets). For example, for ChemSpider 
-      we would have a URI such as 
-      <code>http://rdf.chemspider.com/void.ttl#chemSpiderDataset</code>. When
-      the code is being hosted on an external service, e.g. 
-      <a href="http://kasabi.com/">Kasabi</a>, then the VoID descriptor should
-      be provided in the dataset's home directory. For example, for the RDF
-      encoding of ChEBML this would be
-      <code>http://data.kasabi.com/dataset/chembl-rdf/void.ttl#chembl-rdf</code>.
-      Examples of the VoID descriptors are given in 
-      <a href="#appendix-dataset-examples">Appendix A</a>.</p> 
-      
-      <p>Each RDF document containing the data should then contain a backlink to 
-      the dataset descriptor. For example, the ChEMBL-RDF molecure m1, there
-      would be the triple:</p>
-      <pre class="turtle">
+
+		<section id="deploying-void">
+			<h3>Deploying VoID Descriptions</h3>
+
+			<p>
+				Several mechanisms for deploying VoID descriptions are given in <a
+					href="http://www.w3.org/TR/void/#deploying"
+				>Section 6</a> of [[VOID]].
+			</p>
+
+			<p>
+				For datasets that are being published in their own domain, with
+				dereferenceable URIs, then we recommend placing the dataset's VoID
+				description in the root directory in a file called
+				<code>void.ttl</code>
+				, with a local "hash URI" for the dataset (and any subsets). For
+				example, for ChemSpider we would have a URI such as
+				<code>http://rdf.chemspider.com/void.ttl#chemSpiderDataset</code>
+				. When the code is being hosted on an external service, e.g. <a
+					href="http://kasabi.com/"
+				>Kasabi</a>, then the VoID descriptor should be provided in the
+				dataset's home directory. For example, for the RDF encoding of
+				ChEBML this would be
+				<code>http://data.kasabi.com/dataset/chembl-rdf/void.ttl#chembl-rdf</code>
+				. Examples of the VoID descriptors are given in <a
+					href="#appendix-dataset-examples"
+				>Appendix A</a>.
+			</p>
+
+			<p>Each RDF document containing the data should then contain a
+				backlink to the dataset descriptor. For example, the ChEMBL-RDF
+				molecure m1, there would be the triple:</p>
+			<pre class="turtle">
 &lt;http://data.kasabi.com/dataset/chembl-rdf/molecule/m1&gt; void:inDataset 
     &lt;http://data.kasabi.com/dataset/chembl-rdf/void.ttl#chembl-rdf_compounds&gt; .    
-      </pre> 
-    </section>
-    <section id=linkset-files>
-    <h3>Linkset Documents</h3>
-    <p>For the purposes of Open PHACTS, it is anticipated that linksets will be
-    materialised as separate documents from the datasets. This is to allow their
-    loading into the identity mapping service [[IMS]].</p>
-    
-    <p>Where a dataset involved in a linkset has a published VoID description, 
-    then this should be referenced in the linkset document. The available 
-    metadata can be augmented in the linkset document to allow for additional 
-    information about the dataset, e.g. the specific version used or when it was 
-    accessed, to be declared.</p>
-    
-    <p class="note">This is problematic. What happend if the dataset description
-    is updated? Need some way of referencing a specific version of the VoID
-    description. This issue does not seem to have been addressed in the VoID
-    document.</p>
-    
-    <p>Where a dataset does not provide a VoID description that can be reused, 
-    then the required metadata should be included in the linkset document.</p>
-    </section>
-  </section>
-  
-  <section id="appendix-dataset-examples" class="appendix">
-    <h2>Example Dataset VoID Descriptors</h2>
-    <section id="ChemSpider-VoID-Descriptor">
-    <h3>ChemSpider VoID Descriptor</h3>
-    <p>The ChemSpider site already has a VoID descriptor available from
-    <a href="http://rdf.chemspider.com/void.rdf">http://rdf.chemspider.com/void.rdf</a>.
-    In this case, it is recommended to use the descriptor as is, although the linksets 
-    below will augment it with additional information, e.g. when and who accessed
-    the ChemSpider dataset.</p>
-    <p>Note that the descriptor uses an old form of VoID, noticiable in the
-    way that the number of triples is declared. Also, the descriptor is lacking
-    a metadata header, as discussed in <a href="#deploying-void">Section 5.1</a>.
-    Additionally, the descriptor is published as RDF/XML rather than the VoID
-    recommendation of using RDF/turtle, although systems should be able to read
-    both interchangeably.</p>
-    <pre class="RDF" title="ChemSpiders VoID Descriptor as published in RDF/XML">
+      </pre>
+		</section>
+		<section id=linkset-files>
+			<h3>Linkset Documents</h3>
+			<p>For the purposes of Open PHACTS, it is anticipated that
+				linksets will be materialised as separate documents from the
+				datasets. This is to allow their loading into the identity mapping
+				service [[IMS]].</p>
+
+			<p>Where a dataset involved in a linkset has a published VoID
+				description, then this should be referenced in the linkset document.
+				The available metadata can be augmented in the linkset document to
+				allow for additional information about the dataset, e.g. the
+				specific version used or when it was accessed, to be declared.</p>
+
+			<p class="note">This is problematic. What happend if the dataset
+				description is updated? Need some way of referencing a specific
+				version of the VoID description. This issue does not seem to have
+				been addressed in the VoID document.</p>
+
+			<p>Where a dataset does not provide a VoID description that can
+				be reused, then the required metadata should be included in the
+				linkset document.</p>
+		</section>
+	</section>
+
+	<section id="appendix-dataset-examples" class="appendix">
+		<h2>Example Dataset VoID Descriptors</h2>
+		<section id="ChemSpider-VoID-Descriptor">
+			<h3>ChemSpider VoID Descriptor</h3>
+			<p>
+				The ChemSpider site already has a VoID descriptor available from <a
+					href="http://rdf.chemspider.com/void.rdf"
+				>http://rdf.chemspider.com/void.rdf</a>. In this case, it is
+				recommended to use the descriptor as is, although the linksets below
+				will augment it with additional information, e.g. when and who
+				accessed the ChemSpider dataset.
+			</p>
+			<p>
+				Note that the descriptor uses an old form of VoID, noticiable in the
+				way that the number of triples is declared. Also, the descriptor is
+				lacking a metadata header, as discussed in <a href="#deploying-void">Section
+					5.1</a>. Additionally, the descriptor is published as RDF/XML rather
+				than the VoID recommendation of using RDF/turtle, although systems
+				should be able to read both interchangeably.
+			</p>
+			<pre class="RDF"
+				title="ChemSpiders VoID Descriptor as published in RDF/XML"
+			>
 <?xml version="1.0" encoding="UTF-8" ?>
 &lt;rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -742,15 +900,19 @@
   &lt;/void:Dataset>
 &lt;/rdf:RDF>    
     </pre>
-    </section>
-    <section id="ChEMBL-RDF-VoID-Descriptor">
-    <h3>ChEBML-RDF VoID Descriptor</h3>
- 
-    <p>Below we provide the VoID document for the ChEMBL-RDF dataset, which is
-    a conversion of the ChEMBL database. The VoID file would be located at
-    <code>http://data.kasabi.com/dataset/chembl-rdf/void.ttl</code>.</p>
-    
-    <pre class="turtle">
+		</section>
+		<section id="ChEMBL-RDF-VoID-Descriptor">
+			<h3>ChEBML-RDF VoID Descriptor</h3>
+
+			<p>
+				Below we provide the VoID document for the ChEMBL-RDF dataset, which
+				is a conversion of the ChEMBL database. The VoID file would be
+				located at
+				<code>http://data.kasabi.com/dataset/chembl-rdf/void.ttl</code>
+				.
+			</p>
+
+			<pre class="turtle">
 &lt;> 
     a void:DatasetDescription;
     dcterms:title "ChEMBL-RDF VoID Description"^^xsd:string;
@@ -758,7 +920,7 @@
         """This is the VoID description for a ChEMBL-RDF dataset."""^^xsd:string;
     pav:createdBy &lt;http://egonw.github.com/#me> ;
     pav:createdOn "2012-05-15"^^xsd:date;
-    foaf:primaryTopic :chemblrdf_dataset;
+    foaf:primaryTopic :chemblrdf_dataset.
 
 :chemblrdf_dataset
     a void:Dataset;
@@ -795,18 +957,19 @@
     void:uriSpace "http://data.kasabi.com/dataset/chembl-rdf/target/"^^xsd:string ;
     dcterms:subject &lt;http://dbpedia.org/resource/Protein> .
     </pre>
-    </section>
-  </section>
-  <section id="appendix-example-linksets" class="appendix">
-  	<h2>Example Linksets</h2>
-    <section id="CS2ChEMBLLinkset">
-      <h3>ChemSpider to ChEMBL-RDF Compounds Linkset</h3>
-      
-     <p>Below is the start of the linkset file relating ChemSpider compounds with
-     ChEMBL-RDF compounds. The linkset reuses the VoID descriptions already 
-     provided for the datasets, but augments these with additional metadata.</p>
-     
-     <pre class="turtle">
+		</section>
+	</section>
+	<section id="appendix-example-linksets" class="appendix">
+		<h2>Example Linksets</h2>
+		<section id="CS2ChEMBLLinkset">
+			<h3>ChemSpider to ChEMBL-RDF Compounds Linkset</h3>
+
+			<p>Below is the start of the linkset file relating ChemSpider
+				compounds with ChEMBL-RDF compounds. The linkset reuses the VoID
+				descriptions already provided for the datasets, but augments these
+				with additional metadata.</p>
+
+			<pre class="turtle">
 @prefix chembl: &lt;http://data.kasabi.com/dataset/chembl-rdf/chemblid/> .
 
 <>
@@ -842,24 +1005,26 @@ chembl:CHEMBL1236438 skos:exactMatch &lt;http://rdf.chemspider.com/43> .
 chembl:CHEMBL144103 skos:exactMatch &lt;http://rdf.chemspider.com/60> .
 ...
      </pre>
-     
-     <p>Note that since the linkset is declared to be a subset of the ChEMBL-RDF
-     datasets, then no explicit license statement is required since this is
-     inherited from its parent dataset.</p>
-     
-     <p class="note">There is probably a whole mine field of issues here around
-     licenses, particularly if we consider transitive links computed manually
-     or even on-the-fly. What is the appropriate license if the two datasets
-     have different and conflicting licensing conditions?</p>
-    </section>
-    <section id="CS2DBLinkset">
-      <h3>ChemSpider to DrugBank Linkset</h3>
-      <p>Below is the start of the linkset file relating ChemSpider compounds
-      to DrugBank drugs. As there is no VoID file available for the DrugBank
-      dataset, the VoID information is included in the linkset. For ChemSpider, 
-      the VoID information is imported from the ChemSpider location.</p>
-      
-      <pre class="turtle">
+
+			<p>Note that since the linkset is declared to be a subset of the
+				ChEMBL-RDF datasets, then no explicit license statement is required
+				since this is inherited from its parent dataset.</p>
+
+			<p class="note">There is probably a whole mine field of issues
+				here around licenses, particularly if we consider transitive links
+				computed manually or even on-the-fly. What is the appropriate
+				license if the two datasets have different and conflicting licensing
+				conditions?</p>
+		</section>
+		<section id="CS2DBLinkset">
+			<h3>ChemSpider to DrugBank Linkset</h3>
+			<p>Below is the start of the linkset file relating ChemSpider
+				compounds to DrugBank drugs. As there is no VoID file available for
+				the DrugBank dataset, the VoID information is included in the
+				linkset. For ChemSpider, the VoID information is imported from the
+				ChemSpider location.</p>
+
+			<pre class="turtle">
 @prefix db: &lt;http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/> .
 
 <>
@@ -907,8 +1072,8 @@ chembl:CHEMBL144103 skos:exactMatch &lt;http://rdf.chemspider.com/60> .
 &lt;http://rdf.chemspider.com/18> skos:exactMatch db:DB01672 .
 ...
       </pre>
-    </section>
-  </section>
+		</section>
+	</section>
 </body>
 
 </html>
