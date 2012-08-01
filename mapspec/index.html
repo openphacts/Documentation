@@ -107,6 +107,7 @@
 
 <section id="introduction" class="informative">
 	<h2>Introduction</h2>
+	<p class="todo"> Revise this section</p>
 
 	<p>
 		The Open PHACTS platform relies on data and the interlinks published by 
@@ -210,6 +211,10 @@
 
 <section id="void-overview">
 	<h3>Vocabulary of Interlinked Datasets (VoID)</h3>
+	
+	<p class="todo"> Revise this section</p>
+	
+	
 	<p>
 		The Vocabulary of Interlinked Datasets (VoID) [[!VOID]] is a
         W3C interest group note that specifies a vocabulary for describing
@@ -237,6 +242,15 @@
 	</dl>
 
     <h4>Linksets</h4>
+
+   	<p>
+		A data instance mapping is a claim that an identifier in one dataset is 
+		related in some way to an identifier in another dataset. The mapping 
+		specification captures the type of relationship and the metadata 
+		associated with the mapping, e.g. provenance information about who 
+		created the mapping and the specific versions of the datasets related.
+	</p>
+    
 	<p>
 		The VoID specification enables a separation between (1) the
 		datasets involved in a link, and (2) who publishes the link.
@@ -267,6 +281,72 @@
 			published by some third party
 		</li>
 	</ul>
+	<section id="mapping-representation">
+		<h3>Representing a Mapping</h3>
+
+		<p>
+			A mapping must be represented as a VoID link, i.e. it is an
+			RDF triple that relates an identifier in one dataset with an
+			identifier in another dataset with some predicate which provides
+			the meaning of the mapping.
+		</p>
+
+		<p>
+			The mapping predicate captures the way in which the two
+			identifiers are related. The mapping should respect the
+			semantics of the relationship, i.e. the owl:sameAs relationship
+			must only be used when the two identifiers are completely
+			interchangeable.
+		</p>
+
+		<p>
+			Halpin et al [[Halpin2010]] propose a mapping relationship
+			ontology with eight levels of equivalence:
+		</p>
+		<ul>
+			<li>
+				Identical (equivalent to <code>owl:sameAs</code>): always 
+				interchangeable
+			</li>
+			<li>Claims Identical: inverse does not hold</li>
+			<li>
+				Matches (equivalent to <code>skos:exactMatch</code>):
+				share many properties, interchangeable in most cases
+			</li>
+			<li>Claims Matches: inverse does not hold</li>
+			<li>
+				Similar (equivalent to <code>skos:closeMatch</code>):
+				share some properties, not interchangeable
+			</li>
+			<li>Claims Similar: inverse does not hold</li>
+			<li>
+				Related (equivalent to <code>skos:related</code>):
+				distinct things with an association
+			</li>
+			<li>Claims Related (equivalent to <code>rdfs:seeAlso</code>)</li>
+		</ul>
+
+		<h4>Example</h4>
+			<p>
+				The following example declares that the ChemSpider
+				α-Ketoisovaleric acid concept with the 
+				<a href="http://www.chemspider.com/48">CSID 48</a> shares many 
+				properties with the ChEMBL
+				3-Methyl-2-oxobutanoic acid concept with the ChEMBL-RDF <a
+				href="http://data.kasabi.com/dataset/chembl-rdf/chemblid/CHEMBL146554"
+				> ChEMBL ID CHEMBL146554</a>. The relationship is drawn from
+				ChemSpider based on the compounds sharing the same structure
+				based on their InChI Keys (in this case the compound has the
+				same InChI Key QHKABHOOEWYVLI-UHFFFAOYSA-N in both data sets.).
+			</p>
+			<pre class="turtle">
+@prefix chembl: &lt;http://data.kasabi.com/dataset/chembl-rdf/chemblid/&gt; .
+
+&lt;http://rdf.chemspider.com/48&gt; skos:exactMatch chembl:CHEMBL146554 .
+      		</pre>
+	<!-- end mapping-representation -->
+	</section>
+	
 <!-- end void-overview -->
 </section>
 
@@ -526,7 +606,7 @@
 		</p>
 	<!-- end dataset-other -->
 	</section>
-	<section id="dataset-examples">
+	<section id="dataset-examples" class="informative">
 		<h3>Examples</h3>
 
 		<p class="todo">
@@ -557,261 +637,206 @@
 	<h2>Describing Linksets</h2>
 
 	<p class="todo"> Revise this section</p>
-	
+
 	<p>
-		A data instance mapping is a claim that an identifier in one dataset is 
-		related in some way to an identifier in another dataset. The mapping 
-		specification captures the type of relationship and the metadata 
-		associated with the mapping, e.g. provenance information about who 
-		created the mapping and the specific versions of the datasets related.
+		A linkset is itself a dataset, and as such should provide the
+		metadata about its content and how it was created. The metadata 
+		associated with a link is essential for
+		enabling its reuse by others. It enables a consumer of the link
+		to understand which datasets are linked (inlcuding which version), 
+		who claimed the link, under what circumstances,
+		and which (if any) tools were used to generate the link (e.g.
+		[[SILK]]).
 	</p>
 
 	<p>
-		Example linksets are given in <a href="#example-linksets">Appendix B</a>.
+		Note that the linkset should point to the dataset description of
+		the datasets that it uses. These descriptions should be provided by 
+		the dataset provider as part of the dataset publishing process 
+		[[OPS-RDF]]. However, it is necessary to augment the data for 
+		the purposes of providing additional information about the 
+		involvoment of the dataset in the linkset, e.g. when it was 
+		accessed for the purpose of creating the linkset.
 	</p>
 
-	<section id="mapping-representation">
-		<h3>Representing a Mapping</h3>
+	<section id="linkset-metadata">
+		<h3>General Linkset Metadata</h3>
 
-		<p>
-			A mapping must be represented as a VoID link, i.e. it is an
-			RDF triple that relates an identifier in one dataset with an
-			identifier in another dataset with some predicate which provides
-			the meaning of the mapping.
-		</p>
-
-		<p>
-			The mapping predicate captures the way in which the two
-			identifiers are related. The mapping should respect the
-			semantics of the relationship, i.e. the owl:sameAs relationship
-			must only be used when the two identifiers are completely
-			interchangeable.
-		</p>
-
-		<p>
-			Halpin et al [[Halpin2010]] propose a mapping relationship
-			ontology with eight levels of equivalence:
-		</p>
+		<p style="font-weight: bold;">Type</p>
 		<ul>
 			<li>
-				Identical (equivalent to <code>owl:sameAs</code>): always 
-				interchangeable
+				Must declare that we have a linkset using 
+				<code>void:Linkset</code>.
 			</li>
-			<li>Claims Identical: inverse does not hold</li>
-			<li>
-				Matches (equivalent to <code>skos:exactMatch</code>):
-				share many properties, interchangeable in most cases
-			</li>
-			<li>Claims Matches: inverse does not hold</li>
-			<li>
-				Similar (equivalent to <code>skos:closeMatch</code>):
-				share some properties, not interchangeable
-			</li>
-			<li>Claims Similar: inverse does not hold</li>
-			<li>
-				Related (equivalent to <code>skos:related</code>):
-				distinct things with an association
-			</li>
-			<li>Claims Related (equivalent to <code>rdfs:seeAlso</code>)</li>
 		</ul>
 
-		<h4>Example</h4>
-			<p>
-				The following example declares that the ChemSpider
-				α-Ketoisovaleric acid concept with the 
-				<a href="http://www.chemspider.com/48">CSID 48</a> shares many 
-				properties with the ChEMBL
-				3-Methyl-2-oxobutanoic acid concept with the ChEMBL-RDF <a
-				href="http://data.kasabi.com/dataset/chembl-rdf/chemblid/CHEMBL146554"
-				> ChEMBL ID CHEMBL146554</a>. The relationship is drawn from
-				ChemSpider based on the compounds sharing the same structure
-				based on their InChI Keys (in this case the compound has the
-				same InChI Key QHKABHOOEWYVLI-UHFFFAOYSA-N in both data sets.).
-			</p>
-			<pre class="turtle">
-@prefix chembl: &lt;http://data.kasabi.com/dataset/chembl-rdf/chemblid/&gt; .
+		<p class="note">
+			The <code>void:Linkset</code> predicate is a sub-property of the
+			<code>void:Dataset</code> property.
+		</p>
 
-&lt;http://rdf.chemspider.com/48&gt; skos:exactMatch chembl:CHEMBL146554 .
-      		</pre>
-	<!-- end mapping-representation -->
+		<p style="font-weight: bold;">Title</p>
+		<ul>
+			<li>
+				Must provide the title of the linkset using the
+				<code>dcterms:title</code> predicate.
+			</li>
+		</ul>
+
+		<p style="font-weight: bold;">Description</p>
+		<ul>
+			<li>
+				Must provide a description of the linkset using the  
+				<code>dcterms:description</code> predicate.
+			</li>
+		</ul>
+
+		<p>
+			Note that for linksets there is unlikely to be a web page
+			directly dedicated to the linkset, as such that part of the
+			dataset metadata is not stated as a requirement.
+		</p>
+
+		<p style="font-weight: bold;">License</p>
+		<ul>
+			<li>
+				Must declare the licence under which the linkset is published 
+				using the <code>dcterms:license</code> predicate.
+			</li>
+		</ul>
+
+		<p>
+			Where possible, we recommend publishing data under an open license
+			to enable reuse of the data with appropriate acknowledgement. For
+			Open PHACTS, the recommended license is <a
+			href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>. 
+			A list of alternative licenses are available in <a
+			href="http://www.w3.org/TR/void/#license">Section 2.4</a> of the 
+			W3C note on VoID.
+		</p>
+		
+		<p class="note">
+			The recommended data license may be updated when John Wilbanks 
+			reports back.
+		</p>
+
+		<p class="note">
+			The license under which a linkset is published may be different 
+			from that of the datasets that it links, even if it is a subset of
+			one of the datasets.
+		</p>
+	<!-- end linkset-metadata -->
 	</section>
-	<section id="linksets">
-		<h3>Linksets</h3>
+	<section id="link-info">
+		<h3>Link Information</h3>
+		<p style="font-weight: bold;">Target Datasets</p>
+		<ul>
+			<li>
+				Must declare the datasets that are linked using the 
+				<code>void:subjectsTarget</code> and 
+				<code>void:objectsTarget</code> predicates.
+			</li>
+		</ul>
+		
+		<p style="font-weight: bold;">Link Relationship</p>
+		<ul>
+			<li>
+				Must declare the link predicate using the 
+				<code>void:linkPredicate</code> predicate.
+			</li>
+		</ul>	
+	<!-- end link-info -->
+	</section>
+	<section id="linkset-provenance">
 
+		<h3>Provenance</h3>
+		<p style="font-weight: bold;">Linkset Provenance</p>
+		<ul>
+			<li>
+				If the linkset is a subset of another dataset, then
+				this is captured with the <code>void:subset</code>
+				predicate, with the linkset URI as the object of the triple.
+			</li>
+			<li>
+				The linkset authorship, i.e. the agent that generated
+				the intellectual knowledge, is captured with the following
+				properties:
+				<ul>
+					<li>
+						<code>pav:authoredBy</code> to capture who
+						authored the links. Currently we recommend the use of
+						FOAF [[FOAF]] for the objects of these triples, see 
+						<a href="#orcid-note" >note</a> above about future 
+						use of ORCID identifiers.
+					</li>
+					<li>
+						<code>pav:authorOn</code> to capture when the
+						links were generated.
+					</li>
+				</ul>
+			</li>
+			<li>
+				The linkset creator, i.e. the entity responsible for
+				converting the links to the linkset format, is captured with
+				the following properties:
+				<ul>
+					<li>
+						<code>pav:createdBy</code> to capture who
+						converted the links into the current digital format.
+					</li>
+					<li>
+						<code>pav:createdOn</code> to capture when the
+						links were converted to their digital form.
+					</li>
+				</ul>
+			</li>
+		</ul>
+		
 		<p>
-			The metadata associated with a link is essential for
-			enabling its reuse by others. It enables a consumer of the link
-			to understand who claimed the link, under what circumstances,
-			and which (if any) tools were used to generate the link (e.g.
-			[[SILK]]).
+			Additional information about how the links were created
+			should be stated. For example, if the links were created using
+			a tool such as Silk [[SILK]]. The links may also contain
+			provenance information represented using PROV-O [[PROV-O]] and
+			captured in a separate provenance graph.
+		</p>
+	<!-- end linkset-metadata -->
+	</section>
+	<section id="linkset-stats">
+		<h3>Linkset Statistics</h3>
+		<ul>
+			<li>
+				Should declare the number of links in the linkset using the
+				<code>void:triples</code> predicate. 
+			</li>
+		</ul>
+		
+		<p>
+			Providing the number of triples included in the linkset allows for 
+			applications using the linkset to validate that the entire linkset 
+			has been successfully loaded.
 		</p>
 
+	<!-- end linkset-stats -->
+	</section>
+	<section id="linkset-examples" class="informative">
+		<h3>Examples</h3>
+
 		<p>
-			The metadata is split into metadata about the dataset and
-			the metadata about the links themselves. Note that the dataset
-			metadata should be provided by the dataset provider as part of
-			the dataset publishing process [[OPS-RDF]], although it can be
-			augmented for the purposes of providing additional information
-			about the link.
+			Example VoID linkset descriptions can be found in 
+			<a href="#example-linksets">Appendix B</a>. The first example 
+			shows how existing dataset descriptors can be reused (see 
+			<a href="#CS2ChEMBLLinkset">Appendix B.1</a>). The second 
+			example shows the declaration of a dataset's metadata in the 
+			linkset file (see <a href="#CS2DBLinkset" >Appendix B.2</a>).
 		</p>
-
-
-
-		<section id="linkset-metadata">
-			<h3>Linkset Metadata</h3>
-
-			<p>
-				A linkset is itself a dataset, and as such should provide the
-				metadata one would associate with a dataset, as stated 
-				<a href="#dataset-metadata" >above</a>. Specifically, the 
-				following metadata must be included:
-			</p>
-
-			<p style="font-weight: bold;">Type</p>
-			<ul>
-				<li>
-					Declare that we have a linkset using 
-					<code>void:Linkset</code>.
-				</li>
-			</ul>
-
-			<p class="note">
-				The <code>void:Linkset</code> predicate is a sub-property of the
-				<code>void:Dataset</code> property.
-			</p>
-
-			<p style="font-weight: bold;">License</p>
-			<ul>
-				<li>
-					Provide details of the licence under which the
-					linkset is published using the <code>dcterms:license</code>
-					property.
-				</li>
-			</ul>
-
-			<p class="note">
-				The license under which a linkset is
-				published may be different from that of the dataset.
-			</p>
-
-			<p style="font-weight: bold;">Linkset Provenance</p>
-			<ul>
-				<li>
-					If the linkset is a subset of another dataset, then
-					this is captured with the <code>void:subset</code>
-					predicate, with the linkset URI as the object of the triple.
-				</li>
-				<li>
-					The linkset authorship, i.e. the agent that generated
-					the intellectual knowledge, is captured with the following
-					properties:
-					<ul>
-						<li>
-							<code>pav:authoredBy</code> to capture who
-							authored the links. Currently we recommend the use of
-							FOAF [[FOAF]] for the objects of these triples, see 
-							<a href="#orcid-note" >note</a> above about future 
-							use of ORCID identifiers.
-						</li>
-						<li>
-							<code>pav:authorOn</code> to capture when the
-							links were generated.
-						</li>
-					</ul>
-				</li>
-				<li>
-					The linkset creator, i.e. the entity responsible for
-					converting the links to the linkset format, is captured with
-					the following properties:
-					<ul>
-						<li>
-							<code>pav:createdBy</code> to capture who
-							converted the links into the current digital format.
-						</li>
-						<li>
-							<code>pav:createdOn</code> to capture when the
-							links were converted to their digital form.
-						</li>
-					</ul>
-				</li>
-			</ul>
-			
-			<p>
-				Additional information about how the links were created
-				should be stated. For example, if the links were created using
-				a tool such as Silk [[SILK]]. The links may also contain
-				provenance information represented using PROV-O [[PROV-O]] and
-				captured in a separate provenance graph.
-			</p>
-
-			<p style="font-weight: bold;">Linkset Metadata</p>
-			<ul>
-				<li>
-					A declaration must be made about the datasets that
-					are linked using the <code>void:subjectsTarget</code> and 
-					<code>void:objectsTarget</code> properties.
-				</li>
-				<li>
-					The link predicate is declared using 
-					<code>void:linkPredicate</code>.
-				</li>
-				<li>
-					The number of links in the linkset is declared using
-					<code>void:triples</code>. This allows for validation that
-					the entire linkset has been successfully loaded.
-				</li>
-			</ul>
-
-			<p>
-				In order to support applications using the linkset to
-				understand and present the data, the following additional
-				metadata should be included:
-			</p>
-
-			<p style="font-weight: bold;">Title</p>
-			<ul>
-				<li>
-					The title of the linkset using <code>dcterms:title</code>
-					predicate.
-				</li>
-			</ul>
-
-			<p style="font-weight: bold;">Description</p>
-			<ul>
-				<li>
-					A description of the linkset using 
-					<code>dcterms:description</code>
-					predicate.
-				</li>
-			</ul>
-
-			<p>
-				Note that for linksets there is unlikely to be a web page
-				directly dedicated to the linkset, as such that part of the
-				dataset metadata is not stated as a requirement.
-			</p>
-		<!-- end linkset-metadata -->
-		</section>
-		<section id="linkset-examples">
-			<h3>Examples</h3>
-
-			<p>
-				Example VoID linkset descriptions can be found in 
-				<a href="#example-linksets">Appendix B</a>. The first example 
-				shows how existing dataset descriptors can be reused (see 
-				<a href="#CS2ChEMBLLinkset">Appendix B.1</a>). The second 
-				example shows the declaration of a dataset's metadata in the 
-				linkset file (see <a href="#CS2DBLinkset" >Appendix B.2</a>).
-			</p>
-		<!-- end linkset-examples -->
-		</section>
-	<!-- end linksets -->
+	<!-- end linkset-examples -->
 	</section>
 <!-- end linkset-description -->
 </section>
 
 <section id="exchanging-descriptions">
 	<h2>Exchanging VoID Documents</h2>
+	<p class="todo"> Revise this section</p>
 
 	<p>
 		It is anticipated that links between datasets will not be
@@ -939,6 +964,8 @@
 
 <section id="standards" class="informative">
 	<h2>Related Standards</h2>
+	<p class="todo"> Revise this section</p>
+
 	<section id="nanopublications">
 		<h3>Nanopublications</h3>
 	<!-- end nanopublications -->
