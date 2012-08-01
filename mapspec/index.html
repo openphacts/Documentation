@@ -59,6 +59,22 @@
 		padding: 1.3em 2em;
 		margin-left: 0;
 	}
+	.todo::before {
+		content: "ToDo";
+		display: block;
+		width: 150px;
+		margin: -1.5em 0 0.5em 0;
+		font-weight: bold;
+		border: 1px solid #CFF6D9;
+		background: white;
+		padding: 3px 1em;
+	}
+	p.todo {
+		margin: 1em 0em 0em;
+		padding: 1em;
+		border: 2px solid #CFF6D9;
+		background: #E2FFF0;
+	}
 </style>
 </head>
 
@@ -130,9 +146,8 @@
 			statements in the RDF publication guidelines [[OPS-RDF]].
 		</p>
 
-		<p>
-			<strong>ToDo:</strong> Talk about the role of the data cache and
-			datasets.
+		<p class="todo">
+			Talk about the role of the data cache and datasets.
 		</p>
 
 		<p>
@@ -259,16 +274,14 @@
 	<h2>Describing Datasets</h2>
 
 	<p>
-		We assume that the dataset has been converted into RDF according to 
-		the Open PHACTS RDF Guidelines [[OPS-RDF]]. This section describes 
-		the the information  that must appear in the VoID description for 
-		the dataset.
+		We assume that an RDF representation of the dataset has been generated
+		according to the Open PHACTS RDF Guidelines [[OPS-RDF]]. This section 
+		describes the information that must appear in the VoID description 
+		for the dataset.
 	</p>
 
 	<p>
-		Examples of dataset descriptions that conform to this specification
-		can be found in <a href="#appendix-dataset-examples">Appendix 
-		A.1</a>. The <a href="http://openphacts.cs.man.ac.uk/Void-Editor/">VoID 
+		The <a href="http://openphacts.cs.man.ac.uk/Void-Editor/">VoID 
 		Generator</a> supports the creation of dataset descriptions that 
 		conform with this specification.
 	</p>
@@ -328,6 +341,11 @@
 			A list of alternative licenses are available in <a
 			href="http://www.w3.org/TR/void/#license">Section 2.4</a> of the 
 			W3C note on VoID.
+		</p>
+		
+		<p class="note">
+			The recommended data license may be updated when John Wilbanks 
+			reports back.
 		</p>
 
 		<p style="font-weight: bold;">Namespace</p>
@@ -389,7 +407,7 @@
 			<li>
 				If the dataset has been retrieved from another location,
 				i.e. it has already been published as RDF and this is a 
-				replica of that datam, then the following metadata must
+				replica of that data, then the following metadata must
 				be given:
 				<ul>
 					<li>
@@ -511,6 +529,12 @@
 	<section id="dataset-examples">
 		<h3>Examples</h3>
 
+		<p class="todo">
+			Need to update the examples to conform with the guidelines. Should
+			add some discussion about the existence of datasets that do not
+			conform with these guidelines.
+		</p>
+
 		<p>
 			Example VoID dataset descriptions can be found in 
 			<a href="#appendix-dataset-examples" >Appendix A</a>. The first 
@@ -531,7 +555,9 @@
 
 <section id="linkset-description">
 	<h2>Describing Linksets</h2>
-<p><strong>ToDo:</strong> Revise this section</p>
+
+	<p class="todo"> Revise this section</p>
+	
 	<p>
 		A data instance mapping is a claim that an identifier in one dataset is 
 		related in some way to an identifier in another dataset. The mapping 
