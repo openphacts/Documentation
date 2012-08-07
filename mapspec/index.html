@@ -352,6 +352,11 @@
 
 <section id="dataset-decscription">
 	<h2>Describing Datasets</h2>
+<p class="todo">
+Extend the properties in this section to those required in the RDF Guidelines,
+to support the data harvester, and to cover standard information included in 
+registries such as CKAN and other standards such as BioDBcore.
+</p>
 
 	<p>
 		We assume that an RDF representation of the dataset has been generated
@@ -649,16 +654,6 @@
 		[[SILK]]).
 	</p>
 
-	<p>
-		Note that the linkset should point to the dataset description of
-		the datasets that it uses. These descriptions should be provided by 
-		the dataset provider as part of the dataset publishing process 
-		[[OPS-RDF]]. However, it is necessary to augment the data for 
-		the purposes of providing additional information about the 
-		involvoment of the dataset in the linkset, e.g. when it was 
-		accessed for the purpose of creating the linkset.
-	</p>
-
 	<section id="linkset-metadata">
 		<h3>General Linkset Metadata</h3>
 
@@ -733,6 +728,15 @@
 			</li>
 		</ul>
 		
+		<p>
+			Note that the object of the above predicates are the URIs of the
+			respective datasets as declared in a VoID description. The datasets 
+			may themselves be a subset of a larger dataset. Where the datasets
+			do not provide a VoID description, the minimal required information 
+			must be provided in the linkset description. This is detailed in
+			<a href="linkset-min-dataset-desc">Section 5.5</a>. 
+		</p>
+		
 		<p style="font-weight: bold;">Link Relationship</p>
 		<ul>
 			<li>
@@ -745,53 +749,95 @@
 	<section id="linkset-provenance">
 
 		<h3>Provenance</h3>
-		<p style="font-weight: bold;">Linkset Provenance</p>
+		
+		<p style="font-weight: bold;">Subset</p>
 		<ul>
 			<li>
 				If the linkset is a subset of another dataset, then
-				this is captured with the <code>void:subset</code>
-				predicate, with the linkset URI as the object of the triple.
-			</li>
-			<li>
-				The linkset authorship, i.e. the agent that generated
-				the intellectual knowledge, is captured with the following
-				properties:
-				<ul>
-					<li>
-						<code>pav:authoredBy</code> to capture who
-						authored the links.
-					</li>
-					<li>
-						<code>pav:authorOn</code> to capture when the
-						links were generated.
-					</li>
-				</ul>
-			</li>
-			<li>
-				The linkset creator, i.e. the entity responsible for
-				converting the links to the linkset format, is captured with
-				the following properties:
-				<ul>
-					<li>
-						<code>pav:createdBy</code> to capture who
-						converted the links into the current digital format.
-					</li>
-					<li>
-						<code>pav:createdOn</code> to capture when the
-						links were converted to their digital form.
-					</li>
-				</ul>
+				this must be declared using the <code>void:subset</code>
+				predicate.
 			</li>
 		</ul>
 		
 		<p>
-			Additional information about how the links were created
-			should be stated. For example, if the links were created using
-			a tool such as Silk [[SILK]]. The links may also contain
-			provenance information represented using PROV-O [[PROV-O]] and
-			captured in a separate provenance graph.
+			Note that the dataset URI is the subject of the 
+			<code>void:subset</code> triple and the linkset URI is the object.
+			If the dataset VoID description contains the declaration, there is
+			no need to repeat it in the linkset document. However, the linkset
+			documents can be used to declare additional subsets. A subset 
+			inherits properties from its parent. 
 		</p>
-	<!-- end linkset-metadata -->
+		
+		<p style="font-weight: bold;">Link Source</p>
+		<ul>
+			<li>
+				Must declare how the links were asserted.
+				<ul>
+					<li>
+						Manually asserted links are declared using the 
+						authorship properties:
+						<ul>
+							<li>
+								<code>pav:authoredBy</code> to capture who made 
+								the assertions encoded in the links.
+							</li>
+							<li>
+								<code>pav:authorOn</code> to capture when the
+								assertions were made.
+							</li>
+						</ul>
+					</li>
+					<li>
+						Computer derived links are declared by asserting the
+						tool used to generate the links using the property 
+						<code>pav:createdWith</code>. 
+					</li>
+				</ul>
+			</li>
+		</ul>
+
+		<p>
+			Additional information about the settings used when running an 
+			automated link generation tool such as Silk [[SILK]] can be 
+			captured in an associated provenance graph encoded using PROV-O 
+			[[PROV-O]].
+		</p>
+		
+		<p style="font-weight: bold;">Linkset Creation Details</p>
+		<ul>
+			<li>
+				Must declare who created the linkset, i.e. encoded the 
+				knowledge into triples or operated the computer generation tool,
+				with the property <code>pav:createdBy</code>.
+			</li>
+			<li>
+				Must declare when the linkset was created using the 
+				<code>pav:createdOn</code> predicate.
+			</li>
+		</ul>
+		
+		<p style="font-weight: bold;">Dataset Access</p>
+		<ul>
+			<li>
+				Must declare, for each dataset, when and by whom it was 
+				accessed using:
+				<ul>
+					<li><code>pav:accessedBy</code></li>
+					<li><code>pav:accessedOn</code></li>
+				</ul>
+		</ul>
+		<p>
+			A linkset should point to the dataset descriptions of the datasets 
+			that it uses. These descriptions should be provided by the dataset 
+			provider as part of the dataset publishing process [[OPS-RDF]]. 
+			However, it is necessary to augment the data for the purposes of 
+			providing additional information about the involvoment of the 
+			dataset in the linkset, e.g. when it was accessed for the purpose 
+			of creating the linkset. Note that these triples will have the 
+			dataset URI as the subject.
+		</p>
+		
+	<!-- end linkset-provenance -->
 	</section>
 	<section id="linkset-stats">
 		<h3>Linkset Statistics</h3>
@@ -809,6 +855,25 @@
 		</p>
 
 	<!-- end linkset-stats -->
+	</section>
+	<section id="linkset-min-dataset-desc">
+		<h3>Minimal Dataset Description</h3>
+		
+		<p>
+			A linkset should point to the dataset descriptions of the datasets 
+			that it uses. These descriptions should be provided by the dataset 
+			provider as part of the dataset publishing process [[OPS-RDF]]. 
+			However, there are occasions when one or both of the linked 
+			datasets do not provide a VoID dataset description. The following
+			set of properties must then be provided in the linkset document. 
+			Other properties may also be given.  
+		</p>
+		<p class="todo">
+			Add the properties that form the minimal dataset model.
+		</p>
+		<ul>
+		</ul>
+	<!-- end linkset-min-dataset-desc -->
 	</section>
 	<section id="linkset-examples" class="informative">
 		<h3>Examples</h3>
