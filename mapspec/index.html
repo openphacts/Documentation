@@ -172,7 +172,7 @@
 	</section>
 	
 	<section id="rdf-syntax">
-		<h3>RDF Syntax Used for Examples</h3>
+		<h3>RDF Syntax and Namespaces</h3>
 		<p>
 			All examples in this document are written in the <a
 			href="http://www.w3.org/TR/turtle/">Turtle RDF syntax</a> 
@@ -182,6 +182,7 @@
 
 		<pre class="turtle">
 @prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix dul: &lt;http://www.ontologydesignpatterns.org/ont/dul/DUL.owl&gt;
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 @prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
 @prefix pav: &lt;http://purl.org/pav/2.0/&gt; .
@@ -734,7 +735,7 @@ registries such as CKAN and other standards such as BioDBcore.
 			may themselves be a subset of a larger dataset. Where the datasets
 			do not provide a VoID description, the minimal required information 
 			must be provided in the linkset description. This is detailed in
-			<a href="linkset-min-dataset-desc">Section 5.5</a>. 
+			<a href="#linkset-min-dataset-desc">Section 5.5</a>. 
 		</p>
 		
 		<h4 id="linkset-relationship">Link Relationship</h4>
@@ -744,6 +745,29 @@ registries such as CKAN and other standards such as BioDBcore.
 				<code>void:linkPredicate</code> predicate.
 			</li>
 		</ul>	
+		
+		<h4 id="linkset-justification">Link Justification</h4>
+		<ul>
+			<li>
+				Must declare the reason/circumstance under which the link holds
+				using the <code>dul:expresses</code> predicate and an object 
+				from an open vocabulary.
+			</li>
+		</ul>
+		<p>
+			The link justification provides the reason/circumstance why 
+			instances in the two datasets can be considered equivalent. 
+			For example, two chemical compounds have the same InChI Key or 
+			have the same chemical formula.
+		</p>  
+		<p class="todo">
+			Need to ensure that by using <code>dul:expresses</code> we are not
+			inferring other contradictory consequences.
+		</p>
+		<p>
+			Currently recommended vocabulary terms for the justification can be
+			found in <a href="#appendix-link-justifications">Appendix A</a>.
+		</p>
 	<!-- end link-info -->
 	</section>
 	<section id="linkset-provenance">
@@ -768,7 +792,7 @@ registries such as CKAN and other standards such as BioDBcore.
 			inherits properties from its parent. 
 		</p>
 		
-		<h4 id="linset-source">Link Source</h4>
+		<h4 id="linkset-source">Link Source</h4>
 		<ul>
 			<li>
 				Must declare how the links were asserted.
@@ -813,6 +837,14 @@ registries such as CKAN and other standards such as BioDBcore.
 			<li>
 				Must declare when the linkset was created using the 
 				<code>pav:createdOn</code> predicate.
+			</li>
+		</ul>
+		
+		<h4 id="linkset-version">Linkset Version</h4>
+		<ul>
+			<li>
+				May declare a version number for the linkset using the
+				<code>pav:version</code> predicate.
 			</li>
 		</ul>
 		
@@ -1106,6 +1138,14 @@ registries such as CKAN and other standards such as BioDBcore.
 		</p>
 	<!-- end provenance-standards -->
 	</section>
+</section>
+
+<section id="appendix-link-justifications" class="appendix">
+	<h2 id="link-justification-vocab">Link Justification Vocabulary Terms</h2>
+	<p class="todo">
+		Add list of known vocabulary terms to be used for link justification.
+	</p>
+<!-- end appendix-link-justifications -->
 </section>
 
 <section id="appendix-dataset-examples" class="appendix">
