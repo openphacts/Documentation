@@ -182,14 +182,16 @@
 
 		<pre class="turtle">
 @prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
-@prefix dul: &lt;http://www.ontologydesignpatterns.org/ont/dul/DUL.owl&gt;
+@prefix dul: &lt;http://www.ontologydesignpatterns.org/ont/dul/DUL.owl&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix freq: &lt;http://purl.org/cld/freq/&gt; .
 @prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
 @prefix pav: &lt;http://purl.org/pav/2.0/&gt; .
 @prefix prov: &lt;http://www.w3.org/ns/prov-o/&gt; . 
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 @prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
+@prefix voag: &lt;http://voag.linkedmodel.org/schema/voag#&gt; .
 @prefix void: &lt;http://rdfs.org/ns/void#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 		</pre>
@@ -622,6 +624,43 @@ registries such as CKAN and other standards such as BioDBcore.
 	</section>
 	<section id="dataset-update-frequency">
 		<h3 id="dataset-update">Dataset Update Frequency</h3>
+		<ul>
+			<li>
+				Should state the expected update frequency of the dataset using
+				the <code>voag:frequencyOfChange</code> predicate together with
+				a frequency term drawn from the 
+				<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/">
+				Frequency Vocabulary</a>. That is, one of:
+				<ul>
+					<li>Triennial <code>freq:triennial</code></li>
+    				<li>Biennial <code>freq:biennial</code></li>
+				    <li>Annual <code>freq:annual</code></li>
+				    <li>Semiannual <code>freq:semiannual</code></li>
+				    <li>Three times a year <code>freq:threeTimesAYear</code></li>
+				    <li>Quarterly <code>freq:quarterly</code></li>
+				    <li>Bimonthly <code>freq:bimonthly</code></li>
+				    <li>Monthly <code>freq:monthly</code></li>
+				    <li>Semimonthly <code>freq:semimonthly</code></li>
+				    <li>Biweekly <code>freq:biweekly</code></li>
+				    <li>Three times a month <code>freq:threeTimesAMonth</code></li>
+				    <li>Weekly <code>freq:weekly</code></li>
+				    <li>Semiweekly <code>freq:semiweekly</code></li>
+				    <li>Three times a week <code>freq:threeTimesAWeek</code></li>
+				    <li>Daily <code>freq:daily</code></li>
+				    <li>Continuous <code>freq:continuous</code></li>
+				    <li>Irregular <code>freq:irregular</code></li>
+				  </ul>
+				
+			</li>
+		</ul>
+		<!-- 
+		<p>
+			Considered a wide range of vocabularies here, including 
+			<a href="http://purl.org/NET/dady">DADY</a>. Dady not suitable due 
+			to the lack of specificaiton of the frequency terms. It also seemed
+			overly complicated.
+		</p>
+		 -->
 	<!-- end dataset-update-frequency -->
 	</section>
 	<section id="dataset-other">
