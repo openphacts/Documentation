@@ -567,6 +567,30 @@ registries such as CKAN and other standards such as BioDBcore.
 
 	<!-- end dataset-prov-version -->
 	</section>
+	<section id="dataset-subsets">
+		<h3 id="dataset-subset">Distinguishing Subsets</h3>
+
+		<h4 id="dataset-subset">Data source</h4>
+		<ul>
+			<li>
+				If the dataset contains distinguishable subsets, then these 
+				should be declared using the <code>void:subset</code> predicate. 
+			</li>
+		</ul>
+		<p>
+			Metadata that is common between the subsets can be declared for the 
+			parent only. However, the subsets allow for more specific linking 
+			between datasets and for providing details of the subject.
+		</p>
+		<p class="note">
+			In the VoID note [[VOID]], the <code>void:subset</code> propterty 
+			is used for both <em>subset of</em> and <em>has subset</em>. The 
+			declared semantics for the property is <em>has subset</em>. Within 
+			Open PHACTS, the property must be used with the <em>has subset</em> 
+			semantics.
+		</p>
+	<!-- end dataset-subset -->	
+	</section>
 	<section id="dataset-topic-resources">
 		<h3 id="dataset-topics-resources">Vocabularies, Topics, and 
 			Example Resources</h3>
@@ -592,31 +616,6 @@ registries such as CKAN and other standards such as BioDBcore.
 			subsets.
 		</p>
 	<!-- end dataset-topic-resource -->
-	</section>
-	<section id="dataset-subsets">
-		<h3 id="dataset-subset">Distinguishing Subsets</h3>
-
-		<h4 id="dataset-subset">Data source</h4>
-		<ul>
-			<li>
-				If the dataset contains distinguishable subsets, e.g.
-				ChEMBL Compounds or ChemSpider to ChEMBL links, then these should
-				be declared as subsets of the main dataset using the <code>void:subset</code>
-				predicate. The metadata that is common between the datasets can be
-				declared for the parent only.
-			</li>
-		</ul>
-
-		<p class="note">
-			In the VoID note [[VOID]], the
-			<code>void:subset</code>
-			propterty is used for both <em>subset of</em> and <em>has
-				subset</em>. The declared semantics for the property is <em>has
-				subset</em>. Within OPS, the property must be used with the <em>has
-				subset</em> semantics. Therefore, if a linkset appears as a subset of a
-			dataset, then it should be declared in the dataset metadata.
-		</p>
-	<!-- end dataset-subset -->	
 	</section>
 	<section id="dataset-access">
 		<h3 id="dataset-access">Dataset Access</h3>
