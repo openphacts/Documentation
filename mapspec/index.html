@@ -352,7 +352,7 @@
 </section>
 
 <section id="dataset-decscription">
-	<h2>Describing Datasets</h2>
+	<h2 id="dataset-describing">Describing Datasets</h2>
 <p class="todo">
 Extend the properties in this section to those required in the RDF Guidelines,
 to support the data harvester, and to cover standard information included in 
@@ -373,9 +373,9 @@ registries such as CKAN and other standards such as BioDBcore.
 	</p>
 
 	<section id="dataset-metadata">
-		<h3>General Dataset Metadata</h3>
+		<h3 id="dataset-general-metadata">General Dataset Metadata</h3>
 
-		<h4>Type</h4>
+		<h4 id="dataset-type">Type</h4>
 		<ul>
 			<li>
 				Must declare that we have a dataset using <code>
@@ -383,7 +383,7 @@ registries such as CKAN and other standards such as BioDBcore.
 			</li>
 		</ul>
 
-		<h4>Title</h4>
+		<h4 id="dataset-title">Title</h4>
 		<ul>
 			<li>
 				Must provide a name for the dataset using the 
@@ -391,7 +391,7 @@ registries such as CKAN and other standards such as BioDBcore.
 			</li>
 		</ul>
 
-		<h4>Description</h4>
+		<h4 id="dataset-description">Description</h4>
 		<ul>
 			<li>
 				Must provide a description of the dataset using the 
@@ -399,7 +399,7 @@ registries such as CKAN and other standards such as BioDBcore.
 			</li>
 		</ul>
 
-		<h4>Links to further information</h4>
+		<h4 id="dataset-webpages">Webpages</h4>
 		<ul>
 			<li>
 				Must provide a link to the homepage for the dataset using 
@@ -411,7 +411,7 @@ registries such as CKAN and other standards such as BioDBcore.
 			</li>
 		</ul>
 
-		<h4>License</h4>
+		<h4 id="dataset-license">License</h4>
 		<ul>
 			<li>
 				Must declare the licence under which the dataset is
@@ -434,7 +434,7 @@ registries such as CKAN and other standards such as BioDBcore.
 			reports back.
 		</p>
 
-		<h4>Namespace</h4>
+		<h4 id="dataset-namespace">Namespace</h4>
 		<ul>
 			<li>
 				Must declare the URI namespace for the resources in the 
@@ -449,9 +449,9 @@ registries such as CKAN and other standards such as BioDBcore.
 	<!-- end dataset-metadata -->			
 	</section>
 	<section id="dataset-prov-version">
-		<h3>Provenance and Version</h3>
+		<h3 id="dataset-provenance-version">Provenance and Version</h3>
 
-		<h4>Version</h4>
+		<h4 id="dataset-version">Version</h4>
 		<ul>
 			<li>
 				Must declare the version of the dataset using the 
@@ -468,7 +468,7 @@ registries such as CKAN and other standards such as BioDBcore.
 			provenace information.
 		</p>
 
-		<h4>Provenance of Data Origin</h4>
+		<h4 id="dataset-provenance">Provenance of Data Origin</h4>
 			
 		<ul>
 			<li>
@@ -565,22 +565,37 @@ registries such as CKAN and other standards such as BioDBcore.
 
 	<!-- end dataset-prov-version -->
 	</section>
-	<section id="dataset-topic">
-		<h3>Topics and Example Resources</h3>
-		<h4>Resource Type</h4>
+	<section id="dataset-topic-resources">
+		<h3 id="dataset-topics-resources">Topics and Example Resources</h3>
+		<h4 id="dataset-topcis">Dataset Topics</h4>
 		<ul>
 			<li>The type of the resource being linked is declared with the
 				<code>dcterms:subject</code> predicate.
 			</li>
 		</ul>
+		<p>
+			Multiple topics can be declared. If the data is split into 
+			subsets, then the example resources should be associated with the
+			subsets.
+		</p>
+		<h4 id="dataset-resources">Example Resources</h4>
+		<ul>
+			<li>Should be declared using the <code>void:exampleResource</code>.
+		</ul>
+		<p>
+			Multiple resources can be declared. If the data is split into 
+			subsets, then the example resources should be associated with the
+			subsets.
+		</p>
 	<!-- end dataset-prov-version -->
 	</section>
 	<section id="dataset-subsets">
-		<h3>Distinguishing Subsets</h3>
+		<h3 id="dataset-subset">Distinguishing Subsets</h3>
 
-		<h4>Data source</h4>
+		<h4 id="dataset-subset">Data source</h4>
 		<ul>
-			<li>If the dataset contains distinguishable subsets, e.g.
+			<li>
+				If the dataset contains distinguishable subsets, e.g.
 				ChEMBL Compounds or ChemSpider to ChEMBL links, then these should
 				be declared as subsets of the main dataset using the <code>void:subset</code>
 				predicate. The metadata that is common between the datasets can be
@@ -600,7 +615,7 @@ registries such as CKAN and other standards such as BioDBcore.
 	<!-- end dataset-subset -->	
 	</section>
 	<section id="dataset-other">
-		<h3>Other Metadata</h3>
+		<h3 id="dataset-other-metadata">Other Metadata</h3>
 		<p>
 			Other metadata that can be associated with a dataset may be
 			included, see the VoID specification [[VOID]] for additional 
@@ -613,7 +628,7 @@ registries such as CKAN and other standards such as BioDBcore.
 	<!-- end dataset-other -->
 	</section>
 	<section id="dataset-examples" class="informative">
-		<h3>Examples</h3>
+		<h3 id="dataset-examples">Examples</h3>
 
 		<p class="todo">
 			Need to update the examples to conform with the guidelines. Should
