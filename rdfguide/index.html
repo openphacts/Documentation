@@ -60,7 +60,7 @@
 <body>
   <section id="abstract">
     This is a “how to” guide for exposing your data in RDF in the Open PHACTS system. The guidelines build upon
-    [[Marshall2012]]. For an extensive explanation on RDF see the Introduction section below.
+    [[Marshall2012]]. For an extensive explanation on RDF see the <a href="#sec:introduction">Introduction</a> section below.
   </section>
   <section id="sotd">
     <h4>Disclaimer</h4>
@@ -82,7 +82,7 @@
     </p>
   </section>
   <section class="informative">
-    <h2>Introduction</h2>
+    <h2><a name="sec:introduction">Introduction</a></h2>
     <p>
       There are many sides to making data semantic. This guidelines document restricts itself to using RDF,
       and will not go into ontological discussions, such as when to use a class or an instance. The document will
@@ -145,7 +145,7 @@
     </ul>
   </section>
   <section>
-    <h2>Step 0: determine who owns the copyright of the data and under what license you are sharing it</h2>
+    <h2><a name="sec:step0">Step 0</a>: determine who owns the copyright of the data and under what license you are sharing it</h2>
     <p>
       Before you start thinking about converting something into RDF, the first two questions you
       should ask yourself:
@@ -171,7 +171,7 @@
     <ul style="font-style: italic">If an Open license or waiver is chosen, this step results in your data to be <span class="stars">&#x2605;</span>.</ul>
   </section>
   <section> 
-    <h2>Step 1: think in terms of meaning, rather than structure</h2>
+    <h2><a name="sec:step1">Step 1</a>: think in terms of meaning, rather than structure</h2>
     <p>
       When creating triples from your data, it is important to think about the data in terms of concepts and
       their relations in scientific terms, not in terms of database terminologies. The triples must in no way
@@ -254,7 +254,7 @@ Doger;Dog;Dachshund;Frank Smith;Mainstreet 1 London;Bones
       works towards <span class="stars">&#x2605;&#x2605;</span>.</ul>
   </section>
   <section> 
-    <h2>Step 2: what are the concepts in your data?</h2>
+    <h2><a name="sec:step2">Step 2</a>: what are the concepts in your data?</h2>
     <p>
       The first step in creating your RDF is to create a list of all concepts that are found in your
       data. Are there proteins, metabolites, cell cultures, organisms, targets, assays? At what level are
@@ -266,7 +266,7 @@ Doger;Dog;Dachshund;Frank Smith;Mainstreet 1 London;Bones
     </p>
     <p>
       The purpose here is not to develop an ontology, but to get clear what the content of your data is,
-      allowing you to identify existing ontologies (see Step 4) that capture that information. To support this process,
+      allowing you to identify existing ontologies (see <a href="#sec:step4">Step 4</a>) that capture that information. To support this process,
       for each concept found in your data a human readable label and a short definition must be provided,
       both in English. Here too, the underlying rule is that everything must have an explicit and well-defined
       meaning. This list may be in a Word document, Excel spreadsheet, but also in RDF itself, for example
@@ -282,11 +282,11 @@ Doger;Dog;Dachshund;Frank Smith;Mainstreet 1 London;Bones
       works towards <span class="stars">&#x2605;&#x2605;</span>.</ul>
   </section>
   <section> 
-    <h2>Step 3: what are the relations that link those concepts?</h2>
+    <h2><a name="sec:step3">Step 3</a>: what are the relations that link those concepts?</h2>
     <p>
       Once you know what concepts are found in your data, it is time to identify how those concepts are
       linked in your data set. These relations must be identified and listed too, and in the same manner
-      as in Step 2. These relations preferably have a verb form, making them easier to understand.
+      as in <a href="#sec:step2">Step 2</a>. These relations preferably have a verb form, making them easier to understand.
        For example, a predicate label <i>has name</i> is preferred over just <i>name</i>.
     </p>
     <p>
@@ -308,7 +308,7 @@ Doger;Dog;Dachshund;Frank Smith;Mainstreet 1 London;Bones
       works towards <span class="stars">&#x2605;&#x2605;</span>.</ul>
   </section>
   <section> 
-    <h2>Step 4: identify common vocabularies matching your concepts and relations.</h2>
+    <h2><a name="sec:step4">Step 4</a>: identify common vocabularies matching your concepts and relations.</h2>
     <p>
       Because existing software already knows about existing, common ontologies, you
       should use those existing, common ontologies, if you care about having an
@@ -430,7 +430,7 @@ Doger;Dog;Dachshund;Frank Smith;Mainstreet 1 London;Bones
       standardized ontologies makes your data <span class="stars">&#x2605;&#x2605;&#x2605;</span>.</ul>
   </section>
   <section> 
-    <h2>Step 5: linking out to other Linked Data</h2>
+    <h2><a name="sec:step5">Step 5</a>: linking out to other Linked Data</h2>
     <p>
       The next step is to explore what related data sets are available as Linked (Open) Data,
       and link out to those data sets. For example, if your data contains ChemSpider, ChEBI,
@@ -485,7 +485,7 @@ Doger;Dog;Dachshund;Frank Smith;Mainstreet 1 London;Bones
       <span class="stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</span>.</ul>
   </section>
   <section> 
-    <h2>Step 6: converting your data into RDF</h2>
+    <h2><a name="sec:step6">Step 6</a>: converting your data into RDF</h2>
     <p>
       These first steps ensure you have IRIs for all resources and predicates, and know where to put all
       relations, it is time to create triples. It is irrelevant to the triple creation process and thus up
@@ -578,7 +578,7 @@ ex:m1/full_mwt cheminf:SIO_000300 "341.748" .
       making it <span class="stars">&#x2605;&#x2605;&#x2605;&#x2605;</span>.</ul>
   </section>
   <section>
-    <h2>Step 7: validate your triples</h2>
+    <h2><a name="sec:step7">Step 7</a>: validate your triples</h2>
     <p> 
       While dedicated semantic web tools make it hard to introduce syntactic errors, it is still possible to
       make mistakes in the resulting RDF, and the generated triples should be validated.
@@ -630,7 +630,7 @@ ex:m1/full_mwt cheminf:SIO_000300 "341.748" .
       is valid RDF, then this step works towards making it <span class="stars">&#x2605;&#x2605;&#x2605;&#x2605;</span>.</ul>
   </section>
   <section>
-    <h2>Step 8: choose the methods with which people will access the data </h2>
+    <h2><a name="sec:step8">Step 8</a>: choose the methods with which people will access the data </h2>
     <p>
       There are various ways to make your data available for others to use:
       <ul>
@@ -714,11 +714,11 @@ http://rdf.openmolecules.net/?InChI=1S/CH4/h1H4
     </p>
     <ul style="font-style: italic">If your data was <span class="stars">&#x2605;&#x2605;&#x2605;</span>, and
       you have chosen to make the IRIs dereferencable, then this step makes it <span class="stars">&#x2605;&#x2605;&#x2605;&#x2605;</span>.
-      If you also linked out to other data (see Step 6), then your data is now
+      If you also linked out to other data (see <a href="#sec:step6">Step 6</a>), then your data is now
       <span class="stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</span>.</ul>
   </section>
   <section>
-    <h2>Step 9: advertise your data (in Open PHACTS)</h2>
+    <h2><a name="sec:step9">Step 9</a>: advertise your data (in Open PHACTS)</h2>
     <p>
       The final step in creating RDF, is to advertise your RDF as to get it used, and to get it linked
       to. Various options can be considered, such as announcing the data on mailing lists, or presenting
@@ -727,8 +727,8 @@ http://rdf.openmolecules.net/?InChI=1S/CH4/h1H4
     <p>
       Like with conference posters, advertising RDF goes with certain requirements. Conference posters
       must be of a certain size; similarly, RDF data set advertisement must include license information
-      (see step 0), what ontologies are used (see step 4), and their embedding in the Linked Open Data
-      network (see step 5). For example, this can be done by providing a semantic site map
+      (see <a href="#sec:step0">Step 0</a>), what ontologies are used (see <a href="#sec:step4">Step 4</a>), and their embedding in the Linked Open Data
+      network (see <a href="#sec:step5">Step 5</a>). For example, this can be done by providing a semantic site map
       (<a href="http://sw.deri.org/2007/07/sitemapextension/">http://sw.deri.org/2007/07/sitemapextension/</a>)
       or VoID (Vocabulary of Interlinked Datasets [[Cyganiak2011b]]; the latter is the Open PHACTS selection,
       as specified in the Open PHACTS Identity Mapping Specification [[Gray2012]].
