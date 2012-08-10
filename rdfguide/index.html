@@ -197,7 +197,7 @@ Doger;Dog;Dachshund;Frank Smith;Mainstreet 1 London;Bones
     </p>
     <p> 
       Output:
-      <pre>
+      <pre class="turtle">
 @prefix any23: &lt;http://any23.org/tmp/> .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#> .
 @prefix csv: &lt;http://vocab.sindice.net/csv/> .
@@ -234,7 +234,7 @@ Doger;Dog;Dachshund;Frank Smith;Mainstreet 1 London;Bones
     </p>
     <p>
       Importantly, the use of columns and rows in the RDF must be removed. Better would be:
-      <pre>
+      <pre class="turtle">
 @prefix any23: &lt;http://any23.org/tmp/> .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
@@ -453,36 +453,36 @@ Doger;Dog;Dachshund;Frank Smith;Mainstreet 1 London;Bones
       is under development, and will supercede this table when available.
       <table border="1">
         <tr>
-          <td>rdf:seeAlso</td>
+          <td><code>rdf:seeAlso</code></td>
           <td>General link, that indicates that the resource linked to is relevant to the subject.
             See <a href="http://www.w3.org/TR/rdf-schema/">http://www.w3.org/TR/rdf-schema/</a>.</td>
         </tr>
         <tr>
-          <td>skos:closeMatch</td>
+          <td><code>skos:closeMatch</code></td>
           <td>This link indicates that the linked resources are the same, under some assumptions or
             applications. This link is not transitive. See <a href="http://www.w3.org/2004/02/skos/core.html">http://www.w3.org/2004/02/skos/core.html</a>.</td>
         </tr>
         <tr>
-          <td>skos:exactMatch</td>
-          <td>This link subclasses skos:closeMatch but is stronger, and the same as now applies to a
+          <td><code>skos:exactMatch</code></td>
+          <td>This link subclasses <code>skos:closeMatch</code> but is stronger, and the same as now applies to a
             wide range of applications, implying that the link is transitive. See
             <a href="http://www.w3.org/2004/02/skos/core.html">http://www.w3.org/2004/02/skos/core.html</a>.</td>
         </tr>
         <tr>
-          <td>owl:sameAs</td>
+          <td><code>owl:sameAs</code></td>
           <td>Link that indicates that the subject is an instance, and that the object resource is an
             instance too, and the same resources as the subject. This link is transitive. See
             <a href="http://www.w3.org/TR/owl-ref/">http://www.w3.org/TR/owl-ref/</a>.</td>
         </tr>
         <tr>
-          <td>owl:equivalentClass</td>
-          <td>The same as owl:sameAs but then for OWL classes instead of instances. This link is
+          <td><code>owl:equivalentClass</code></td>
+          <td>The same as <code>owl:sameAs</code> but then for OWL classes instead of instances. This link is
             transitive. See <a href="http://www.w3.org/TR/owl-ref/">http://www.w3.org/TR/owl-ref/</a>.</td>
         </tr>
       </table>
     </p>
     <p>
-      The owl:sameAs and owl:equivalentClass predicates are very powerful and should be used with
+      The <code>owl:sameAs</code> and <code>owl:equivalentClass</code> predicates are very powerful and should be used with
       care since all attributes and relations of two therewith connected entities are merged
       together. In Open PHACTS the use of the less restrictive skos:exactMatch is recommended.
     </p>
