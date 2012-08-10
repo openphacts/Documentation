@@ -1249,50 +1249,97 @@
 		<p>
 			The ChemSpider site already has a VoID descriptor available from 
 			<a href="http://rdf.chemspider.com/void.rdf">
-			http://rdf.chemspider.com/void.rdf</a>. In this case, it is
-			recommended to use the descriptor as is, although the linksets below
-			will augment it with additional information, e.g. when and who
-			accessed the ChemSpider dataset.
-		</p>
-		<p>
-			Note that the descriptor uses an old form of VoID, noticiable in the
-			way that the number of triples is declared. Also, the descriptor is
-			lacking a metadata header, as discussed in <a href="#deploying-void">Section
-				5.1</a>. Additionally, the descriptor is published as RDF/XML rather
-			than the VoID recommendation of using RDF/turtle, although systems
-			should be able to read both interchangeably.
+			http://rdf.chemspider.com/void.rdf</a>. This has been created with 
+			a previous version of the VoID specification. Below is a suggested
+			updated version which conforms with the requirements of this 
+			specification.
 		</p>
 		<pre class="RDF"
-			title="ChemSpiders VoID Descriptor as published in RDF/XML">
-<?xml version="1.0" encoding="UTF-8" ?>
-&lt;rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
-        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-        xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-        xmlns:void="http://rdfs.org/ns/void#"
-        xmlns:scovo="http://purl.org/NET/scovo#">
-  &lt;void:Dataset rdf:about="http://rdf.chemspider.com/void.rdf#chemSpiderDataset">
-    &lt;dcterms:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChemSpider&lt;/dcterms:title>
-    &lt;dcterms:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ChemSpider's Public Dataset&lt;/dcterms:description>
-    &lt;dcterms:source rdf:resource="http://www.chemspider.com/"/>
-    &lt;dcterms:license rdf:resource="http://www.chemspider.com/Disclaimer.aspx"/>
-    &lt;dcterms:publisher rdf:resource="http://www.chemspider.com/"/>
-    &lt;dcterms:subject rdf:resource="http://dbpedia.org/resource/Molecule"/>
-    &lt;void:statItem>
-      &lt;scovo:Item>
-        &lt;scovo:dimension rdf:resource="http://rdfs.org/ns/void#noOfTriples"/>
-        &lt;rdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1157624328&lt;/rdf:value>
-      &lt;/scovo:Item>
-    &lt;/void:statItem>
-    &lt;void:exampleResource rdf:resource="http://www.chemspider.com/Chemical-Structure.2157.rdf"/>
-    &lt;void:sparqlEndpoint rdf:resource="http://rdf.chemspider.com/sparql"/>
-    &lt;void:vocabulary rdf:resource="http://purl.org/dc/terms/"/>
-    &lt;void:vocabulary rdf:resource="http://purl.org/dc/elements/1.1/"/>
-    &lt;void:vocabulary rdf:resource="http://xmlns.com/foaf/0.1/"/>
-    &lt;void:vocabulary rdf:resource="http://www.openarchives.org/ore/terms/"/>
-    &lt;void:vocabulary rdf:resource="http://www.polymerinformatics.com/ChemAxiom/ChemDomain.owl#"/>
-  &lt;/void:Dataset>
-&lt;/rdf:RDF>    
+			title="ChemSpiders VoID Descriptor as published in RDF/turtle">
+@prefix : &lt;http://rdf.chemspider.com/void-example.rdf#&gt;.
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt;.
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix freq: &lt;http://purl.org/cld/freq/&gt; .
+@prefix pav: &lt;http://purl.org/pav/2.0/&gt;.
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
+@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;.
+@prefix voag: &lt;http://voag.linkedmodel.org/schema/voag#&gt; .
+@prefix void: &lt;http://rdfs.org/ns/void#&gt;.
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;.
+
+# Metadata about this file
+&lt;http://rdf.chemspider.com/void-example.rdf&gt; 
+	a void:DatasetDescription;
+	dcterms:title "A VoID Description of the ChemSpider Dataset"@en;
+	dcterms:description 
+		"""This is an example VoID description for the ChemSpider dataset. 
+		   It is derived from the existing VoID description and updating it to the latest
+		   version of the VoID specification."""@en;
+	pav:createdBy &lt;http://www.cs.man.ac.uk/~graya/me.ttl&gt;;
+	pav:createdOn "2012-05-02"^^xsd:date;
+	pav:lastUpdateOn "2012-08-10"^^xsd:date;
+	pav:derivedFrom &lt;http://rdf.chemspider.com/void.rdf&gt;;
+	foaf:primaryTopic :chemSpiderDataset;
+	.
+
+# Description of the ChemSpider dataset
+:chemSpiderDataset 
+# General metadata
+	a void:Dataset;
+	dcterms:title "ChemSpider"@en;
+	dcterms:description "ChemSpider's Public Dataset"@en;
+	foaf:homepage &lt;http://rdf.chemspider.com/&gt;;
+	foaf:page &lt;http://www.chemspider.com/&gt;;
+	dcterms:license &lt;http://www.chemspider.com/Disclaimer.aspx&gt;;
+	void:uriSpace "http://rdf.chemspider.com/"^^xsd:string;
+#Subsets
+	void:subset :chemSpiderDataset_chembl_subset,:chemSpiderDataset_drugbank_subset;
+#Vocabularies, topics, resources
+	void:vocabulary &lt;http://purl.org/dc/elements/1.1/&gt;,
+		&lt;http://purl.org/dc/terms/&gt;,
+		&lt;http://www.openarchives.org/ore/terms/&gt;,
+		&lt;http://www.polymerinformatics.com/ChemAxiom/ChemDomain.owl#&gt;,
+		&lt;http://xmlns.com/foaf/0.1/&gt;;
+	dcterms:subject &lt;http://dbpedia.org/resource/Molecule&gt;;
+	void:exampleResource &lt;http://rdf.chemspider.com/2157&gt;;
+#Dataset Access	
+	void:sparqlEndpoint &lt;http://rdf.chemspider.com/sparql&gt;;
+#Update Frequency
+	voag:frequencyOfChange freq:continuous;
+#Other Metadata
+	# Technical features
+	void:feature &lt;http://www.w3.org/ns/formats/RDF_XML&gt;;
+	# Dataset statistics
+	void:triples "1157624328"^^xsd:nonNegativeInteger;
+	.
+
+:chemSpiderDataset_chembl_subset
+#General Metadata
+	a void:Dataset;
+	dcterms:title "ChemSpider ChEMBL Subset"@en;
+	dcterms:description "The slice of ChemSpider data that corresponds to ChEMBL molecules."@en;
+#Provenance
+	pav:retrievedFrom &lt;https://www.dropbox.com/sh/6zboa8z9i9vrzyl/7NxayhkUH0/ChEMBL20120731.zip&gt;;
+	pav:retrievedOn "2012-08-02"^^xsd:date;
+	pav:retrievedBy &lt;http://www.cs.man.ac.uk/~graya/me.ttl&gt; ;
+#Dataset Access
+	void:dataDump &lt;https://www.dropbox.com/sh/6zboa8z9i9vrzyl/7NxayhkUH0/ChEMBL20120731.zip&gt;;
+	.
+
+# Description of the ChemSPider subset relating to DrugBank
+:chemSpiderDataset_drugbank_subset
+#General Metadata
+	a void:Dataset;
+	dcterms:title "ChemSpider DrugBank Subset"@en;
+	dcterms:description "Data corresponding to DrugBank."@en;
+#Provenance
+	pav:retrievedFrom &lt;https://www.dropbox.com/sh/6zboa8z9i9vrzyl/qcFZzbLM77/DrugBank20120731.zip&gt;;
+	pav:retrievedOn "2012-08-02"^^xsd:date;
+	pav:retrievedBy &lt;http://www.cs.man.ac.uk/~graya/me.ttl&gt; ;
+#Dataset Access
+	void:dataDump &lt;https://www.dropbox.com/sh/6zboa8z9i9vrzyl/qcFZzbLM77/DrugBank20120731.zip&gt;;
+	.
     	</pre>
     <!-- end ChemSpider-VoID -->
 	</section>
