@@ -355,12 +355,6 @@
 
 <section id="dataset-decscription">
 	<h2 id="dataset-describing">Describing Datasets</h2>
-<p class="todo">
-Extend the properties in this section to those required in the RDF Guidelines,
-to support the data harvester, and to cover standard information included in 
-registries such as CKAN and other standards such as BioDBcore.
-</p>
-
 	<p>
 		We assume that an RDF representation of the dataset has been generated
 		according to the Open PHACTS RDF Guidelines [[OPS-RDF]]. This section 
@@ -984,10 +978,20 @@ registries such as CKAN and other standards such as BioDBcore.
 			set of properties must then be provided in the linkset document. 
 			Other properties may also be given.  
 		</p>
-		<p class="todo">
-			Add the properties that form the minimal dataset model.
-		</p>
 		<ul>
+			<li>
+				All aspects of <a href="#dataset-metadata">General Dataset 
+				Metadata</a>.
+			</li>
+			<li>
+				All aspects of <a href="#dataset-prov-version">Provenance and
+				Version</a> metadata.
+			</li>
+			<li>
+				Where applicable, the information should be specified about a
+				subset of the data and details from 
+				<a href="#dataset-subsets">Distinguishing Subsets</a> provided.
+			</li>
 		</ul>
 	<!-- end linkset-min-dataset-desc -->
 	</section>
