@@ -927,12 +927,16 @@
 		<h4 id="linkset-target-access">Dataset Access</h4>
 		<ul>
 			<li>
-				Must declare, for each dataset, when and by whom it was 
-				accessed using:
+				Must declare, for each dataset that is not a parent for the 
+				linkset, when and by whom it was accessed using:
 				<ul>
 					<li><code>pav:accessedBy</code></li>
 					<li><code>pav:accessedOn</code></li>
 				</ul>
+				For the linkset parent dataset, this information may be omitted
+				if the linkset is generated as part of the dataset creation
+				process.
+			</li>
 		</ul>
 		<p>
 			A linkset should point to the dataset descriptions of the datasets 
@@ -1460,9 +1464,9 @@
 <!-- end appendix-dataset-examples -->
 </section>
 <section id="appendix-example-linksets" class="appendix">
-	<h2>Example Linksets</h2>
+	<h2 id="example-linksets">Example Linksets</h2>
 	<section id="CS2ChEMBLLinkset">
-		<h3>ChemSpider to ChEMBL-RDF Compounds Linkset</h3>
+		<h3 id="cs2chembl-linkset">ChemSpider to ChEMBL-RDF Compounds Linkset</h3>
 
 		<p>
 			Below is the start of the linkset file relating ChemSpider
@@ -1471,41 +1475,69 @@
 			with additional metadata.
 		</p>
 
+<!-- Example copy/pasted from examples/cs2chembl-linkset.ttl -->
 		<pre class="turtle">
-@prefix chembl: &lt;http://data.kasabi.com/dataset/chembl-rdf/chemblid/> .
+@prefix : &lt;http://data.kasabi.com/dataset/chembl-rdf/void.ttl&gt;.
 
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt;.
+@prefix dul: &lt;http://www.ontologydesignpatterns.org/ont/dul/DUL.owl&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix freq: &lt;http://purl.org/cld/freq/&gt; .
+@prefix pav: &lt;http://purl.org/pav/2.0/&gt;.
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
+@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;.
+@prefix voag: &lt;http://voag.linkedmodel.org/schema/voag#&gt; .
+@prefix void: &lt;http://rdfs.org/ns/void#&gt;.
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;.
+
+@prefix chembl: &lt;http://data.kasabi.com/dataset/chembl-rdf/chemblid/&gt; .
+
+# Metadata about this file
 &lt;&gt;
     a void:DatasetDescription;
-    dcterms:title "ChEMBL-RDF Compounds to ChemSpider linkset"^^xsd:string  ;
+    dcterms:title "ChEMBL-RDF Compounds to ChemSpider linkset"@en;
     dcterms:descriptions """A VoID linkset that links compounds in ChEMBL-RDF
-        with compounds in ChemSpider."""^^xsd:string ; 
-    pav:createdBy &lt;http://egonw.github.com/#me> ;
-    pav:createdOn "2012-05-15"^^xsd:date ;
+        with compounds in ChemSpider."""@en; 
+    pav:createdBy &lt;http://egonw.github.com/#me&gt; ;
+    pav:createdOn "2012-08-13"^^xsd:date ;
     foaf:primaryTopic :chembl-rdf-compounds_cs_linkset ;
-    
-&lt;http://rdf.chemspider.com/void.rdf#chemSpiderDataset>
+    .
+ 
+# Pointer to the ChemSpider VoID file
+&lt;http://rdf.chemspider.com/void.ttl#chemSpiderDataset&gt;
+	# State when the dataset was accessed for creating linkset
     pav:accessedOn "2012-02-22"^^xsd:date .
-    
-&lt;http://data.kasabi.com/dataset/chembl-rdf/void.ttl#chemblrdf_compounds>
+
+# Pointer to the subset description in the ChEMBL VoID file
+&lt;http://data.kasabi.com/dataset/chembl-rdf/void.ttl#chemblrdf_compounds&gt;
+	# Linkset declared as a subset. Inherits properties
     void:subset :chembl-rdf-compounds_cs_linkset .
 
 :chembl-rdf-compounds_cs_linkset
+# General linkset metadata
     a void:Linkset ;
-    dcterms:title "ChEMBL-RDF Compounds ChemSpider Linkset"^^xsd:string ;
-    dcterms:description "Linkset relating ChEMBL-RDF compounds to ChemSpider compounds."^^xsd:string ;
-    dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/> ;
-    pav:authoredOn "2012-02-22"^^xsd:date ;
-    pav:authoredBy &lt;www.chemspider.com/> ;
-    pav:createdBy &lt;http://egonw.github.com/#me> ;
-    pav:createdOn "2012-05-15"^^xsd:date ;
-    void:subjectsTarget &lt;http://data.kasabi.com/dataset/chembl-rdf/void.ttl#chemblrdf_compounds> ;
-    void:objectsTarget &lt;http://rdf.chemspider.com/void.rdf#chemSpiderDataset> ;
+    dcterms:title "ChEMBL-RDF Compounds ChemSpider Linkset"@en;
+    dcterms:description "Linkset relating ChEMBL-RDF compounds to ChemSpider compounds."@en;
+    #Explicit declaration of license for the linkset is preferred
+    dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
+# Link information
+    void:subjectsTarget &lt;http://data.kasabi.com/dataset/chembl-rdf/void.ttl#chemblrdf_compounds&gt; ;
+    void:objectsTarget &lt;http://rdf.chemspider.com/void.ttl#chemSpiderDataset&gt; ;
     void:linkPredicate skos:exactMatch ;
+    dul:expresses &lt;http://???&gt; ;
+# Linkset provenance
+    pav:authoredOn "2012-02-22"^^xsd:date ;
+    pav:authoredBy &lt;http://www.chemspider.com/&gt; ;
+    pav:createdBy &lt;http://egonw.github.com/#me&gt; ;
+    pav:createdOn "2012-05-15"^^xsd:date ;
+# Linkset statistics
     void:triples "1073967"^^xsd:integer ;
+    .
 
-chembl:CHEMBL1236438 skos:exactMatch &lt;http://rdf.chemspider.com/43> .
-chembl:CHEMBL144103 skos:exactMatch &lt;http://rdf.chemspider.com/60> .
-...
+chembl:CHEMBL1236438 skos:exactMatch &lt;http://rdf.chemspider.com/43&gt; .
+chembl:CHEMBL144103 skos:exactMatch &lt;http://rdf.chemspider.com/60&gt; .
+#...
 		</pre>
 
 		<p>
