@@ -26,7 +26,7 @@
     .
  
 # Pointer to the ChemSpider VoID file
-<http://rdf.chemspider.com/void.ttl#chemSpiderDataset>
+<http://rdf.chemspider.com/void.ttl#chemSpiderDataset_chembl_subset>
 	# State when the dataset was accessed for creating linkset
     pav:accessedOn "2012-02-22"^^xsd:date .
 

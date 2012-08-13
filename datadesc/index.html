@@ -1544,60 +1544,97 @@ chembl:CHEMBL144103 skos:exactMatch &lt;http://rdf.chemspider.com/60&gt; .
 	<section id="CS2DBLinkset">
 		<h3>ChemSpider to DrugBank Linkset</h3>
 		<p>
-			Below is the start of the linkset file relating ChemSpider
-			compounds to DrugBank drugs. As there is no VoID file available for
-			the DrugBank dataset, the VoID information is included in the
-			linkset. For ChemSpider, the VoID information is imported from the
-			ChemSpider location.
+			Below is the linkset file relating ChemSpider compounds to DrugBank 
+			drugs. As there is no VoID file available for the DrugBank dataset, 
+			the VoID information is included in the linkset, following the 
+			minimal information prescribed in 
+			<a href="#linkset-min-dataset-desc">Section 5.5</a>. For ChemSpider, 
+			the VoID information is imported from the ChemSpider location.
 		</p>
 
 		<pre class="turtle">
-@prefix db: &lt;http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/> .
+@prefix : &lt;http://rdf.chemspider.com/chemspider-drugbank-example.rdf#&gt;.
 
-&lt;&gt;
-    a void:DatasetDescription;
-    dcterms:title "ChemSpider to DrugBank Drugs Linkset"^^xsd:string  ;
-    dcterms:descriptions """A VoID linkset that links compounds in ChemSpider
-        with drugs in the linked open drug data representation of DrugBank."""^^xsd:string ; 
-    pav:createdBy :alasdair ;
-    pav:createdOn "2012-06-15"^^xsd:date ;
-    foaf:primaryTopic :cs_db-drugs_linkset ;
-    
-&lt;http://rdf.chemspider.com/void.rdf#chemSpiderDataset>
-    pav:accessedOn "2012-02-22"^^xsd:date . 
-    
-:db a void:Dataset ;
-    dcterms:title "DrugBank"^^xsd:string ;
-    dcterms:license &lt;http://www.drugbank.ca/downloads> ;
-    pav:version "3"^^xsd:integer ;
-    pav:retrievedFrom &lt;ftp://ftp.ontotext.com/pub/lld/drugbank.tar.gz> ;
-    pav:retrievedBy :spyros ;
-    pav:retrievedOn "2011-07-04"^^xsd:date ;
-    void:uriSpace "http://www4.wiwiss.fu-berlin.de/drugbank/resource/"^^xsd:string ;
-    foaf:homepage &lt;http://www.drugbank.ca/> ;
-    void:subset :db-drugs .
-    
-:db-drugs a void:Dataset ;
-    void:uriSpace "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/"^^xsd:string ;
-    dcterms:subject &lt;http://dbpedia.org/resource/Pharmaceutical_drug> ;
-    void:triples "4772"^^xsd:integer .
-    
-:cs_db-drugs_linkset a void:Linkset ;
-    dcterms:title "ChemSpider to DrugBank Drugs Linkset"^^xsd:string ;
-    dcterms:description "Linkset relating ChemSpider compounds with drugs from DrugBank 3."^^xsd:string ;
-    dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/> ;
-    pav:createdOn "2012-02-23"^^xsd:date ;
-    pav:createdBy :alasdair ;
-    pav:authoredOn "2012-02-22"^^xsd:date ;
-    pav:authoredBy &lt;http://www.chemspider.com/> ;
-    void:subjectsTarget &lt;http://rdf.chemspider.com/void.rdf#chemSpiderDataset> ;
-    void:objectsTarget :db-drugs ;
-    void:linkPredicate skos:exactMatch ;
-    void:triples "6428"^^xsd:integer .
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt;.
+@prefix dul: &lt;http://www.ontologydesignpatterns.org/ont/dul/DUL.owl&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix freq: &lt;http://purl.org/cld/freq/&gt; .
+@prefix pav: &lt;http://purl.org/pav/2.0/&gt;.
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
+@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;.
+@prefix voag: &lt;http://voag.linkedmodel.org/schema/voag#&gt; .
+@prefix void: &lt;http://rdfs.org/ns/void#&gt;.
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;.
 
-&lt;http://rdf.chemspider.com/14> skos:exactMatch db:DB02901 .
-&lt;http://rdf.chemspider.com/18> skos:exactMatch db:DB01672 .
-...
+# Metadata about this file
+&lt;&gt; 
+	a void:DatasetDescription;
+	dcterms:title "ChemSpider to DrugBank Linkset VoID Description"@en;
+	dcterms:description 
+		"""This is an example VoID description for a ChemSpider linkset. 
+		   The linkset relates ChemSpider identifiers with DrugBank identifiers.
+		   The links have been generated as the chemicals share the same structure."""@en;
+	pav:createdBy &lt;http://www.cs.man.ac.uk/~graya/me.ttl&gt;;
+	pav:createdOn "2012-08-13"^^xsd:date;
+	pav:derivedFrom &lt;http://rdf.chemspider.com/void.rdf&gt;;
+	foaf:primaryTopic :chemSpider_drugbank_linkset;
+	.
+	
+# Pointer to the ChemSpider dataset
+&lt;http://rdf.chemspider.com/void.ttl#chemSpiderDataset_drugbank_subset&gt;
+	# declare that the linkset is a subset of ChemSpider
+	void:subset :chemSpider_drugbank_linkset;
+	.
+	
+# Need to declare dataset metadata about DrugBank as no VoID file
+## Note this is just a minimal amount of information as prescribed in Section 5.5
+:drugbank_drugs_dataset
+# General Dataset Metadata
+	a void:Dataset;
+	dcterms:title "DrugBank Drugs Dataset"@en;
+	dcterms:description "A subset of the DrugBank database containing the information relating to drugs."@en;	
+	foaf:homepage &lt;http://www4.wiwiss.fu-berlin.de/drugbank/&gt;;
+	foaf:page &lt;http://www.drugbank.ca/&gt;;
+	dcterms:license &lt;http://www.drugbank.ca/about#cite&gt;;
+	void:uriSpace "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/"^^xsd:string;
+# Provenance and Version	
+	pav:version "3.0";
+	pav:importedOn "2011-11-30"^^xsd:date;
+	pav:importedFrom &lt;http://www4.wiwiss.fu-berlin.de/drugbank/drugbank_dump.nt.bz2&gt;;
+	pav:importedBy [
+		a foaf:Person;
+		foaf:name "Antonis Loizou"^^xsd:string.
+		];
+	.
+	
+# Description of the linkset from ChemSpider to DrugBank
+:chemSpider_drugbank_linkset
+# General Linkset Metadata
+	a void:Linkset;
+	dcterms:title "ChemSpider DrugBank Linkset"@en;
+	dcterms:description "Linkset relating ChemSpider compounds to DrugBank drugs."@en;
+	dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
+# Link Information
+	void:subjectsTarget &lt;http://rdf.chemspider.com/void.ttl#chemSpiderDataset_drugbank_subset&gt;;
+	void:objectsTarget :drugbank_drugs_dataset;
+	void:linkPredicate skos:exactMatch;
+	dul:expresses &lt;http://???&gt;;
+# Linkset Provenance 
+	pav:authoredBy &lt;http://www.chemspider.com/&gt;;
+	pav:authoredOn "2012-02-23"^^xsd:date;
+	pav:createdBy &lt;http://www.cs.man.ac.uk/~graya/me.ttl&gt;;
+	pav:createdOn "2012-08-13"^^xsd:date;
+# Linkset statistics
+	void:triples "6428"^^xsd:nonNegativeInteger;
+	.
+
+# Location of the triples
+## Note that the triples would not contain the void header information as 
+## that is in this file. I have assumed the same location as the subset 
+## above, but this needs to change to a correct location.
+## The file containing the triples should contain the following backlink
+## |uriOfTheData| void:inDataset &lt;http://rdf.chemspider.com/void-example.rdf#chemSpider_drugbank_linkset&gt;.
 		</pre>
 	<!-- end CS2DBLinkset -->
 	</section>
