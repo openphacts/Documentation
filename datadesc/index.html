@@ -266,6 +266,10 @@
 		following are examples of some of the multiple linksets that can
 		exist between datasets ChemSpider and ChEMBL:
     </p>
+    <p class="todo">
+    	Fix Example! Probably best to draw a diagram showing the datasets and
+    	the declaration of the links between them.
+    </p>
     <ul>
 		<li>
 			ChemSpider <code>cs:extUrl</code> ChEMBL as published in
@@ -374,47 +378,73 @@
 		<h4 id="dataset-type">Type</h4>
 		<ul>
 			<li>
-				Must declare that we have a dataset using <code>
-				void:Dataset</code>.
+				Must declare that we have a dataset using 
+				<a href="http://rdfs.org/ns/void#Dataset" target="_blank">
+				<code>void:Dataset</code></a>.
 			</li>
 		</ul>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#dataset" target="_blank">
+			Section 1.3</a> of the VoID Specification.
+		</p>
 
 		<h4 id="dataset-title">Title</h4>
 		<ul>
 			<li>
 				Must provide a name for the dataset using the 
-				<code>dcterms:title</code> predicate.
+				<a href="http://purl.org/dc/terms/title" target="_blank">
+				<code>dcterms:title</code></a> predicate.
 			</li>
 		</ul>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#dublin-core" target="_blank">
+			Section 2.2</a> of the VoID Specification.
+		</p>
 
 		<h4 id="dataset-description">Description</h4>
 		<ul>
 			<li>
 				Must provide a description of the dataset using the 
-				<code>dcterms:description</code> predicate.
+				<a href="http://purl.org/dc/terms/description" target="_blank">
+				<code>dcterms:description</code></a> predicate.
 			</li>
 		</ul>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#dublin-core" target="_blank">
+			Section 2.2</a> of the VoID Specification.
+		</p>
 
 		<h4 id="dataset-webpages">Webpages</h4>
 		<ul>
 			<li>
 				Must provide a link to the homepage for the dataset using 
-				the <code>foaf:hompage</code> predicate.
+				the <a href="http://xmlns.com/foaf/spec/#term_homepage">
+				<code>foaf:hompage</code></a> predicate.
 			</li>
 			<li>
 				May provide links to other pages that discuss the dataset 
-				using the <code>foaf:page</code> predicate.
+				using the <a href="http://xmlns.com/foaf/spec/#term_page">
+				<code>foaf:page</code></a> predicate.
 			</li>
 		</ul>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#webpage" target="_blank">
+			Section 2.1</a> of the VoID Specification.
+		</p>
 
 		<h4 id="dataset-license">License</h4>
 		<ul>
 			<li>
 				Must declare the licence under which the dataset is
-				published using the <code>dcterms:license</code> predicate.
+				published using the 
+				<a href="http://purl.org/dc/terms/license" target="_blank">
+				<code>dcterms:license</code></a> predicate.
 			</li>
 		</ul>
-
 		<p>
 			Where possible, we recommend publishing data under an open license
 			to enable reuse of the data with appropriate acknowledgement. For
@@ -424,23 +454,33 @@
 			href="http://www.w3.org/TR/void/#license">Section 2.4</a> of the 
 			W3C note on VoID.
 		</p>
-		
-		<p class="note">
+				<p class="note">
 			The recommended data license may be updated when John Wilbanks 
 			reports back.
+		</p>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#license" target="_blank">
+			Section 2.4</a> of the VoID Specification.
 		</p>
 
 		<h4 id="dataset-namespace">Namespace</h4>
 		<ul>
 			<li>
 				Must declare the URI namespace for the resources in the 
-				dataset using the <code>void:uriSpace</code> predicate.
+				dataset using the 
+				<a href="http://rdfs.org/ns/void#uriSpace" target="_blank">
+				<code>void:uriSpace</code></a> predicate.
 			</li>
 		</ul>
-
 		<p>
 			Note that the object of the <code>void:uriSpace</code> predicate
 			is a literal, not a URI.
+		</p>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#pattern" target="_blank">
+			Section 4.2</a> of the VoID Specification.
 		</p>
 	<!-- end dataset-metadata -->			
 	</section>
@@ -450,8 +490,9 @@
 		<h4 id="dataset-version">Version</h4>
 		<ul>
 			<li>
-				Must declare the version of the dataset using the 
-				<code>pav:version</code> predicate, where this exists for
+				Must declare the version of the dataset using the
+				<a href="http://purl.org/pav/" target="_blank"> 
+				<code>pav:version</code></a> predicate, where this exists for
 				the dataset.
 			</li>
 		</ul>
@@ -473,15 +514,18 @@
 				available from the VoID description at that site:
 				<ul>
 					<li>
-						<code>dcterms:publisher</code> to capture who 
+						<a href="http://purl.org/dc/terms/publisher" target="_blank">
+						<code>dcterms:publisher</code></a> to capture who 
 						published the data.
 					</li>
 					<li>
-						<code>dcterms:created</code> to capture when the
+						<a href="http://purl.org/dc/terms/created" target="_blank">
+						<code>dcterms:created</code></a> to capture when the
 						dataset was created.
 					</li>
 					<li>
-						<code>dcterms:modified</code> to capture when the 
+						<a href="http://purl.org/dc/terms/modified" target="_blank">
+						<code>dcterms:modified</code></a> to capture when the 
 						last update was made.
 					</li>
 				</ul>
@@ -493,15 +537,18 @@
 				be given:
 				<ul>
 					<li>
-						<code>pav:retrievedFrom</code> to capture the 
+						<a href="http://purl.org/pav/" target="_blank">
+						<code>pav:retrievedFrom</code></a> to capture the 
 						location of the original source.
 					</li>
 					<li>
-						<code>pav:retrievedOn</code> to capture when the
+						<a href="http://purl.org/pav/" target="_blank">
+						<code>pav:retrievedOn</code></a> to capture when the
 						retrieval was made.
 					</li>
 					<li>
-						<code>pav:retrievedBy</code> to capture who made the
+						<a href="http://purl.org/pav/" target="_blank">
+						<code>pav:retrievedBy</code></a> to capture who made the
 						retrieval. 
 					</li>
 				</ul>
@@ -513,15 +560,18 @@
 				the following metadata must be given:
 				<ul>
 					<li>
-						<code>pav:importedFrom</code> to capture the 
+						<a href="http://purl.org/pav/" target="_blank">
+						<code>pav:importedFrom</code></a> to capture the 
 						location of the original source.
 					</li>
 					<li>
-						<code>pav:importedOn</code> to capture when the 
+						<a href="http://purl.org/pav/" target="_blank">
+						<code>pav:importedOn</code></a> to capture when the 
 						import was made.
 					</li>
 					<li>
-						<code>pav:importedBy</code> to capture who made the
+						<a href="http://purl.org/pav/" target="_blank">
+						<code>pav:importedBy</code></a> to capture who made the
 						import.
 					</li>
 				</ul>
@@ -532,15 +582,18 @@
 				metadata must be provided:
 				<ul>
 					<li>
-						<code>pav:derivedFrom</code> to capture the 
+						<a href="http://purl.org/pav/" target="_blank">
+						<code>pav:derivedFrom</code></a> to capture the 
 						relationship to the original data source.
 					</li>
 					<li>
-						<code>pav:derivedOn</code> to capture when the 
+						<a href="http://purl.org/pav/" target="_blank">
+						<code>pav:derivedOn</code></a> to capture when the 
 						derivation was made.
 					</li>
 					<li>
-						<code>pav:derivedBy</code> to capture who made the
+						<a href="http://purl.org/pav/" target="_blank">
+						<code>pav:derivedBy</code></a> to capture who made the
 						derivation. 
 					</li>
 				</ul>
@@ -568,7 +621,9 @@
 		<ul>
 			<li>
 				If the dataset contains distinguishable subsets, then these 
-				should be declared using the <code>void:subset</code> predicate. 
+				should be declared using the 
+				<a href="http://rdfs.org/ns/void#subset" target="_blank">
+				<code>void:subset</code></a> predicate. 
 			</li>
 		</ul>
 		<p>
@@ -583,6 +638,11 @@
 			Open PHACTS, the property must be used with the <em>has subset</em> 
 			semantics.
 		</p>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#subset" target="_blank">
+			Section 4.4</a> of the VoID Specification.
+		</p>
 	<!-- end dataset-subset -->	
 	</section>
 	<section id="dataset-topic-resources">
@@ -592,14 +652,22 @@
 		<ul>
 			<li>
 				Should declare the vocabularies and ontologies that encode
-				the data using the <code>void:vocabulary</code> predicate.
+				the data using the 
+				<a href="http://rdfs.org/ns/void#vocabulary" target="_blank">
+				<code>void:vocabulary</code></a> predicate.
 			</li>
 		</ul>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#vocabularies" target="_blank">
+			Section 4.3</a> of the VoID Specification.
+		</p>
 		<h4 id="dataset-topcis">Dataset Topics</h4>
 		<ul>
 			<li>
 				Should declare the topics covered using the
-				<code>dcterms:subject</code> predicate.
+				<a href="http://purl.org/dc/terms/subject" target="_blank">
+				<code>dcterms:subject</code></a> predicate.
 			</li>
 		</ul>
 		<p>
@@ -608,16 +676,28 @@
 			Currently we suggest using DBPedia subjects as the vocabulary of
 			subjects.
 		</p>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#subject" target="_blank">
+			Section 2.5</a> of the VoID Specification.
+		</p>
 		<h4 id="dataset-resources">Example Resources</h4>
 		<ul>
 			<li>
-				Should be declared using the <code>void:exampleResource</code>.
+				Should be declared using the 
+				<a href="http://rdfs.org/ns/void#exampleResource" target="_blank">
+				<code>void:exampleResource</code></a> predicate.
 			</li>
 		</ul>
 		<p>
 			Multiple resources can be declared. If the data is split into 
 			subsets, then the example resources should be associated with the
 			subsets.
+		</p>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#example-resource" target="_blank">
+			Section 4.1</a> of the VoID Specification.
 		</p>
 	<!-- end dataset-topic-resource -->
 	</section>
@@ -627,16 +707,28 @@
 		<ul>
 			<li>
 				Must provide the location of a dataset dump using the
-				<code>void:dataDump</code> predicate.
+				<a href="http://rdfs.org/ns/void#dataDump" target="_blank">
+				<code>void:dataDump</code></a> predicate.
 			</li>
 		</ul>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#dumps" target="_blank">
+			Section 3.3</a> of the VoID Specification.
+		</p>
 		<h4 id="dataset-sparql">SPARQL Endpoint</h4>
 		<ul>
 			<li>
 				May provide the location of a dataset SPARQL endpoint using the
-				<code>void:dataDump</code> predicate.
+				<a href="http://rdfs.org/ns/void#sparqlEndpoint" target="_blank">
+				<code>void:sparqlEndpoint</code></a> predicate.
 			</li>
 		</ul>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#sparql" target="_blank">
+			Section 3.2</a> of the VoID Specification.
+		</p>
 	<!-- end dataset-access-update -->
 	</section>
 	<section id="dataset-update-frequency">
@@ -644,28 +736,98 @@
 		<ul>
 			<li>
 				Should state the expected update frequency of the dataset using
-				the <code>voag:frequencyOfChange</code> predicate together with
+				the 
+				<a href="http://voag.linkedmodel.org/schema/voag#frequencyOfChange" target="_blank">
+				<code>voag:frequencyOfChange</code></a> predicate together with
 				a frequency term drawn from the 
 				<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/">
 				Frequency Vocabulary</a>. That is, one of:
 				<ul>
-					<li>Triennial <code>freq:triennial</code></li>
-    				<li>Biennial <code>freq:biennial</code></li>
-				    <li>Annual <code>freq:annual</code></li>
-				    <li>Semiannual <code>freq:semiannual</code></li>
-				    <li>Three times a year <code>freq:threeTimesAYear</code></li>
-				    <li>Quarterly <code>freq:quarterly</code></li>
-				    <li>Bimonthly <code>freq:bimonthly</code></li>
-				    <li>Monthly <code>freq:monthly</code></li>
-				    <li>Semimonthly <code>freq:semimonthly</code></li>
-				    <li>Biweekly <code>freq:biweekly</code></li>
-				    <li>Three times a month <code>freq:threeTimesAMonth</code></li>
-				    <li>Weekly <code>freq:weekly</code></li>
-				    <li>Semiweekly <code>freq:semiweekly</code></li>
-				    <li>Three times a week <code>freq:threeTimesAWeek</code></li>
-				    <li>Daily <code>freq:daily</code></li>
-				    <li>Continuous <code>freq:continuous</code></li>
-				    <li>Irregular <code>freq:irregular</code></li>
+					<li>
+						Triennial 
+						<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqtriennial" 
+						target="_blank"><code>freq:triennial</code></a>
+					</li>
+    				<li>
+    					Biennial 
+    					<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqbiennial" 
+						target="_blank"><code>freq:biennial</code></a>
+					</li>
+				    <li>
+				    	Annual 
+				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqannual" 
+						target="_blank"><code>freq:annual</code></a>
+					</li>
+				    <li>
+				    	Semiannual 
+				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqsemiannual" 
+						target="_blank"><code>freq:semiannual</code></a>
+					</li>
+				    <li>
+				    	Three times a year 
+				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqthreeTimesAYear" 
+						target="_blank"><code>freq:threeTimesAYear</code></a>
+					</li>
+				    <li>
+				    	Quarterly 
+				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqquarterly" 
+						target="_blank"><code>freq:quarterly</code></a>
+					</li>
+				    <li>
+				    	Bimonthly 
+				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqbimonthly" 
+						target="_blank"><code>freq:bimonthly</code></a>
+					</li>
+				    <li>
+				    	Monthly 
+				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqmonthly" 
+						target="_blank"><code>freq:monthly</code></a>
+					</li>
+				    <li>
+				    	Semimonthly 
+				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqsemimonthly" 
+						target="_blank"><code>freq:semimonthly</code></a>
+					</li>
+				    <li>
+				    	Biweekly 
+				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqbiweekly" 
+						target="_blank"><code>freq:biweekly</code></a>
+					</li>
+				    <li>
+				    	Three times a month 
+				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqthreeTimesAMonth" 
+						target="_blank"><code>freq:threeTimesAMonth</code></a>
+					</li>
+				    <li>
+				    	Weekly 
+				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqweekly" 
+						target="_blank"><code>freq:weekly</code></a>
+					</li>
+				    <li>
+				    	Semiweekly 
+				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqsemiweekly" 
+						target="_blank"><code>freq:semiweekly</code></a>
+					</li>
+				    <li>
+				    	Three times a week 
+				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqthreeTimesAWeek" 
+						target="_blank"><code>freq:threeTimesAWeek</code></a>
+					</li>
+				    <li>
+				    	Daily 
+				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqdaily" 
+						target="_blank"><code>freq:daily</code></a>
+					</li>
+				    <li>
+				    	Continuous 
+				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqcontinuous" 
+						target="_blank"><code>freq:continuous</code></a>
+					</li>
+				    <li>
+				    	Irregular 
+				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqirregular" 
+						target="_blank"><code>freq:irregular</code></a>
+					</li>
 				  </ul>
 				
 			</li>
@@ -738,26 +900,42 @@
 		<ul>
 			<li>
 				Must declare that we have a linkset using 
-				<code>void:Linkset</code>.
+				<a href="http://rdfs.org/ns/void#Linkset" target="_blank">
+				<code>void:Linkset</code></a>.
 			</li>
 		</ul>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#linkset" target="_blank">
+			Section 1.4</a> of the VoID Specification.
+		</p>
 
 		<h4 id="linkset-title">Title</h4>
 		<ul>
 			<li>
 				Must provide the title of the linkset using the
-				<code>dcterms:title</code> predicate.
+				<a href="http://purl.org/dc/terms/title" target="_blank">
+				<code>dcterms:title</code></a> predicate.
 			</li>
 		</ul>
-
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#dublin-core" target="_blank">
+			Section 2.2</a> of the VoID Specification.
+		</p>
 		<h4 id="linkset-description">Description</h4>
 		<ul>
 			<li>
 				Must provide a description of the linkset using the  
-				<code>dcterms:description</code> predicate.
+				<a href="http://purl.org/dc/terms/description" target="_blank">
+				<code>dcterms:description</code></a> predicate.
 			</li>
 		</ul>
-
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#dublin-core" target="_blank">
+			Section 2.2</a> of the VoID Specification.
+		</p>
 		<p>
 			Note that for linksets there is unlikely to be a web page
 			directly dedicated to the linkset, as such that part of the
@@ -768,10 +946,11 @@
 		<ul>
 			<li>
 				Must declare the licence under which the linkset is published 
-				using the <code>dcterms:license</code> predicate.
+				using the 
+				<a href="http://purl.org/dc/terms/license" target="_blank">
+				<code>dcterms:license</code></a> predicate.
 			</li>
 		</ul>
-
 		<p>
 			Where possible, we recommend publishing data under an open license
 			to enable reuse of the data with appropriate acknowledgement. For
@@ -780,18 +959,21 @@
 			A list of alternative licenses are available in <a
 			href="http://www.w3.org/TR/void/#license">Section 2.4</a> of the 
 			W3C note on VoID.
-		</p>
-		
+		</p>		
 		<p class="note">
 			The recommended data license may be updated when John Wilbanks 
 			reports back.
 		</p>
-
 		<p class="note">
 			The license under which a linkset is published may be different 
 			from that of the datasets that it links, even if it is a subset of
 			one of the datasets.
 		</p>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#license" target="_blank">
+			Section 2.4</a> of the VoID Specification.
+		</p>		
 	<!-- end linkset-metadata -->
 	</section>
 	<section id="link-info">
@@ -800,11 +982,12 @@
 		<ul>
 			<li>
 				Must declare the datasets that are linked using the 
-				<code>void:subjectsTarget</code> and 
-				<code>void:objectsTarget</code> predicates.
+				<a href="http://rdfs.org/ns/void#subjectsTarget" target="_blank">
+				<code>void:subjectsTarget</code></a> and 
+				<a href="http://rdfs.org/ns/void#objectsTarget" target="_blank">
+				<code>void:objectsTarget</code></a> predicates.
 			</li>
-		</ul>
-		
+		</ul>		
 		<p>
 			Note that the object of the above predicates are the URIs of the
 			respective datasets as declared in a VoID description. The datasets 
@@ -813,20 +996,33 @@
 			must be provided in the linkset description. This is detailed in
 			<a href="#linkset-min-dataset-desc">Section 5.5</a>. 
 		</p>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#target" target="_blank">
+			Section 5.1</a> of the VoID Specification.
+		</p>		
 		
 		<h4 id="linkset-relationship">Link Relationship</h4>
 		<ul>
 			<li>
 				Must declare the link predicate using the 
-				<code>void:linkPredicate</code> predicate.
+				<a href="http://rdfs.org/ns/void#linkPredicate" target="_blank">
+				<code>void:linkPredicate</code></a> predicate.
 			</li>
 		</ul>	
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#link-predicate" target="_blank">
+			Section 5.3</a> of the VoID Specification.
+		</p>		
 		
 		<h4 id="linkset-justification">Link Justification</h4>
 		<ul>
 			<li>
 				Must declare the reason/circumstance under which the link holds
-				using the <code>dul:expresses</code> predicate and an object 
+				using the 
+				<a href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#expresses" target="_blank">
+				<code>dul:expresses</code></a> predicate and an object 
 				from an open vocabulary.
 			</li>
 		</ul>
@@ -854,11 +1050,11 @@
 		<ul>
 			<li>
 				If the linkset is a subset of another dataset, then
-				this must be declared using the <code>void:subset</code>
-				predicate.
+				this must be declared using the 
+				<a href="http://rdfs.org/ns/void#subset" target="_blank">
+				<code>void:subset</code></a> predicate.
 			</li>
-		</ul>
-		
+		</ul>	
 		<p>
 			Note that the dataset URI is the subject of the 
 			<code>void:subset</code> triple and the linkset URI is the object.
@@ -867,6 +1063,11 @@
 			documents can be used to declare additional subsets. A subset 
 			inherits properties from its parent. 
 		</p>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#linkset-subset" target="_blank">
+			Section 5.2</a> of the VoID Specification.
+		</p>		
 		
 		<h4 id="linkset-source">Link Source</h4>
 		<ul>
@@ -878,24 +1079,26 @@
 						authorship properties:
 						<ul>
 							<li>
-								<code>pav:authoredBy</code> to capture who made 
-								the assertions encoded in the links.
+								<a href="http://purl.org/pav/" target="_blank">
+								<code>pav:authoredBy</code></a> to capture who 
+								made the assertions encoded in the links.
 							</li>
 							<li>
-								<code>pav:authorOn</code> to capture when the
-								assertions were made.
+								<a href="http://purl.org/pav/" target="_blank">
+								<code>pav:authorOn</code></a> to capture when 
+								the assertions were made.
 							</li>
 						</ul>
 					</li>
 					<li>
 						Computer derived links are declared by asserting the
 						tool used to generate the links using the property 
-						<code>pav:createdWith</code>. 
+						<a href="http://purl.org/pav/" target="_blank">
+						<code>pav:createdWith</code></a>. 
 					</li>
 				</ul>
 			</li>
 		</ul>
-
 		<p>
 			Additional information about the settings used when running an 
 			automated link generation tool such as Silk [[SILK]] can be 
@@ -908,11 +1111,14 @@
 			<li>
 				Must declare who created the linkset, i.e. encoded the 
 				knowledge into triples or operated the computer generation tool,
-				with the property <code>pav:createdBy</code>.
+				with the property 
+				<a href="http://purl.org/pav/" target="_blank">
+				<code>pav:createdBy</code></a>.
 			</li>
 			<li>
 				Must declare when the linkset was created using the 
-				<code>pav:createdOn</code> predicate.
+				<a href="http://purl.org/pav/" target="_blank">
+				<code>pav:createdOn</code></a> predicate.
 			</li>
 		</ul>
 		
@@ -920,7 +1126,8 @@
 		<ul>
 			<li>
 				May declare a version number for the linkset using the
-				<code>pav:version</code> predicate.
+				<a href="http://purl.org/pav/" target="_blank">
+				<code>pav:version</code></a> predicate.
 			</li>
 		</ul>
 		
@@ -930,8 +1137,14 @@
 				Must declare, for each dataset that is not a parent for the 
 				linkset, when and by whom it was accessed using:
 				<ul>
-					<li><code>pav:accessedBy</code></li>
-					<li><code>pav:accessedOn</code></li>
+					<li>
+						<a href="http://purl.org/pav/" target="_blank">
+						<code>pav:accessedBy</code></a>
+					</li>
+					<li>
+						<a href="http://purl.org/pav/" target="_blank">
+						<code>pav:accessedOn</code></a>
+					</li>
 				</ul>
 				For the linkset parent dataset, this information may be omitted
 				if the linkset is generated as part of the dataset creation
@@ -956,15 +1169,20 @@
 		<ul>
 			<li>
 				Should declare the number of links in the linkset using the
-				<code>void:triples</code> predicate. 
+				<a href="http://rdfs.org/ns/void#triples" target="_blank">
+				<code>void:triples</code></a> predicate. 
 			</li>
 		</ul>
-		
 		<p>
 			Providing the number of triples included in the linkset allows for 
 			applications using the linkset to validate that the entire linkset 
 			has been successfully loaded.
 		</p>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#statistics" target="_blank">
+			Section 4.6</a> of the VoID Specification.
+		</p>		
 
 	<!-- end linkset-stats -->
 	</section>
