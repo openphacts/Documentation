@@ -696,24 +696,22 @@
 	<section id="dataset-examples" class="informative">
 		<h3 id="dataset-examples">Examples</h3>
 
-		<p class="todo">
-			Need to update the examples to conform with the guidelines. Should
-			add some discussion about the existence of datasets that do not
-			conform with these guidelines.
-		</p>
-
 		<p>
 			Example VoID dataset descriptions can be found in 
-			<a href="#appendix-dataset-examples" >Appendix A</a>. The first 
-			example is a pre-existing VoID file deployed
-			by ChemSpider (see <a href="#ChemSpider-VoID-Descriptor">Appendix
-			A.1</a>). Note this example does not conform with the recommendations
-			made here. However it is included as an existing VoID file. The
-			second example is for the RDF representation of the ChEMBL database,
-			given in <a href="#ChEMBL-RDF-VoID-Descriptor"> Appendix A.2</a>.
-			This demonstrates the level of information required to track the
-			provenance from a source dataset through to the RDF representation.
-			It also contains subset definitions.
+			<a href="#appendix-dataset-examples" >Appendix B</a>. The first 
+			example is for the ChemSpider dataset (see 
+			<a href="#ChemSpider-VoID-Descriptor">Appendix B.1</a>). Note this 
+			example is derived from the existing non-conformant ChemSpider VoID
+			description available from 
+			<a href="http://rdf.chemspider.com/void.rdf">
+			http://rdf.chemspider.com/void.rdf</a>. 
+		</p>
+		<p> 
+			The second example is for the RDF representation of the ChEMBL 
+			database, given in <a href="#ChEMBL-RDF-VoID-Descriptor">
+			Appendix B.2</a>. This demonstrates the level of information 
+			required to track the provenance from a source dataset through to 
+			the RDF representation. It also contains subset definitions.
 		</p>
 	<!-- end dataset-examples -->
 	</section>
@@ -1243,9 +1241,9 @@
 </section>
 
 <section id="appendix-dataset-examples" class="appendix">
-	<h2>Example Dataset VoID Descriptors</h2>
+	<h2 id="example-dataset">Example Dataset VoID Descriptors</h2>
 	<section id="ChemSpider-VoID-Descriptor">
-		<h3>ChemSpider VoID Descriptor</h3>
+		<h3 id="chemspider-void">ChemSpider VoID Descriptor</h3>
 		<p>
 			The ChemSpider site already has a VoID descriptor available from 
 			<a href="http://rdf.chemspider.com/void.rdf">
@@ -1254,6 +1252,7 @@
 			updated version which conforms with the requirements of this 
 			specification.
 		</p>
+<!-- Example copy and pasted from examples/chemspider-void.ttl -->
 		<pre class="RDF"
 			title="ChemSpiders VoID Descriptor as published in RDF/turtle">
 @prefix : &lt;http://rdf.chemspider.com/void-example.rdf#&gt;.
@@ -1344,7 +1343,7 @@
     <!-- end ChemSpider-VoID -->
 	</section>
 	<section id="ChEMBL-RDF-VoID-Descriptor">
-		<h3>ChEBML-RDF VoID Descriptor</h3>
+		<h3 id="chemble-rdf-void">ChEBML-RDF VoID Descriptor</h3>
 
 		<p>
 			Below we provide the VoID document for the ChEMBL-RDF dataset, which
@@ -1353,50 +1352,106 @@
 			<code>http://data.kasabi.com/dataset/chembl-rdf/void.ttl</code>.
 		</p>
 
+<!-- Example copy and pasted from examples/chembl-rdf -->
 		<pre class="turtle">
-&lt;> 
+@prefix : &lt;http://rdf.chemspider.com/void-example.rdf#&gt;.
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt;.
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix freq: &lt;http://purl.org/cld/freq/&gt; .
+@prefix pav: &lt;http://purl.org/pav/2.0/&gt;.
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
+@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;.
+@prefix voag: &lt;http://voag.linkedmodel.org/schema/voag#&gt; .
+@prefix void: &lt;http://rdfs.org/ns/void#&gt;.
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;.
+
+# Metadata about this file
+&lt;&gt; 
     a void:DatasetDescription;
-    dcterms:title "ChEMBL-RDF VoID Description"^^xsd:string;
+    dcterms:title "ChEMBL-RDF VoID Description"@en;
     dcterms:description 
-        """This is the VoID description for a ChEMBL-RDF dataset."""^^xsd:string;
-    pav:createdBy &lt;http://egonw.github.com/#me> ;
-    pav:createdOn "2012-05-15"^^xsd:date;
+        """This is the VoID description for a ChEMBL-RDF dataset."""@en;
+    pav:createdBy &lt;http://egonw.github.com/#me&gt; ;
+    pav:createdOn "2012-08-12"^^xsd:date;
+    pav:previousVersion &lt;http://semantics.bigcat.unimaas.nl/chembl/v13_ops/chembl-rdf-void.ttl&gt;;
     foaf:primaryTopic :chemblrdf_dataset.
 
 :chemblrdf_dataset
+# General metadata
     a void:Dataset;
-    dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/> ;
+    dcterms:title "ChEMBL-RDF 13.OPS.2"@en;
+    dcterms:description "The ChEMBL database in RDF format."@en;
+    foaf:homepage &lt;http://github.com/egonw/chembl.rdf/&gt;;
+    dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
+    void:uriSpace "http://data.kasabi.com/dataset/chembl-rdf/"^^xsd:string ;
+# Provenance
+	pav:version "v13_ops";
     pav:importedFrom :chembl_dataset;
-    pav:importedBy &lt;http://egonw.github.com/#me> ;
+    pav:importedBy &lt;http://egonw.github.com/#me&gt; ;
     pav:importedOn "2012-05-15"^^xsd:date;
-    pav:createdBy &lt;http://egonw.github.com/#me> ;
-    pav:createdOn "2012-05-15"^^xsd:date;
-    void:uriSpace "http://data.kasabi.com/dataset/chembl-rdf"^^xsd:string ;
-    dcterms:title "ChEMBL-RDF 13.OPS.2"^^xsd:string;
-    dcterms:description "The ChEMBL database in RDF format." ;
-    foaf:homepage &lt;http://github.com/egonw/chembl.rdf/>;
-    void:dataDump &lt;https://semantics.bigcat.unimaas.nl/chembl12/...> ;
-    void:sparqlEndpoint &lt;http://api.kasabi.com/dataset/chembl-rdf/apis/sparql> ;
+# Subsets
+    void:subset :chemblrdf_compounds, :chemblrdf_targets ;
+# Vocabularies, topics, resources
+	void:vocabulary 
+		&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;,
+		&lt;http://www.w3.org/2000/01/rdf-schema#&gt;,
+		&lt;http://www.w3.org/2002/07/owl#&gt;,
+		&lt;http://www.w3.org/2001/XMLSchema#&gt;,
+		&lt;http://purl.org/dc/elements/1.1/&gt;, 
+		&lt;http://purl.org/ontology/bibo/&gt;,
+		&lt;http://xmlns.com/foaf/0.1/&gt;, 
+		&lt;http://purl.org/spar/cito/&gt;, 
+		&lt;http://www.w3.org/2004/02/skos/core#&gt; ,
+		&lt;http://purl.obolibrary.org/obo#&gt;,
+		&lt;http://www.blueobelisk.org/ontologies/chemoinformatics-algorithms/#&gt;,
+		&lt;http://www.blueobelisk.org/chemistryblogs/&gt;,
+		&lt;http://www.nmrshiftdb.org/onto#&gt;,
+		&lt;http://www.ifomis.org/bfo/1.1/snap#&gt;,
+		&lt;http://semanticscience.org/resource/&gt;,
+		&lt;http://purl.org/obo/owl/CHEBI#&gt;;
+# Update frequency
+	#Need to verify the update frequency!
+	voag:frequencyOfChange freq:semiannual;
+# Other metadata
     void:distinctSubjects "18018451"^^xsd:integer ;
-    void:subset :chemblrdf_compounds :chemblrdf_targets .
+	.
 
 :chembl_dataset
+# Metadata about the original data source
     a void:Dataset;
-    foaf:homepage &lt;http://www.ebi.ac.uk/chembl/>;
-    dcterms:title "ChEMBL";
-    dcterms:description "The ChEMBL database.";
+    dcterms:title "ChEMBL"@en;
+    dcterms:description """ChEMBL is a database of bioactive drug-like small molecules, it contains 2-D structures, calculated properties (e.g. logP, Molecular Weight, Lipinski Parameters, etc.) and abstracted bioactivities (e.g. binding constants, pharmacology and ADMET data)."""@en;
+    foaf:homepage &lt;http://www.ebi.ac.uk/chembl/&gt;;
+    dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
     pav:version "13"^^xsd:integer ;
-    dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/> .
+    dcterms:publisher &lt;http://www.ebi.ac.uk/chembl/&gt;;
+    dcterms:created "2012-02-29"^^xsd:date;
+    dcterms:modified "2012-02-29"^^xsd:date;
+    .
 
 :chemblrdf_compounds
+# Subset metadata
     a void:Dataset ;
+    dcterms:title "ChEMBL Molecules"@en;
+    dcterms:description "The subset of ChEMBL data relating to molecules."@en;
     void:uriSpace "http://data.kasabi.com/dataset/chembl-rdf/molecule/"^^xsd:string ;
-    dcterms:subject &lt;http://dbpedia.org/resource/Molecule> .
+    dcterms:subject &lt;http://dbpedia.org/resource/Molecule&gt; ;
+    void:exampleResource &lt;http://data.kasabi.com/dataset/chembl-rdf/molecule/M1&gt;;	
+    void:dataDump &lt;http://semantics.bigcat.unimaas.nl/chembl/v13_ops/compounds.nt.gz&gt; ;
+    .
   
 :chemblrdf_targets
-    a void:Dataset ;   
+# Subset metadata
+    a void:Dataset ;
+    dcterms:title "ChEMBL Targets"@en;
+    dcterms:description "The subset of ChEMBL data relating to targets which are single proteins."@en;
     void:uriSpace "http://data.kasabi.com/dataset/chembl-rdf/target/"^^xsd:string ;
-    dcterms:subject &lt;http://dbpedia.org/resource/Protein> .
+    dcterms:subject &lt;http://dbpedia.org/resource/Protein&gt; ;
+    void:exampleResource &lt;http://data.kasabi.com/dataset/chembl-rdf/target/t1&gt;;	
+    void:dataDump &lt;http://semantics.bigcat.unimaas.nl/chembl/v13_ops/targets.nt.gz&gt; ;
+    .
+
     	</pre>
     <!-- end ChEMBL-RDF-VoID -->
 	</section>
