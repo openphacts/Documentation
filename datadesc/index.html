@@ -431,6 +431,10 @@
 			</li>
 		</ul>
 		<p>
+			An example of an external page that may be linked is the bioDBcore
+			[[BioDBcore]] entry, see <a href="#BioDBcore">Section 7.2</a>.
+		</p>
+		<p>
 			For more details see 
 			<a href="http://www.w3.org/TR/void/#webpage" target="_blank">
 			Section 2.1</a> of the VoID Specification.
@@ -673,8 +677,10 @@
 		<p>
 			Multiple topics can be declared. If the data is split into 
 			subsets, then the topics should be associated with the subsets. 
-			Currently we suggest using DBPedia subjects as the vocabulary of
-			subjects.
+			BioPortal [[BioPortalWeb]] [[BioPortal]] can be used to search for
+			suitable vocabulary terms for topics. DBPedia URIs may also be used.
+			A list of common terms relevant for Open PHACTS is given in 
+			<a href="#appendix-topics-vocab">Appendix A.1</a>.
 		</p>
 		<p>
 			For more details see 
@@ -741,97 +747,13 @@
 				<code>voag:frequencyOfChange</code></a> predicate together with
 				a frequency term drawn from the 
 				<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/">
-				Frequency Vocabulary</a>. That is, one of:
-				<ul>
-					<li>
-						Triennial 
-						<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqtriennial" 
-						target="_blank"><code>freq:triennial</code></a>
-					</li>
-    				<li>
-    					Biennial 
-    					<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqbiennial" 
-						target="_blank"><code>freq:biennial</code></a>
-					</li>
-				    <li>
-				    	Annual 
-				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqannual" 
-						target="_blank"><code>freq:annual</code></a>
-					</li>
-				    <li>
-				    	Semiannual 
-				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqsemiannual" 
-						target="_blank"><code>freq:semiannual</code></a>
-					</li>
-				    <li>
-				    	Three times a year 
-				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqthreeTimesAYear" 
-						target="_blank"><code>freq:threeTimesAYear</code></a>
-					</li>
-				    <li>
-				    	Quarterly 
-				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqquarterly" 
-						target="_blank"><code>freq:quarterly</code></a>
-					</li>
-				    <li>
-				    	Bimonthly 
-				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqbimonthly" 
-						target="_blank"><code>freq:bimonthly</code></a>
-					</li>
-				    <li>
-				    	Monthly 
-				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqmonthly" 
-						target="_blank"><code>freq:monthly</code></a>
-					</li>
-				    <li>
-				    	Semimonthly 
-				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqsemimonthly" 
-						target="_blank"><code>freq:semimonthly</code></a>
-					</li>
-				    <li>
-				    	Biweekly 
-				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqbiweekly" 
-						target="_blank"><code>freq:biweekly</code></a>
-					</li>
-				    <li>
-				    	Three times a month 
-				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqthreeTimesAMonth" 
-						target="_blank"><code>freq:threeTimesAMonth</code></a>
-					</li>
-				    <li>
-				    	Weekly 
-				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqweekly" 
-						target="_blank"><code>freq:weekly</code></a>
-					</li>
-				    <li>
-				    	Semiweekly 
-				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqsemiweekly" 
-						target="_blank"><code>freq:semiweekly</code></a>
-					</li>
-				    <li>
-				    	Three times a week 
-				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqthreeTimesAWeek" 
-						target="_blank"><code>freq:threeTimesAWeek</code></a>
-					</li>
-				    <li>
-				    	Daily 
-				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqdaily" 
-						target="_blank"><code>freq:daily</code></a>
-					</li>
-				    <li>
-				    	Continuous 
-				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqcontinuous" 
-						target="_blank"><code>freq:continuous</code></a>
-					</li>
-				    <li>
-				    	Irregular 
-				    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqirregular" 
-						target="_blank"><code>freq:irregular</code></a>
-					</li>
-				  </ul>
-				
+				Frequency Vocabulary</a>. 
 			</li>
 		</ul>
+		<p>
+			The terms from the Frequency Vocabulary have been reproduced in 
+			<a href="#appendix-frequency-vocab">Appendix A.3</a>.
+		</p>
 		<!-- 
 		<p>
 			Considered a wide range of vocabularies here, including 
@@ -1451,12 +1373,151 @@
 	</section>
 </section>
 
-<section id="appendix-link-justifications" class="appendix">
-	<h2 id="link-justification-vocab">Link Justification Vocabulary Terms</h2>
-	<p class="todo">
-		Add list of known vocabulary terms to be used for link justification.
-	</p>
-<!-- end appendix-link-justifications -->
+<section id="appendix-vocabulary-terms" class="appendix">
+	<h2 id="appendix-vocabulary-terms">Suggested Vocabulary Terms</h2>
+	<section id="appendix-topics-vocab">
+		<h3 id="topics-vocabulary-terms">Vocabulary Terms for Dataset Topics</h3>
+		<p class="todo">
+			Complete list of suggested URIs.
+		</p>
+		<p>
+			This section lists suggested vocabulary terms for the dataset topics
+			metadata that are relevant for Open PHACTS. The term in bold is the
+			preferred URI.
+		</p>
+		<dl>
+			<dt>Drug:</dt>
+			<dd></dd>
+			<dt>Molecule:</dt>
+			<dd>
+				<ul>
+					<li>
+						<strong>
+						<a href="http://purl.obolibrary.org/obo/CHEBI_25367">
+						http://purl.obolibrary.org/obo/CHEBI_25367
+						</a></strong>
+					</li>
+					<li>
+						<a href="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Molecule">
+						http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Molecule
+						</a>
+					</li>
+					<li>
+						<a href="http://dbpedia.org/resource/Molecule">
+						http://dbpedia.org/resource/Molecule
+						</a>
+					</li>
+				</ul>
+			</dd>
+			<dt>Protein:</dt>
+			<dd></dd>
+			<dt>Target:</dt>
+			<dd></dd>
+		</dl>
+	<!-- end appendix-topics-vocab -->
+	</section>
+	<section id="appendix-link-justifications" class="appendix">
+		<h3 id="link-justification-vocab">Link Justification Vocabulary Terms</h3>
+		<p class="todo">
+			Add list of known vocabulary terms to be used for link justification.
+		</p>
+	<!-- end appendix-link-justifications -->
+	</section>
+	<section id="appendix-frequency-vocabulary">
+		<h3 id="frequency-vocabulary">Frequency of Change Vocbaulary</h3>
+		<p>
+			Below are the terms from the frequncy of change vocabulary.
+		</p>
+		<ul>
+			<li>
+				Triennial 
+				<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqtriennial" 
+				target="_blank"><code>freq:triennial</code></a>
+			</li>
+				<li>
+					Biennial 
+					<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqbiennial" 
+				target="_blank"><code>freq:biennial</code></a>
+			</li>
+		    <li>
+		    	Annual 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqannual" 
+				target="_blank"><code>freq:annual</code></a>
+			</li>
+		    <li>
+		    	Semiannual 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqsemiannual" 
+				target="_blank"><code>freq:semiannual</code></a>
+			</li>
+		    <li>
+		    	Three times a year 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqthreeTimesAYear" 
+				target="_blank"><code>freq:threeTimesAYear</code></a>
+			</li>
+		    <li>
+		    	Quarterly 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqquarterly" 
+				target="_blank"><code>freq:quarterly</code></a>
+			</li>
+		    <li>
+		    	Bimonthly 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqbimonthly" 
+				target="_blank"><code>freq:bimonthly</code></a>
+			</li>
+		    <li>
+		    	Monthly 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqmonthly" 
+				target="_blank"><code>freq:monthly</code></a>
+			</li>
+		    <li>
+		    	Semimonthly 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqsemimonthly" 
+				target="_blank"><code>freq:semimonthly</code></a>
+			</li>
+		    <li>
+		    	Biweekly 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqbiweekly" 
+				target="_blank"><code>freq:biweekly</code></a>
+			</li>
+		    <li>
+		    	Three times a month 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqthreeTimesAMonth" 
+				target="_blank"><code>freq:threeTimesAMonth</code></a>
+			</li>
+		    <li>
+		    	Weekly 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqweekly" 
+				target="_blank"><code>freq:weekly</code></a>
+			</li>
+		    <li>
+		    	Semiweekly 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqsemiweekly" 
+				target="_blank"><code>freq:semiweekly</code></a>
+			</li>
+		    <li>
+		    	Three times a week 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqthreeTimesAWeek" 
+				target="_blank"><code>freq:threeTimesAWeek</code></a>
+			</li>
+		    <li>
+		    	Daily 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqdaily" 
+				target="_blank"><code>freq:daily</code></a>
+			</li>
+		    <li>
+		    	Continuous 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqcontinuous" 
+				target="_blank"><code>freq:continuous</code></a>
+			</li>
+		    <li>
+		    	Irregular 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqirregular" 
+				target="_blank"><code>freq:irregular</code></a>
+			</li>
+		  </ul>
+	<!-- end appendix-frequency-vocabulary -->
+	</section>
+<!-- end appendix-vocabulary-terms -->
 </section>
 
 <section id="appendix-dataset-examples" class="appendix">
