@@ -1,0 +1,1954 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Dataset Descriptions for the Open Pharmacological Space</title>
+<script src='js/respec.js' class='remove'></script>
+<meta http-equiv='Content-Type' content='text/html;charset=utf-8' />
+<script class='remove'>
+	var respecConfig = {
+    	// document info
+		//orguri:               "http://www.cs.manchester.ac.uk/~graya/ops/",
+		orguri:               "http://www.openphacts.org/specs/",
+		orgicon:              "<a href='http://www.openphacts.org/'><img height='100' src='/specs/logo/ops.png' alt='Open PHACTS'/></a>",
+		customorg:            "Open PHACTS",
+		customcss:            "/specs/css/ops.css",
+		specStatus:           "WD",
+		shortName:            "datadesc",
+		publishDate:   "2012-08-16",
+		previousMaturity: "WD",
+		previousPublishDate:  "2012-06-15",
+		//previousURI : "http://www.cs.manchester.ac.uk/~graya/ops/2012/WD-mappingspec-20120615/",
+		copyrightStart:       "2012",
+		overrideCopyright:    "<p class='copyright'>This document is licensed under a <a class='subfoot' href='http://creativecommons.org/licenses/sa-by/3.0/' rel='license'>Creative Commons ShareAlike Attribution 3.0 License</a>.</p>",
+		edDraftURI:           "http://www.cs.man.ac.uk/~graya/ops/2012/ED-datadesc/",
+		// lcEnd:  "2010-08-06",
+		// extraCSS:             ["../css/respec.css"],
+		extraCSS:             ["http://dev.w3.org/2009/dap/ReSpec.js/css/respec.css"],
+
+		// editors
+		editors:  [
+			{ name: "Alasdair J G Gray", url: "http://www.cs.man.ac.uk/~graya",
+			company: "University of Manchester", companyURL: "http://www.manchester.ac.uk/" },
+		],
+		authors:  [
+			{ name: "Christian Brenninkmeijer",
+			company: "University of Manchester", companyURL: "http://www.manchester.ac.uk/" },
+			{ name: "Chris Evelo",
+			company: "Maastricht University", companyURL: "http://www.maastrichtuniversity.nl/" },
+			{ name: "Carole Goble",
+			company: "University of Manchester", companyURL: "http://www.manchester.ac.uk/" },
+			{ name: "Alasdair J G Gray", url: "http://www.cs.man.ac.uk/~graya",
+			company: "University of Manchester", companyURL: "http://www.manchester.ac.uk/" },
+			{ name: "Andra Waagmeester",
+			company: "Maastricht University", companyURL: "http://www.maastrichtuniversity.nl/" },
+			{ name: "Egon Willighagen", url: "http://chem-bla-ics.blogpost.com/",
+			company: "Maastricht University", companyURL: "http://www.maastrichtuniversity.nl/" },
+		],
+          
+		// WG
+		//wg:           "People Who Like To Write Specs Help Group",
+		//wgURI:        "http://berjon.com/",
+		//wgPublicList: "spec-writers-anonymous",
+		//wgPatentURI:  "",
+	};
+</script>
+<style type="text/css">
+	pre {
+		background: #d0ddee;
+		padding: 1.3em 2em;
+		margin-left: 0;
+	}
+	.todo::before {
+		content: "ToDo";
+		display: block;
+		width: 150px;
+		margin: -1.5em 0 0.5em 0;
+		font-weight: bold;
+		border: 1px solid #CFF6D9;
+		background: white;
+		padding: 3px 1em;
+	}
+	p.todo {
+		margin: 1em 0em 0em;
+		padding: 1em;
+		border: 2px solid #CFF6D9;
+		background: #E2FFF0;
+	}
+</style>
+</head>
+
+<body>
+<section id="abstract">
+	This is a specification for the metadata to described datasets, and the 
+	linksets that relate them. The specification defines the properties that are 
+	expected and the exchange format for the files.
+</section>
+
+<section id="sotd">
+	<h4>Disclaimer</h4>
+		<p>
+			The research leading to these results has received support from the
+			Innovative Medicines Initiative (<a href="http://www.imi.europa.eu/">IMI</a>)
+			Joint Undertaking under grant agreement n° 115191, resources of which
+			are composed of financial contribution from the European Union's
+			Seventh Framework Programme (FP7/2007-2013) and EFPIA companies’ in
+			kind contribution.<br /> <img src="/specs/logo/imi.jpg" height="80" /> <img
+				src="/specs/logo/eu.jpg" height="80"
+			/> <img src="/specs/logo/efpia.jpg" height="80" />
+		</p>
+	<h4>Intended audience</h4>
+		<p>
+			This dataset and linkset description specification is intended
+			for data providers who want to publish their data as RDF, and link it
+			to other datasets, for use in the Open PHACTS platform.
+		</p>
+</section>
+
+<section id="introduction" class="informative">
+	<h2>Introduction</h2>
+	<p class="todo"> Revise this section</p>
+
+	<p>
+		The Open PHACTS platform relies on data and the interlinks published by 
+		a variety of sources. This specification provides details of the 
+		metadata expected to describe the datasets and their links.
+	</p>
+
+	<p>
+		The Open PHACTS project has produced a set of guidelines aimed at data 
+		providers for publishing their data within the OPS system [[!OPS-RDF]]. 
+		The RDF guide provides details about modelling your data as RDF. This 
+		specification builds on the RDF Guidelines by defining the metadata that 
+		should be published to describe the dataset and the links to other 
+		datasets.
+	</p>
+
+	<p>
+		The dataset description defined in this specification declares the 
+		properties that should be included in the description of dataset or its 
+		links. The information is exchanged using the Vocabulary of Interlinked 
+		Datasets [[VOID]].
+	</p>
+
+	<section id="ops-arch">
+		<h3>Role in the OPS Architecture</h3>
+
+		<p>
+			The OPS Architecture [[OPS-ARCH]] provides a high-level view of the 
+			Open PHACTS framework, with a detailed specification of the identity 
+			and vocabulary services given in [[OPS-IV]]. The Open PHACTS RDF 
+			guidelines [[OPS-RDF]] specify the vocabularies that are recommended 
+			for publishing datasets for use in the OPS system. This 
+			specification defines the format of identity mapping linksets that
+			relate the concepts in the various datasets loaded in OPS. The
+			provenance and metadata guidelines about the linksets given in this
+			specification should be used in conjunction with the equivalent
+			statements in the RDF publication guidelines [[OPS-RDF]].
+		</p>
+
+		<p class="todo">
+			Talk about the role of the data cache and datasets.
+		</p>
+
+		<p>
+			The identity mapping linksets will predominantly be used as the 
+			means to import data to the Identity Mapping Service (IMS)
+				[[IMS]] through the interface defined in Section 4.4.2 of
+				[[OPS-IV]]. The mapping specification will also form the basis of
+				the information model returned through the Identity Mapping Service
+				query interface defined in Section 4.4.1 of [[OPS-IV]].
+		</p>
+		<!-- end ops-arch -->
+	</section>
+
+	<!-- end introduction -->
+</section>
+
+<section id="conventions">
+	<h2>Document Conventions</h2>
+	<section id="conformance">
+		<!-- This includes standard text about conformance -->
+	</section>
+	
+	<section id="rdf-syntax">
+		<h3>RDF Syntax and Namespaces</h3>
+		<p>
+			All examples in this document are written in the <a
+			href="http://www.w3.org/TR/turtle/">Turtle RDF syntax</a> 
+			[[TURTLE]]. Throughout the document, the following namespaces are 
+			used:
+		</p>
+
+		<pre class="turtle">
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix dul: &lt;http://www.ontologydesignpatterns.org/ont/dul/DUL.owl&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix freq: &lt;http://purl.org/cld/freq/&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix pav: &lt;http://purl.org/pav/2.0/&gt; .
+@prefix prov: &lt;http://www.w3.org/ns/prov-o/&gt; . 
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
+@prefix voag: &lt;http://voag.linkedmodel.org/schema/voag#&gt; .
+@prefix void: &lt;http://rdfs.org/ns/void#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+		</pre>
+
+		<p>
+			Furthermore, we assume that the empty prefix is bound to the base 
+			URL of the current file like this:
+		</p>
+
+		<pre class="turtle">@prefix : &lt;#&gt; .</pre>
+
+		<p>
+			This allows us to quickly mint new identifiers in the local 
+			namespace.
+		</p>
+		<!-- end rdf-syntax -->
+	</section>
+	<!-- end conventions -->
+</section>
+
+<section id="void-overview">
+	<h3>Vocabulary of Interlinked Datasets (VoID)</h3>
+	
+	<p class="todo"> Revise this section</p>
+	
+	
+	<p>
+		The Vocabulary of Interlinked Datasets (VoID) [[!VOID]] is a
+        W3C interest group note that specifies a vocabulary for describing
+        the metadata about a dataset and its relationship with other
+        datasets. The vocabulary builds upon existing metadata
+        vocabularies, e.g. Dublin Core Terms [[DCTERMS]].
+	</p>
+
+	<p>
+		The VoID specification [[VOID]] provides the following definitions:
+	</p>
+	<dl>
+		<dt>Dataset</dt>
+		<dd>
+			A set of RDF triples that are published, maintained or
+        	aggregated by a single provider.
+        </dd>
+        <dt>Link</dt>
+        <dd>
+        	An RDF triple whose subject and object are described in
+        	different datasets.
+        </dd>
+        <dt>Linkset</dt>
+        <dd>A collection of such RDF links between two datasets.</dd>
+	</dl>
+
+    <h4>Linksets</h4>
+
+   	<p>
+		A data instance mapping is a claim that an identifier in one dataset is 
+		related in some way to an identifier in another dataset. The mapping 
+		specification captures the type of relationship and the metadata 
+		associated with the mapping, e.g. provenance information about who 
+		created the mapping and the specific versions of the datasets related.
+	</p>
+    
+	<p>
+		The VoID specification enables a separation between (1) the
+		datasets involved in a link, and (2) who publishes the link.
+    </p>
+
+    <p>
+		Note that a VoID linkset is defined to link two datasets via
+		a single link predicate (void:linkPredicate). As such, there can
+		exist multiple linksets relating the same pair of datasets. The
+		following are examples of some of the multiple linksets that can
+		exist between datasets ChemSpider and ChEMBL:
+    </p>
+    <p class="todo">
+    	Fix Example! Probably best to draw a diagram showing the datasets and
+    	the declaration of the links between them.
+    </p>
+    <ul>
+		<li>
+			ChemSpider <code>cs:extUrl</code> ChEMBL as published in
+        	the ChemSpider dataset
+		</li>
+		<li>
+			ChemSpider <code>cs:...</code> ChEMBL as published in the
+        	ChemSpider dataset
+		</li>
+		<li>
+			ChEMBL <code>:csid</code> ChemSpider as published in the
+			ChEMBL dataset
+		</li>
+		<li>
+			ChEMBL <code>:somePredicate</code> ChemSpider as
+			published by some third party
+		</li>
+	</ul>
+	<section id="mapping-representation">
+		<h3>Representing a Mapping</h3>
+
+		<p>
+			A mapping must be represented as a VoID link, i.e. it is an
+			RDF triple that relates an identifier in one dataset with an
+			identifier in another dataset with some predicate which provides
+			the meaning of the mapping.
+		</p>
+
+		<p>
+			The mapping predicate captures the way in which the two
+			identifiers are related. The mapping should respect the
+			semantics of the relationship, i.e. the owl:sameAs relationship
+			must only be used when the two identifiers are completely
+			interchangeable.
+		</p>
+
+		<p>
+			Halpin et al [[Halpin2010]] propose a mapping relationship
+			ontology with eight levels of equivalence:
+		</p>
+		<ul>
+			<li>
+				Identical (equivalent to <code>owl:sameAs</code>): always 
+				interchangeable
+			</li>
+			<li>Claims Identical: inverse does not hold</li>
+			<li>
+				Matches (equivalent to <code>skos:exactMatch</code>):
+				share many properties, interchangeable in most cases
+			</li>
+			<li>Claims Matches: inverse does not hold</li>
+			<li>
+				Similar (equivalent to <code>skos:closeMatch</code>):
+				share some properties, not interchangeable
+			</li>
+			<li>Claims Similar: inverse does not hold</li>
+			<li>
+				Related (equivalent to <code>skos:related</code>):
+				distinct things with an association
+			</li>
+			<li>Claims Related (equivalent to <code>rdfs:seeAlso</code>)</li>
+		</ul>
+
+		<h4>Example</h4>
+			<p>
+				The following example declares that the ChemSpider
+				α-Ketoisovaleric acid concept with the 
+				<a href="http://www.chemspider.com/48">CSID 48</a> shares many 
+				properties with the ChEMBL
+				3-Methyl-2-oxobutanoic acid concept with the ChEMBL-RDF <a
+				href="http://data.kasabi.com/dataset/chembl-rdf/chemblid/CHEMBL146554"
+				> ChEMBL ID CHEMBL146554</a>. The relationship is drawn from
+				ChemSpider based on the compounds sharing the same structure
+				based on their InChI Keys (in this case the compound has the
+				same InChI Key QHKABHOOEWYVLI-UHFFFAOYSA-N in both data sets.).
+			</p>
+			<pre class="turtle">
+@prefix chembl: &lt;http://data.kasabi.com/dataset/chembl-rdf/chemblid/&gt; .
+
+&lt;http://rdf.chemspider.com/48&gt; skos:exactMatch chembl:CHEMBL146554 .
+      		</pre>
+	<!-- end mapping-representation -->
+	</section>
+	
+<!-- end void-overview -->
+</section>
+
+<section id="dataset-decscription">
+	<h2 id="dataset-describing">Describing Datasets</h2>
+	<p>
+		We assume that an RDF representation of the dataset has been generated
+		according to the Open PHACTS RDF Guidelines [[OPS-RDF]]. This section 
+		describes the information that must appear in the VoID description 
+		for the dataset.
+	</p>
+
+	<p>
+		The <a href="http://openphacts.cs.man.ac.uk/Void-Editor/">VoID 
+		Generator</a> supports the creation of dataset descriptions that 
+		conform with this specification.
+	</p>
+
+	<section id="dataset-metadata">
+		<h3 id="dataset-general-metadata">General Dataset Metadata</h3>
+
+		<h4 id="dataset-type">Type</h4>
+		<ul>
+			<li>
+				Must declare that we have a dataset using 
+				<a href="http://rdfs.org/ns/void#Dataset" target="_blank">
+				<code>void:Dataset</code></a>.
+			</li>
+		</ul>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#dataset" target="_blank">
+			Section 1.3</a> of the VoID Specification.
+		</p>
+
+		<h4 id="dataset-title">Title</h4>
+		<ul>
+			<li>
+				Must provide a name for the dataset using the 
+				<a href="http://purl.org/dc/terms/title" target="_blank">
+				<code>dcterms:title</code></a> predicate.
+			</li>
+		</ul>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#dublin-core" target="_blank">
+			Section 2.2</a> of the VoID Specification.
+		</p>
+
+		<h4 id="dataset-description">Description</h4>
+		<ul>
+			<li>
+				Must provide a description of the dataset using the 
+				<a href="http://purl.org/dc/terms/description" target="_blank">
+				<code>dcterms:description</code></a> predicate.
+			</li>
+		</ul>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#dublin-core" target="_blank">
+			Section 2.2</a> of the VoID Specification.
+		</p>
+
+		<h4 id="dataset-webpages">Webpages</h4>
+		<ul>
+			<li>
+				Must provide a link to the homepage for the dataset using 
+				the <a href="http://xmlns.com/foaf/spec/#term_homepage">
+				<code>foaf:hompage</code></a> predicate.
+			</li>
+			<li>
+				May provide links to other pages that discuss the dataset 
+				using the <a href="http://xmlns.com/foaf/spec/#term_page">
+				<code>foaf:page</code></a> predicate.
+			</li>
+		</ul>
+		<p>
+			An example of an external page that may be linked is the bioDBcore
+			[[BioDBcore]] entry, see <a href="#BioDBcore">Section 7.2</a>.
+		</p>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#webpage" target="_blank">
+			Section 2.1</a> of the VoID Specification.
+		</p>
+
+		<h4 id="dataset-license">License</h4>
+		<ul>
+			<li>
+				Must declare the licence under which the dataset is
+				published using the 
+				<a href="http://purl.org/dc/terms/license" target="_blank">
+				<code>dcterms:license</code></a> predicate.
+			</li>
+		</ul>
+		<p>
+			Where possible, we recommend publishing data under an open license
+			to enable reuse of the data with appropriate acknowledgement. For
+			Open PHACTS, the recommended license is <a
+			href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>. 
+			A list of alternative licenses are available in <a
+			href="http://www.w3.org/TR/void/#license">Section 2.4</a> of the 
+			W3C note on VoID.
+		</p>
+				<p class="note">
+			The recommended data license may be updated when John Wilbanks 
+			reports back.
+		</p>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#license" target="_blank">
+			Section 2.4</a> of the VoID Specification.
+		</p>
+
+		<h4 id="dataset-namespace">Namespace</h4>
+		<ul>
+			<li>
+				Must declare the URI namespace for the resources in the 
+				dataset using the 
+				<a href="http://rdfs.org/ns/void#uriSpace" target="_blank">
+				<code>void:uriSpace</code></a> predicate.
+			</li>
+		</ul>
+		<p>
+			Note that the object of the <code>void:uriSpace</code> predicate
+			is a literal, not a URI.
+		</p>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#pattern" target="_blank">
+			Section 4.2</a> of the VoID Specification.
+		</p>
+	<!-- end dataset-metadata -->			
+	</section>
+	<section id="dataset-prov-version">
+		<h3 id="dataset-provenance-version">Provenance and Version</h3>
+
+		<h4 id="dataset-version">Version</h4>
+		<ul>
+			<li>
+				Must declare the version of the dataset using the
+				<a href="http://purl.org/pav/" target="_blank"> 
+				<code>pav:version</code></a> predicate, where this exists for
+				the dataset.
+			</li>
+		</ul>
+			
+		<p>
+			Not all dataset have the notion of a version number. Where the
+			dataset does have this notion, it must be given in the 
+			description. For other datasets, the versioning information will
+			be inferred by the last modified date provided as part of the
+			provenace information.
+		</p>
+
+		<h4 id="dataset-provenance">Provenance of Data Origin</h4>
+			
+		<ul>
+			<li>
+				If the dataset and its description are accessed from their
+				original location, then the the following metadata should be
+				available from the VoID description at that site:
+				<ul>
+					<li>
+						<a href="http://purl.org/dc/terms/publisher" target="_blank">
+						<code>dcterms:publisher</code></a> to capture who 
+						published the data.
+					</li>
+					<li>
+						<a href="http://purl.org/dc/terms/created" target="_blank">
+						<code>dcterms:created</code></a> to capture when the
+						dataset was created.
+					</li>
+					<li>
+						<a href="http://purl.org/dc/terms/modified" target="_blank">
+						<code>dcterms:modified</code></a> to capture when the 
+						last update was made.
+					</li>
+				</ul>
+			</li>
+			<li>
+				If the dataset has been retrieved from another location,
+				i.e. it has already been published as RDF and this is a 
+				replica of that data, then the following metadata must
+				be given:
+				<ul>
+					<li>
+						<a href="http://purl.org/pav/" target="_blank">
+						<code>pav:retrievedFrom</code></a> to capture the 
+						location of the original source.
+					</li>
+					<li>
+						<a href="http://purl.org/pav/" target="_blank">
+						<code>pav:retrievedOn</code></a> to capture when the
+						retrieval was made.
+					</li>
+					<li>
+						<a href="http://purl.org/pav/" target="_blank">
+						<code>pav:retrievedBy</code></a> to capture who made the
+						retrieval. 
+					</li>
+				</ul>
+			</li>
+			<li>
+				If the dataset is imported from another data source, i.e.
+				the knowledge content is unchanged but the format of the 
+				data has been changed (e.g. XML to RDF transformation), then 
+				the following metadata must be given:
+				<ul>
+					<li>
+						<a href="http://purl.org/pav/" target="_blank">
+						<code>pav:importedFrom</code></a> to capture the 
+						location of the original source.
+					</li>
+					<li>
+						<a href="http://purl.org/pav/" target="_blank">
+						<code>pav:importedOn</code></a> to capture when the 
+						import was made.
+					</li>
+					<li>
+						<a href="http://purl.org/pav/" target="_blank">
+						<code>pav:importedBy</code></a> to capture who made the
+						import.
+					</li>
+				</ul>
+			</li>
+			<li>
+				If the dataset is derived from another data source, i.e.
+				the knowledge content has changed, then the following 
+				metadata must be provided:
+				<ul>
+					<li>
+						<a href="http://purl.org/pav/" target="_blank">
+						<code>pav:derivedFrom</code></a> to capture the 
+						relationship to the original data source.
+					</li>
+					<li>
+						<a href="http://purl.org/pav/" target="_blank">
+						<code>pav:derivedOn</code></a> to capture when the 
+						derivation was made.
+					</li>
+					<li>
+						<a href="http://purl.org/pav/" target="_blank">
+						<code>pav:derivedBy</code></a> to capture who made the
+						derivation. 
+					</li>
+				</ul>
+			</li>
+		</ul>
+		
+		<p>
+			Note that the object of the <code>pav:xxxBy</code> predicate is 
+			a URI. 
+		</p>
+		
+		<p id="orcid-note" class="note">
+			We currently do not require a specific form of URI for capturing
+			the details of a perosn or entity. Future versions of this
+			specification may recommend the use of ORCID Identifiers 
+			[[ORCID]].
+		</p>
+
+	<!-- end dataset-prov-version -->
+	</section>
+	<section id="dataset-subsets">
+		<h3 id="dataset-subset">Distinguishing Subsets</h3>
+
+		<h4 id="dataset-subset">Data source</h4>
+		<ul>
+			<li>
+				If the dataset contains distinguishable subsets, then these 
+				should be declared using the 
+				<a href="http://rdfs.org/ns/void#subset" target="_blank">
+				<code>void:subset</code></a> predicate. 
+			</li>
+		</ul>
+		<p>
+			Metadata that is common between the subsets can be declared for the 
+			parent only. However, the subsets allow for more specific linking 
+			between datasets and for providing details of the subject.
+		</p>
+		<p class="note">
+			In the VoID note [[VOID]], the <code>void:subset</code> propterty 
+			is used for both <em>subset of</em> and <em>has subset</em>. The 
+			declared semantics for the property is <em>has subset</em>. Within 
+			Open PHACTS, the property must be used with the <em>has subset</em> 
+			semantics.
+		</p>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#subset" target="_blank">
+			Section 4.4</a> of the VoID Specification.
+		</p>
+	<!-- end dataset-subset -->	
+	</section>
+	<section id="dataset-topic-resources">
+		<h3 id="dataset-topics-resources">Vocabularies, Topics, and 
+			Example Resources</h3>
+		<h4 id="dataset-vocabularies">Dataset Vocabularies</h4>
+		<ul>
+			<li>
+				Should declare the vocabularies and ontologies that encode
+				the data using the 
+				<a href="http://rdfs.org/ns/void#vocabulary" target="_blank">
+				<code>void:vocabulary</code></a> predicate.
+			</li>
+		</ul>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#vocabularies" target="_blank">
+			Section 4.3</a> of the VoID Specification.
+		</p>
+		<h4 id="dataset-topcis">Dataset Topics</h4>
+		<ul>
+			<li>
+				Should declare the topics covered using the
+				<a href="http://purl.org/dc/terms/subject" target="_blank">
+				<code>dcterms:subject</code></a> predicate.
+			</li>
+		</ul>
+		<p>
+			Multiple topics can be declared. If the data is split into 
+			subsets, then the topics should be associated with the subsets. 
+			BioPortal [[BioPortalWeb]] [[BioPortal]] can be used to search for
+			suitable vocabulary terms for topics. DBPedia URIs may also be used.
+			A list of common terms relevant for Open PHACTS is given in 
+			<a href="#appendix-topics-vocab">Appendix A.1</a>.
+		</p>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#subject" target="_blank">
+			Section 2.5</a> of the VoID Specification.
+		</p>
+		<h4 id="dataset-resources">Example Resources</h4>
+		<ul>
+			<li>
+				Should be declared using the 
+				<a href="http://rdfs.org/ns/void#exampleResource" target="_blank">
+				<code>void:exampleResource</code></a> predicate.
+			</li>
+		</ul>
+		<p>
+			Multiple resources can be declared. If the data is split into 
+			subsets, then the example resources should be associated with the
+			subsets.
+		</p>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#example-resource" target="_blank">
+			Section 4.1</a> of the VoID Specification.
+		</p>
+	<!-- end dataset-topic-resource -->
+	</section>
+	<section id="dataset-access">
+		<h3 id="dataset-access">Dataset Access</h3>
+		<h4 id="dataset-dump">Data Dump</h4>
+		<ul>
+			<li>
+				Must provide the location of a dataset dump using the
+				<a href="http://rdfs.org/ns/void#dataDump" target="_blank">
+				<code>void:dataDump</code></a> predicate.
+			</li>
+		</ul>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#dumps" target="_blank">
+			Section 3.3</a> of the VoID Specification.
+		</p>
+		<h4 id="dataset-sparql">SPARQL Endpoint</h4>
+		<ul>
+			<li>
+				May provide the location of a dataset SPARQL endpoint using the
+				<a href="http://rdfs.org/ns/void#sparqlEndpoint" target="_blank">
+				<code>void:sparqlEndpoint</code></a> predicate.
+			</li>
+		</ul>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#sparql" target="_blank">
+			Section 3.2</a> of the VoID Specification.
+		</p>
+	<!-- end dataset-access-update -->
+	</section>
+	<section id="dataset-update-frequency">
+		<h3 id="dataset-update">Dataset Update Frequency</h3>
+		<ul>
+			<li>
+				Should state the expected update frequency of the dataset using
+				the 
+				<a href="http://voag.linkedmodel.org/schema/voag#frequencyOfChange" target="_blank">
+				<code>voag:frequencyOfChange</code></a> predicate together with
+				a frequency term drawn from the 
+				<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/">
+				Frequency Vocabulary</a>. 
+			</li>
+		</ul>
+		<p>
+			The terms from the Frequency Vocabulary have been reproduced in 
+			<a href="#appendix-frequency-vocabulary">Appendix A.2</a>.
+		</p>
+		<!-- 
+		<p>
+			Considered a wide range of vocabularies here, including 
+			<a href="http://purl.org/NET/dady">DADY</a>. Dady not suitable due 
+			to the lack of specificaiton of the frequency terms. It also seemed
+			overly complicated.
+		</p>
+		 -->
+	<!-- end dataset-update-frequency -->
+	</section>
+	<section id="dataset-other">
+		<h3 id="dataset-other-metadata">Other Metadata</h3>
+		<p>
+			Other metadata that can be associated with a dataset may be
+			included, see the VoID specification [[VOID]] for additional 
+			properties that may be incorporated. The dataset may also have a 
+			provenance graph associated with it providing more detailed 
+			information about the creation, authorship, and derivation of the 
+			dataset. This provenance graph should be expressed using the W3C
+			Provenance Ontology [[PROV-O]].
+		</p>
+	<!-- end dataset-other -->
+	</section>
+	<section id="dataset-examples" class="informative">
+		<h3 id="dataset-examples">Examples</h3>
+
+		<p>
+			Example VoID dataset descriptions can be found in 
+			<a href="#appendix-dataset-examples" >Appendix B</a>. The first 
+			example is for the ChemSpider dataset (see 
+			<a href="#ChemSpider-VoID-Descriptor">Appendix B.1</a>). Note this 
+			example is derived from the existing non-conformant ChemSpider VoID
+			description available from 
+			<a href="http://rdf.chemspider.com/void.rdf">
+			http://rdf.chemspider.com/void.rdf</a>. 
+		</p>
+		<p> 
+			The second example is for the RDF representation of the ChEMBL 
+			database, given in <a href="#ChEMBL-RDF-VoID-Descriptor">
+			Appendix B.2</a>. This demonstrates the level of information 
+			required to track the provenance from a source dataset through to 
+			the RDF representation. It also contains subset definitions.
+		</p>
+	<!-- end dataset-examples -->
+	</section>
+<!-- end dataset-description -->
+</section>
+
+<section id="linkset-description">
+	<h2 id="linkset-desc">Describing Linksets</h2>
+
+	<p>
+		A linkset is itself a dataset, and as such should provide the
+		metadata about its content and how it was created. The metadata 
+		associated with a link is essential for enabling its reuse by others. 
+		It enables a consumer of the link to understand which datasets are 
+		linked (inlcuding which version), who claimed the link, under what 
+		circumstances, and which (if any) tools were used to generate the link 
+		(e.g. [[SILK]]).
+	</p>
+
+	<section id="linkset-metadata">
+		<h3 id="linkset-general-metadata">General Linkset Metadata</h3>
+
+		<h4 id="linkset-type">Type</h4>
+		<ul>
+			<li>
+				Must declare that we have a linkset using 
+				<a href="http://rdfs.org/ns/void#Linkset" target="_blank">
+				<code>void:Linkset</code></a>.
+			</li>
+		</ul>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#linkset" target="_blank">
+			Section 1.4</a> of the VoID Specification.
+		</p>
+
+		<h4 id="linkset-title">Title</h4>
+		<ul>
+			<li>
+				Must provide the title of the linkset using the
+				<a href="http://purl.org/dc/terms/title" target="_blank">
+				<code>dcterms:title</code></a> predicate.
+			</li>
+		</ul>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#dublin-core" target="_blank">
+			Section 2.2</a> of the VoID Specification.
+		</p>
+		<h4 id="linkset-description">Description</h4>
+		<ul>
+			<li>
+				Must provide a description of the linkset using the  
+				<a href="http://purl.org/dc/terms/description" target="_blank">
+				<code>dcterms:description</code></a> predicate.
+			</li>
+		</ul>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#dublin-core" target="_blank">
+			Section 2.2</a> of the VoID Specification.
+		</p>
+		<p>
+			Note that for linksets there is unlikely to be a web page
+			directly dedicated to the linkset, as such that part of the
+			dataset metadata is not stated as a requirement.
+		</p>
+
+		<h4 id="linkset-license">License</h4>
+		<ul>
+			<li>
+				Must declare the licence under which the linkset is published 
+				using the 
+				<a href="http://purl.org/dc/terms/license" target="_blank">
+				<code>dcterms:license</code></a> predicate.
+			</li>
+		</ul>
+		<p>
+			Where possible, we recommend publishing data under an open license
+			to enable reuse of the data with appropriate acknowledgement. For
+			Open PHACTS, the recommended license is <a
+			href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>. 
+			A list of alternative licenses are available in <a
+			href="http://www.w3.org/TR/void/#license">Section 2.4</a> of the 
+			W3C note on VoID.
+		</p>		
+		<p class="note">
+			The recommended data license may be updated when John Wilbanks 
+			reports back.
+		</p>
+		<p class="note">
+			The license under which a linkset is published may be different 
+			from that of the datasets that it links, even if it is a subset of
+			one of the datasets.
+		</p>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#license" target="_blank">
+			Section 2.4</a> of the VoID Specification.
+		</p>		
+	<!-- end linkset-metadata -->
+	</section>
+	<section id="link-info">
+		<h3 id="linkset-information">Link Information</h3>
+		<h4 id="linkset-targets">Target Datasets</h4>
+		<ul>
+			<li>
+				Must declare the datasets that are linked using the 
+				<a href="http://rdfs.org/ns/void#subjectsTarget" target="_blank">
+				<code>void:subjectsTarget</code></a> and 
+				<a href="http://rdfs.org/ns/void#objectsTarget" target="_blank">
+				<code>void:objectsTarget</code></a> predicates.
+			</li>
+		</ul>		
+		<p>
+			Note that the object of the above predicates are the URIs of the
+			respective datasets as declared in a VoID description. The datasets 
+			may themselves be a subset of a larger dataset. Where the datasets
+			do not provide a VoID description, the minimal required information 
+			must be provided in the linkset description. This is detailed in
+			<a href="#linkset-min-dataset-desc">Section 5.5</a>. 
+		</p>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#target" target="_blank">
+			Section 5.1</a> of the VoID Specification.
+		</p>		
+		
+		<h4 id="linkset-relationship">Link Relationship</h4>
+		<ul>
+			<li>
+				Must declare the link predicate using the 
+				<a href="http://rdfs.org/ns/void#linkPredicate" target="_blank">
+				<code>void:linkPredicate</code></a> predicate.
+			</li>
+		</ul>	
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#link-predicate" target="_blank">
+			Section 5.3</a> of the VoID Specification.
+		</p>		
+		
+		<h4 id="linkset-justification">Link Justification</h4>
+		<ul>
+			<li>
+				Must declare the reason/circumstance under which the link holds
+				using the 
+				<a href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#expresses" target="_blank">
+				<code>dul:expresses</code></a> predicate and an object 
+				from an open vocabulary.
+			</li>
+		</ul>
+		<p>
+			The link justification provides the reason/circumstance why 
+			instances in the two datasets can be considered equivalent. 
+			For example, two chemical compounds have the same InChI Key or 
+			have the same chemical formula.
+		</p>  
+		<p class="todo">
+			Need to ensure that by using <code>dul:expresses</code> we are not
+			inferring other contradictory consequences.
+		</p>
+		<p>
+			Currently recommended vocabulary terms for the justification can be
+			found in <a href="#appendix-link-justifications">Appendix A.3</a>.
+		</p>
+	<!-- end link-info -->
+	</section>
+	<section id="linkset-provenance">
+
+		<h3 id="linkset=provenance">Provenance</h3>
+		
+		<h4 id="linkset-subset">Subset</h4>
+		<ul>
+			<li>
+				If the linkset is a subset of another dataset, then
+				this must be declared using the 
+				<a href="http://rdfs.org/ns/void#subset" target="_blank">
+				<code>void:subset</code></a> predicate.
+			</li>
+		</ul>	
+		<p>
+			Note that the dataset URI is the subject of the 
+			<code>void:subset</code> triple and the linkset URI is the object.
+			If the dataset VoID description contains the declaration, there is
+			no need to repeat it in the linkset document. However, the linkset
+			documents can be used to declare additional subsets. A subset 
+			inherits properties from its parent. 
+		</p>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#linkset-subset" target="_blank">
+			Section 5.2</a> of the VoID Specification.
+		</p>		
+		
+		<h4 id="linkset-source">Link Source</h4>
+		<ul>
+			<li>
+				Must declare how the links were asserted.
+				<ul>
+					<li>
+						Manually asserted links are declared using the 
+						authorship properties:
+						<ul>
+							<li>
+								<a href="http://purl.org/pav/" target="_blank">
+								<code>pav:authoredBy</code></a> to capture who 
+								made the assertions encoded in the links.
+							</li>
+							<li>
+								<a href="http://purl.org/pav/" target="_blank">
+								<code>pav:authorOn</code></a> to capture when 
+								the assertions were made.
+							</li>
+						</ul>
+					</li>
+					<li>
+						Computer derived links are declared by asserting the
+						tool used to generate the links using the property 
+						<a href="http://purl.org/pav/" target="_blank">
+						<code>pav:createdWith</code></a>. 
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p>
+			Additional information about the settings used when running an 
+			automated link generation tool such as Silk [[SILK]] can be 
+			captured in an associated provenance graph encoded using PROV-O 
+			[[PROV-O]].
+		</p>
+		
+		<h4 id="linkset-creation">Linkset Creation Details</h4>
+		<ul>
+			<li>
+				Must declare who created the linkset, i.e. encoded the 
+				knowledge into triples or operated the computer generation tool,
+				with the property 
+				<a href="http://purl.org/pav/" target="_blank">
+				<code>pav:createdBy</code></a>.
+			</li>
+			<li>
+				Must declare when the linkset was created using the 
+				<a href="http://purl.org/pav/" target="_blank">
+				<code>pav:createdOn</code></a> predicate.
+			</li>
+		</ul>
+		
+		<h4 id="linkset-version">Linkset Version</h4>
+		<ul>
+			<li>
+				May declare a version number for the linkset using the
+				<a href="http://purl.org/pav/" target="_blank">
+				<code>pav:version</code></a> predicate.
+			</li>
+		</ul>
+		
+		<h4 id="linkset-target-access">Dataset Access</h4>
+		<ul>
+			<li>
+				Must declare, for each dataset that is not a parent for the 
+				linkset, when and by whom it was accessed using:
+				<ul>
+					<li>
+						<a href="http://purl.org/pav/" target="_blank">
+						<code>pav:accessedBy</code></a>
+					</li>
+					<li>
+						<a href="http://purl.org/pav/" target="_blank">
+						<code>pav:accessedOn</code></a>
+					</li>
+				</ul>
+				For the linkset parent dataset, this information may be omitted
+				if the linkset is generated as part of the dataset creation
+				process.
+			</li>
+		</ul>
+		<p>
+			A linkset should point to the dataset descriptions of the datasets 
+			that it uses. These descriptions should be provided by the dataset 
+			provider as part of the dataset publishing process [[OPS-RDF]]. 
+			However, it is necessary to augment the data for the purposes of 
+			providing additional information about the involvoment of the 
+			dataset in the linkset, e.g. when it was accessed for the purpose 
+			of creating the linkset. Note that these triples will have the 
+			dataset URI as the subject.
+		</p>
+		
+	<!-- end linkset-provenance -->
+	</section>
+	<section id="linkset-stats">
+		<h3 id="linkset-statistics">Linkset Statistics</h3>
+		<ul>
+			<li>
+				Should declare the number of links in the linkset using the
+				<a href="http://rdfs.org/ns/void#triples" target="_blank">
+				<code>void:triples</code></a> predicate. 
+			</li>
+		</ul>
+		<p>
+			Providing the number of triples included in the linkset allows for 
+			applications using the linkset to validate that the entire linkset 
+			has been successfully loaded.
+		</p>
+		<p>
+			For more details see 
+			<a href="http://www.w3.org/TR/void/#statistics" target="_blank">
+			Section 4.6</a> of the VoID Specification.
+		</p>		
+
+	<!-- end linkset-stats -->
+	</section>
+	<section id="linkset-min-dataset-desc">
+		<h3 id="linkset-minimal-dataset-desc">Minimal Dataset Description</h3>
+		
+		<p>
+			A linkset should point to the dataset descriptions of the datasets 
+			that it uses. These descriptions should be provided by the dataset 
+			provider as part of the dataset publishing process [[OPS-RDF]]. 
+			However, there are occasions when one or both of the linked 
+			datasets do not provide a VoID dataset description. The following
+			set of properties must then be provided in the linkset document. 
+			Other properties may also be given.  
+		</p>
+		<ul>
+			<li>
+				All aspects of <a href="#dataset-metadata">General Dataset 
+				Metadata</a>.
+			</li>
+			<li>
+				All aspects of <a href="#dataset-prov-version">Provenance and
+				Version</a> metadata.
+			</li>
+			<li>
+				Where applicable, the information should be specified about a
+				subset of the data and details from 
+				<a href="#dataset-subsets">Distinguishing Subsets</a> provided.
+			</li>
+		</ul>
+	<!-- end linkset-min-dataset-desc -->
+	</section>
+	<section id="linkset-examples" class="informative">
+		<h3 id=linkset-examples>Examples</h3>
+		<p>
+			Example VoID linkset descriptions can be found in 
+			<a href="#example-linksets">Appendix C</a>. The first example 
+			shows how existing dataset descriptors can be reused (see 
+			<a href="#CS2ChEMBLLinkset">Appendix C.1</a>). The second 
+			example shows the declaration of a dataset's metadata in the 
+			linkset file (see <a href="#CS2DBLinkset" >Appendix C.2</a>).
+		</p>
+	<!-- end linkset-examples -->
+	</section>
+<!-- end linkset-description -->
+</section>
+
+<section id="exchanging-descriptions">
+	<h2>Exchanging VoID Documents</h2>
+	<p class="todo"> Revise this section</p>
+
+	<p>
+		It is anticipated that links between datasets will not be
+		created and shared in isolation, i.e. multiple links relating
+		concepts in two datasets with the same predicate will be created
+		at the same time using the same mechanism. A collection of links
+		that meet the following requirements can be shared as a single
+		VoID linkset:
+	</p>
+	<ul>
+		<li>
+			The resulting document must be a valid VoID linkset:
+			<ul>
+				<li>
+					The subject of all of the mapping triples are from
+					the same dataset;
+				</li>
+				<li>
+					The object of all the mapping triples are from the
+					same dataset;
+				</li>
+				<li>
+					The predicate of all the mapping triples are the
+					same.
+				</li>
+			</ul>
+		</li>
+		<li>The metadata of all the mapping triples is the same.</li>
+	</ul>
+
+	<p>
+		The interpretation must be that each link in the linkset is a
+		mapping with the metadata given in the heading of the VoID
+		linkset. The linkset should include the metadata specified in 
+		<a href="#mapping-specification"> Section 4.2</a>.
+	</p>
+
+	<p>
+		As stated in <a href="http://www.w3.org/TR/void/#void-file">Section
+		6.2</a> of the VoID specification [[VOID]], the VoID documents
+		describing datasets and linksets should contain a metadata block
+		describing the document. An example is given below for the
+		ChemSpider deployment. Note the use of an empty-string relative
+		URI (&lt;&gt;) as a syntactic shortcut for the URI of the document that
+		contains the statements.
+	</p>
+	<pre class="turtle">
+&lt;&gt; a void:DatasetDescription ;
+    dcterms:title "ChemSpider VoID Description"^^xsd:string ;
+    dcterms:creator &lt;http://www.chemspider.com/&gt; ;
+    foaf:primaryTopic :chemSpiderDataset .    
+	</pre>
+
+	<section id="deploying-void">
+		<h3>Deploying VoID Descriptions</h3>
+
+		<p>
+			Several mechanisms for deploying VoID descriptions are given in
+			<a href="http://www.w3.org/TR/void/#deploying">Section 6</a> of the
+			VoID Note [[VOID]].
+		</p>
+
+		<p>
+			For datasets that are being published in their own domain, with
+			dereferenceable URIs, then we recommend placing the dataset's
+			VoID description in the root directory in a file called
+			<code>void.ttl</code>, with a local "hash URI" for the dataset 
+			(and any subsets). For example, for ChemSpider we would have a URI 
+			such as 
+			<code>http://rdf.chemspider.com/void.ttl#chemSpiderDataset</code>. 
+			When the code is being hosted on an external service, e.g. 
+			<a href="http://kasabi.com/">Kasabi</a>, then the VoID descriptor 
+			should be provided in the dataset's home directory. For example, for 
+			the RDF encoding of ChEBML this would be
+			<code>http://data.kasabi.com/dataset/chembl-rdf/void.ttl#chembl-rdf</code>. 
+			Examples of the VoID descriptors are given in 
+			<a href="#appendix-dataset-examples">Appendix A</a>.
+		</p>
+
+		<p>
+			Each RDF document containing the data should then contain a
+			backlink to the dataset descriptor. For example, the ChEMBL-RDF
+			molecure m1, there would be the triple:
+		</p>
+		<pre class="turtle">
+&lt;http://data.kasabi.com/dataset/chembl-rdf/molecule/m1&gt; void:inDataset 
+    &lt;http://data.kasabi.com/dataset/chembl-rdf/void.ttl#chembl-rdf_compounds&gt; .    
+		</pre>
+	<!-- end deploying-void -->
+	</section>
+	<section id=linkset-files>
+		<h3>Linkset Documents</h3>
+		<p>
+			For the purposes of Open PHACTS, it is anticipated that
+			linksets will be materialised as separate documents from the
+			datasets. This is to allow their loading into the identity
+			mapping service [[IMS]].
+		</p>
+
+		<p>
+			Where a dataset involved in a linkset has a published VoID
+			description, then this should be referenced in the linkset
+			document. The available metadata can be augmented in the linkset
+			document to allow for additional information about the dataset,
+			e.g. the specific version used or when it was accessed, to be
+			declared.
+		</p>
+
+		<p class="note">
+			This is problematic. What happend if the
+			dataset description is updated? Need some way of referencing a
+			specific version of the VoID description. This issue does not
+			seem to have been addressed in the VoID document.
+		</p>
+
+		<p>
+			Where a dataset does not provide a VoID description that
+			can be reused, then the required metadata should be included in
+			the linkset document.
+		</p>
+	<!-- end linkset-files -->
+	</section>
+<!-- end exchangine-descriptions-->
+</section>
+
+<section id="standards" class="informative">
+	<h2>Related Standards</h2>
+	<p class="todo"> Revise this section</p>
+
+	<section id="nanopublications">
+		<h3>Nanopublications</h3>
+		<!-- Suggested text from Marco
+		<p>
+			Nanopublications provide a means for data providers to obtain credit 
+			for their data contribution, in particular data that can be 
+			described in the form of a minimal set of assertions: a minimal 
+			piece of information that represents value for which credit is due. 
+			In Semantic Web terms, the nanopublication schema is a simple 
+			schema to annotate an assertion graph with attribution and 
+			supporting evidence (typically also RDF graphs). A guidelines 
+			document and the most current RDF schema are available for 
+			(potential) nanopublication publishers.
+		</p>
+		<p>
+			Nanopublications can be used for computing impact, evolution of 
+			knowledge, or for knowledge discovery. An important social aspect 
+			is that end users, for instance biologists, buy into the concept of 
+			nanopublication more easily than that of the Semantic Web or RDF. 
+			The nuance that one builds on the other is typically lost.
+		</p>
+		 -->
+	<!-- end nanopublications -->
+	</section>
+	<section id="BioDBcore">
+		<h3>BioDBcore</h3>		
+		<p>
+			BioDBcore defines the following properties as the set of metadata
+			that should be published in relation to a dataset. The aim of
+			BioDBcore is different from that of VoID, but many of the elements
+			defined are covered in the Open PHACTS dataset description.
+		</p>
+		<ul>
+			<li>Database name</li>
+			<li>Main resource URL</li>
+			<li>Contact information (e-mail; postal mail)</li>
+			<li>Date resource established (year) </li>
+			<li>Conditions of use (Free, or type of license)</li>
+			<li>Scope: data types captured, curation policy, standards used</li>
+			<li>Standards: MIs, Data formats, terminologies</li>
+			<li>Taxonomic coverage</li>
+			<li>Data accessibility/output options</li>
+			<li>Data release frequency </li>
+			<li>Versioning period and access to historical files </li>
+			<li>Documentation available </li>
+			<li>User support options </li>
+			<li>Data submission policy </li>
+			<li>Relevant publications</li>
+			<li>Resource's Wikipedia URL</li>
+			<li>Tools available</li>
+		</ul>		
+		<p>
+			An example BioDBcore record for  
+			<a href="http://www.biosharing.org/biodbcore-000015">ChEMBL</a>.
+		</p>
+		<p>
+			The metadata specified in <a href="#dataset-decscription">Section
+			4</a> covers the functional data required from BioDBcore. The 
+			aspects not covered are those relating to discoving who is 
+			responsible for a dataset and the publications about the dataset. It
+			is expected that such information can be discovered from the 
+			dataset's homepage and is not within the use case scope for the 
+			description of the dataset.
+		</p>
+	<!-- end BioDbCore -->
+	</section>
+	<section id="voidp">
+		<h3>Vocabulary for Data and Dataset Provenance (voidp)</h3>
+		<p>
+			Defined as an extension to VoID, the vocabulary for data
+			and dataset provenance (voidp) [[VOIDP]] is a vocabulary for
+			defining provenance relationships of data and datasets. The
+			vocabulary focuses on four specific pieces of provenance
+			information:
+		</p>
+		<blockquote>
+			"for a piece of data, x :
+			<ul>
+				<li>when was x derived,</li>
+				<li>how was x derived,</li>
+				<li>what data had been used to derive x,</li>
+				<li>
+					who carried out the transformations that resulted in
+					the current value of x." [[VOIDP]]
+				</li>
+			</ul>
+		</blockquote>
+		<p>
+			These are a subset of the information that needs to be
+			captured for the Open PHACTS linksets.
+		</p>
+	<!-- end voidp -->
+	</section>
+	<section id="provenance-standards">
+		<p>
+			The vocabulary provides its own predicates for capturing
+			these provenance relationships, rather than reusing existing
+			vocabularies for capturing provenance metadata, e.g. the open
+			provenance model [[OPM]] or Provenance Authoring and Versioning
+			ontology [[PAV]]. There is now also a W3C group working on a
+			provenance ontology [[PROV-O]].
+		</p>
+		<p>
+			Provenance Vocabulary [[PRV]]].
+		</p>
+	<!-- end provenance-standards -->
+	</section>
+</section>
+
+<section id="appendix-vocabulary-terms" class="appendix">
+	<h2 id="appendix-vocabulary-terms">Suggested Vocabulary Terms</h2>
+	<section id="appendix-topics-vocab">
+		<h3 id="topics-vocabulary-terms">Vocabulary Terms for Dataset Topics</h3>
+		<p class="todo">
+			Complete list of suggested URIs.
+		</p>
+		<p>
+			This section lists suggested vocabulary terms for the dataset topics
+			metadata that are relevant for Open PHACTS. The term in bold is the
+			preferred URI.
+		</p>
+		<dl>
+			<dt>Drug:</dt>
+			<dd></dd>
+			<dt>Molecule:</dt>
+			<dd>
+				<ul>
+					<li>
+						<strong>
+						<a href="http://purl.obolibrary.org/obo/CHEBI_25367">
+						http://purl.obolibrary.org/obo/CHEBI_25367
+						</a></strong>
+					</li>
+					<li>
+						<a href="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Molecule">
+						http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Molecule
+						</a>
+					</li>
+					<li>
+						<a href="http://dbpedia.org/resource/Molecule">
+						http://dbpedia.org/resource/Molecule
+						</a>
+					</li>
+				</ul>
+			</dd>
+			<dt>Protein:</dt>
+			<dd></dd>
+			<dt>Target:</dt>
+			<dd></dd>
+		</dl>
+	<!-- end appendix-topics-vocab -->
+	</section>
+	<section id="appendix-frequency-vocabulary">
+		<h3 id="frequency-vocabulary">Frequency of Change Vocbaulary</h3>
+		<p>
+			Below are the terms from the frequncy of change vocabulary.
+		</p>
+		<ul>
+			<li>
+				Triennial 
+				<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqtriennial" target="_blank"><code>freq:triennial</code></a>
+			</li>
+				<li>
+					Biennial 
+					<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqbiennial" target="_blank"><code>freq:biennial</code></a>
+			</li>
+		    <li>
+		    	Annual 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqannual" target="_blank"><code>freq:annual</code></a>
+			</li>
+		    <li>
+		    	Semiannual 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqsemiannual" target="_blank"><code>freq:semiannual</code></a>
+			</li>
+		    <li>
+		    	Three times a year 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqthreeTimesAYear" target="_blank"><code>freq:threeTimesAYear</code></a>
+			</li>
+		    <li>
+		    	Quarterly 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqquarterly" target="_blank"><code>freq:quarterly</code></a>
+			</li>
+		    <li>
+		    	Bimonthly 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqbimonthly" target="_blank"><code>freq:bimonthly</code></a>
+			</li>
+		    <li>
+		    	Monthly 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqmonthly" target="_blank"><code>freq:monthly</code></a>
+			</li>
+		    <li>
+		    	Semimonthly 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqsemimonthly" target="_blank"><code>freq:semimonthly</code></a>
+			</li>
+		    <li>
+		    	Biweekly 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqbiweekly" target="_blank"><code>freq:biweekly</code></a>
+			</li>
+		    <li>
+		    	Three times a month 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqthreeTimesAMonth" target="_blank"><code>freq:threeTimesAMonth</code></a>
+			</li>
+		    <li>
+		    	Weekly 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqweekly" target="_blank"><code>freq:weekly</code></a>
+			</li>
+		    <li>
+		    	Semiweekly 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqsemiweekly" target="_blank"><code>freq:semiweekly</code></a>
+			</li>
+		    <li>
+		    	Three times a week 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqthreeTimesAWeek" target="_blank"><code>freq:threeTimesAWeek</code></a>
+			</li>
+		    <li>
+		    	Daily 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqdaily" target="_blank"><code>freq:daily</code></a>
+			</li>
+		    <li>
+		    	Continuous 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqcontinuous" target="_blank"><code>freq:continuous</code></a>
+			</li>
+		    <li>
+		    	Irregular 
+		    	<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/#freqirregular" target="_blank"><code>freq:irregular</code></a>
+			</li>
+		  </ul>
+	<!-- end appendix-frequency-vocabulary -->
+	</section><section id="appendix-link-justifications" class="appendix">
+		<h3 id="link-justification-vocab">Link Justification Vocabulary Terms</h3>
+		<p class="todo">
+			Add list of known vocabulary terms to be used for link justification.
+		</p>
+	<!-- end appendix-link-justifications -->
+	</section>
+	
+<!-- end appendix-vocabulary-terms -->
+</section>
+
+<section id="appendix-dataset-examples" class="appendix">
+	<h2 id="example-dataset">Example Dataset VoID Descriptors</h2>
+	<section id="ChemSpider-VoID-Descriptor">
+		<h3 id="chemspider-void">ChemSpider VoID Descriptor</h3>
+		<p>
+			The ChemSpider site already has a VoID descriptor available from 
+			<a href="http://rdf.chemspider.com/void.rdf">
+			http://rdf.chemspider.com/void.rdf</a>. This has been created with 
+			a previous version of the VoID specification. Below is a suggested
+			updated version which conforms with the requirements of this 
+			specification.
+		</p>
+		<ul>
+			<li> 
+				<a href="examples/chemspider-void.ttl">Download file</a>
+			</li>
+			<li>
+				<a href="examples/chemspider-void.png">View graph</a>
+			</li>
+		</ul>
+<!-- Example copy and pasted from examples/chemspider-void.ttl -->
+		<pre class="RDF"
+			title="ChemSpiders VoID Descriptor as published in RDF/turtle">
+@prefix : &lt;http://rdf.chemspider.com/void-example.rdf#&gt;.
+
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt;.
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix freq: &lt;http://purl.org/cld/freq/&gt; .
+@prefix pav: &lt;http://purl.org/pav/2.0/&gt;.
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
+@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;.
+@prefix voag: &lt;http://voag.linkedmodel.org/schema/voag#&gt; .
+@prefix void: &lt;http://rdfs.org/ns/void#&gt;.
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;.
+
+# Metadata about this file
+&lt;http://rdf.chemspider.com/void-example.rdf&gt; 
+	a void:DatasetDescription;
+	dcterms:title "A VoID Description of the ChemSpider Dataset"@en;
+	dcterms:description 
+		"""This is an example VoID description for the ChemSpider dataset. 
+		   It is derived from the existing VoID description and updating it to the latest
+		   version of the VoID specification."""@en;
+	pav:createdBy &lt;http://www.cs.man.ac.uk/~graya/me.ttl&gt;;
+	pav:createdOn "2012-05-02"^^xsd:date;
+	pav:lastUpdateOn "2012-08-10"^^xsd:date;
+	pav:derivedFrom &lt;http://rdf.chemspider.com/void.rdf&gt;;
+	foaf:primaryTopic :chemSpiderDataset;
+	.
+
+# Description of the ChemSpider dataset
+:chemSpiderDataset 
+# General metadata
+	a void:Dataset;
+	dcterms:title "ChemSpider"@en;
+	dcterms:description "ChemSpider's Public Dataset"@en;
+	foaf:homepage &lt;http://rdf.chemspider.com/&gt;;
+	foaf:page &lt;http://www.chemspider.com/&gt;;
+	dcterms:license &lt;http://www.chemspider.com/Disclaimer.aspx&gt;;
+	void:uriSpace "http://rdf.chemspider.com/"^^xsd:string;
+#Subsets
+	void:subset :chemSpiderDataset_chembl_subset,:chemSpiderDataset_drugbank_subset;
+#Vocabularies, topics, resources
+	void:vocabulary &lt;http://purl.org/dc/elements/1.1/&gt;,
+		&lt;http://purl.org/dc/terms/&gt;,
+		&lt;http://www.openarchives.org/ore/terms/&gt;,
+		&lt;http://www.polymerinformatics.com/ChemAxiom/ChemDomain.owl#&gt;,
+		&lt;http://xmlns.com/foaf/0.1/&gt;;
+	dcterms:subject &lt;http://dbpedia.org/resource/Molecule&gt;;
+	void:exampleResource &lt;http://rdf.chemspider.com/2157&gt;;
+#Dataset Access	
+	void:sparqlEndpoint &lt;http://rdf.chemspider.com/sparql&gt;;
+#Update Frequency
+	voag:frequencyOfChange freq:continuous;
+#Other Metadata
+	# Technical features
+	void:feature &lt;http://www.w3.org/ns/formats/RDF_XML&gt;;
+	# Dataset statistics
+	void:triples "1157624328"^^xsd:nonNegativeInteger;
+	.
+
+:chemSpiderDataset_chembl_subset
+#General Metadata
+	a void:Dataset;
+	dcterms:title "ChemSpider ChEMBL Subset"@en;
+	dcterms:description "The slice of ChemSpider data that corresponds to ChEMBL molecules."@en;
+#Provenance
+	pav:retrievedFrom &lt;https://www.dropbox.com/sh/6zboa8z9i9vrzyl/7NxayhkUH0/ChEMBL20120731.zip&gt;;
+	pav:retrievedOn "2012-08-02"^^xsd:date;
+	pav:retrievedBy &lt;http://www.cs.man.ac.uk/~graya/me.ttl&gt; ;
+#Dataset Access
+	void:dataDump &lt;https://www.dropbox.com/sh/6zboa8z9i9vrzyl/7NxayhkUH0/ChEMBL20120731.zip&gt;;
+	.
+
+# Description of the ChemSPider subset relating to DrugBank
+:chemSpiderDataset_drugbank_subset
+#General Metadata
+	a void:Dataset;
+	dcterms:title "ChemSpider DrugBank Subset"@en;
+	dcterms:description "Data corresponding to DrugBank."@en;
+#Provenance
+	pav:retrievedFrom &lt;https://www.dropbox.com/sh/6zboa8z9i9vrzyl/qcFZzbLM77/DrugBank20120731.zip&gt;;
+	pav:retrievedOn "2012-08-02"^^xsd:date;
+	pav:retrievedBy &lt;http://www.cs.man.ac.uk/~graya/me.ttl&gt; ;
+#Dataset Access
+	void:dataDump &lt;https://www.dropbox.com/sh/6zboa8z9i9vrzyl/qcFZzbLM77/DrugBank20120731.zip&gt;;
+	.
+    	</pre>
+    <!-- end ChemSpider-VoID -->
+	</section>
+	<section id="ChEMBL-RDF-VoID-Descriptor">
+		<h3 id="chemble-rdf-void">ChEBML-RDF VoID Descriptor</h3>
+
+		<p>
+			Below we provide the VoID document for the ChEMBL-RDF dataset, which
+			is a conversion of the ChEMBL database. The VoID file would be
+			located at
+			<code>http://data.kasabi.com/dataset/chembl-rdf/void.ttl</code>.
+		</p>
+		<ul>
+			<li> 
+				<a href="examples/chembl-rdf-void.ttl">Download file</a>
+			</li>
+			<li>
+				<a href="examples/chembl-rdf-void.png">View graph</a>
+			</li>
+		</ul>
+<!-- Example copy and pasted from examples/chembl-rdf-void.ttl -->
+		<pre class="turtle">
+@prefix : &lt;http://data.kasabi.com/dataset/chembl-rdf/void.ttl&gt;.
+
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt;.
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix freq: &lt;http://purl.org/cld/freq/&gt; .
+@prefix pav: &lt;http://purl.org/pav/2.0/&gt;.
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
+@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;.
+@prefix voag: &lt;http://voag.linkedmodel.org/schema/voag#&gt; .
+@prefix void: &lt;http://rdfs.org/ns/void#&gt;.
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;.
+
+# Metadata about this file
+&lt;&gt; 
+    a void:DatasetDescription;
+    dcterms:title "ChEMBL-RDF VoID Description"@en;
+    dcterms:description 
+        """This is the VoID description for a ChEMBL-RDF dataset."""@en;
+    pav:createdBy &lt;http://egonw.github.com/#me&gt; ;
+    pav:createdOn "2012-08-12"^^xsd:date;
+    pav:previousVersion &lt;http://semantics.bigcat.unimaas.nl/chembl/v13_ops/chembl-rdf-void.ttl&gt;;
+    foaf:primaryTopic :chemblrdf_dataset.
+
+:chemblrdf_dataset
+# General metadata
+    a void:Dataset;
+    dcterms:title "ChEMBL-RDF 13.OPS.2"@en;
+    dcterms:description "The ChEMBL database in RDF format."@en;
+    foaf:homepage &lt;http://github.com/egonw/chembl.rdf/&gt;;
+    foaf:page &lt;http://www.biosharing.org/biodbcore-000015&gt;;
+    dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
+    void:uriSpace "http://data.kasabi.com/dataset/chembl-rdf/"^^xsd:string ;
+# Provenance
+	pav:version "v13_ops";
+    pav:importedFrom :chembl_dataset;
+    pav:importedBy &lt;http://egonw.github.com/#me&gt; ;
+    pav:importedOn "2012-05-15"^^xsd:date;
+# Subsets
+    void:subset :chemblrdf_compounds, :chemblrdf_targets ;
+# Vocabularies, topics, resources
+	void:vocabulary 
+		&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;,
+		&lt;http://www.w3.org/2000/01/rdf-schema#&gt;,
+		&lt;http://www.w3.org/2002/07/owl#&gt;,
+		&lt;http://www.w3.org/2001/XMLSchema#&gt;,
+		&lt;http://purl.org/dc/elements/1.1/&gt;, 
+		&lt;http://purl.org/ontology/bibo/&gt;,
+		&lt;http://xmlns.com/foaf/0.1/&gt;, 
+		&lt;http://purl.org/spar/cito/&gt;, 
+		&lt;http://www.w3.org/2004/02/skos/core#&gt; ,
+		&lt;http://purl.obolibrary.org/obo#&gt;,
+		&lt;http://www.blueobelisk.org/ontologies/chemoinformatics-algorithms/#&gt;,
+		&lt;http://www.blueobelisk.org/chemistryblogs/&gt;,
+		&lt;http://www.nmrshiftdb.org/onto#&gt;,
+		&lt;http://www.ifomis.org/bfo/1.1/snap#&gt;,
+		&lt;http://semanticscience.org/resource/&gt;,
+		&lt;http://purl.org/obo/owl/CHEBI#&gt;;
+# Update frequency
+	#Need to verify the update frequency!
+	voag:frequencyOfChange freq:semiannual;
+# Other metadata
+    void:distinctSubjects "18018451"^^xsd:integer ;
+	.
+
+:chembl_dataset
+# Metadata about the original data source
+    a void:Dataset;
+    dcterms:title "ChEMBL"@en;
+    dcterms:description """ChEMBL is a database of bioactive drug-like small molecules, it contains 2-D structures, calculated properties (e.g. logP, Molecular Weight, Lipinski Parameters, etc.) and abstracted bioactivities (e.g. binding constants, pharmacology and ADMET data)."""@en;
+    foaf:homepage &lt;http://www.ebi.ac.uk/chembl/&gt;;
+    dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
+    pav:version "13"^^xsd:integer ;
+    dcterms:publisher &lt;http://www.ebi.ac.uk/chembl/&gt;;
+    dcterms:created "2012-02-29"^^xsd:date;
+    dcterms:modified "2012-02-29"^^xsd:date;
+    .
+
+:chemblrdf_compounds
+# Subset metadata
+    a void:Dataset ;
+    dcterms:title "ChEMBL Molecules"@en;
+    dcterms:description "The subset of ChEMBL data relating to molecules."@en;
+    void:uriSpace "http://data.kasabi.com/dataset/chembl-rdf/molecule/"^^xsd:string ;
+    dcterms:subject &lt;http://dbpedia.org/resource/Molecule&gt; ;
+    void:exampleResource &lt;http://data.kasabi.com/dataset/chembl-rdf/molecule/M1&gt;;	
+    void:dataDump &lt;http://semantics.bigcat.unimaas.nl/chembl/v13_ops/compounds.nt.gz&gt; ;
+    .
+  
+:chemblrdf_targets
+# Subset metadata
+    a void:Dataset ;
+    dcterms:title "ChEMBL Targets"@en;
+    dcterms:description "The subset of ChEMBL data relating to targets which are single proteins."@en;
+    void:uriSpace "http://data.kasabi.com/dataset/chembl-rdf/target/"^^xsd:string ;
+    dcterms:subject &lt;http://dbpedia.org/resource/Protein&gt; ;
+    void:exampleResource &lt;http://data.kasabi.com/dataset/chembl-rdf/target/t1&gt;;	
+    void:dataDump &lt;http://semantics.bigcat.unimaas.nl/chembl/v13_ops/targets.nt.gz&gt; ;
+    .
+
+    	</pre>
+    <!-- end ChEMBL-RDF-VoID -->
+	</section>
+<!-- end appendix-dataset-examples -->
+</section>
+<section id="appendix-example-linksets" class="appendix">
+	<h2 id="example-linksets">Example Linksets</h2>
+	<section id="CS2ChEMBLLinkset">
+		<h3 id="cs2chembl-linkset">ChemSpider to ChEMBL-RDF Compounds Linkset</h3>
+
+		<p>
+			Below is the start of the linkset file relating ChemSpider
+			compounds with ChEMBL-RDF compounds. The linkset reuses the VoID
+			descriptions already provided for the datasets, but augments these
+			with additional metadata.
+		</p>
+		<ul>
+			<li> 
+				<a href="examples/chemspider2chemblrdf-linkset.ttl">Download file</a>
+			</li>
+			<li>
+				<a href="examples/chemspider2chemblrdf-linkset.png">View graph</a>
+			</li>
+		</ul>
+<!-- Example copy/pasted from examples/chemspider2chemblrdf-linkset.ttl -->
+		<pre class="turtle">
+@prefix : &lt;http://data.kasabi.com/dataset/chembl-rdf/void.ttl&gt;.
+
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt;.
+@prefix dul: &lt;http://www.ontologydesignpatterns.org/ont/dul/DUL.owl&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix freq: &lt;http://purl.org/cld/freq/&gt; .
+@prefix pav: &lt;http://purl.org/pav/2.0/&gt;.
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
+@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;.
+@prefix voag: &lt;http://voag.linkedmodel.org/schema/voag#&gt; .
+@prefix void: &lt;http://rdfs.org/ns/void#&gt;.
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;.
+
+@prefix chembl: &lt;http://data.kasabi.com/dataset/chembl-rdf/chemblid/&gt; .
+
+# Metadata about this file
+&lt;&gt;
+    a void:DatasetDescription;
+    dcterms:title "ChEMBL-RDF Compounds to ChemSpider linkset"@en;
+    dcterms:descriptions """A VoID linkset that links compounds in ChEMBL-RDF
+        with compounds in ChemSpider."""@en; 
+    pav:createdBy &lt;http://egonw.github.com/#me&gt; ;
+    pav:createdOn "2012-08-13"^^xsd:date ;
+    foaf:primaryTopic :chembl-rdf-compounds_cs_linkset ;
+    .
+ 
+# Pointer to the ChemSpider VoID file
+&lt;http://rdf.chemspider.com/void.ttl#chemSpiderDataset&gt;
+	# State when the dataset was accessed for creating linkset
+    pav:accessedOn "2012-02-22"^^xsd:date .
+
+# Pointer to the subset description in the ChEMBL VoID file
+&lt;http://data.kasabi.com/dataset/chembl-rdf/void.ttl#chemblrdf_compounds&gt;
+	# Linkset declared as a subset. Inherits properties
+    void:subset :chembl-rdf-compounds_cs_linkset .
+
+:chembl-rdf-compounds_cs_linkset
+# General linkset metadata
+    a void:Linkset ;
+    dcterms:title "ChEMBL-RDF Compounds ChemSpider Linkset"@en;
+    dcterms:description "Linkset relating ChEMBL-RDF compounds to ChemSpider compounds."@en;
+    #Explicit declaration of license for the linkset is preferred
+    dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
+# Link information
+    void:subjectsTarget &lt;http://data.kasabi.com/dataset/chembl-rdf/void.ttl#chemblrdf_compounds&gt; ;
+    void:objectsTarget &lt;http://rdf.chemspider.com/void.ttl#chemSpiderDataset&gt; ;
+    void:linkPredicate skos:exactMatch ;
+    dul:expresses &lt;http://???&gt; ;
+# Linkset provenance
+    pav:authoredOn "2012-02-22"^^xsd:date ;
+    pav:authoredBy &lt;http://www.chemspider.com/&gt; ;
+    pav:createdBy &lt;http://egonw.github.com/#me&gt; ;
+    pav:createdOn "2012-05-15"^^xsd:date ;
+# Linkset statistics
+    void:triples "1073967"^^xsd:integer ;
+    .
+
+chembl:CHEMBL1236438 skos:exactMatch &lt;http://rdf.chemspider.com/43&gt; .
+chembl:CHEMBL144103 skos:exactMatch &lt;http://rdf.chemspider.com/60&gt; .
+#...
+		</pre>
+	<!-- end CS2ChEMBLLinkset -->
+	</section>
+	<section id="CS2DBLinkset">
+		<h3>ChemSpider to DrugBank Linkset</h3>
+		<p>
+			Below is the linkset file relating ChemSpider compounds to DrugBank 
+			drugs. As there is no VoID file available for the DrugBank dataset, 
+			the VoID information is included in the linkset, following the 
+			minimal information prescribed in 
+			<a href="#linkset-min-dataset-desc">Section 5.5</a>. For ChemSpider, 
+			the VoID information is imported from the ChemSpider location.
+		</p>
+		<ul>
+			<li> 
+				<a href="examples/chemspider2drugbank-linkset.ttl">Download file</a>
+			</li>
+			<li>
+				<a href="examples/chemspider2drugbank-linkset.png">View graph</a>
+			</li>
+		</ul>
+		<pre class="turtle">
+@prefix : &lt;http://rdf.chemspider.com/chemspider-drugbank-example.rdf#&gt;.
+
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt;.
+@prefix dul: &lt;http://www.ontologydesignpatterns.org/ont/dul/DUL.owl&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix freq: &lt;http://purl.org/cld/freq/&gt; .
+@prefix pav: &lt;http://purl.org/pav/2.0/&gt;.
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
+@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;.
+@prefix voag: &lt;http://voag.linkedmodel.org/schema/voag#&gt; .
+@prefix void: &lt;http://rdfs.org/ns/void#&gt;.
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;.
+
+# Metadata about this file
+&lt;&gt; 
+	a void:DatasetDescription;
+	dcterms:title "ChemSpider to DrugBank Linkset VoID Description"@en;
+	dcterms:description 
+		"""This is an example VoID description for a ChemSpider linkset. 
+		   The linkset relates ChemSpider identifiers with DrugBank identifiers.
+		   The links have been generated as the chemicals share the same structure."""@en;
+	pav:createdBy &lt;http://www.cs.man.ac.uk/~graya/me.ttl&gt;;
+	pav:createdOn "2012-08-13"^^xsd:date;
+	pav:derivedFrom &lt;http://rdf.chemspider.com/void.rdf&gt;;
+	foaf:primaryTopic :chemSpider_drugbank_linkset;
+	.
+	
+# Pointer to the ChemSpider dataset
+&lt;http://rdf.chemspider.com/void.ttl#chemSpiderDataset_drugbank_subset&gt;
+	# declare that the linkset is a subset of ChemSpider
+	void:subset :chemSpider_drugbank_linkset;
+	.
+	
+# Need to declare dataset metadata about DrugBank as no VoID file
+## Note this is just a minimal amount of information as prescribed in Section 5.5
+:drugbank_drugs_dataset
+# General Dataset Metadata
+	a void:Dataset;
+	dcterms:title "DrugBank Drugs Dataset"@en;
+	dcterms:description "A subset of the DrugBank database containing the information relating to drugs."@en;	
+	foaf:homepage &lt;http://www4.wiwiss.fu-berlin.de/drugbank/&gt;;
+	foaf:page &lt;http://www.drugbank.ca/&gt;;
+	dcterms:license &lt;http://www.drugbank.ca/about#cite&gt;;
+	void:uriSpace "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/"^^xsd:string;
+# Provenance and Version	
+	pav:version "3.0";
+	pav:importedOn "2011-11-30"^^xsd:date;
+	pav:importedFrom &lt;http://www4.wiwiss.fu-berlin.de/drugbank/drugbank_dump.nt.bz2&gt;;
+	pav:importedBy [
+		a foaf:Person;
+		foaf:name "Antonis Loizou"^^xsd:string.
+		];
+	.
+	
+# Description of the linkset from ChemSpider to DrugBank
+:chemSpider_drugbank_linkset
+# General Linkset Metadata
+	a void:Linkset;
+	dcterms:title "ChemSpider DrugBank Linkset"@en;
+	dcterms:description "Linkset relating ChemSpider compounds to DrugBank drugs."@en;
+	dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
+# Link Information
+	void:subjectsTarget &lt;http://rdf.chemspider.com/void.ttl#chemSpiderDataset_drugbank_subset&gt;;
+	void:objectsTarget :drugbank_drugs_dataset;
+	void:linkPredicate skos:exactMatch;
+	dul:expresses &lt;http://???&gt;;
+# Linkset Provenance 
+	pav:authoredBy &lt;http://www.chemspider.com/&gt;;
+	pav:authoredOn "2012-02-23"^^xsd:date;
+	pav:createdBy &lt;http://www.cs.man.ac.uk/~graya/me.ttl&gt;;
+	pav:createdOn "2012-08-13"^^xsd:date;
+# Linkset statistics
+	void:triples "6428"^^xsd:nonNegativeInteger;
+	.
+
+# Location of the triples
+## Note that the triples would not contain the void header information as 
+## that is in this file. I have assumed the same location as the subset 
+## above, but this needs to change to a correct location.
+## The file containing the triples should contain the following backlink
+## |uriOfTheData| void:inDataset &lt;http://rdf.chemspider.com/void-example.rdf#chemSpider_drugbank_linkset&gt;.
+		</pre>
+	<!-- end CS2DBLinkset -->
+	</section>
+<!-- end appendix-example-linksets -->
+</section>
+</body>
+
+</html>
