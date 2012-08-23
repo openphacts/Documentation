@@ -655,6 +655,7 @@ ex:m1/full_mwt cheminf:SIO_000300 "341.748" .
         <li>linked data</li>
         <li>SPARQL end point</li>
       </ul>
+      These approaches are complementary, rather then mutually exlusive.
     </p>
     <p>   
       Linked Open Data requires the data to be linkable, and therefore that URIs are
@@ -683,11 +684,13 @@ http://rdf.openmolecules.net/?InChI=1S/CH4/h1H4
       FU Berlin and can be found <a href="http://www4.wiwiss.fu-berlin.de/bizer/BerlinSPARQLBenchmark/">here</a>,
       but we also node that performance depends strongly in your use case [[Erling2011]].
       Information about the capacity of triple stores
-      can be found at w3.org (link). We note that these statistics change every half
+      can be found at w3.org (<a href="http://www.w3.org/wiki/LargeTripleStores">link</a>).
+      We note that these statistics change every half
       year, and the reader is strongly encouraged to look up recent numbers.
     </p>
     <p>
-      The list of tools that provide SPARQL end point functionality include:
+      The list of tools that provide SPARQL end point functionality include those below.
+      Other overviews exists, like this one on <a href="http://www.w3.org/wiki/LargeTripleStores">w3.org</a>.
     </p>
     <h4>Sesame</h4>
     <p>
@@ -752,6 +755,10 @@ http://rdf.openmolecules.net/?InChI=1S/CH4/h1H4
     <p>
       Additionally, your data point should be registered with the appropriate registries. One of these is the
       Data Hub, formerly know as CKAN (<a href="http://thedatahub.org/">http://thedatahub.org/</a>).
+    </p>
+    <p>
+      To make data provided by a SPARQL end point as linked data, the PHP library
+      <a href="http://code.google.com/p/puelia-php/">Puelia</a> can be used.
     </p>
     <ul style="font-style: italic">Linked Data is also about people linking to your data. If your data was already
       <span class="stars">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</span>, then this step will further support that,
