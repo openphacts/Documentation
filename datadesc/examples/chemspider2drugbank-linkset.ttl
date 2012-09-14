@@ -22,6 +22,7 @@
 		   The links have been generated as the chemicals share the same structure."""@en;
 	pav:createdBy <http://www.cs.man.ac.uk/~graya/me.ttl>;
 	pav:createdOn "2012-08-13"^^xsd:date;
+	pav:lastUpdateOn "2012-09-14"^^xsd:date;
 	pav:derivedFrom <http://rdf.chemspider.com/void.rdf>;
 	foaf:primaryTopic :chemSpider_drugbank_linkset;
 	.

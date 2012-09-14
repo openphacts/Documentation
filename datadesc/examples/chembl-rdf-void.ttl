@@ -19,6 +19,7 @@
         """This is the VoID description for a ChEMBL-RDF dataset."""@en;
     pav:createdBy <http://egonw.github.com/#me> ;
     pav:createdOn "2012-08-13"^^xsd:date;
+    pav:lastUpdatedOn "2012-09-14"^^xsd:date;
     pav:previousVersion <http://semantics.bigcat.unimaas.nl/chembl/v13_ops/chembl-rdf-void.ttl>;
     foaf:primaryTopic :chemblrdf_dataset.
 
