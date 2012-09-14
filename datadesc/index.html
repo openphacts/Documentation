@@ -13,9 +13,9 @@
 		orgicon:              "<a href='http://www.openphacts.org/'><img height='100' src='/specs/logo/ops.png' alt='Open PHACTS'/></a>",
 		customorg:            "Open PHACTS",
 		customcss:            "/specs/css/ops.css",
-		specStatus:           "WD",
+		specStatus:           "ED",
 		shortName:            "datadesc",
-		publishDate:   "2012-08-16",
+		publishDate:   "2012-09-14",
 		previousMaturity: "WD",
 		previousPublishDate:  "2012-06-15",
 		//previousURI : "http://www.cs.manchester.ac.uk/~graya/ops/2012/WD-mappingspec-20120615/",
@@ -81,8 +81,10 @@
 <body>
 <section id="abstract">
 	This is a specification for the metadata to described datasets, and the 
-	linksets that relate them. The specification defines the properties that are 
-	expected and the exchange format for the files.
+	linksets that relate them, to enable their use within the Open PHACTS 
+	platform. The specification defines the metadata properties that are 
+	expected to describe datasets and linksets. Details of deploying dataset
+	descriptions and an exchange format for linkset files are also given.
 </section>
 
 <section id="sotd">
@@ -101,20 +103,24 @@
 		<p>
 			This dataset and linkset description specification is intended
 			for data providers who want to publish their data as RDF, and link it
-			to other datasets, for use in the Open PHACTS platform.
+			to other datasets. A basic knowledge of RDF is assumed. 
 		</p>
+		<p>
+			Details for converting a dataset and publishing it as RDF are given
+			in the Open PHACTS RDF guidelines specification [[OPS-RDF]].
 </section>
 
 <section id="introduction" class="informative">
 	<h2>Introduction</h2>
-	<p class="todo"> Revise this section</p>
-
 	<p>
-		The Open PHACTS platform relies on data and the interlinks published by 
-		a variety of sources. This specification provides details of the 
-		metadata expected to describe the datasets and their links.
+		The Open PHACTS platform [[OPS-ARCH]] relies on data and the interlinks
+		published by a variety of sources. For example, details of chemicals are
+		derived from <a href="http://www.chemspider.com/">ChemSpider</a>, 
+		<a href="https://www.ebi.ac.uk/chembl/">ChEMBL</a>, and 
+		<a href="http://www.drugbank.ca/">DrugBank</a>. This specification 
+		provides details of the metadata expected to describe the datasets and 
+		the links that relate the instances in those datasets.
 	</p>
-
 	<p>
 		The Open PHACTS project has produced a set of guidelines aimed at data 
 		providers for publishing their data within the OPS system [[!OPS-RDF]]. 
@@ -123,45 +129,12 @@
 		should be published to describe the dataset and the links to other 
 		datasets.
 	</p>
-
 	<p>
 		The dataset description defined in this specification declares the 
 		properties that should be included in the description of dataset or its 
 		links. The information is exchanged using the Vocabulary of Interlinked 
 		Datasets [[VOID]].
 	</p>
-
-	<section id="ops-arch">
-		<h3>Role in the OPS Architecture</h3>
-
-		<p>
-			The OPS Architecture [[OPS-ARCH]] provides a high-level view of the 
-			Open PHACTS framework, with a detailed specification of the identity 
-			and vocabulary services given in [[OPS-IV]]. The Open PHACTS RDF 
-			guidelines [[OPS-RDF]] specify the vocabularies that are recommended 
-			for publishing datasets for use in the OPS system. This 
-			specification defines the format of identity mapping linksets that
-			relate the concepts in the various datasets loaded in OPS. The
-			provenance and metadata guidelines about the linksets given in this
-			specification should be used in conjunction with the equivalent
-			statements in the RDF publication guidelines [[OPS-RDF]].
-		</p>
-
-		<p class="todo">
-			Talk about the role of the data cache and datasets.
-		</p>
-
-		<p>
-			The identity mapping linksets will predominantly be used as the 
-			means to import data to the Identity Mapping Service (IMS)
-				[[IMS]] through the interface defined in Section 4.4.2 of
-				[[OPS-IV]]. The mapping specification will also form the basis of
-				the information model returned through the Identity Mapping Service
-				query interface defined in Section 4.4.1 of [[OPS-IV]].
-		</p>
-		<!-- end ops-arch -->
-	</section>
-
 	<!-- end introduction -->
 </section>
 
