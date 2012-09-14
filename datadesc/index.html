@@ -1131,70 +1131,77 @@
 </section>
 
 <section id="exchanging-descriptions">
-	<h2>Exchanging VoID Documents</h2>
-	<p class="todo"> Revise this section</p>
-
+	<h2 id="deploy-exchange-void">Deploying and Exchanging VoID Documents</h2>
 	<p>
-		It is anticipated that links between datasets will not be
-		created and shared in isolation, i.e. multiple links relating
-		concepts in two datasets with the same predicate will be created
-		at the same time using the same mechanism. A collection of links
-		that meet the following requirements can be shared as a single
-		VoID linkset:
+		The two preceeding sections have prescribed the metadata required to 
+		describe datasets and the linksets that inter-relate them. This section
+		outlines the expected deployment and exchange mechanisms and should be
+		read in conjunction with <a href="http://www.w3.org/TR/void/#deploying">
+		Section 6</a> of the VoID specification for more details. 
 	</p>
-	<ul>
-		<li>
-			The resulting document must be a valid VoID linkset:
-			<ul>
-				<li>
-					The subject of all of the mapping triples are from
-					the same dataset;
-				</li>
-				<li>
-					The object of all the mapping triples are from the
-					same dataset;
-				</li>
-				<li>
-					The predicate of all the mapping triples are the
-					same.
-				</li>
-			</ul>
-		</li>
-		<li>The metadata of all the mapping triples is the same.</li>
-	</ul>
-
-	<p>
-		The interpretation must be that each link in the linkset is a
-		mapping with the metadata given in the heading of the VoID
-		linkset. The linkset should include the metadata specified in 
-		<a href="#mapping-specification"> Section 4.2</a>.
-	</p>
-
-	<p>
-		As stated in <a href="http://www.w3.org/TR/void/#void-file">Section
-		6.2</a> of the VoID specification [[VOID]], the VoID documents
-		describing datasets and linksets should contain a metadata block
-		describing the document. An example is given below for the
-		ChemSpider deployment. Note the use of an empty-string relative
-		URI (&lt;&gt;) as a syntactic shortcut for the URI of the document that
-		contains the statements.
-	</p>
-	<pre class="turtle">
+	<section id="document-descriptor">
+		<h3 id="void-document-metadata">VoID Document Metadata</h3>
+		<p>
+			VoID documents describing datasets and linksets must contain a 
+			metadata block describing the VoID document using the following 
+			properties:
+		</p>
+		<ul>
+			<li>
+				Must declare that this is the VoID document descriptor with 
+				<a href="http://rdfs.org/ns/void#DatasetDescription" target="_blank">
+				<code>void:DatasetDescription</code></a>.
+			</li>
+			<li>
+				Must declare who created the VoID descriptor using 
+				<a href="http://purl.org/pav/createdBy" target="_blank">
+				<code>pav:createdBy</code></a>.
+			</li>
+			<li>
+				Must declare when the VoID descriptor was created using 
+				<a href="http://purl.org/pav/createdOn" target="_blank">
+				<code>pav:createdOn</code></a>.
+			</li>
+			<li>
+				Must declare when the VoID descriptor was last updated using 
+				<a href="http://purl.org/pav/lastUpdateOn" target="_blank">
+				<code>pav:lastUpdateOn</code></a>.
+			</li>
+			<li>
+				Should declare the primary dataset being described using 
+				<a href="http://xmlns.com/foaf/spec/#term_primaryTopic" target="_blank">
+				<code>foaf:primaryTopic</code></a>.
+			</li>
+		</ul>
+		<p>
+			Of course, other properties may also be declared, e.g. a title using
+			<code>dcterms:title</code>. For more details, see 
+			<a href="http://www.w3.org/TR/void/#void-file">Section 6.2</a> of 
+			the VoID specification [[VOID]].
+		</p>
+		<p> 
+			An example is given below for the ChemSpider deployment. Note the 
+			use of an empty-string relative URI (&lt;&gt;) as a syntactic 
+			shortcut for the URI of the document that contains the statements.
+		</p>
+		<pre class="turtle">
 &lt;&gt; a void:DatasetDescription ;
     dcterms:title "ChemSpider VoID Description"^^xsd:string ;
-    dcterms:creator &lt;http://www.chemspider.com/&gt; ;
+    pav:createdBy &lt;http://www.chemspider.com/&gt; ;
+	pav:createdOn "2012-05-02"^^xsd:date;
+	pav:lastUpdateOn "2012-08-10"^^xsd:date;
     foaf:primaryTopic :chemSpiderDataset .    
-	</pre>
+		</pre>
+	<!-- end document-descriptor -->
+	</section>
 
 	<section id="deploying-void">
-		<h3>Deploying VoID Descriptions</h3>
-
+		<h3 id="deploying-void">Deploying VoID Descriptions</h3>
 		<p>
 			Several mechanisms for deploying VoID descriptions are given in
 			<a href="http://www.w3.org/TR/void/#deploying">Section 6</a> of the
 			VoID Note [[VOID]].
 		</p>
-
 		<p>
 			For datasets that are being published in their own domain, with
 			dereferenceable URIs, then we recommend placing the dataset's
