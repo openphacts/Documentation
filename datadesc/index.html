@@ -1255,6 +1255,24 @@
 		</p>
 	<!-- end linkset-files -->
 	</section>
+	<section id=external-files>
+		<h3 id="external-file">External VoID Files</h3>
+		<p>
+			Tooling being developed within Open PHACTS should support the 
+			predicates stated in this document. However, they should also be
+			able to read VoID files from external sources that do not comply
+			completely with this specification, but do comply with the VoID
+			standard [[VOID]]. An example would be the use of the
+			<a href="http://rdfs.org/ns/void#target" target="_blank">
+			<code>void:target</code></a> predicate instead of the 
+			<a href="http://rdfs.org/ns/void#subjectsTarget" target="_blank">
+			<code>void:subjectsTarget</code></a> and 
+			<a href="http://rdfs.org/ns/void#objectsTarget" target="_blank">
+			<code>void:objectsTarget</code></a> predicates. Such usage should 
+			not be the norm and should result in warnings being generated.
+		</p>
+			
+	</section>
 <!-- end exchangine-descriptions-->
 </section>
 
