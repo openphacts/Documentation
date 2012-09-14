@@ -489,7 +489,7 @@
 		<ul>
 			<li>
 				If the dataset and its description are accessed from their
-				original location, then the the following metadata should be
+				original location, then the the following metadata must be
 				available from the VoID description at that site:
 				<ul>
 					<li>
@@ -508,6 +508,9 @@
 						last update was made.
 					</li>
 				</ul>
+				Note that we require both <code>dcterms:created</code> and
+				<code>dcterms:modified</code> to be declared. This ensures that
+				we know which version of the dataset has been used. 
 			</li>
 			<li>
 				If the dataset has been retrieved from another location,
