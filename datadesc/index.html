@@ -184,85 +184,125 @@
 	<!-- end conventions -->
 </section>
 
-<section id="void-overview">
-	<h3>Vocabulary of Interlinked Datasets (VoID)</h3>
-	
-	<p class="todo"> Revise this section</p>
-	
-	
+<section id="existing-vocabularies" class="informative">
+	<h2 id="existing-vocabularies">
+		Vocabularies for Describing Datasets and Mapping Relationships
+	</h2>
 	<p>
-		The Vocabulary of Interlinked Datasets (VoID) [[!VOID]] is a
-        W3C interest group note that specifies a vocabulary for describing
-        the metadata about a dataset and its relationship with other
-        datasets. The vocabulary builds upon existing metadata
-        vocabularies, e.g. Dublin Core Terms [[DCTERMS]].
+		In this section, we introduce the vocabularies that will be used for 
+		capturing the dataset descriptions and the mappings between the 
+		datasets. 
 	</p>
+	<section id="void-overview">
+		<h3>Vocabulary of Interlinked Datasets (VoID)</h3>		
+		<p>
+			The Vocabulary of Interlinked Datasets (VoID) [[!VOID]] is a
+        	W3C interest group note that specifies a vocabulary for describing
+        	the metadata about a dataset and its relationship with other
+        	datasets. The vocabulary builds upon existing metadata
+        	vocabularies, e.g. Dublin Core Terms [[DCTERMS]], and captures four
+        	categories of metadata:
+		</p>
+		<dl>
+			<dt>General Metadata:</dt>
+			<dd>
+				This is general information about the dataset, e.g. the name 
+				and a description, together with who publishes the dataset, and
+				when it was created.
+	        </dd>
+	        <dt>Access Metadata:</dt>
+	        <dd>
+	        	This provides details of how to access the dataset, e.g. a 
+	        	SPARQL endpoint to query the dataset or a file where the dataset
+	        	can be downloaded.
+	        </dd>
+	        <dt>Structural Metadata:</dt>
+	        <dd>
+	        	This provides details of how the dataset is modelled, i.e. the
+	        	vocabularies used and the topics covered in the dataset.
+			</dd>
+	        <dt>Mapping Metadata:</dt>
+	        <dd>
+	        	This provides details of the mappings of instances in the 
+	        	dataset to instances in another dataset.
+	        </dd>
+		</dl>
 
-	<p>
-		The VoID specification [[VOID]] provides the following definitions:
-	</p>
-	<dl>
-		<dt>Dataset</dt>
-		<dd>
-			A set of RDF triples that are published, maintained or
-        	aggregated by a single provider.
-        </dd>
-        <dt>Link</dt>
-        <dd>
-        	An RDF triple whose subject and object are described in
-        	different datasets.
-        </dd>
-        <dt>Linkset</dt>
-        <dd>A collection of such RDF links between two datasets.</dd>
-	</dl>
+		<h4 id="void-dataset">Dataset</h4>
+		<p>
+			The VoID specification [[VOID]] defines a <em>dataset</em> to be, 
+			"a set of RDF triples that are published, maintained or aggregated 
+			by a single provider." The dataset itself may contain logical 
+			subsets, which can be captured in the VoID description of the dataset,
+			e.g. ChEMBL can be split into subsets for compounds, targets, etc.
+		</p>	
+		<p>
+			The information captured about a dataset focuses on the general 
+			metadata, access, metadata, and the structural metadata.
+		</p>
 
-    <h4>Linksets</h4>
-
-   	<p>
-		A data instance mapping is a claim that an identifier in one dataset is 
-		related in some way to an identifier in another dataset. The mapping 
-		specification captures the type of relationship and the metadata 
-		associated with the mapping, e.g. provenance information about who 
-		created the mapping and the specific versions of the datasets related.
-	</p>
-    
-	<p>
-		The VoID specification enables a separation between (1) the
-		datasets involved in a link, and (2) who publishes the link.
-    </p>
-
-    <p>
-		Note that a VoID linkset is defined to link two datasets via
-		a single link predicate (void:linkPredicate). As such, there can
-		exist multiple linksets relating the same pair of datasets. The
-		following are examples of some of the multiple linksets that can
-		exist between datasets ChemSpider and ChEMBL:
-    </p>
-    <p class="todo">
-    	Fix Example! Probably best to draw a diagram showing the datasets and
-    	the declaration of the links between them.
-    </p>
-    <ul>
-		<li>
-			ChemSpider <code>cs:extUrl</code> ChEMBL as published in
-        	the ChemSpider dataset
-		</li>
-		<li>
-			ChemSpider <code>cs:...</code> ChEMBL as published in the
-        	ChemSpider dataset
-		</li>
-		<li>
-			ChEMBL <code>:csid</code> ChemSpider as published in the
-			ChEMBL dataset
-		</li>
-		<li>
-			ChEMBL <code>:somePredicate</code> ChemSpider as
-			published by some third party
-		</li>
-	</ul>
+	    <h4 id="void-linkset">Linksets</h4>
+	    <p class="todo">Revise this section</p>
+	    <p>
+	    	The VoID specification [[VOID]] defines a <em>link</em> to be, "An 
+	    	RDF triple whose subject and object are described in different 
+	    	datasets." The links capture the mapping of an identifier in one
+	    	dataset to be related to an identifier in another dataset. VoID is
+	    	agnostic to the relationship to use, and we will discuss 
+	    	possibilities in the next section.
+	    </p>
+	    <p> 
+	    	The VoID specification defines a <em>linkset</em> to be, "A 
+	    	collection of such RDF links between two datasets."
+	    </p>
+	
+	   	<p>
+			A data instance mapping is a claim that an identifier in one dataset is 
+			related in some way to an identifier in another dataset. The mapping 
+			specification captures the type of relationship and the metadata 
+			associated with the mapping, e.g. provenance information about who 
+			created the mapping and the specific versions of the datasets related.
+		</p>
+	    
+		<p>
+			The VoID specification enables a separation between (1) the
+			datasets involved in a link, and (2) who publishes the link.
+	    </p>
+	
+	    <p>
+			Note that a VoID linkset is defined to link two datasets via
+			a single link predicate (void:linkPredicate). As such, there can
+			exist multiple linksets relating the same pair of datasets. The
+			following are examples of some of the multiple linksets that can
+			exist between datasets ChemSpider and ChEMBL:
+	    </p>
+	    <p class="todo">
+	    	Fix Example! Probably best to draw a diagram showing the datasets and
+	    	the declaration of the links between them.
+	    </p>
+	    <ul>
+			<li>
+				ChemSpider <code>cs:extUrl</code> ChEMBL as published in
+	        	the ChemSpider dataset
+			</li>
+			<li>
+				ChemSpider <code>cs:...</code> ChEMBL as published in the
+	        	ChemSpider dataset
+			</li>
+			<li>
+				ChEMBL <code>:csid</code> ChemSpider as published in the
+				ChEMBL dataset
+			</li>
+			<li>
+				ChEMBL <code>:somePredicate</code> ChemSpider as
+				published by some third party
+			</li>
+		</ul>
+	<!-- end void-overview -->
+	</section>
 	<section id="mapping-representation">
 		<h3>Representing a Mapping</h3>
-
+	    <p class="todo">Revise this section</p>
 		<p>
 			A mapping must be represented as a VoID link, i.e. it is an
 			RDF triple that relates an identifier in one dataset with an
@@ -326,7 +366,7 @@
 	<!-- end mapping-representation -->
 	</section>
 	
-<!-- end void-overview -->
+<!-- end existing-vocabularies -->
 </section>
 
 <section id="dataset-decscription">
