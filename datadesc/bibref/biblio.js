@@ -11,6 +11,7 @@ berjon.biblio = {
 	"OPM": " ",
 	"OPS-ARCH": "Lee Harland, Paul Groth, Steve Pettifer, Christine Chichester, and Antony Williams. Provide a documented first functional design and a detailed technical design of the first version of OPS. Open PHACTS Deliverable D3.2.3, version 1.0, August 2011.",
 	"OPS-IV": "C. Brenninkmeijer, C. Evelo, C. Goble, A. J. G. Gray, A. Waagmeester, and E. Willighagen. Identity and Vocabulary Services in the Open Pharmacological Space. Open PHACT draft specification, version 0.1, 3 February 2012. <a href=\"https://docs.google.com/document/d/1XSrtiKgGMGTaoY0xEAuax2EIdLDRONsmfW3QHWgFnqM/view\">https://docs.google.com/document/d/1XSrtiKgGMGTaoY0xEAuax2EIdLDRONsmfW3QHWgFnqM/view</a>",
+	"OPS-LENSES": "C. Brenninkmeijer, C. Evelo, C. Goble, A. J. G. Gray, P. Groth, S. Pettifer, R. Stevens, A. J. Williams, and E. Willighagen. Scientific Lenses over Linked Data: An approach to support task specific views of the data. A vision. Linked Science Workshop, Boston, MA, USA, 2012. To appear.",
 	"OPS-RDF": "E. Willighagen. Guidelines for exposing data as RDF in Open PHACTS, Open PHACTS Working Draft 27 March 2012.",
 	"ORCID": "Open Researcher and Contributor Identifier. 22 March 2012. <a href=\"http://www.orcid.org\">http://www.orcid.org</a>",
 	"PAV": "Provenance Authoring and Versioning Ontology. <a href=\"http://code.google.com/p/pav-ontology/\">http://code.google.com/p/pav-ontology/</a>",
