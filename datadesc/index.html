@@ -203,38 +203,39 @@
         	vocabularies, e.g. Dublin Core Terms [[DCTERMS]], and captures four
         	categories of metadata:
 		</p>
-		<dl>
-			<dt>General Metadata:</dt>
-			<dd>
+		<ul>
+			<li>
+				<strong>General Metadata:</strong> 
 				This is general information about the dataset, e.g. the name 
 				and a description, together with who publishes the dataset, and
 				when it was created.
-	        </dd>
-	        <dt>Access Metadata:</dt>
-	        <dd>
+	        </li>
+	        <li>
+	        	<strong>Access Metadata:</strong>
 	        	This provides details of how to access the dataset, e.g. a 
 	        	SPARQL endpoint to query the dataset or a file where the dataset
 	        	can be downloaded.
-	        </dd>
-	        <dt>Structural Metadata:</dt>
-	        <dd>
+	        </li>
+	        <li>
+		        <strong>Structural Metadata:</strong>
 	        	This provides details of how the dataset is modelled, i.e. the
 	        	vocabularies used and the topics covered in the dataset.
-			</dd>
-	        <dt>Mapping Metadata:</dt>
-	        <dd>
+			</li>
+	        <li>
+		        <strong>Mapping Metadata:</strong>
 	        	This provides details of the mappings of instances in the 
 	        	dataset to instances in another dataset.
-	        </dd>
-		</dl>
+	        </li>
+		</ul>
 
 		<h4 id="void-dataset">Dataset</h4>
 		<p>
-			The VoID specification [[VOID]] defines a <em>dataset</em> to be, 
-			"a set of RDF triples that are published, maintained or aggregated 
-			by a single provider." The dataset itself may contain logical 
-			subsets, which can be captured in the VoID description of the dataset,
-			e.g. ChEMBL can be split into subsets for compounds, targets, etc.
+			The VoID specification [[VOID]] defines a <strong>dataset</strong> 
+			to be, <em>"a set of RDF triples that are published, maintained or 
+			aggregated by a single provider."</em> The dataset itself may 
+			contain logical subsets, which can be captured in the VoID 
+			description of the dataset, e.g. ChEMBL can be split into subsets 
+			for compounds, targets, etc.
 		</p>	
 		<p>
 			The information captured about a dataset focuses on the general 
@@ -242,62 +243,45 @@
 		</p>
 
 	    <h4 id="void-linkset">Linksets</h4>
-	    <p class="todo">Revise this section</p>
 	    <p>
-	    	The VoID specification [[VOID]] defines a <em>link</em> to be, "An 
-	    	RDF triple whose subject and object are described in different 
-	    	datasets." The links capture the mapping of an identifier in one
-	    	dataset to be related to an identifier in another dataset. VoID is
-	    	agnostic to the relationship to use, and we will discuss 
-	    	possibilities in the next section.
+	    	The VoID specification [[VOID]] defines a <strong>link</strong> to 
+	    	be, <em>"an RDF triple whose subject and object are described in 
+	    	different datasets."</em> The links capture the mapping of an 
+	    	identifier in one dataset to be related to an identifier in another 
+	    	dataset. VoID is agnostic to the relationship to use: possible 
+	    	predicates are given in the next section.
 	    </p>
 	    <p> 
-	    	The VoID specification defines a <em>linkset</em> to be, "A 
-	    	collection of such RDF links between two datasets."
+	    	The VoID specification defines a <strong>linkset</strong> to be, 
+	    	<em>"a collection of such RDF links between two datasets."</em> The 
+	    	linkset captures details of the links, i.e. the datasets that are 
+	    	linked and the relationship, as well as the metadata associated 
+	    	with the links, e.g. provenance information about who created the 
+	    	mapping and the specific versions of the datasets related. The VoID 
+	    	specification enables a separation between (1) the datasets 
+	    	involved in a linkset, and (2) who publishes the linkset.
 	    </p>
-	
-	   	<p>
-			A data instance mapping is a claim that an identifier in one dataset is 
-			related in some way to an identifier in another dataset. The mapping 
-			specification captures the type of relationship and the metadata 
-			associated with the mapping, e.g. provenance information about who 
-			created the mapping and the specific versions of the datasets related.
-		</p>
-	    
-		<p>
-			The VoID specification enables a separation between (1) the
-			datasets involved in a link, and (2) who publishes the link.
-	    </p>
-	
 	    <p>
 			Note that a VoID linkset is defined to link two datasets via
-			a single link predicate (void:linkPredicate). As such, there can
-			exist multiple linksets relating the same pair of datasets. The
-			following are examples of some of the multiple linksets that can
-			exist between datasets ChemSpider and ChEMBL:
+			a single link predicate 
+			(<a href="http://rdfs.org/ns/void#linkPredicate" target="_blank"><code>void:linkPredicate</code></a>).
+			As such, there can
+			exist multiple linksets relating the same pair of datasets, as 
+			illustrated in the <a href="#linkset-figure">figure below</a>. The 
+			figure depicts four distinct linksets: two sourced from ChemSpider 
+			depicted in blue which use different link predicates; one sourced 
+			from ChEMBL depicted in red; and one sourced from a third party 
+			depicted in green. Each of the linksets uses a different link 
+			relationship. Those shown with a double arrow head are symmmetric 
+			while those with just a single arrow are directional links.
 	    </p>
-	    <p class="todo">
-	    	Fix Example! Probably best to draw a diagram showing the datasets and
-	    	the declaration of the links between them.
-	    </p>
-	    <ul>
-			<li>
-				ChemSpider <code>cs:extUrl</code> ChEMBL as published in
-	        	the ChemSpider dataset
-			</li>
-			<li>
-				ChemSpider <code>cs:...</code> ChEMBL as published in the
-	        	ChemSpider dataset
-			</li>
-			<li>
-				ChEMBL <code>:csid</code> ChemSpider as published in the
-				ChEMBL dataset
-			</li>
-			<li>
-				ChEMBL <code>:somePredicate</code> ChemSpider as
-				published by some third party
-			</li>
-		</ul>
+	    <img
+	    	id="linkset-figure" 
+	    	alt="Depiction of links relating ChemSpider and ChEMBL"
+	    	width="600px" 
+	    	style="margin-left: 50px;"
+	    	src="chemspider-chembl-links.png"
+	    />
 	<!-- end void-overview -->
 	</section>
 	<section id="mapping-representation">
