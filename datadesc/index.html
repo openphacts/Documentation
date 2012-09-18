@@ -75,6 +75,34 @@
 		border: 2px solid #CFF6D9;
 		background: #E2FFF0;
 	}
+	
+	
+	table { 
+		border-collapse: collapse; 
+		margin: 1.5em auto 2em; 
+	}
+	table caption { 
+		margin-bottom: 0.2em; 
+	}
+	th { 
+		background: #ddd; 
+	}
+	th, td { 
+		border: 1px solid #888; 
+		margin: 0; 
+		padding: 0.3em 0.5em; 
+	}
+	th.details { 
+		width: 5.2em; 
+	}
+	.image { margin-left: auto; margin-right: auto; text-align: center; }
+
+	.issue {
+		background: #fd9; 
+		border: 1px solid red; 
+		padding: 0.3em 0.5em; 
+	}
+    
 </style>
 </head>
 
@@ -275,62 +303,152 @@
 			relationship. Those shown with a double arrow head are symmmetric 
 			while those with just a single arrow are directional links.
 	    </p>
-	    <img
-	    	id="linkset-figure" 
-	    	alt="Depiction of links relating ChemSpider and ChEMBL"
-	    	width="600px" 
-	    	style="margin-left: 50px;"
-	    	src="chemspider-chembl-links.png"
-	    />
+	    <div class="image">
+		    <img
+		    	id="linkset-figure" 
+	    		alt="Depiction of links relating ChemSpider and ChEMBL"
+	    		width="600px" 
+	    		src="chemspider-chembl-links.png"
+	    	/>
+	    </div>
 	<!-- end void-overview -->
 	</section>
 	<section id="mapping-representation">
-		<h3>Representing a Mapping</h3>
-	    <p class="todo">Revise this section</p>
+		<h3 id="mapping-relationships">Expressing Mapping Relationships</h3>
 		<p>
-			A mapping must be represented as a VoID link, i.e. it is an
-			RDF triple that relates an identifier in one dataset with an
-			identifier in another dataset with some predicate which provides
-			the meaning of the mapping.
+			A mapping is expressed as a VoID link, i.e. it is an RDF triple 
+			that relates an identifier in one dataset with an identifier in 
+			another dataset with some predicate which provides the meaning of 
+			the mapping. A justification for the mapping, e.g. two chemical 
+			compounds are deemed equivalent as they have the same InChI key, is 
+			expressed with the link in the linkset metadata.
 		</p>
-
+		<h4 id="mapping-vocabs">Mapping Vocabularies</h4>
 		<p>
 			The mapping predicate captures the way in which the two
 			identifiers are related. The mapping should respect the
-			semantics of the relationship, i.e. the owl:sameAs relationship
-			must only be used when the two identifiers are completely
-			interchangeable.
+			semantics of the relationship, e.g. the 
+			<a href="http://www.w3.org/2002/07/owl#sameAs" target="_blank"><code>owl:sameAs</code></a> 
+			relationship must only be used when the two identifiers are 
+			completely interchangeable.
 		</p>
 
 		<p>
-			Halpin et al [[Halpin2010]] propose a mapping relationship
-			ontology with eight levels of equivalence:
+			Standard, and widely used, generic mapping relationships are given
+			in the table below. (A fuller mapping ontology is given in 
+			[[Halpin2010]], but it is expected that the main relationships used
+			will be those given in the table.)
 		</p>
-		<ul>
-			<li>
-				Identical (equivalent to <code>owl:sameAs</code>): always 
-				interchangeable
-			</li>
-			<li>Claims Identical: inverse does not hold</li>
-			<li>
-				Matches (equivalent to <code>skos:exactMatch</code>):
-				share many properties, interchangeable in most cases
-			</li>
-			<li>Claims Matches: inverse does not hold</li>
-			<li>
-				Similar (equivalent to <code>skos:closeMatch</code>):
-				share some properties, not interchangeable
-			</li>
-			<li>Claims Similar: inverse does not hold</li>
-			<li>
-				Related (equivalent to <code>skos:related</code>):
-				distinct things with an association
-			</li>
-			<li>Claims Related (equivalent to <code>rdfs:seeAlso</code>)</li>
-		</ul>
-
-		<h4>Example</h4>
-			<p>
+		<table>
+			<caption>Standard generic mapping predicates</caption>
+			<thead>
+				<tr>
+					<th>Relationship</th>
+					<th>Description</th>
+					<th>Properties</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<a href="http://www.w3.org/2000/01/rdf-schema#seeAlso" target="_blank"><code>rdfs:seeAlso</code></a>
+					</td>
+          			<td>
+          				General link, that indicates that the resource linked 
+          				to is relevant to the subject. See 
+          				<a href="http://www.w3.org/TR/rdf-schema/#ch_seealso">http://www.w3.org/TR/rdf-schema/#ch_seealso</a>.
+          			</td>
+          			<td>
+          			</td>
+        		</tr>
+				<tr>
+					<td>
+						<a href="http://www.w3.org/2004/02/skos/core#relatedMatch" target="_blank"><code>skos:relatedMatch</code></a>
+					</td>
+					<td>
+						This link indicates that the linked resources are in 
+						some way associated. See 
+						<a href="http://www.w3.org/TR/skos-reference/#mapping">http://www.w3.org/TR/skos-reference/#mapping</a>.
+					</td>
+					<td>
+						Symmetric
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="http://www.w3.org/2004/02/skos/core#closeMatch" target="_blank"><code>skos:closeMatch</code></a>
+					</td>
+          			<td>
+          				This link indicates that the linked resources are the 
+          				same, under some assumptions or applications. See 
+          				<a href="http://www.w3.org/TR/skos-reference/#mapping">http://www.w3.org/TR/skos-reference/#mapping</a>.
+          			</td>
+          			<td>
+          				Symmetric
+          			</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="http://www.w3.org/2004/02/skos/core#exactMatch" target="_blank"><code>skos:exactMatch</code></a>
+					</td>
+					<td>
+						This link indicates that the linked resources are the 
+						same, under the assumptions of most applications. See
+            			<a href="http://www.w3.org/TR/skos-reference/#mapping">http://www.w3.org/TR/skos-reference/#mapping</a>.
+            		</td>
+            		<td>
+            			Transitive
+            			Symmetric
+            		</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="http://www.w3.org/2002/07/owl#sameAs" target="_blank"><code>owl:sameAs</code></a>
+					</td>
+					<td>
+						This link indicates that the linked resources are the
+						same under all assumptions and can be used 
+						interchangeably. Note that if this link is used for 
+						classes, then reasoning tasks will fall under OWL Full
+						semantics. See
+            			<a href="http://www.w3.org/TR/2009/REC-owl2-quick-reference-20091027/#Axioms">http://www.w3.org/TR/2009/REC-owl2-quick-reference-20091027/#Axioms</a>.
+            		</td>
+            		<td>
+            			Transitive
+            			Symmetric
+            		</td>
+				</tr>
+				<tr>
+          			<td>
+          				<a href="http://www.w3.org/2002/07/owl#equivalentClass" target="_blank"><code>owl:equivalentClass</code></a>
+          			</td>
+					<td>
+						This link indicates that the linked resources (which 
+						are both classes in some ontology)  are the same. See 
+						<a href="http://www.w3.org/TR/2009/REC-owl2-quick-reference-20091027/#Axioms">http://www.w3.org/TR/2009/REC-owl2-quick-reference-20091027/#Axioms</a>.
+					</td>
+					<td>
+            			Transitive
+            			Symmetric
+					</td>					
+				</tr>
+			</tbody>
+		</table>
+		<p>
+			Note that there are domain specific relationship that may also be
+			used to express the relationship between two data instances. For
+			example, ChEBI provides a set of relationships including for 
+			example
+			<a href="http://www.ebi.ac.uk/chebi/userManualForward.do#has part" target="_blank"><code>http://purl.obolibrary.org/obo#has_part</code></a>
+			and 
+			<a href="http://www.ebi.ac.uk/chebi/userManualForward.do#is conjugate base of" target="_blank"><code>http://purl.obolibrary.org/obo#is_conjugate_acid_of</code></a>.
+		</p>
+		
+		<h4 id="justifications">Mapping Justifications</h4>
+		<p class="todo">Write this section</p>
+		<h4 id="mapping-example">Example</h4>
+		<p class="todo">Update example</p>
+		<p>
 				The following example declares that the ChemSpider
 				α-Ketoisovaleric acid concept with the 
 				<a href="http://www.chemspider.com/48">CSID 48</a> shares many 
