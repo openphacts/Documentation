@@ -465,24 +465,27 @@
 			<a href="#appendix-link-justifications">Appendix A.3</a>.
 		</p>
 		<h4 id="mapping-example">Example</h4>
-		<p class="todo">Update example</p>
 		<p>
-				The following example declares that the ChemSpider
-				α-Ketoisovaleric acid concept with the 
-				<a href="http://www.chemspider.com/48">CSID 48</a> shares many 
-				properties with the ChEMBL
-				3-Methyl-2-oxobutanoic acid concept with the ChEMBL-RDF <a
-				href="http://data.kasabi.com/dataset/chembl-rdf/chemblid/CHEMBL146554"
-				> ChEMBL ID CHEMBL146554</a>. The relationship is drawn from
-				ChemSpider based on the compounds sharing the same structure
-				based on their InChI Keys (in this case the compound has the
-				same InChI Key QHKABHOOEWYVLI-UHFFFAOYSA-N in both data sets.).
-			</p>
-			<pre class="turtle">
+			The following example declares that the ChemSpider α-Ketoisovaleric 
+			acid concept with the <a href="http://www.chemspider.com/48">CSID 
+			48</a> shares many properties with the ChEMBL 3-Methyl-2-oxobutanoic 
+			acid concept with the ChEMBL-RDF 
+			<a href="http://data.kasabi.com/dataset/chembl-rdf/chemblid/CHEMBL146554"
+			> ChEMBL ID CHEMBL146554</a>. The relationship is drawn from
+			ChemSpider based on the compounds sharing the same structure based 
+			on their InChI Keys (in this case the compound has the same InChI 
+			Key QHKABHOOEWYVLI-UHFFFAOYSA-N in both data sets.). Only the 
+			triples directly related to declaring the link are given in the 
+			example.
+		</p>
+		<pre class="turtle">
 @prefix chembl: &lt;http://data.kasabi.com/dataset/chembl-rdf/chemblid/&gt; .
 
+:cs2chembl_inchi void:linkPredicate skos:exactMatch .
+:cs2chembl_inchi dul:expresses &lt;http://semanticscience.org/resource/CHEMINF_000059&gt; .
+
 &lt;http://rdf.chemspider.com/48&gt; skos:exactMatch chembl:CHEMBL146554 .
-      		</pre>
+      	</pre>
 	<!-- end mapping-representation -->
 	</section>
 	
