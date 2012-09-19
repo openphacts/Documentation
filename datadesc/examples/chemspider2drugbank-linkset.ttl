@@ -4,7 +4,7 @@
 @prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix freq: <http://purl.org/cld/freq/> .
-@prefix pav: <http://purl.org/pav/2.0/>.
+@prefix pav: <http://purl.org/pav/>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
@@ -21,8 +21,8 @@
 		   The linkset relates ChemSpider identifiers with DrugBank identifiers.
 		   The links have been generated as the chemicals share the same structure."""@en;
 	pav:createdBy <http://www.cs.man.ac.uk/~graya/me.ttl>;
-	pav:createdOn "2012-08-13"^^xsd:date;
-	pav:lastUpdateOn "2012-09-14"^^xsd:date;
+	pav:createdOn "2012-08-1316:43:25Z"^^xsd:dateTime;
+	pav:lastUpdateOn "2012-09-14T16:12:43Z"^^xsd:dateTime;
 	pav:derivedFrom <http://rdf.chemspider.com/void.rdf>;
 	foaf:primaryTopic :chemSpider_drugbank_linkset;
 	.
@@ -46,7 +46,7 @@
 	void:uriSpace "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/"^^xsd:string;
 # Provenance and Version	
 	pav:version "3.0";
-	pav:importedOn "2011-11-30"^^xsd:date;
+	pav:importedOn "2011-11-30T11:01:59Z"^^xsd:dateTime;
 	pav:importedFrom <http://www4.wiwiss.fu-berlin.de/drugbank/drugbank_dump.nt.bz2>;
 	pav:importedBy [
 		a foaf:Person;
@@ -68,9 +68,9 @@
 	dul:expresses <http://???>;
 # Linkset Provenance 
 	pav:authoredBy <http://www.chemspider.com/>;
-	pav:authoredOn "2012-02-23"^^xsd:date;
+	pav:authoredOn "2012-02-23T09:08:29Z"^^xsd:dateTime;
 	pav:createdBy <http://www.cs.man.ac.uk/~graya/me.ttl>;
-	pav:createdOn "2012-08-13"^^xsd:date;
+	pav:createdOn "2012-08-13T15:29:31Z"^^xsd:dateTime;
 # Linkset statistics
 	void:triples "6428"^^xsd:nonNegativeInteger;
 	.

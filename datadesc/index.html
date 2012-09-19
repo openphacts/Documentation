@@ -187,7 +187,7 @@
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 @prefix freq: &lt;http://purl.org/cld/freq/&gt; .
 @prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
-@prefix pav: &lt;http://purl.org/pav/2.0/&gt; .
+@prefix pav: &lt;http://purl.org/pav/&gt; .
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 @prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
@@ -637,6 +637,11 @@
 				<code>pav:version</code></a> predicate, where this exists for
 				the dataset.
 			</li>
+			<li>
+				May link back to the previous version of the dataset using the
+				<a href="http://purl.org/pav/" target="_blank"> 
+				<code>pav:previousVersion</code></a> predicate.
+			</li>
 		</ul>
 			
 		<p>
@@ -736,29 +741,35 @@
 					</li>
 					<li>
 						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:derivedOn</code></a> to capture when the 
-						derivation was made.
+						<code>pav:createdOn</code></a> to capture when the 
+						dataset was made.
 					</li>
 					<li>
 						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:derivedBy</code></a> to capture who made the
-						derivation. 
+						<code>pav:createdBy</code></a> to capture who made the
+						dataset. 
 					</li>
 				</ul>
 			</li>
-		</ul>
-		
+		</ul>		
 		<p>
 			Note that the object of the <code>pav:xxxBy</code> predicate is 
 			a URI. 
-		</p>
-		
+		</p>	
 		<p id="orcid-note" class="note">
 			We currently do not require a specific form of URI for capturing
 			the details of a perosn or entity. Future versions of this
 			specification may recommend the use of ORCID Identifiers 
 			[[ORCID]].
 		</p>
+		<ul>
+			<li>
+				Should declare the software used to create the RDF 
+				representation of the dataset using the
+				<a href="http://purl.org/pav/" target="_blank">
+				<code>pav:createdWith</code></a> predicate.
+			</li> 
+		</ul>
 
 	<!-- end dataset-prov-version -->
 	</section>
@@ -1191,9 +1202,15 @@
 		<h4 id="linkset-version">Linkset Version</h4>
 		<ul>
 			<li>
-				May declare a version number for the linkset using the
+				Must declare a version number for the linkset when this exists 
+				using the
 				<a href="http://purl.org/pav/" target="_blank">
 				<code>pav:version</code></a> predicate.
+			</li>
+			<li>
+				May link back to the previous version of the dataset using the
+				<a href="http://purl.org/pav/" target="_blank"> 
+				<code>pav:previousVersion</code></a> predicate.
 			</li>
 		</ul>
 		
@@ -1205,11 +1222,11 @@
 				<ul>
 					<li>
 						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:accessedBy</code></a>
+						<code>pav:sourceAccessedBy</code></a>
 					</li>
 					<li>
 						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:accessedOn</code></a>
+						<code>pav:sourceAccessedOn</code></a>
 					</li>
 				</ul>
 				For the linkset parent dataset, this information may be omitted
@@ -1354,8 +1371,8 @@
 &lt;&gt; a void:DatasetDescription ;
     dcterms:title "ChemSpider VoID Description"^^xsd:string ;
     pav:createdBy &lt;http://www.chemspider.com/&gt; ;
-	pav:createdOn "2012-05-02"^^xsd:date;
-	pav:lastUpdateOn "2012-08-10"^^xsd:date;
+	pav:createdOn "2012-05-02T13:50:34Z"^^xsd:dateTime;
+	pav:lastUpdateOn "2012-08-10T13:52:12Z"^^xsd:dateTime;
     foaf:primaryTopic :chemSpiderDataset .    
 		</pre>
 	<!-- end document-descriptor -->
@@ -1722,7 +1739,7 @@
 @prefix dcterms: &lt;http://purl.org/dc/terms/&gt;.
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 @prefix freq: &lt;http://purl.org/cld/freq/&gt; .
-@prefix pav: &lt;http://purl.org/pav/2.0/&gt;.
+@prefix pav: &lt;http://purl.org/pav/&gt;.
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
 @prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;.
@@ -1739,8 +1756,8 @@
 		   It is derived from the existing VoID description and updating it to the latest
 		   version of the VoID specification."""@en;
 	pav:createdBy &lt;http://www.cs.man.ac.uk/~graya/me.ttl&gt;;
-	pav:createdOn "2012-05-02"^^xsd:date;
-	pav:lastUpdateOn "2012-08-10"^^xsd:date;
+	pav:createdOn "2012-05-02T14:48:03Z"^^xsd:dateTime;
+	pav:lastUpdateOn "2012-08-10T09:32:49Z"^^xsd:dateTime;
 	pav:derivedFrom &lt;http://rdf.chemspider.com/void.rdf&gt;;
 	foaf:primaryTopic :chemSpiderDataset;
 	.
@@ -1783,7 +1800,7 @@
 	dcterms:description "The slice of ChemSpider data that corresponds to ChEMBL molecules."@en;
 #Provenance
 	pav:retrievedFrom &lt;https://www.dropbox.com/sh/6zboa8z9i9vrzyl/7NxayhkUH0/ChEMBL20120731.zip&gt;;
-	pav:retrievedOn "2012-08-02"^^xsd:date;
+	pav:retrievedOn "2012-08-02T10:23:56Z"^^xsd:dateTime;
 	pav:retrievedBy &lt;http://www.cs.man.ac.uk/~graya/me.ttl&gt; ;
 #Dataset Access
 	void:dataDump &lt;https://www.dropbox.com/sh/6zboa8z9i9vrzyl/7NxayhkUH0/ChEMBL20120731.zip&gt;;
@@ -1797,7 +1814,7 @@
 	dcterms:description "Data corresponding to DrugBank."@en;
 #Provenance
 	pav:retrievedFrom &lt;https://www.dropbox.com/sh/6zboa8z9i9vrzyl/qcFZzbLM77/DrugBank20120731.zip&gt;;
-	pav:retrievedOn "2012-08-02"^^xsd:date;
+	pav:retrievedOn "2012-08-02T10:24:06Z"^^xsd:dateTime;
 	pav:retrievedBy &lt;http://www.cs.man.ac.uk/~graya/me.ttl&gt; ;
 #Dataset Access
 	void:dataDump &lt;https://www.dropbox.com/sh/6zboa8z9i9vrzyl/qcFZzbLM77/DrugBank20120731.zip&gt;;
@@ -1829,7 +1846,7 @@
 @prefix dcterms: &lt;http://purl.org/dc/terms/&gt;.
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 @prefix freq: &lt;http://purl.org/cld/freq/&gt; .
-@prefix pav: &lt;http://purl.org/pav/2.0/&gt;.
+@prefix pav: &lt;http://purl.org/pav/&gt;.
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
 @prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;.
@@ -1844,8 +1861,8 @@
     dcterms:description 
         """This is the VoID description for a ChEMBL-RDF dataset."""@en;
     pav:createdBy &lt;http://egonw.github.com/#me&gt; ;
-    pav:createdOn "2012-08-12"^^xsd:date;
-    pav:lastUpdatedOn "2012-09-14"^^xsd:date;
+    pav:createdOn "2012-08-12T16:56:07Z"^^xsd:dateTime;
+    pav:lastUpdatedOn "2012-09-14T12:21:12Z"^^xsd:dateTime;
     pav:previousVersion &lt;http://semantics.bigcat.unimaas.nl/chembl/v13_ops/chembl-rdf-void.ttl&gt;;
     foaf:primaryTopic :chemblrdf_dataset.
 
@@ -1862,7 +1879,7 @@
 	pav:version "v13_ops";
     pav:importedFrom :chembl_dataset;
     pav:importedBy &lt;http://egonw.github.com/#me&gt; ;
-    pav:importedOn "2012-05-15"^^xsd:date;
+    pav:importedOn "2012-05-15T15:34:40Z"^^xsd:dateTime;
 # Subsets
     void:subset :chemblrdf_compounds, :chemblrdf_targets ;
 # Vocabularies, topics, resources
@@ -1899,8 +1916,8 @@
     dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
     pav:version "13"^^xsd:integer ;
     dcterms:publisher &lt;http://www.ebi.ac.uk/chembl/&gt;;
-    dcterms:created "2012-02-29"^^xsd:date;
-    dcterms:modified "2012-02-29"^^xsd:date;
+    dcterms:created "2012-02-29T00:00:00Z"^^xsd:dateTime;
+    dcterms:modified "2012-02-29T00:00:00Z"^^xsd:dateTime;
     .
 
 :chemblrdf_compounds
@@ -1957,7 +1974,7 @@
 @prefix dul: &lt;http://www.ontologydesignpatterns.org/ont/dul/DUL.owl&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 @prefix freq: &lt;http://purl.org/cld/freq/&gt; .
-@prefix pav: &lt;http://purl.org/pav/2.0/&gt;.
+@prefix pav: &lt;http://purl.org/pav/&gt;.
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
 @prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;.
@@ -1974,15 +1991,15 @@
     dcterms:descriptions """A VoID linkset that links compounds in ChEMBL-RDF
         with compounds in ChemSpider."""@en; 
     pav:createdBy &lt;http://egonw.github.com/#me&gt; ;
-    pav:createdOn "2012-08-13"^^xsd:date ;
-    pav:lastUpdateOn "2012-09-14"^^xsd:date ;
+    pav:createdOn "2012-08-13T15:00:00Z"^^xsd:dateTime ;
+    pav:lastUpdateOn "2012-09-14T11:15:32Z"^^xsd:dateTime ;
     foaf:primaryTopic :chembl-rdf-compounds_cs_linkset ;
     .
  
 # Pointer to the ChemSpider VoID file
 &lt;http://rdf.chemspider.com/void.ttl#chemSpiderDataset&gt;
 	# State when the dataset was accessed for creating linkset
-    pav:accessedOn "2012-02-22"^^xsd:date .
+    pav:sourceAccessedOn "2012-02-22T10:59:38Z"^^xsd:dateTime .
 
 # Pointer to the subset description in the ChEMBL VoID file
 &lt;http://data.kasabi.com/dataset/chembl-rdf/void.ttl#chemblrdf_compounds&gt;
@@ -2002,10 +2019,10 @@
     void:linkPredicate skos:exactMatch ;
     dul:expresses &lt;http://???&gt; ;
 # Linkset provenance
-    pav:authoredOn "2012-02-22"^^xsd:date ;
+    pav:authoredOn "2012-02-22T10:59:38Z"^^xsd:dateTime ;
     pav:authoredBy &lt;http://www.chemspider.com/&gt; ;
     pav:createdBy &lt;http://egonw.github.com/#me&gt; ;
-    pav:createdOn "2012-05-15"^^xsd:date ;
+    pav:createdOn "2012-05-15T11:29:01Z"^^xsd:dateTime ;
 # Linkset statistics
     void:triples "1073967"^^xsd:integer ;
     .
@@ -2041,7 +2058,7 @@ chembl:CHEMBL144103 skos:exactMatch &lt;http://rdf.chemspider.com/60&gt; .
 @prefix dul: &lt;http://www.ontologydesignpatterns.org/ont/dul/DUL.owl&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 @prefix freq: &lt;http://purl.org/cld/freq/&gt; .
-@prefix pav: &lt;http://purl.org/pav/2.0/&gt;.
+@prefix pav: &lt;http://purl.org/pav/&gt;.
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
 @prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;.
@@ -2058,8 +2075,8 @@ chembl:CHEMBL144103 skos:exactMatch &lt;http://rdf.chemspider.com/60&gt; .
 		   The linkset relates ChemSpider identifiers with DrugBank identifiers.
 		   The links have been generated as the chemicals share the same structure."""@en;
 	pav:createdBy &lt;http://www.cs.man.ac.uk/~graya/me.ttl&gt;;
-	pav:createdOn "2012-08-13"^^xsd:date;
-	pav:lastUpdateOn "2012-09-14"^^xsd:date;
+	pav:createdOn "2012-08-13T16:43:25Z"^^xsd:dateTime;
+	pav:lastUpdateOn "2012-09-14T16:12:43Z"^^xsd:dateTime;
 	foaf:primaryTopic :chemSpider_drugbank_linkset;
 	.
 	
@@ -2082,7 +2099,7 @@ chembl:CHEMBL144103 skos:exactMatch &lt;http://rdf.chemspider.com/60&gt; .
 	void:uriSpace "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/"^^xsd:string;
 # Provenance and Version	
 	pav:version "3.0";
-	pav:importedOn "2011-11-30"^^xsd:date;
+	pav:importedOn "2011-11-30T11:01:59Z"^^xsd:dateTime;
 	pav:importedFrom &lt;http://www4.wiwiss.fu-berlin.de/drugbank/drugbank_dump.nt.bz2&gt;;
 	pav:importedBy [
 		a foaf:Person;
@@ -2104,9 +2121,9 @@ chembl:CHEMBL144103 skos:exactMatch &lt;http://rdf.chemspider.com/60&gt; .
 	dul:expresses &lt;http://???&gt;;
 # Linkset Provenance 
 	pav:authoredBy &lt;http://www.chemspider.com/&gt;;
-	pav:authoredOn "2012-02-23"^^xsd:date;
+	pav:authoredOn "2012-02-23T09:08:29Z"^^xsd:dateTime;
 	pav:createdBy &lt;http://www.cs.man.ac.uk/~graya/me.ttl&gt;;
-	pav:createdOn "2012-08-13"^^xsd:date;
+	pav:createdOn "2012-08-13T15:29:31Z"^^xsd:dateTime;
 # Linkset statistics
 	void:triples "6428"^^xsd:nonNegativeInteger;
 	.

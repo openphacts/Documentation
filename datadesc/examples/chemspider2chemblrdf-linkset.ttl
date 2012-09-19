@@ -4,7 +4,7 @@
 @prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix freq: <http://purl.org/cld/freq/> .
-@prefix pav: <http://purl.org/pav/2.0/>.
+@prefix pav: <http://purl.org/pav/>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
@@ -21,15 +21,15 @@
     dcterms:descriptions """A VoID linkset that links compounds in ChEMBL-RDF
         with compounds in ChemSpider."""@en; 
     pav:createdBy <http://egonw.github.com/#me> ;
-    pav:createdOn "2012-08-13"^^xsd:date ;
-    pav:lastUpdateOn "2012-09-14"^^xsd:date;
+    pav:createdOn "2012-08-13T15:00:00Z"^^xsd:dateTime ;
+    pav:lastUpdateOn "2012-09-14T11:15:32Z"^^xsd:dateTime;
     foaf:primaryTopic :chembl-rdf-compounds_cs_linkset ;
     .
  
 # Pointer to the ChemSpider VoID file
 <http://rdf.chemspider.com/void.ttl#chemSpiderDataset_chembl_subset>
 	# State when the dataset was accessed for creating linkset
-    pav:accessedOn "2012-02-22"^^xsd:date .
+    pav:sourceAccessedOn "2012-02-22T10:59:38Z"^^xsd:dateTime .
 
 # Pointer to the subset description in the ChEMBL VoID file
 <http://data.kasabi.com/dataset/chembl-rdf/void.ttl#chemblrdf_compounds>
@@ -49,10 +49,10 @@
     void:linkPredicate skos:exactMatch ;
     dul:expresses <http://???> ;
 # Linkset provenance
-    pav:authoredOn "2012-02-22"^^xsd:date ;
+    pav:authoredOn "2012-02-22T10:59:38Z"^^xsd:dateTime ;
     pav:authoredBy <http://www.chemspider.com/> ;
     pav:createdBy <http://egonw.github.com/#me> ;
-    pav:createdOn "2012-05-15"^^xsd:date ;
+    pav:createdOn "2012-05-15T11:29:01Z"^^xsd:dateTime ;
 # Linkset statistics
     void:triples "1073967"^^xsd:integer ;
     .

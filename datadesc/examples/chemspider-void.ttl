@@ -2,7 +2,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix freq: <http://purl.org/cld/freq/> .
-@prefix pav: <http://purl.org/pav/2.0/>.
+@prefix pav: <http://purl.org/pav/>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
@@ -19,8 +19,8 @@
 		   It is derived from the existing VoID description and updating it to the latest
 		   version of the VoID specification."""@en;
 	pav:createdBy <http://www.cs.man.ac.uk/~graya/me.ttl>;
-	pav:createdOn "2012-05-02"^^xsd:date;
-	pav:lastUpdateOn "2012-08-10"^^xsd:date;
+	pav:createdOn "2012-05-02T14:48:03Z"^^xsd:dateTime;
+	pav:lastUpdateOn "2012-08-10T09:32:49Z"^^xsd:dateTime;
 	pav:derivedFrom <http://rdf.chemspider.com/void.rdf>;
 	foaf:primaryTopic :chemSpiderDataset;
 	.
@@ -63,7 +63,7 @@
 	dcterms:description "The slice of ChemSpider data that corresponds to ChEMBL molecules."@en;
 #Provenance
 	pav:retrievedFrom <https://www.dropbox.com/sh/6zboa8z9i9vrzyl/7NxayhkUH0/ChEMBL20120731.zip>;
-	pav:retrievedOn "2012-08-02"^^xsd:date;
+	pav:retrievedOn "2012-08-02T10:23:56Z"^^xsd:dateTime;
 	pav:retrievedBy <http://www.cs.man.ac.uk/~graya/me.ttl> ;
 #Dataset Access
 	void:dataDump <https://www.dropbox.com/sh/6zboa8z9i9vrzyl/7NxayhkUH0/ChEMBL20120731.zip>;
@@ -77,7 +77,7 @@
 	dcterms:description "Data corresponding to DrugBank."@en;
 #Provenance
 	pav:retrievedFrom <https://www.dropbox.com/sh/6zboa8z9i9vrzyl/qcFZzbLM77/DrugBank20120731.zip>;
-	pav:retrievedOn "2012-08-02"^^xsd:date;
+	pav:retrievedOn "2012-08-02T10:24:06Z"^^xsd:dateTime;
 	pav:retrievedBy <http://www.cs.man.ac.uk/~graya/me.ttl> ;
 #Dataset Access
 	void:dataDump <https://www.dropbox.com/sh/6zboa8z9i9vrzyl/qcFZzbLM77/DrugBank20120731.zip>;
