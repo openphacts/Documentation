@@ -300,7 +300,7 @@
 			depicted in blue which use different link predicates; one sourced 
 			from ChEMBL depicted in red; and one sourced from a third party 
 			depicted in green. Each of the linksets uses a different link 
-			relationship. Those shown with a double arrow head are symmmetric 
+			relationship. Those shown with a double arrow head are symmetric 
 			while those with just a single arrow are directional links.
 	    </p>
 	    <div class="image">
@@ -560,7 +560,7 @@
 			<li>
 				Must provide a link to the homepage for the dataset using 
 				the <a href="http://xmlns.com/foaf/spec/#term_homepage">
-				<code>foaf:hompage</code></a> predicate.
+				<code>foaf:homepage</code></a> predicate.
 			</li>
 			<li>
 				May provide links to other pages that discuss the dataset 
@@ -581,7 +581,7 @@
 		<h4 id="dataset-license">License</h4>
 		<ul>
 			<li>
-				Must declare the licence under which the dataset is
+				Must declare the license under which the dataset is
 				published using the 
 				<a href="http://purl.org/dc/terms/license" target="_blank">
 				<code>dcterms:license</code></a> predicate.
@@ -649,7 +649,7 @@
 			dataset does have this notion, it must be given in the 
 			description. For other datasets, the versioning information will
 			be inferred by the last modified date provided as part of the
-			provenace information.
+			provenance information.
 		</p>
 
 		<h4 id="dataset-provenance">Provenance of Data Origin</h4>
@@ -758,7 +758,7 @@
 		</p>	
 		<p id="orcid-note" class="note">
 			We currently do not require a specific form of URI for capturing
-			the details of a perosn or entity. Future versions of this
+			the details of a person or entity. Future versions of this
 			specification may recommend the use of ORCID Identifiers 
 			[[ORCID]].
 		</p>
@@ -791,7 +791,7 @@
 			between datasets and for providing details of the subject.
 		</p>
 		<p class="note">
-			In the VoID note [[VOID]], the <code>void:subset</code> propterty 
+			In the VoID note [[VOID]], the <code>void:subset</code> property 
 			is used for both <em>subset of</em> and <em>has subset</em>. The 
 			declared semantics for the property is <em>has subset</em>. Within 
 			Open PHACTS, the property must be used with the <em>has subset</em> 
@@ -965,7 +965,7 @@
 		metadata about its content and how it was created. The metadata 
 		associated with a link is essential for enabling its reuse by others. 
 		It enables a consumer of the link to understand which datasets are 
-		linked (inlcuding which version), who claimed the link, under what 
+		linked (including which version), who claimed the link, under what 
 		circumstances, and which (if any) tools were used to generate the link 
 		(e.g. [[SILK]]).
 	</p>
@@ -1022,7 +1022,7 @@
 		<h4 id="linkset-license">License</h4>
 		<ul>
 			<li>
-				Must declare the licence under which the linkset is published 
+				Must declare the license under which the linkset is published 
 				using the 
 				<a href="http://purl.org/dc/terms/license" target="_blank">
 				<code>dcterms:license</code></a> predicate.
@@ -1239,7 +1239,7 @@
 			that it uses. These descriptions should be provided by the dataset 
 			provider as part of the dataset publishing process [[OPS-RDF]]. 
 			However, it is necessary to augment the data for the purposes of 
-			providing additional information about the involvoment of the 
+			providing additional information about the involvement of the 
 			dataset in the linkset, e.g. when it was accessed for the purpose 
 			of creating the linkset. Note that these triples will have the 
 			dataset URI as the subject.
@@ -1396,7 +1396,7 @@
 			<code>http://rdf.chemspider.com/void.ttl#chemSpiderDataset</code>. 
 			When the code is being hosted on an external service, then the VoID descriptor 
 			should be provided in the dataset's home directory. For example, for 
-			the RDF encoding of ChEBML this would be
+			the RDF encoding of ChEMBL this would be
 			<code>http://linkedchemistry.info/chembl/void.ttl#chembl-rdf</code>. 
 			Examples of the VoID descriptors are given in 
 			<a href="#appendix-dataset-examples">Appendix A</a>.
@@ -1433,7 +1433,7 @@
 		</p>
 
 		<p class="note">
-			This is problematic. What happend if the
+			This is problematic. What happens if the
 			dataset description is updated? Need some way of referencing a
 			specific version of the VoID description. This issue does not
 			seem to have been addressed in the VoID document.
@@ -1529,7 +1529,7 @@
 		<p>
 			The metadata specified in <a href="#dataset-decscription">Section
 			4</a> covers the functional data required from BioDBcore. The 
-			aspects not covered are those relating to discoving who is 
+			aspects not covered are those relating to discovering who is 
 			responsible for a dataset and the publications about the dataset. It
 			is expected that such information can be discovered from the 
 			dataset's homepage and is not within the use case scope for the 
@@ -1624,9 +1624,9 @@
 	<!-- end appendix-topics-vocab -->
 	</section>
 	<section id="appendix-frequency-vocabulary">
-		<h3 id="frequency-vocabulary">Frequency of Change Vocbaulary</h3>
+		<h3 id="frequency-vocabulary">Frequency of Change Vocabulary</h3>
 		<p>
-			Below are the terms from the frequncy of change vocabulary.
+			Below are the terms from the frequency of change vocabulary.
 		</p>
 		<ul>
 			<li>
@@ -1822,7 +1822,7 @@
     <!-- end ChemSpider-VoID -->
 	</section>
 	<section id="ChEMBL-RDF-VoID-Descriptor">
-		<h3 id="chemble-rdf-void">ChEBML-RDF VoID Descriptor</h3>
+		<h3 id="chemble-rdf-void">ChEMBL-RDF VoID Descriptor</h3>
 
 		<p>
 			Below we provide the VoID document for the ChEMBL-RDF dataset, which
