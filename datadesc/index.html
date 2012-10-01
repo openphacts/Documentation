@@ -470,7 +470,7 @@
 			acid concept with the <a href="http://www.chemspider.com/48">CSID 
 			48</a> shares many properties with the ChEMBL 3-Methyl-2-oxobutanoic 
 			acid concept with the ChEMBL-RDF 
-			<a href="http://data.kasabi.com/dataset/chembl-rdf/chemblid/CHEMBL146554"
+			<a href="http://linkedchemistry.info/chembl/chemblid/CHEMBL146554"
 			> ChEMBL ID CHEMBL146554</a>. The relationship is drawn from
 			ChemSpider based on the compounds sharing the same structure based 
 			on their InChI Keys (in this case the compound has the same InChI 
@@ -479,7 +479,7 @@
 			example.
 		</p>
 		<pre class="turtle">
-@prefix chembl: &lt;http://data.kasabi.com/dataset/chembl-rdf/chemblid/&gt; .
+@prefix chembl: &lt;http://linkedchemistry.info/chembl/chemblid/&gt; .
 
 :cs2chembl_inchi void:linkPredicate skos:exactMatch .
 :cs2chembl_inchi dul:expresses &lt;http://semanticscience.org/resource/CHEMINF_000059&gt; .
@@ -1394,11 +1394,10 @@
 			(and any subsets). For example, for ChemSpider we would have a URI 
 			such as 
 			<code>http://rdf.chemspider.com/void.ttl#chemSpiderDataset</code>. 
-			When the code is being hosted on an external service, e.g. 
-			<a href="http://kasabi.com/">Kasabi</a>, then the VoID descriptor 
+			When the code is being hosted on an external service, then the VoID descriptor 
 			should be provided in the dataset's home directory. For example, for 
 			the RDF encoding of ChEBML this would be
-			<code>http://data.kasabi.com/dataset/chembl-rdf/void.ttl#chembl-rdf</code>. 
+			<code>http://linkedchemistry.info/chembl/void.ttl#chembl-rdf</code>. 
 			Examples of the VoID descriptors are given in 
 			<a href="#appendix-dataset-examples">Appendix A</a>.
 		</p>
@@ -1409,8 +1408,8 @@
 			molecure m1, there would be the triple:
 		</p>
 		<pre class="turtle">
-&lt;http://data.kasabi.com/dataset/chembl-rdf/molecule/m1&gt; void:inDataset 
-    &lt;http://data.kasabi.com/dataset/chembl-rdf/void.ttl#chembl-rdf_compounds&gt; .    
+&lt;http://linkedchemistry.info/chembl/chemblid/molecule/m1&gt; void:inDataset 
+    &lt;http://linkedchemistry.info/chembl/chemblid/void.ttl#chembl-rdf_compounds&gt; .    
 		</pre>
 	<!-- end deploying-void -->
 	</section>
@@ -1829,7 +1828,7 @@
 			Below we provide the VoID document for the ChEMBL-RDF dataset, which
 			is a conversion of the ChEMBL database. The VoID file would be
 			located at
-			<code>http://data.kasabi.com/dataset/chembl-rdf/void.ttl</code>.
+			<code>http://linkedchemistry.info/chembl/chemblid/void.ttl</code>.
 		</p>
 		<ul>
 			<li> 
@@ -1841,7 +1840,7 @@
 		</ul>
 <!-- Example copy and pasted from examples/chembl-rdf-void.ttl -->
 		<pre class="turtle">
-@prefix : &lt;http://data.kasabi.com/dataset/chembl-rdf/void.ttl&gt;.
+@prefix : &lt;http://linkedchemistry.info/chembl/chemblid/void.ttl&gt;.
 
 @prefix dcterms: &lt;http://purl.org/dc/terms/&gt;.
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
@@ -1874,7 +1873,7 @@
     foaf:homepage &lt;http://github.com/egonw/chembl.rdf/&gt;;
     foaf:page &lt;http://www.biosharing.org/biodbcore-000015&gt;;
     dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
-    void:uriSpace "http://data.kasabi.com/dataset/chembl-rdf/"^^xsd:string ;
+    void:uriSpace "http://linkedchemistry.info/chembl/"^^xsd:string ;
 # Provenance
 	pav:version "v13_ops";
     pav:importedFrom :chembl_dataset;
@@ -1925,9 +1924,9 @@
     a void:Dataset ;
     dcterms:title "ChEMBL Molecules"@en;
     dcterms:description "The subset of ChEMBL data relating to molecules."@en;
-    void:uriSpace "http://data.kasabi.com/dataset/chembl-rdf/molecule/"^^xsd:string ;
+    void:uriSpace "linkedchemistry.info/chembl/molecule/"^^xsd:string ;
     dcterms:subject &lt;http://dbpedia.org/resource/Molecule&gt; ;
-    void:exampleResource &lt;http://data.kasabi.com/dataset/chembl-rdf/molecule/M1&gt;;	
+    void:exampleResource &lt;http://linkedchemistry.info/chembl/molecule/M1&gt;;	
     void:dataDump &lt;http://semantics.bigcat.unimaas.nl/chembl/v13_ops/compounds.nt.gz&gt; ;
     .
   
@@ -1936,9 +1935,9 @@
     a void:Dataset ;
     dcterms:title "ChEMBL Targets"@en;
     dcterms:description "The subset of ChEMBL data relating to targets which are single proteins."@en;
-    void:uriSpace "http://data.kasabi.com/dataset/chembl-rdf/target/"^^xsd:string ;
+    void:uriSpace "linkedchemistry.info/chembl/target/"^^xsd:string ;
     dcterms:subject &lt;http://dbpedia.org/resource/Protein&gt; ;
-    void:exampleResource &lt;http://data.kasabi.com/dataset/chembl-rdf/target/t1&gt;;	
+    void:exampleResource &lt;http://linkedchemistry.info/chembl/target/t1&gt;;	
     void:dataDump &lt;http://semantics.bigcat.unimaas.nl/chembl/v13_ops/targets.nt.gz&gt; ;
     .
 
@@ -1968,7 +1967,7 @@
 		</ul>
 <!-- Example copy/pasted from examples/chemspider2chemblrdf-linkset.ttl -->
 		<pre class="turtle">
-@prefix : &lt;http://data.kasabi.com/dataset/chembl-rdf/void.ttl&gt;.
+@prefix : &lt;http://linkedchemistry.info/chembl//void.ttl&gt;.
 
 @prefix dcterms: &lt;http://purl.org/dc/terms/&gt;.
 @prefix dul: &lt;http://www.ontologydesignpatterns.org/ont/dul/DUL.owl&gt; .
@@ -1982,7 +1981,7 @@
 @prefix void: &lt;http://rdfs.org/ns/void#&gt;.
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;.
 
-@prefix chembl: &lt;http://data.kasabi.com/dataset/chembl-rdf/chemblid/&gt; .
+@prefix chembl: &lt;http://linkedchemistry.info/chembl/chemblid/&gt; .
 
 # Metadata about this file
 &lt;&gt;
@@ -2002,7 +2001,7 @@
     pav:sourceAccessedOn "2012-02-22T10:59:38Z"^^xsd:dateTime .
 
 # Pointer to the subset description in the ChEMBL VoID file
-&lt;http://data.kasabi.com/dataset/chembl-rdf/void.ttl#chemblrdf_compounds&gt;
+&lt;http://linkedchemistry.info/chembl/void.ttl#chemblrdf_compounds&gt;
 	# Linkset declared as a subset. Inherits properties
     void:subset :chembl-rdf-compounds_cs_linkset .
 
@@ -2014,7 +2013,7 @@
     #Explicit declaration of license for the linkset is preferred
     dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
 # Link information
-    void:subjectsTarget &lt;http://data.kasabi.com/dataset/chembl-rdf/void.ttl#chemblrdf_compounds&gt; ;
+    void:subjectsTarget &lt;http:/linkedchemistry.info/chembl/void.ttl#chemblrdf_compounds&gt; ;
     void:objectsTarget &lt;http://rdf.chemspider.com/void.ttl#chemSpiderDataset&gt; ;
     void:linkPredicate skos:exactMatch ;
     dul:expresses &lt;http://???&gt; ;
