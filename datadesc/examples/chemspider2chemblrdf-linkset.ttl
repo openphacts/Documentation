@@ -1,4 +1,4 @@
-@prefix : <http://data.kasabi.com/dataset/chembl-rdf/void.ttl>.
+@prefix : <http://linkedchemistry.info/chembl/void.ttl>.
 
 @prefix dcterms: <http://purl.org/dc/terms/>.
 @prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl> .
@@ -12,7 +12,7 @@
 @prefix void: <http://rdfs.org/ns/void#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 
-@prefix chembl: <http://data.kasabi.com/dataset/chembl-rdf/chemblid/> .
+@prefix chembl: <http://linkedchemistry.info/chembl/chemblid/> .
 
 # Metadata about this file
 <>
@@ -32,7 +32,7 @@
     pav:sourceAccessedOn "2012-02-22T10:59:38Z"^^xsd:dateTime .
 
 # Pointer to the subset description in the ChEMBL VoID file
-<http://data.kasabi.com/dataset/chembl-rdf/void.ttl#chemblrdf_compounds>
+<http://linkedchemistry.info/chembl/void.ttl#chemblrdf_compounds>
 	# Linkset declared as a subset. Inherits properties
     void:subset :chembl-rdf-compounds_cs_linkset .
 
@@ -44,7 +44,7 @@
     #Explicit declaration of license for the linkset is preferred
     dcterms:license <http://creativecommons.org/licenses/by-sa/3.0/> ;
 # Link information
-    void:subjectsTarget <http://data.kasabi.com/dataset/chembl-rdf/void.ttl#chemblrdf_compounds> ;
+    void:subjectsTarget <http://linkedchemistry.info/chembl/void.ttl#chemblrdf_compounds> ;
     void:objectsTarget <http://rdf.chemspider.com/void.ttl#chemSpiderDataset> ;
     void:linkPredicate skos:exactMatch ;
     dul:expresses <http://???> ;
