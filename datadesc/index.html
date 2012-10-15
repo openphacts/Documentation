@@ -1198,6 +1198,8 @@
 				<code>pav:createdOn</code></a> predicate.
 			</li>
 		</ul>
+		<p>In this version of the specification, it is assumed that the creator
+		of the linkset has accessed the most recent version of the dataset.</p>
 		
 		<h4 id="linkset-version">Linkset Version</h4>
 		<ul>
@@ -1214,12 +1216,17 @@
 			</li>
 		</ul>
 		
-		<h4 id="linkset-target-access">Dataset Access</h4>
+<!-- 
+ 		<h4 id="linkset-target-access">Dataset Access</h4>
 		<ul>
 			<li>
 				Must declare, for each dataset that is not a parent for the 
-				linkset, when and by whom it was accessed using:
+				linkset, where, when and by whom it was accessed using:
 				<ul>
+					<li>
+						<a href="http://purl.org/pav/" target="_blank">
+						<code>pav:sourceAccessedAt</code></a>
+					</li>
 					<li>
 						<a href="http://purl.org/pav/" target="_blank">
 						<code>pav:sourceAccessedBy</code></a>
@@ -1238,12 +1245,12 @@
 			A linkset should point to the dataset descriptions of the datasets 
 			that it uses. These descriptions should be provided by the dataset 
 			provider as part of the dataset publishing process [[OPS-RDF]]. 
-			However, it is necessary to augment the data for the purposes of 
-			providing additional information about the involvement of the 
-			dataset in the linkset, e.g. when it was accessed for the purpose 
-			of creating the linkset. Note that these triples will have the 
-			dataset URI as the subject.
+			However, it is necessary to state when the dataset was accessed for 
+			the purpose of creating the linkset. Note that these triples have 
+			the linkset URI as the subject and duplicate the information 
+			provided in the <a href="#linkset-targets">Target Datasets section</a>.
 		</p>
+ -->
 		
 	<!-- end linkset-provenance -->
 	</section>
