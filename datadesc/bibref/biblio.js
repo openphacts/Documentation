@@ -16,6 +16,7 @@ berjon.biblio = {
 	"ORCID": "Open Researcher and Contributor Identifier. 22 March 2012. <a href=\"http://www.orcid.org\">http://www.orcid.org</a>",
 	"PAV": "Provenance Authoring and Versioning Ontology. <a href=\"http://code.google.com/p/pav-ontology/\">http://code.google.com/p/pav-ontology/</a>",
 	"PROV-O": "K. Belhajjame, J. Cheney, D. Garijo, T. Lebo, S. Soiland-Reyes, and S. Zednik. The PROV ontology: Model and formal semantics. Working draft, W3C, 13 December 2011. <a href=\"http://www.w3.org/TR/prov-o/\">http://www.w3.org/TR/prov-o/</a>",
+	"PROV-XG": "Y. Gil, J. Cheney, P. Groth, O. Hartig, S. Miles, L. Moreau, P. Pinheiro da Silva. Provenance XG Final Report. W3C Incubator Group Report 08 December 2010 <a href=\"http://www.w3.org/2005/Incubator/prov/XGR-prov/\">http://www.w3.org/2005/Incubator/prov/XGR-prov/</a>",
 	"PRV": "O. Hartig and J. Zhao. Provenance Vocabulary. Technical Report, 14 March 2012. <a href=\"http://purl.org/net/provenance/ns\">http://purl.org/net/provenance/ns</a>",
 	"RFC2119": "S. Bradner. Key words for use in RFCs to Indicate Requirement Levels. March 1997. Internet RFC 2119. URL: <a href=\"http://www.ietf.org/rfc/rfc2119.txt\">http://www.ietf.org/rfc/rfc2119.txt</a>",
 	"SILK": "Silk - A Link Discovery Framework for the Web of Data. <a href=\"http://www4.wiwiss.fu-berlin.de/bizer/silk/\">http://www4.wiwiss.fu-berlin.de/bizer/silk/</a>.",

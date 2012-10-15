@@ -1539,46 +1539,71 @@
 		</p>
 	<!-- end BioDbCore -->
 	</section>
-	<section id="voidp">
-		<h3>Vocabulary for Data and Dataset Provenance (voidp)</h3>
+	<section id="provenance-vocabularies">
+		<h3 id="provenance-vocabs">Provenance Vocabularies</h3>
 		<p>
-			Defined as an extension to VoID, the vocabulary for data
-			and dataset provenance (voidp) [[VOIDP]] is a vocabulary for
-			defining provenance relationships of data and datasets. The
-			vocabulary focuses on four specific pieces of provenance
-			information:
-		</p>
-		<blockquote>
-			"for a piece of data, x :
-			<ul>
-				<li>when was x derived,</li>
-				<li>how was x derived,</li>
-				<li>what data had been used to derive x,</li>
-				<li>
-					who carried out the transformations that resulted in
-					the current value of x." [[VOIDP]]
-				</li>
-			</ul>
-		</blockquote>
-		<p>
-			These are a subset of the information that needs to be
-			captured for the Open PHACTS linksets.
-		</p>
-	<!-- end voidp -->
-	</section>
-	<section id="provenance-standards">
-		<p>
-			The vocabulary provides its own predicates for capturing
-			these provenance relationships, rather than reusing existing
-			vocabularies for capturing provenance metadata, e.g. the open
-			provenance model [[OPM]] or Provenance Authoring and Versioning
-			ontology [[PAV]]. There is now also a W3C group working on a
-			provenance ontology [[PROV-O]].
-		</p>
-		<p>
-			Provenance Vocabulary [[PRV]]].
-		</p>
-	<!-- end provenance-standards -->
+			There are a wide range of provenance vocabularies that have been
+			proposed. This section gives brief pointers to related vocabularies
+			that could be used in a dataset or linkset description. For more 
+			information about the state of provenance vocabularies, the 
+			interested reader is recommended [[PROV-XG]].
+		</p> 
+		<section id="prov">
+			<h4 id="prov">Provenance Ontology (PROV-O)</h4>
+			<p>
+				The Provenance Ontology (PROV-O) [[PROV-O]] is a W3C candiate
+				recommendation for representing provenance information about
+				documents, datasets, workflow runs, etc. It is broadly based on
+				the Open Provenance Model [[OPM]]. It is capable of expressing
+				complex provenance relationships. 
+			</p>
+		<!-- end prov -->
+		</section>
+		<section id="pav">
+			<h4 id="pav">Provenance, Authoring and Versioning Ontology</h4>
+			<p>
+				The Provenance, Authoring and Versioning Ontology (PAV) [[PAV]]
+				provides a comprehensive set of relationships for capturing
+				basic provenance information.
+			</p>
+		<!-- end pav -->
+		</section>
+		<section id="prov-vocab">
+			<h4 id="prov-vocab">Provenance Vocabulary</h4>
+			<p>
+				The Provenance Vocabulary [[PRV]]] is another lightweight 
+				vocabulary of provenance predicates with an emphasis on data 
+				creation and data access on the Web.
+			</p>
+		</section>
+		<section id="voidp">
+			<h4>Vocabulary for Data and Dataset Provenance (voidp)</h4>
+			<p>
+				Defined as an extension to VoID, the vocabulary for data
+				and dataset provenance (voidp) [[VOIDP]] is a vocabulary for
+				defining provenance relationships of data and datasets. The
+				vocabulary focuses on four specific pieces of provenance
+				information:
+			</p>
+			<blockquote>
+				"for a piece of data, x :
+				<ul>
+					<li>when was x derived,</li>
+					<li>how was x derived,</li>
+					<li>what data had been used to derive x,</li>
+					<li>
+						who carried out the transformations that resulted in
+						the current value of x." [[VOIDP]]
+					</li>
+				</ul>
+			</blockquote>
+			<p>
+				These are a subset of the information that needs to be
+				captured for the Open PHACTS linksets.
+			</p>
+		<!-- end voidp -->
+		</section>
+	<!-- end provenance-vocabularies -->
 	</section>
 </section>
 
