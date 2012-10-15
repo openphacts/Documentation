@@ -37,6 +37,7 @@
     pav:importedFrom :chembl_dataset;
     pav:importedBy <http://egonw.github.com/#me> ;
     pav:importedOn "2012-05-15T15:34:40Z"^^xsd:dateTime;
+    pav:createdWith <https://github.com/openphacts/chembl.rdf>;
 # Subsets
     void:subset :chemblrdf_compounds, :chemblrdf_targets ;
 # Vocabularies, topics, resources
@@ -82,7 +83,7 @@
     a void:Dataset ;
     dcterms:title "ChEMBL Molecules"@en;
     dcterms:description "The subset of ChEMBL data relating to molecules."@en;
-    void:uriSpace "http://data.kasabi.com/dataset/chembl-rdf/molecule/"^^xsd:string ;
+    void:uriSpace "http://linkedchemistry.info/chembl/molecule/"^^xsd:string ;
     dcterms:subject <http://dbpedia.org/resource/Molecule> ;
     void:exampleResource <http://linkedchemistry.info/chembl/molecule/M1>;	
     void:dataDump <http://semantics.bigcat.unimaas.nl/chembl/v13_ops/compounds.nt.gz> ;
@@ -93,7 +94,7 @@
     a void:Dataset ;
     dcterms:title "ChEMBL Targets"@en;
     dcterms:description "The subset of ChEMBL data relating to targets which are single proteins."@en;
-    void:uriSpace "http://data.kasabi.com/dataset/chembl-rdf/target/"^^xsd:string ;
+    void:uriSpace "http://linkedchemistry.info/chembl/target/"^^xsd:string ;
     dcterms:subject <http://dbpedia.org/resource/Protein> ;
     void:exampleResource <http://linkedchemistry.info/chembl/target/t1>;	
     void:dataDump <http://semantics.bigcat.unimaas.nl/chembl/v13_ops/targets.nt.gz> ;
