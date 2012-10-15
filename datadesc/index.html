@@ -1387,71 +1387,67 @@
 
 	<section id="deploying-void">
 		<h3 id="deploying-void">Deploying VoID Descriptions</h3>
-	<p class="todo"> Revise this section</p>
 		<p>
 			Several mechanisms for deploying VoID descriptions are given in
 			<a href="http://www.w3.org/TR/void/#deploying">Section 6</a> of the
 			VoID Note [[VOID]].
 		</p>
-		<p>
-			For datasets that are being published in their own domain, with
-			dereferenceable URIs, then we recommend placing the dataset's
-			VoID description in the root directory in a file called
-			<code>void.ttl</code>, with a local "hash URI" for the dataset 
-			(and any subsets). For example, for ChemSpider we would have a URI 
-			such as 
-			<code>http://rdf.chemspider.com/void.ttl#chemSpiderDataset</code>. 
-			When the code is being hosted on an external service, then the VoID descriptor 
-			should be provided in the dataset's home directory. For example, for 
-			the RDF encoding of ChEMBL this would be
-			<code>http://linkedchemistry.info/chembl/void.ttl#chembl-rdf</code>. 
-			Examples of the VoID descriptors are given in 
-			<a href="#appendix-dataset-examples">Appendix A</a>.
-		</p>
-
-		<p>
-			Each RDF document containing the data should then contain a
-			backlink to the dataset descriptor. For example, the ChEMBL-RDF
-			molecule m1, there would be the triple:
-		</p>
-		<pre class="turtle">
+		<section id="deploying-dataset-void">
+			<h4 id="deploying-dataset-desc">Deploying a Dataset Description</h4>
+			<p>
+				For datasets that are being published in their own domain, with
+				dereferenceable URIs, then we recommend placing the dataset's
+				VoID description in the root directory in a file called
+				<code>void.ttl</code>, with a local "hash URI" for the dataset 
+				(and any subsets). For example, for ChemSpider we would have a 
+				URI such as 
+				<code>http://rdf.chemspider.com/void.ttl#chemSpiderDataset</code>. 
+				When the code is being hosted on an external service, then the 
+				VoID descriptor should be provided in the dataset's home 
+				directory. For example, for the RDF encoding of ChEMBL this 
+				would be
+				<code>http://linkedchemistry.info/chembl/void.ttl#chembl-rdf</code>. 
+				Examples of the VoID descriptors are given in 
+				<a href="#appendix-dataset-examples">Appendix A</a>.
+			</p>
+			<p>
+				Each RDF document containing the data should then contain a
+				backlink to the dataset descriptor. For example, the ChEMBL-RDF
+				molecule m1, there would be the triple:
+			</p>
+			<pre class="turtle">
 &lt;http://linkedchemistry.info/chembl/chemblid/molecule/m1&gt; void:inDataset 
     &lt;http://linkedchemistry.info/chembl/chemblid/void.ttl#chembl-rdf_compounds&gt; .    
-		</pre>
+			</pre>
+		<!-- end deploying-dataset-void -->
+		</section>
+		<section id=linkset-files>
+			<h4 id="deploying-linkset-desc">Deploying a Linkset Description</h4>
+			<p>
+				For the purposes of Open PHACTS, it is anticipated that
+				linksets will be materialised as separate documents from the
+				datasets. This is to allow their loading into the identity
+				mapping service [[IMS]]. These linkset files will contain 
+				the metadata about the linkset as well as the links.
+			</p>
+			<p>
+				It is also permitted to separate the link triples from the 
+				linkset metadata. In this case, the file containing the links
+				must provide a link back to the linkset desription using the
+				<a href="http://rdfs.org/ns/void#inDataset" target="_blank">
+				<code>void:inDataset</code></a> predicate. The example below 
+				shows how a set of links can refer back to the linkset 
+				description given in the ChEMBL-RDF VoID description file.
+			</p>
+			<pre class="turtle">
+&lt;&gt; void:inDataset &lt;http://linkedchemistry.info/chembl/chemblid/void.ttl#chembl-rdf_targets-uniprot-linkset&gt; .
+
+&lt;http://linkedchemistry.info/chembl/target/t1&gt; skos:exactMatch &lt;http://purl.uniprot.org/uniprot/O43451&gt; .
+...
+			</pre>
+		<!-- end linkset-files -->
+		</section>
 	<!-- end deploying-void -->
-	</section>
-	<section id=linkset-files>
-		<h3>Linkset Documents</h3>
-	<p class="todo"> Revise this section</p>
-		<p>
-			For the purposes of Open PHACTS, it is anticipated that
-			linksets will be materialised as separate documents from the
-			datasets. This is to allow their loading into the identity
-			mapping service [[IMS]].
-		</p>
-
-		<p>
-			Where a dataset involved in a linkset has a published VoID
-			description, then this should be referenced in the linkset
-			document. The available metadata can be augmented in the linkset
-			document to allow for additional information about the dataset,
-			e.g. the specific version used or when it was accessed, to be
-			declared.
-		</p>
-
-		<p class="note">
-			This is problematic. What happens if the
-			dataset description is updated? Need some way of referencing a
-			specific version of the VoID description. This issue does not
-			seem to have been addressed in the VoID document.
-		</p>
-
-		<p>
-			Where a dataset does not provide a VoID description that
-			can be reused, then the required metadata should be included in
-			the linkset document.
-		</p>
-	<!-- end linkset-files -->
 	</section>
 	<section id=external-files>
 		<h3 id="external-file">External VoID Files</h3>
