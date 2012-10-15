@@ -15,9 +15,9 @@
 		customcss:            "http://www.openphacts.org/specs/css/ops.css",
 		specStatus:           "ED",
 		shortName:            "datadesc",
-		publishDate:   "2012-10-10",
+		publishDate:   "2012-10-15",
 		previousMaturity: "WD",
-		previousPublishDate:  "2012-09-19",
+		previousPublishDate:  "2012-08-16",
 		//previousURI : "http://www.cs.manchester.ac.uk/~graya/ops/2012/WD-mappingspec-20120615/",
 		copyrightStart:       "2012",
 		overrideCopyright:    "<p class='copyright'>This document is licensed under a <a class='subfoot' href='http://creativecommons.org/licenses/sa-by/3.0/' rel='license'>Creative Commons ShareAlike Attribution 3.0 License</a>.</p>",
@@ -1471,30 +1471,18 @@
 
 <section id="standards" class="informative">
 	<h2>Related Standards</h2>
-	<p class="todo"> Revise this section</p>
-
 	<section id="nanopublications">
 		<h3>Nanopublications</h3>
-		<!-- Suggested text from Marco
 		<p>
-			Nanopublications provide a means for data providers to obtain credit 
-			for their data contribution, in particular data that can be 
-			described in the form of a minimal set of assertions: a minimal 
-			piece of information that represents value for which credit is due. 
-			In Semantic Web terms, the nanopublication schema is a simple 
-			schema to annotate an assertion graph with attribution and 
-			supporting evidence (typically also RDF graphs). A guidelines 
-			document and the most current RDF schema are available for 
-			(potential) nanopublication publishers.
+			Nanopublications [[NANOPUB]] provide a means for data providers to 
+			obtain credit for their data contribution, in particular data that 
+			can be described in the form of a minimal set of assertions: a 
+			minimal piece of information that represents value for which credit 
+			is due. Such information is closely related to a link relating 
+			instances in two datasets. In some cases it may be desirable to 
+			publish a link as a nanopublication. This should not violate a link 
+			being published in a linkset according to this specification.
 		</p>
-		<p>
-			Nanopublications can be used for computing impact, evolution of 
-			knowledge, or for knowledge discovery. An important social aspect 
-			is that end users, for instance biologists, buy into the concept of 
-			nanopublication more easily than that of the Semantic Web or RDF. 
-			The nuance that one builds on the other is typically lost.
-		</p>
-		 -->
 	<!-- end nanopublications -->
 	</section>
 	<section id="BioDBcore">
@@ -1535,7 +1523,8 @@
 			responsible for a dataset and the publications about the dataset. It
 			is expected that such information can be discovered from the 
 			dataset's homepage and is not within the use case scope for the 
-			description of the dataset.
+			description of the dataset. Such information may be added as 
+			additional statements in the VoID description.
 		</p>
 	<!-- end BioDbCore -->
 	</section>
