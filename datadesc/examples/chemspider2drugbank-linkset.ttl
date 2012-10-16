@@ -1,7 +1,7 @@
-@prefix : <http://rdf.chemspider.com/chemspider-drugbank-example.rdf#>.
+@prefix : <http://rdf.chemspider.com/void.ttl#>.
 
 @prefix dcterms: <http://purl.org/dc/terms/>.
-@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix freq: <http://purl.org/cld/freq/> .
 @prefix pav: <http://purl.org/pav/>.
@@ -22,7 +22,7 @@
 		   The links have been generated as the chemicals share the same structure."""@en;
 	pav:createdBy <http://www.cs.man.ac.uk/~graya/me.ttl>;
 	pav:createdOn "2012-08-1316:43:25Z"^^xsd:dateTime;
-	pav:lastUpdateOn "2012-09-14T16:12:43Z"^^xsd:dateTime;
+	pav:lastUpdateOn "2012-10-16T10:22:43Z"^^xsd:dateTime;
 	pav:derivedFrom <http://rdf.chemspider.com/void.rdf>;
 	foaf:primaryTopic :chemSpider_drugbank_linkset;
 	.
@@ -46,9 +46,9 @@
 	void:uriSpace "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/"^^xsd:string;
 # Provenance and Version	
 	pav:version "3.0";
-	pav:importedOn "2011-11-30T11:01:59Z"^^xsd:dateTime;
-	pav:importedFrom <http://www4.wiwiss.fu-berlin.de/drugbank/drugbank_dump.nt.bz2>;
-	pav:importedBy [
+	pav:retrievedOn "2011-11-30T11:01:59Z"^^xsd:dateTime;
+	pav:retrievedFrom <http://www4.wiwiss.fu-berlin.de/drugbank/drugbank_dump.nt.bz2>;
+	pav:retrievedBy [
 		a foaf:Person;
 		foaf:name "Antonis Loizou"^^xsd:string
 		];
@@ -65,7 +65,7 @@
 	void:subjectsTarget <http://rdf.chemspider.com/void.ttl#chemSpiderDataset_drugbank_subset>;
 	void:objectsTarget :drugbank_drugs_dataset;
 	void:linkPredicate skos:exactMatch;
-	dul:expresses <http://???>;
+	dul:expresses <http://semanticscience.org/resource/CHEMINF_000059>;
 # Linkset Provenance 
 	pav:authoredBy <http://www.chemspider.com/>;
 	pav:authoredOn "2012-02-23T09:08:29Z"^^xsd:dateTime;
