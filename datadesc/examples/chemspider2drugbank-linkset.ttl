@@ -21,7 +21,7 @@
 		   The linkset relates ChemSpider identifiers with DrugBank identifiers.
 		   The links have been generated as the chemicals share the same structure."""@en;
 	pav:createdBy <http://www.cs.man.ac.uk/~graya/me.ttl>;
-	pav:createdOn "2012-08-1316:43:25Z"^^xsd:dateTime;
+	pav:createdOn "2012-08-13T16:43:25Z"^^xsd:dateTime;
 	pav:lastUpdateOn "2012-10-16T10:22:43Z"^^xsd:dateTime;
 	pav:derivedFrom <http://rdf.chemspider.com/void.rdf>;
 	foaf:primaryTopic :chemSpider_drugbank_linkset;
