@@ -1,4 +1,4 @@
-@prefix : <http://linkedchemistry.info/chembl/void.ttl>.
+@prefix : <http://linkedchemistry.info/void.ttl>.
 
 @prefix dcterms: <http://purl.org/dc/terms/>.
 @prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl> .
@@ -26,13 +26,8 @@
     foaf:primaryTopic :chembl-rdf-compounds_cs_linkset ;
     .
  
-# Pointer to the ChemSpider VoID file
-<http://rdf.chemspider.com/void.ttl#chemSpiderDataset_chembl_subset>
-	# State when the dataset was accessed for creating linkset
-    pav:sourceAccessedOn "2012-02-22T10:59:38Z"^^xsd:dateTime .
-
 # Pointer to the subset description in the ChEMBL VoID file
-<http://linkedchemistry.info/chembl/void.ttl#chemblrdf_compounds>
+<http://linkedchemistry.info/void.ttl#chemblrdf_compounds>
 	# Linkset declared as a subset. Inherits properties
     void:subset :chembl-rdf-compounds_cs_linkset .
 
@@ -44,10 +39,10 @@
     #Explicit declaration of license for the linkset is preferred
     dcterms:license <http://creativecommons.org/licenses/by-sa/3.0/> ;
 # Link information
-    void:subjectsTarget <http://linkedchemistry.info/chembl/void.ttl#chemblrdf_compounds> ;
-    void:objectsTarget <http://rdf.chemspider.com/void.ttl#chemSpiderDataset> ;
+    void:subjectsTarget <http://linkedchemistry.info/void.ttl#chemblrdf_compounds> ;
+    void:objectsTarget <http://rdf.chemspider.com/void.ttl#chemSpiderDataset_chembl_subset> ;
     void:linkPredicate skos:exactMatch ;
-    dul:expresses <http://???> ;
+    dul:expresses <http://semanticscience.org/resource/CHEMINF_000059> ;
 # Linkset provenance
     pav:authoredOn "2012-02-22T10:59:38Z"^^xsd:dateTime ;
     pav:authoredBy <http://www.chemspider.com/> ;

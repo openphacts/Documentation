@@ -1847,7 +1847,7 @@
 			Below we provide the VoID document for the ChEMBL-RDF dataset, which
 			is a conversion of the ChEMBL database. The VoID file would be
 			located at
-			<code>http://linkedchemistry.info/chembl/chemblid/void.ttl</code>.
+			<code>http://linkedchemistry.info/void.ttl</code>.
 		</p>
 		<ul>
 			<li> 
@@ -1988,7 +1988,7 @@
 		</ul>
 <!-- Example copy/pasted from examples/chemspider2chemblrdf-linkset.ttl -->
 		<pre class="turtle">
-@prefix : &lt;http://linkedchemistry.info/chembl/void.ttl&gt;.
+@prefix : &lt;http://linkedchemistry.info/void.ttl&gt;.
 
 @prefix dcterms: &lt;http://purl.org/dc/terms/&gt;.
 @prefix dul: &lt;http://www.ontologydesignpatterns.org/ont/dul/DUL.owl&gt; .
@@ -2002,7 +2002,7 @@
 @prefix void: &lt;http://rdfs.org/ns/void#&gt;.
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;.
 
-@prefix chembl: &lt;http://linkedchemistry.info/chembl/chemblid/&gt; .
+@prefix chembl: &lt;http://linkedchemistry.info/chemblid/&gt; .
 
 # Metadata about this file
 &lt;&gt;
@@ -2015,14 +2015,9 @@
     pav:lastUpdateOn "2012-09-14T11:15:32Z"^^xsd:dateTime ;
     foaf:primaryTopic :chembl-rdf-compounds_cs_linkset ;
     .
- 
-# Pointer to the ChemSpider VoID file
-&lt;http://rdf.chemspider.com/void.ttl#chemSpiderDataset&gt;
-	# State when the dataset was accessed for creating linkset
-    pav:sourceAccessedOn "2012-02-22T10:59:38Z"^^xsd:dateTime .
 
 # Pointer to the subset description in the ChEMBL VoID file
-&lt;http://linkedchemistry.info/chembl/void.ttl#chemblrdf_compounds&gt;
+&lt;http://linkedchemistry.info/void.ttl#chemblrdf_compounds&gt;
 	# Linkset declared as a subset. Inherits properties
     void:subset :chembl-rdf-compounds_cs_linkset .
 
@@ -2034,10 +2029,10 @@
     #Explicit declaration of license for the linkset is preferred
     dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
 # Link information
-    void:subjectsTarget &lt;http:/linkedchemistry.info/chembl/void.ttl#chemblrdf_compounds&gt; ;
-    void:objectsTarget &lt;http://rdf.chemspider.com/void.ttl#chemSpiderDataset&gt; ;
+    void:subjectsTarget &lt;http://linkedchemistry.info/void.ttl#chemblrdf_compounds&gt; ;
+    void:objectsTarget &lt;http://rdf.chemspider.com/void.ttl#chemSpiderDataset_chembl_subset&gt; ;
     void:linkPredicate skos:exactMatch ;
-    dul:expresses &lt;http://???&gt; ;
+    dul:expresses &lt;http://semanticscience.org/resource/CHEMINF_000059&gt; ;
 # Linkset provenance
     pav:authoredOn "2012-02-22T10:59:38Z"^^xsd:dateTime ;
     pav:authoredBy &lt;http://www.chemspider.com/&gt; ;
@@ -2051,6 +2046,15 @@ chembl:CHEMBL1236438 skos:exactMatch &lt;http://rdf.chemspider.com/43&gt; .
 chembl:CHEMBL144103 skos:exactMatch &lt;http://rdf.chemspider.com/60&gt; .
 #...
 		</pre>
+		<p class="note">
+			An alternative deployment strategy for this linkset would be to 
+			include the linkset metadata in the ChEMBL-RDF VoID description
+			file as a subset of the ChEMBL-RDF dataset. The linkset metadata 
+			must then include the predicate <code>void:dataDump</code> to point
+			to the file containing the links. The file containing the links
+			must include the corresponding predicate <code>void:inDataset</code>
+			pointing back to the linkset description.
+		</p>
 	<!-- end CS2ChEMBLLinkset -->
 	</section>
 	<section id="CS2DBLinkset">
