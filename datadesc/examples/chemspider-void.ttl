@@ -37,8 +37,8 @@
 	void:uriSpace "http://rdf.chemspider.com/"^^xsd:string;
 #Provenance
 	dcterms:publisher <http://www.chemspider.com/>;
-	dcterms:created "2007-03-01 00:00:00"^^xsd:datetime;
-	dcterms:modified "2012-10-16 00:00:00"^^xsd:datetime;
+	dcterms:created "2007-03-01 00:00:00"^^xsd:dateTime;
+	dcterms:modified "2012-10-16 00:00:00"^^xsd:dateTime;
 #Subsets
 	void:subset :chemSpiderDataset_chembl_subset,:chemSpiderDataset_drugbank_subset;
 #Vocabularies, topics, resources
