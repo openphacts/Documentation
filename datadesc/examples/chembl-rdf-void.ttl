@@ -34,6 +34,7 @@
     void:uriSpace "http://linkedchemistry.info/chembl/"^^xsd:string ;
 # Provenance
 	pav:version "v13_ops";
+	pav:previousVersion <http://semantics.bigcat.unimaas.nl/chembl/v13_ops/chembl-rdf-void.ttl#chemblrdf_dataset>;
     pav:importedFrom :chembl_dataset;
     pav:importedBy <http://egonw.github.com/#me> ;
     pav:importedOn "2012-05-15T15:34:40Z"^^xsd:dateTime;
