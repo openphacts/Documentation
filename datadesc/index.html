@@ -1787,7 +1787,10 @@
 	foaf:page &lt;http://www.chemspider.com/&gt;;
 	dcterms:license &lt;http://www.chemspider.com/Disclaimer.aspx&gt;;
 	void:uriSpace "http://rdf.chemspider.com/"^^xsd:string;
-#Subsets
+#Provenance
+	dcterms:publisher &lt;http://www.chemspider.com/&gt;;
+	dcterms:created "2007-03-01 00:00:00"^^xsd:datetime;
+	dcterms:modified "2012-10-16 00:00:00"^^xsd:datetime;#Subsets
 	void:subset :chemSpiderDataset_chembl_subset,:chemSpiderDataset_drugbank_subset;
 #Vocabularies, topics, resources
 	void:vocabulary &lt;http://purl.org/dc/elements/1.1/&gt;,
@@ -1814,23 +1817,23 @@
 	dcterms:title "ChemSpider ChEMBL Subset"@en;
 	dcterms:description "The slice of ChemSpider data that corresponds to ChEMBL molecules."@en;
 #Provenance
-	pav:retrievedFrom &lt;https://www.dropbox.com/sh/6zboa8z9i9vrzyl/7NxayhkUH0/ChEMBL20120731.zip&gt;;
+	pav:retrievedFrom &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_13/chembl_13.sdf.gz&gt;;
 	pav:retrievedOn "2012-08-02T10:23:56Z"^^xsd:dateTime;
-	pav:retrievedBy &lt;http://www.cs.man.ac.uk/~graya/me.ttl&gt; ;
+	pav:retrievedBy &lt;http://www.chemspider.com/&gt; ;
 #Dataset Access
 	void:dataDump &lt;https://www.dropbox.com/sh/6zboa8z9i9vrzyl/7NxayhkUH0/ChEMBL20120731.zip&gt;;
 	.
 
-# Description of the ChemSPider subset relating to DrugBank
+# Description of the ChemSpider subset relating to DrugBank
 :chemSpiderDataset_drugbank_subset
 #General Metadata
 	a void:Dataset;
 	dcterms:title "ChemSpider DrugBank Subset"@en;
 	dcterms:description "Data corresponding to DrugBank."@en;
 #Provenance
-	pav:retrievedFrom &lt;https://www.dropbox.com/sh/6zboa8z9i9vrzyl/qcFZzbLM77/DrugBank20120731.zip&gt;;
+	pav:retrievedFrom &lt;http://www.drugbank.ca/system/downloads/current/structures/all.sdf.zip&gt;;
 	pav:retrievedOn "2012-08-02T10:24:06Z"^^xsd:dateTime;
-	pav:retrievedBy &lt;http://www.cs.man.ac.uk/~graya/me.ttl&gt; ;
+	pav:retrievedBy &lt;http://www.chemspider.com/&gt; ;
 #Dataset Access
 	void:dataDump &lt;https://www.dropbox.com/sh/6zboa8z9i9vrzyl/qcFZzbLM77/DrugBank20120731.zip&gt;;
 	.
