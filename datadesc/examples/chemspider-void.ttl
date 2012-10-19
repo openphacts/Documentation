@@ -1,4 +1,4 @@
-@prefix : <http://rdf.chemspider.com/void-example.rdf#>.
+@prefix : <http://rdf.chemspider.com/void.ttl#>.
 @prefix dcterms: <http://purl.org/dc/terms/>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix freq: <http://purl.org/cld/freq/> .
@@ -11,7 +11,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 
 # Metadata about this file
-<http://rdf.chemspider.com/void-example.rdf> 
+<http://rdf.chemspider.com/void.ttl> 
 	a void:DatasetDescription;
 	dcterms:title "A VoID Description of the ChemSpider Dataset"@en;
 	dcterms:description 
