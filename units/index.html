@@ -70,11 +70,35 @@
   <section class='informative'>
     <h2>Introduction</h2>
     <p>
-      An introduction. And here we have a [[Marshall2012]].
+      One of the goals of Open PHACTS is to provide a uniform platform for integration of data important
+      to drug discovery [[Williams2012]]. There are many aspects of the data in the integrated resources
+      that need consideration, but this guideline focuses on provide machine readable access to unit
+      and unit type information.
     </p>
     <p>
-      Full respec.js documentation can be found at <a href="http://dev.w3.org/2009/dap/ReSpec.js/documentation.html">http://dev.w3.org/2009/dap/ReSpec.js/documentation.html</a>.
+      The importance of making that information machine readable is that it allow consumers to search for
+      data in a uniform way. That is, the platform no longer relies on data providers to use the same
+      units. For data providers it means that they can just provide their data in the original units.
+      For example, the ChEMBL database tracks both the units used in the data sources (e.g. literature)
+      as well as report a standard unit. That allows the ChEMBL web interface to search drugs with
+      IC<sub>50</sub> value below a certain molarity expressed in nM.
+      However, a major downside of this approach is that it requires to standardize these values
+      explicitly in the database, and it requires search interfaces to still use this unit.
     </p>
+    <p>
+      A solution to this is to use a unit ontology, like the QUDT ontology (Quantities, Units,
+      Dimensions, and Types). Using such semantic annotation, we can reason on how to convert
+      units of the same type into each other. For example, it allows us to convert micromolar into
+      nanomolar automatically. Even more, if search engines use the ontology too, the user can
+      search in any molar unit type, and the data can capture the data in any unit type.
+    </p>
+    </p>
+      In fact, the QUDT ontology does not only provide entries for units, it also provides a full
+      framework to express how units can be interconverted. Of course, this is limited o units of
+      the same type, e.g. molar concentration. It does not provide us means to convert a molar
+      concentration into a weight per volume unit. That would require additional information on
+      the subject of study, such as the molecular weight, but also information about purity.
+    <p>
   </section>
 </body>
 
