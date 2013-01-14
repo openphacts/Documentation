@@ -65,7 +65,7 @@
   </section>
   <section id="abstract">
     This guideline describes how units for data are preferably encoded, setting a standard that can then
-    be handled uniformaly by data consumers.
+    be handled uniformly by data consumers.
   </section>
   <section class='informative'>
     <h2>Introduction</h2>
@@ -125,7 +125,8 @@ chembl:a31876 chembl:standardUnit &lt;http://www.openphacts.org/units/Nanomolar&
     <p>
       In the following example, we will define the millimolar unit. For this, we first need to
       define the molar. A molar is of the MolarConcentrationUnit type and a SI-derived unit.
-      We further specify human readable label, abbreviation, and symbol. We also link to DBPedia
+      We further specify human readable label, abbreviation, and symbol. We also link to
+      <a href="http://www.dbpedia.org/">DBPedia</a>
       for further information. But, importantly, we define the information we need to convert
       units of the same type into each other. For this we define an offset and a multiplier.
       Only the latter is needed for conversion from nanomolar to millimolar (etc), but the offset
@@ -169,7 +170,7 @@ ops:Millimolar
     <p>
       Because the ontology defines how units of the same base type can be interconverted,
       this can be computationally performed. For example, we can use the jqudt library
-      for this [[Willighagen2012jQUDT]], as shown in the below Jave source code example.
+      for this [[Willighagen2012jQUDT]], as shown in the below Java source code example.
     </p>
     <p>
 Source:
