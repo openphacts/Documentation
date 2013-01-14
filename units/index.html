@@ -94,7 +94,7 @@
     </p>
     </p>
       In fact, the QUDT ontology does not only provide entries for units, it also provides a full
-      framework to express how units can be interconverted. Of course, this is limited o units of
+      framework to express how units can be interconverted. Of course, this is limited to units of
       the same type, e.g. molar concentration. It does not provide us means to convert a molar
       concentration into a weight per volume unit. That would require additional information on
       the subject of study, such as the molecular weight, but also information about purity.
@@ -103,10 +103,65 @@
   <section class='informative'>
     <h2>Encoding measurements</h2>
     <p>
-    <p>
+      If we have a measure quantity, we can associate the value and the unit of that quantity.
+      We can use custom predicated for that, as in this example from ChEMBL-RDF:
+    </p>
     <pre>
 chembl:a31876 chembl:standardValue "24000.0"^^xsd:float .
-chembl:a31876 chembl:#standardUnit &lt;http://www.openphacts.org/units/Nanomolar&gt; .
+chembl:a31876 chembl:standardUnit &lt;http://www.openphacts.org/units/Nanomolar&gt; .
+    </pre>
+    <p>
+      We explictly encoded the literal to be a float, using the XML Schema data type
+      xsd:float.
+    </p>
+  </section>
+  <section class="informative">
+    <h2>Encoding units</h2>
+    <p>
+      The QUDT ontology comes with an extensive list of units, but not all are defined. However,
+      the ontology provides the means to specify further units using the ontology itself.
+      For example, for Open PHACTS various additional units have been defined.
+    </p>
+    <p>
+      In the following example, we will define the millimolar unit. For this, we first need to
+      define the molar. A molar is of the MolarConcentrationUnit type and a SI-derived unit.
+      We further specify human readable label, abbreviation, and symbol. We also link to DBPedia
+      for further information. But, importantly, we define the information we need to convert
+      units of the same type into each other. For this we define an offset and a multiplier.
+      Only the latter is needed for conversion from nanomolar to millimolar (etc), but the offset
+      we may need for other unit types, such as temperature when you like to convert Kelvin into
+      Celsius. For molar we then get the following base type:
+    </p>
+    <pre>
+ops:Molar
+ rdf:type qudt:MolarConcentrationUnit , qudt:SIDerivedUnit ;
+ rdfs:label "Molar"^^xsd:string ;
+ qudt:abbreviation "M"^^xsd:string ;
+ qudt:conversionMultiplier
+  1000 ;
+ qudt:conversionOffset
+  "0.0"^^xsd:double ;
+ qudt:symbol "mol/dm^3"^^xsd:string ;
+ skos:exactMatch <http://dbpedia.org/resource/Molar_concentration> .
+    </pre>
+    <p>
+      We note that we have a multiplier from the most basic concentration unit in QUDT,
+      which (unfortunately) is not explicitly referenced in this definition.
+    </p>
+    <p>
+      For variants we basically just repeat this definition, but then with different conversion
+      coefficients. For example, for millimolar we can define:
+    </p>
+    <pre>
+ops:Millimolar    
+ rdf:type qudt:MolarConcentrationUnit , qudt:SIDerivedUnit ;
+ rdfs:label "Millimolar"^^xsd:string ;
+ qudt:abbreviation "mM"^^xsd:string ;
+ qudt:conversionMultiplier
+  1 ;
+ qudt:conversionOffset
+  "0.0"^^xsd:double ; 
+ qudt:symbol "mmol/dm^3"^^xsd:string .
     </pre>
   </section>
 </body>
