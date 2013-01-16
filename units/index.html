@@ -85,6 +85,9 @@
       However, a major downside of this approach is that it requires to standardize these values
       explicitly in the database, and it requires search interfaces to still use this unit.
     </p>
+  </section>
+  <section class='informative'>
+    <h2>The QUDT Ontology</h2>
     <p>
       A solution to this is to use a unit ontology, like the QUDT ontology (Quantities, Units,
       Dimensions, and Types). Using such semantic annotation, we can reason on how to convert
@@ -99,6 +102,34 @@
       concentration into a weight per volume unit. That would require additional information on
       the subject of study, such as the molecular weight, but also information about purity.
     <p>
+    <section id="jqudt">
+      <h3>Libraries: jQUDT for Java</h3>
+      <p>
+        Ontologies are easier to use when there are bindings for programming languages. For
+        Java the jQUDT library has been developed [[Willighagen2012jQUDT]]. This library provides
+        a functionality to deal with quantities expressed in QUDT units. For example, we can
+        create a Unit object, reflecting a particular unit:
+      </p>
+      <pre>
+        Unit unit1 = new Unit();
+        unit1.setResource(new URI("http://qudt.org/vocab/unit#Kelvin"));
+      </pre>
+      <p>
+        Alternatively, you can use a factory:
+      </p>
+      <pre>
+        UnitFactory factory = UnitFactory.getInstance();
+        Unit unit = factory.getUnit("http://qudt.org/vocab/unit#Kelvin");
+      </pre>
+      <p>
+        The factory has additional methods that, for example, allow you to retrieve all temperature
+        units, taking advantage of the unit classification in the QUDT ontology:
+      </p>
+      <pre>
+        UnitFactory factory = UnitFactory.getInstance();
+        List<String> units = factory.getURIs("http://qudt.org/schema/qudt#TemperatureUnit");
+      </pre>
+    </section>
   </section>
   <section class='informative'>
     <h2>Encoding measurements</h2>
@@ -114,6 +145,60 @@ chembl:a31876 chembl:standardUnit &lt;http://www.openphacts.org/units/Nanomolar&
       We explictly encoded the literal to be a float, using the XML Schema data type
       xsd:float.
     </p>
+    <section>
+      <h3>Example: ChEMBL-RDF</h3>
+      <p>
+        The ChEMBL-RDF data sets are creating using a set of PHP and Groovy scripts. First provide
+        a minimal set of triples. The choice of the PHP language is chosen so that the script can
+        also be used in an LAMP environment to provide triples when using dereferencible URIs.
+        The input of these scripts, a relational database, provides textual representations of
+        units. Therefore, the matching between ChEMBL data and QUDT units has to be explicitly
+        made. The script that converts the activities is written in Groovy, an extension of Java,
+        and a Java Map is used:
+      </p>
+      <pre>
+unitMappings = [
+  nM:"http://www.openphacts.org/units/Nanomolar",
+  uM:"http://www.openphacts.org/units/Micromolar",
+  mM:"http://www.openphacts.org/units/Millimolar",
+  pM:"http://www.openphacts.org/units/Picomolar",
+  "%":"http://qudt.org/schema/qudt#floatPercentage",
+  "ug.mL-1":"http://www.openphacts.org/units/MicrogramPerMilliliter",
+  "ug/ml":"http://www.openphacts.org/units/MicrogramPerMilliliter",
+  "ug ml-1":"http://www.openphacts.org/units/MicrogramPerMilliliter",
+  "pg ml-1":"http://www.openphacts.org/units/PicogramPerMilliliter",
+]
+      </pre>
+      <p>
+        Using this information, we can look up which units we are exposing as QUDT, and create
+        triples accordingly. The ChEMBL-RDF scripts use the following Groovy code:
+      </p>
+      <pre>
+    // this returns the "standard_units" field of the SQL query result row
+    units = row.standard_units
+    if (units != null &amp;&amp; unitMappings.containsKey(units)) {
+      // the Java map as given earlier
+      qudtUnits = unitMappings.get(units)
+
+      // first output the value as QUDT unit as RDF using a OpenRDF repository connection "con"
+      con.add(actURI,
+        factory.createURI(OPS + "standardValue"),
+        factory.createLiteral((float)row.standard_value)
+      )
+      con.add(actURI,
+        factory.createURI(OPS + "standardUnit"),
+        factory.createURI(qudtUnits)
+      )
+    }
+      </pre>
+      <p>
+        This code results in RDF as given earlier:
+      </p>
+      <pre>
+chembl:a31876 chembl:standardValue "24000.0"^^xsd:float .
+chembl:a31876 chembl:standardUnit &lt;http://www.openphacts.org/units/Nanomolar&gt; .
+      </pre>
+    </section>
   </section>
   <section class="informative">
     <h2>Encoding units</h2>
@@ -256,6 +341,30 @@ ops:Picomolar
  qudt:conversionOffset
   "0.0"^^xsd:double ;
  qudt:symbol "pmol/dm^3"^^xsd:string .
+
+ops:GramPerLiter
+ rdf:type qudt:MassPerVolumeUnit, qudt:SIDerivedUnit, qudt:DerivedUnit ;
+ rdfs:label "Gram per Liter"^^xsd:string ;
+ qudt:abbreviation "g/L"^^xsd:string ;
+ qudt:conversionMultiplier 1.0 ;
+ qudt:conversionOffset 0.0 ;
+ qudt:symbol "g/dm^3"^^xsd:string .
+
+ops:MicrogramPerMilliliter 
+ rdf:type qudt:MassPerVolumeUnit, qudt:SIDerivedUnit, qudt:DerivedUnit ;
+ rdfs:label "Microgram per Milliliter"^^xsd:string ;
+ qudt:abbreviation "μg/mL"^^xsd:string ;
+ qudt:conversionMultiplier 1.0 ;
+ qudt:conversionOffset 0.0 ;
+ qudt:symbol "μg/cm^3"^^xsd:string .
+
+ops:PicogramPerMilliliter
+ rdf:type qudt:MassPerVolumeUnit, qudt:SIDerivedUnit, qudt:DerivedUnit ;
+ rdfs:label "Picogram per Milliliter"^^xsd:string ;
+ qudt:abbreviation "pg/mL"^^xsd:string ;
+ qudt:conversionMultiplier 0.000001 ;
+ qudt:conversionOffset 0.0 ;
+ qudt:symbol "pg/cm^3"^^xsd:string .
     </pre>
   </section>
 </body>
