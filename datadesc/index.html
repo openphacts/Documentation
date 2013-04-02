@@ -215,15 +215,83 @@
 	<!-- end conventions -->
 </section>
 
-<section id="existing-vocabularies" class="informative">
-	<h2 id="existing-vocabularies">
-		Vocabularies for Describing Datasets and Mapping Relationships
+<section id="datasets-mappings" class="informative">
+	<h2 id="datasets-mappings">
+		Datasets and Mapping Relationships
 	</h2>
 	<p>
-		In this section, we introduce the vocabularies that will be used for 
-		capturing the dataset descriptions and the mappings between the 
-		datasets. 
+		In this section, we introduce the notion of a dataset and identify three
+		categories of dataset used in Open PHACTS. We then provide an overview 
+		of the vocabularies that will be used for capturing the descriptions of 
+		these datasets and the mappings between the them. 
 	</p>
+	<section id="dataset-classification">
+		<h3>Dataset Categories</h3>
+		<p>
+			In Open PHACTS we distinguish three categories of dataset based on 
+			the format in which their data is published and how this was 
+			generated. For each category of dataset, we specify the core 
+			properties that are used to describe the dataset, templates are 
+			given in <a href="#appendix-templates">Appendix A.?</a>. 
+		</p>
+		<ul>
+			<li>
+				<strong>Non-RDF Dataset:</strong>
+				This is a dataset that is published in a non-RDF format, e.g. 
+				as a database dump or a set of web pages. Examples of such 
+				datasets include <a href="http://www.drugbank.ca/">DrugBank</a> and 
+				<a href="http://www.wwpdb.org/">Protein Data Bank</a>. The
+				<a href="#non-rdf-dataset-figure">figure</a> below shows an 
+				overview of the metadata to be captured for a non-RDF dataset.	
+				<div class="image">
+		    		<img
+		    			id="non-rdf-dataset-figure" 
+	    				alt="Non-RDF dataset properties"
+	    				width="600px" 
+	    				src="Non-RDF-Dataset.png"
+	    			/>
+	    		</div>
+			</li>
+			<li>
+				<strong>RDF Dataset:</strong>
+				This is a dataset that is published as RDF, i.e. a set of RDF
+				triples. Examples of such datasets include 
+				<a href="https://www.ebi.ac.uk/chembl/">ChEMBL</a> and 
+				<a href="http://www.uniprot.org/">UniProt</a>. The
+				<a href="#rdf-dataset-figure">figure</a> below shows an 
+				overview of the metadata to be captured for an RDF dataset.	
+				<div class="image">
+		    		<img
+		    			id="rdf-dataset-figure" 
+	    				alt="RDF dataset properties"
+	    				width="600px" 
+	    				src="RDF-Dataset.png"
+	    			/>
+	    		</div>
+			</li>
+			<li>
+				<strong>RDF Conversion:</strong>
+				This is a dataset that is originally published in a non-RDF 
+				format but has been converted by some third party publisher
+				into an RDF format. Examples of such datasets include all of 
+				the datasets published by 
+				<a href="http://bio2rdf.org/">Bio2RDF</a>. The
+				<a href="#rdf-conversion-figure">figure</a> below shows an 
+				overview of the metadata to be captured for a non-RDF dataset 
+				converted by a third party into RDF.	
+				<div class="image">
+		    		<img
+		    			id="rdf-conversion-figure" 
+	    				alt="RDF conversion dataset properties"
+	    				width="600px" 
+	    				src="RDF-Conversion.png"
+	    			/>
+	    		</div>
+			</li>
+		</ul>
+		
+	<!-- end dataset-classification -->
+	</section>
 	<section id="void-overview">
 		<h3>Vocabulary of Interlinked Datasets (VoID)</h3>		
 		<p>
