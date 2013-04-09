@@ -202,6 +202,7 @@
 
 		<pre class="turtle">
 @prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix dctypes: &lt;http://purl.org/dc/dcmitype/&gt; .
 @prefix dul: &lt;http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 @prefix freq: &lt;http://purl.org/cld/freq/&gt; .
@@ -1940,7 +1941,8 @@
 		<pre class="turtle">
 @prefix : &lt;http://linkedchemistry.info/void.ttl#&gt;.
 
-@prefix dcterms: &lt;http://purl.org/dc/terms/&gt;.
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix dctypes: &lt;http://purl.org/dc/dcmitype/&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 @prefix freq: &lt;http://purl.org/cld/freq/&gt; .
 @prefix pav: &lt;http://purl.org/pav/&gt;.
@@ -2008,7 +2010,7 @@
 
 :chembl_dataset
 # Metadata about the original data source
-    a dcterms:Dataset;
+    a dctypes:Dataset;
     dcterms:title "ChEMBL"@en;
     dcterms:description """ChEMBL is a database of bioactive drug-like small molecules, it contains 2-D structures, calculated properties (e.g. logP, Molecular Weight, Lipinski Parameters, etc.) and abstracted bioactivities (e.g. binding constants, pharmacology and ADMET data)."""@en;
     foaf:homepage &lt;http://www.ebi.ac.uk/chembl/&gt;;
