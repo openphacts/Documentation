@@ -608,130 +608,6 @@
 	<section id="dataset-metadata">
 		<h3 id="dataset-general-metadata">Core Dataset Metadata</h3>
 
-		<table id="dcterms:description" class="definition">
-			<thead>
-				<tr>
-					<th>RDF Property</th>
-					<th>
-						<a href="http://purl.org/dc/terms/description" target="_blank">
-						<code>dcterms:description</code></a>
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="prop">Definition:</td>
-					<td>
-						An account of the resource.
-					</td>
-				</tr>
-				<tr>
-					<td class="prop">Range:</td>
-					<td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a></td>
-				</tr>
-				<tr>
-					<td class="prop">Usage note:</td>
-					<td>
-						Provides a human readable description of the dataset. 
-						For more details see 
-						<a href="http://www.w3.org/TR/void/#dublin-core" target="_blank">
-						Section 2.2</a> of the VoID Specification.
-					</td>
-				</tr>
-			</tbody>
-		</table>
-
-		<table id="dcterms:title" class="definition">
-			<thead>
-				<tr>
-					<th>RDF Property</th>
-					<th>
-						<a href="http://purl.org/dc/terms/title" target="_blank">
-						<code>dcterms:title</code></a>
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="prop">Definition:</td>
-					<td>
-						A name given to the resource.
-					</td>
-				</tr>
-				<tr>
-					<td class="prop">Range:</td>
-					<td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a></td>
-				</tr>
-				<tr>
-					<td class="prop">Usage note:</td>
-					<td>
-						Used to declare the short name of the dataset. For more 
-						details see 
-						<a href="http://www.w3.org/TR/void/#dublin-core" target="_blank">
-						Section 2.2</a> of the VoID Specification.
-					</td>
-				</tr>
-			</tbody>
-		</table>
-
-		<table id="dctypes:Dataset" class="definition">
-			<thead>
-				<tr>
-					<th>RDF Class</th>
-					<th>
-						<a href="http://purl.org/dc/dcmitype/Dataset" target="_blank">
-						<code>dctypes:Dataset</code></a>
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="prop">Definition:</td>
-					<td>
-						Data encoded in a defined structure.
-					</td>
-				</tr>
-				<tr>
-					<td class="prop">Usage note:</td>
-					<td>
-						Used to declare the type of a dataset published in a
-						format other than RDF.
-						For a dataset published in RDF use 
-						<a href="#void:Dataset"><code>void:Dataset</code></a>.
-					</td>
-				</tr>
-			</tbody>
-		</table>
-
-		<table id="void:Dataset" class="definition">
-			<thead>
-				<tr>
-					<th>RDF Class</th>
-					<th>
-						<a href="http://rdfs.org/ns/void#Dataset" target="_blank">
-						<code>void:Dataset</code></a>
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="prop">Definition:</td>
-					<td>
-						A set of RDF triples that are published, maintained or 
-						aggregated by a single provider.
-					</td>
-				</tr>
-				<tr>
-					<td class="prop">Usage note:</td>
-					<td>
-						Used to declare the type of a dataset published in RDF.
-						For a dataset not published in RDF use 
-						<a href="#dctypes:Dataset"><code>dctypes:Dataset</code></a>.
-					</td>
-				</tr>
-			</tbody>
-		</table>
-
 
 		<h4 id="dataset-webpages">Webpages</h4>
 		<ul>
@@ -1764,6 +1640,147 @@
 		</section>
 	<!-- end provenance-vocabularies -->
 	</section>
+</section>
+
+<section id="appendix-properties" class="appendix">
+	<h2>Classes and Properties</h2>
+	<section id="dcterms">
+		<h3 id="dcterms">Dublin Core Terms</h3>
+		<table id="dcterms:description" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/dc/terms/description" target="_blank">
+						<code>dcterms:description</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						An account of the resource.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						Provides a human readable description of the dataset. 
+						For more details see 
+						<a href="http://www.w3.org/TR/void/#dublin-core" target="_blank">
+						Section 2.2</a> of the VoID Specification.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<table id="dcterms:title" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/dc/terms/title" target="_blank">
+						<code>dcterms:title</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						A name given to the resource.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						Used to declare the short name of the dataset. For more 
+						details see 
+						<a href="http://www.w3.org/TR/void/#dublin-core" target="_blank">
+						Section 2.2</a> of the VoID Specification.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	<!-- end dcterms -->
+	</section>
+
+	<section id="dctypes">
+		<h3>Dublin Core Types</h3>
+		<table id="dctypes:Dataset" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Class</th>
+					<th>
+						<a href="http://purl.org/dc/dcmitype/Dataset" target="_blank">
+						<code>dctypes:Dataset</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						Data encoded in a defined structure.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						Used to declare the type of a dataset published in a
+						format other than RDF.
+						For a dataset published in RDF use 
+						<a href="#void:Dataset"><code>void:Dataset</code></a>.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	<!-- end dctypes -->
+	</section>
+
+	<section id="void">
+		<h3>Vocabulary of Interlinked Datasets</h3>
+		<table id="void:Dataset" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Class</th>
+					<th>
+						<a href="http://rdfs.org/ns/void#Dataset" target="_blank">
+						<code>void:Dataset</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						A set of RDF triples that are published, maintained or 
+						aggregated by a single provider.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						Used to declare the type of a dataset published in RDF.
+						For a dataset not published in RDF use 
+						<a href="#dctypes:Dataset"><code>dctypes:Dataset</code></a>.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	<!-- end void -->
+	</section>
+<!-- end appendix-properties -->
 </section>
 
 <section id="appendix-vocabulary-terms" class="appendix">
