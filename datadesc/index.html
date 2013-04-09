@@ -608,30 +608,6 @@
 	<section id="dataset-metadata">
 		<h3 id="dataset-general-metadata">Core Dataset Metadata</h3>
 
-		<h4 id="dataset-license">License</h4>
-		<ul>
-			<li>
-				Must declare the license under which the dataset is
-				published using the 
-				<a href="http://purl.org/dc/terms/license" target="_blank">
-				<code>dcterms:license</code></a> predicate.
-			</li>
-		</ul>
-		<p>
-			Where possible, we recommend publishing data under an open license
-			to enable reuse of the data with appropriate acknowledgement. For
-			Open PHACTS, the recommended license is <a
-			href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>. 
-			A list of alternative licenses are available in <a
-			href="http://www.w3.org/TR/void/#license">Section 2.4</a> of the 
-			W3C note on VoID.
-		</p>
-		<p>
-			For more details see 
-			<a href="http://www.w3.org/TR/void/#license" target="_blank">
-			Section 2.4</a> of the VoID Specification.
-		</p>
-
 		<h4 id="dataset-namespace">Namespace</h4>
 		<ul>
 			<li>
@@ -1741,7 +1717,53 @@
 				</tr>
 			</tbody>
 		</table>
-
+		<table id="dcterms:license" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/dc/terms/license" target="_blank">
+						<code>dcterms:license</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						A legal document giving official permission to do 
+						something with the resource.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							Declares the license under which the dataset is 
+							published.
+						</p>
+						<p>
+							Where possible, we recommend publishing data under an open license
+							to enable reuse of the data with appropriate acknowledgement. For
+							Open PHACTS, the recommended license is <a
+							href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>. 
+							A list of alternative licenses are available in <a
+							href="http://www.w3.org/TR/void/#license">Section 2.4</a> of the 
+							W3C note on VoID.
+						</p>
+						<p>
+							For more details see 
+							<a href="http://www.w3.org/TR/void/#license" target="_blank">
+							Section 2.4</a> of the VoID Specification.
+						</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 		<table id="dcterms:title" class="definition">
 			<thead>
 				<tr>
