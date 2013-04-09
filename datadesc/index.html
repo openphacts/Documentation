@@ -608,6 +608,39 @@
 	<section id="dataset-metadata">
 		<h3 id="dataset-general-metadata">Core Dataset Metadata</h3>
 
+		<table id="dcterms:title" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/dc/terms/title" target="_blank">
+						<code>dcterms:title</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						A name given to the resource.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						Used to declare the short name of the dataset. For more 
+						details see 
+						<a href="http://www.w3.org/TR/void/#dublin-core" target="_blank">
+						Section 2.2</a> of the VoID Specification.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
 		<table id="dctypes:Dataset" class="definition">
 			<thead>
 				<tr>
@@ -670,8 +703,7 @@
 		<ul>
 			<li>
 				Must provide a name for the dataset using the 
-				<a href="http://purl.org/dc/terms/title" target="_blank">
-				<code>dcterms:title</code></a> predicate.
+				 predicate.
 			</li>
 		</ul>
 		<p>
