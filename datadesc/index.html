@@ -614,19 +614,6 @@
 		<h3 id="dataset-provenance-version">Provenance and Version</h3>
 
 		<h4 id="dataset-version">Version</h4>
-		<ul>
-			<li>
-				Must declare the version of the dataset using the
-				<a href="http://purl.org/pav/" target="_blank"> 
-				<code>pav:version</code></a> predicate, where this exists for
-				the dataset.
-			</li>
-			<li>
-				Should link back to the previous version of the dataset using the
-				<a href="http://purl.org/pav/" target="_blank"> 
-				<code>pav:previousVersion</code></a> predicate.
-			</li>
-		</ul>
 		<p>
 			Not all dataset have the notion of a version number. Where the
 			dataset does have this notion, it must be given in the 
@@ -637,104 +624,9 @@
 
 		<h4 id="dataset-provenance">Provenance of Data Origin</h4>
 		<p>
-			Details of the origin of the data must be provided using one of the 
-			following groups of predicates. 
+			Details of the origin of the data SHOULD be provided as a Dataset 
+			description of the appropriate form, i.e. Non-RDF or RDF.
 		</p> 	
-		<ul>
-			<li>
-				If the dataset and its description are accessed from their
-				original location, then the the following metadata must be
-				available from the VoID description at that site:
-				<ul>
-					<li>
-						<a href="http://purl.org/dc/terms/publisher" target="_blank">
-						<code>dcterms:publisher</code></a> to capture who 
-						published the data.
-					</li>
-					<li>
-						<a href="http://purl.org/dc/terms/created" target="_blank">
-						<code>dcterms:created</code></a> to capture when the
-						dataset was created.
-					</li>
-					<li>
-						<a href="http://purl.org/dc/terms/modified" target="_blank">
-						<code>dcterms:modified</code></a> to capture when the 
-						last update was made.
-					</li>
-				</ul>
-				Note that we require both <code>dcterms:created</code> and
-				<code>dcterms:modified</code> to be declared. This ensures that
-				we know which version of the dataset has been used. 
-			</li>
-			<li>
-				If the dataset has been retrieved from another location,
-				i.e. it has already been published as RDF and this is a 
-				replica of that data, then the following metadata must
-				be given:
-				<ul>
-					<li>
-						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:retrievedFrom</code></a> to capture the 
-						location of the original source.
-					</li>
-					<li>
-						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:retrievedOn</code></a> to capture when the
-						retrieval was made.
-					</li>
-					<li>
-						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:retrievedBy</code></a> to capture who made the
-						retrieval. 
-					</li>
-				</ul>
-			</li>
-			<li>
-				If the dataset is imported from another data source, i.e.
-				the knowledge content is unchanged but the format of the 
-				data has been changed (e.g. XML to RDF transformation), then 
-				the following metadata must be given:
-				<ul>
-					<li>
-						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:importedFrom</code></a> to capture the 
-						location of the original source.
-					</li>
-					<li>
-						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:importedOn</code></a> to capture when the 
-						import was made.
-					</li>
-					<li>
-						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:importedBy</code></a> to capture who made the
-						import.
-					</li>
-				</ul>
-			</li>
-			<li>
-				If the dataset is derived from another data source, i.e.
-				the knowledge content has changed, then the following 
-				metadata must be provided:
-				<ul>
-					<li>
-						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:derivedFrom</code></a> to capture the 
-						relationship to the original data source.
-					</li>
-					<li>
-						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:createdOn</code></a> to capture when the 
-						dataset was made.
-					</li>
-					<li>
-						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:createdBy</code></a> to capture who made the
-						dataset. 
-					</li>
-				</ul>
-			</li>
-		</ul>		
 		<p>
 			Note that the object of the <code>pav:xxxBy</code> predicate is 
 			a URI. 
@@ -1699,6 +1591,50 @@
 				</tr>
 			</tbody>
 		</table>
+		<table id="dcterms:issued" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/dc/terms/issued" target="_blank">
+						<code>dcterms:issued</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						Date of formal issuance (e.g., publication) of the resource.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td>
+						<a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a>
+						 typed as 
+						 <a href="http://www.w3.org/TR/xmlschema-2/#date">xsd:date</a>
+						 .  
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							The date is encoded as a literal in "yyyy-mm-dd" form (
+						 	<a href="http://www.w3.org/TR/NOTE-datetime">ISO 8601 Date and Time Formats</a>
+						 	). If the specific day or month are not known, then 01 should be specified.
+						 </p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#pav:createdOn">pav:createdOn</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 		<table id="dcterms:license" class="definition">
 			<thead>
 				<tr>
@@ -1742,6 +1678,45 @@
 							<a href="http://www.w3.org/TR/void/#license" target="_blank">
 							Section 2.4</a> of the VoID Specification.
 						</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="dcterms:publisher" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/dc/terms/publisher" target="_blank">
+						<code>dcterms:publisher</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						An entity responsible for making the resource available.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Example:</td>
+					<td>
+						For ChEMBL, the publisher would be the EBI:
+						<a href="http://www.ebi.ac.uk/" target="_blank">http://www.ebi.ac.uk/</a>.
+						This is different from the value for the homepage in this
+						case.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#dcat:landingPage">dcat:landingPage</a>,
+						<a href="#foaf:homepage">foaf:homepage</a>
 					</td>
 				</tr>
 			</tbody>
@@ -1921,6 +1896,619 @@
 	<!-- end foaf -->
 	</section>
 
+	<section id="pav">
+		<h3>Provenance, Authoring and Versioning Ontology</h3>
+		<table id="pav:authoredBy" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/pav/authoredBy" target="_blank">
+						<code>pav:authoredBy</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						An agent that originated or gave existence to the work 
+						that is expressed by the digital resource.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							The author of the content of a resource may be 
+							different from the creator of the resource 
+							representation (although they are often the same). 
+							See <a href="#pav:createdBy">pav:createdBy</a> for 
+							a discussion.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Example:</td>
+					<td>
+						The object of the triple should point to a URL that 
+						representes the person responsible for authoring
+						the content, e.g.
+						<a href="http://orcid.org/0000-0002-5711-4872" target="_blank">http://orcid.org/0000-0002-5711-4872</a>.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#pav:createdBy">pav:createdBy</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="pav:createdBy" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/pav/createdBy" target="_blank">
+						<code>pav:createdBy</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						An agent primary responsible for making the digital 
+						artifact or resource representation.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							This property is distinct from forming the content, 
+							which is indicated with pav:contributedBy or its 
+							subproperties; 
+							<a href="#pav:authoredBy">pav:authoredBy</a>, which 
+							identifies who authored the knowledge expressed by 
+							this resource; and pav:curatedBy, which identifies 
+							who curated the knowledge into its current form.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Example:</td>
+					<td>
+						The object of the triple should point to a URL that 
+						representes the person or tool responsible for creating
+						the digital artifact, e.g.
+						<a href="http://orcid.org/0000-0002-5711-4872" target="_blank">http://orcid.org/0000-0002-5711-4872</a>.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#pav:authoredBy">pav:authoredBy</a>,
+						<a href="#pav:createdWith">pav:createdWith</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="pav:createdOn" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/pav/createdOn" target="_blank">
+						<code>pav:createdOn</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						The date of creation of the resource.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td>
+						<a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a>
+						 typed as 
+						 <a href="http://www.w3.org/TR/xmlschema-2/#dateTime">xsd:dateTime</a>
+						 .  
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						The dateTime is encoded as a literal in "yyyy-mm-ddThh:mm:sszzzzz" form (
+						 <a href="http://www.w3.org/TR/NOTE-datetime">ISO 8601 Date and Time Formats</a>
+						 ). If the specific day or month are not known, then 01 should be specified.
+						 If the specific hour, minute or second are not known, then 00 should be
+						 specified. If the timezone is not known then Z should be specified.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#dcterms:issued">dcterms:issued</a>,
+						<a href="#pav:lastUpdateOn">pav:lastUpdateOn</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="pav:createdWith" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/pav/createdWith" target="_blank">
+						<code>pav:createdWith</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						The software/tool used by the creator 
+						(<a href="#pav:createdBy">pav:createdBy</a>) when 
+						making the digital resource.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							The specific version of a tool/script that was used
+							to created the resource.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Example:</td>
+					<td>
+						The versioned GitHub URL used to perform an RDF conversion:
+						<a href="https://github.com/openphacts/chembl.rdf/commit/97c900460b46481aac07dfb11807a3f49fc92b2e">https://github.com/openphacts/chembl.rdf/commit/97c900460b46481aac07dfb11807a3f49fc92b2e</a>
+				</tr>
+<!-- 				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#pav:createdWith">pav:createdWith</a>
+					</td>
+				</tr>
+ -->			</tbody>
+		</table>
+		<table id="pav:derivedFrom" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/pav/derivedFrom" target="_blank">
+						<code>pav:derivedFrom</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						Derived from a different resource. 
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							Derivation conserns itself with derived knowledge. 
+							If this resource has the same content as the other 
+							resource, but has simply been transcribed to fit a 
+							different model (like XML -> RDF or SQL -> CVS), use 
+							<a href="#pav:importedFrom">pav:importedFrom</a>. 
+							If a resource was simply retrieved, use 
+							pav:retrievedFrom. If the content has however been 
+							further refined or modified, 
+							<a href="#pav:derivedFrom">pav:derivedFrom</a> 
+							should be used.
+						</p>
+						<p>
+							Details about who performed the derivation may be 
+							indicated with pav:contributedBy and its 
+							subproperties.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#pav:importedFrom">pav:importedFrom</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="pav:importedBy" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/pav/importedBy" target="_blank">
+						<code>pav:importedBy</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						An entity responsible for importing the data.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							The importer is usually a software entity which has 
+							done the transcription from the original source.
+						</p>
+						<p>
+							Note that pav:importedBy may overlap with 
+							<a href="#pav:createdWith">pav:createdWith</a>.
+						</p>
+						<p>
+							The source for the import should be given with 
+							<a href="#pav:importedFrom">pav:importedFrom</a>. 
+							The time of the import should be given with 
+							<a href="#pav:importedOn">pav:importedOn</a>.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#pav:createdWith">pav:createdWith</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="pav:importedFrom" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/pav/importedFrom" target="_blank">
+						<code>pav:importedFrom</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						The original source of imported information.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							Import means that the content has been preserved, 
+							but transcribed somehow, for instance to fit a 
+							different representation model. Examples of import 
+							are when the original was JSON and the current 
+							resource is RDF, or where the original was an 
+							document scan, and this resource is the plain text 
+							found through OCR.
+						</p>
+						<p>
+							The imported resource does not have to be complete, 
+							but should be consistent with the knowledge conveyed 
+							by the original resource.
+						</p>
+						<p>
+							If additional knowledge has been contributed, 
+							<a href="#pav:derivedFrom">pav:derivedFrom</a> 
+							would be more appropriate.
+						</p>
+						<p>
+							If the resource has been copied verbatim from the 
+							original representation (e.g. downloaded), use 
+							pav:retrievedFrom.
+						</p>
+						<p>
+							To indicate which agent(s) performed the import, 
+							use <a href="#pav:importedBy">pav:importedBy</a>. 
+							Use <a href="#pav:importedOn">pav:importedOn</a> 
+							to indicate when it happened.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#pav:derivedFrom">pav:derivedFrom</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="pav:importedOn" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/pav/importedOn" target="_blank">
+						<code>pav:importedOn</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						The date this resource was imported from a source 
+						(<a href="#pav:importedFrom">pav:importedFrom</a>).
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td>
+						<a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a>
+						 typed as 
+						 <a href="http://www.w3.org/TR/xmlschema-2/#dateTime">xsd:dateTime</a>
+						 .  
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							If the source is later reimported, this should be 
+							indicated with 
+							<a href="#pav:lastRefreshedOn">pav:lastRefreshedOn</a>.
+						</p>
+						<p>
+							The source of the import should be given with 
+							<a href="#pav:importedFrom">pav:importedFrom</a>. 
+							The agent that performed the import should be given 
+							with <a href="#pav:importedBy">pav:importedBy</a>.
+						</p>
+						<p>
+							The dateTime is encoded as a literal in "yyyy-mm-ddThh:mm:sszzzzz" form (
+						 	<a href="http://www.w3.org/TR/NOTE-datetime">ISO 8601 Date and Time Formats</a>
+						 	). If the specific day or month are not known, then 01 should be specified.
+						 	If the specific hour, minute or second are not known, then 00 should be
+						 	specified. If the timezone is not known then Z should be specified.
+						 </p>
+					</td>
+				</tr>
+<!-- 				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#dcterms:issued">dcterms:issued</a>,
+						<a href="#pav:lastUpdateOn">pav:lastUpdateOn</a>
+					</td>
+				</tr>
+ -->			</tbody>
+		</table>		
+		<table id="pav:lastRefreshedOn" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/pav/lastRefreshedOn" target="_blank">
+						<code>pav:lastRefreshedOn</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						The date of the last re-import of the resource.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td>
+						<a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a>
+						 typed as 
+						 <a href="http://www.w3.org/TR/xmlschema-2/#dateTime">xsd:dateTime</a>
+						 .  
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							This property is used in addition to 
+							<a href="#pav:importedOn">pav:importedOn</a> if 
+							this version has been updated due to a re-import. 
+							If the re-import created a new resource rather than 
+							refreshing an existing, then 
+							<a href="#pav:importedOn">pav:importedOn</a> should 
+							be used together with 
+							<a href="#pav:previousVersion">pav:previousVersion</a>.
+						</p>
+						<p>
+							The dateTime is encoded as a literal in "yyyy-mm-ddThh:mm:sszzzzz" form (
+						 	<a href="http://www.w3.org/TR/NOTE-datetime">ISO 8601 Date and Time Formats</a>
+						 	). If the specific day or month are not known, then 01 should be specified.
+						 	If the specific hour, minute or second are not known, then 00 should be
+						 	specified. If the timezone is not known then Z should be specified.
+						 </p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#pav:importedOn">pav:importedOn</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="pav:lastUpdateOn" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/pav/lastUpdateOn" target="_blank">
+						<code>pav:lastUpdateOn</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						The date of the last update of the resource.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td>
+						<a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a>
+						 typed as 
+						 <a href="http://www.w3.org/TR/xmlschema-2/#dateTime">xsd:dateTime</a>
+						 .  
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							An update is a change which did not warrant making a 
+							new resource related using <a href="#pav:previousVersion">pav:previousVersion</a>, for 
+							instance correcting a spelling mistake.
+						</p>
+						<p>
+							The dateTime is encoded as a literal in "yyyy-mm-ddThh:mm:sszzzzz" form (
+						 	<a href="http://www.w3.org/TR/NOTE-datetime">ISO 8601 Date and Time Formats</a>
+						 	). If the specific day or month are not known, then 01 should be specified.
+						 	If the specific hour, minute or second are not known, then 00 should be
+						 	specified. If the timezone is not known then Z should be specified.
+						 </p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#pav:createdOn">pav:createdOn</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="pav:previousVersion" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/pav/previousVersion" target="_blank">
+						<code>pav:previousVersion</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						The previous version of a resource in a lineage.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							For instance a news article updated to correct 
+							factual information would point to the previous 
+							version of the article with pav:previousVersion. If 
+							however the content has significantly changed so 
+							that the two resources no longer share lineage (say 
+							a new news article that talks about the same facts), 
+							they should be related using pav:derivedFrom.
+						</p>
+						<p>
+							A version number of this resource can be provided 
+							using the data property pav:version.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#pav:version">pav:version</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="pav:version" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/pav/version" target="_blank">
+						<code>pav:version</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						The version number of a resource.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						This is a freetext string, typical values are "1.5" or 
+						"21". The URI identifying the previous version can be 
+						provided using prov:previousVersion.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#pav:previousVersion">pav:previousVersion</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	<!-- end pav -->
+	</section>
 	<section id="void">
 		<h3>Vocabulary of Interlinked Datasets</h3>
 		<table id="void:Dataset" class="definition">
