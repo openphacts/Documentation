@@ -608,30 +608,6 @@
 	<section id="dataset-metadata">
 		<h3 id="dataset-general-metadata">Core Dataset Metadata</h3>
 
-
-		<h4 id="dataset-webpages">Webpages</h4>
-		<ul>
-			<li>
-				Must provide a link to the homepage for the dataset using 
-				the <a href="http://xmlns.com/foaf/spec/#term_homepage">
-				<code>foaf:homepage</code></a> predicate.
-			</li>
-			<li>
-				May provide links to other pages that discuss the dataset 
-				using the <a href="http://xmlns.com/foaf/spec/#term_page">
-				<code>foaf:page</code></a> predicate.
-			</li>
-		</ul>
-		<p>
-			An example of an external page that may be linked is the bioDBcore
-			[[BioDBcore]] entry, see <a href="#BioDBcore">Section 7.2</a>.
-		</p>
-		<p>
-			For more details see 
-			<a href="http://www.w3.org/TR/void/#webpage" target="_blank">
-			Section 2.1</a> of the VoID Specification.
-		</p>
-
 		<h4 id="dataset-license">License</h4>
 		<ul>
 			<li>
@@ -1644,6 +1620,93 @@
 
 <section id="appendix-properties" class="appendix">
 	<h2>Classes and Properties</h2>
+	<section id="dcat">
+		<h3 id="dcat">Data Catalog Vocabulary</h3>
+		<table id="dcat:Dataset" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Class</th>
+					<th>
+						<a href="http://www.w3.org/ns/dcat#Dataset" target="_blank">
+						<code>dcat:Dataset</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						A collection of data, published or curated by a single 
+						source, and available for access or download in one or 
+						more formats.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Sub class of:</td>
+					<td><a href="#dctypes:Dataset">dctypes:Dataset</a>
+				</tr>
+			</tbody>
+		</table>
+		<table id="dcat:landingPage" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://www.w3.org/ns/dcat#landingPage" target="_blank">
+						<code>dcat:landingPage</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						A Web page that can be navigated to in a Web browser to 
+						gain access to the dataset, its distributions and/or 
+						additional information.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Sub property of:</td>
+					<td><a href="#foaf:page">foaf:page</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Domain:</td>
+					<td><a href="#dcat:Dataset">dcat:Dataset</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://xmlns.com/foaf/spec/#Document">foaf:Document</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						Used to specify a link to a human readable web page
+						documenting the underlying dataset.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Example:</td>
+					<td>
+						For the RDF conversion of the DrugBank dataset this 
+						property should point to
+						<a href="http://www.drugbank.ca/" target="_blank">
+						http://www.drugbank.ca/</a> since this resource provides
+						information about the contents of the dataset.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#foaf:homepage">foaf:homepage</a>, 
+						<a href="#foaf:page">foaf:page</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+	<!-- end dcat -->
+	</section>
 	<section id="dcterms">
 		<h3 id="dcterms">Dublin Core Terms</h3>
 		<table id="dcterms:description" class="definition">
@@ -1745,6 +1808,113 @@
 			</tbody>
 		</table>
 	<!-- end dctypes -->
+	</section>
+	
+	<section id="foaf">
+		<h3>Friend of a Friend</h3>
+		<table id="foaf:homepage" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://xmlns.com/foaf/spec/#term_homepage" target="_blank">
+						<code>foaf:homepage</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						A homepage for the dataset.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://xmlns.com/foaf/spec/#Document">foaf:Document</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						Specifies the homepage for the resource. For more details 
+						see 
+						<a href="http://www.w3.org/TR/void/#webpage" target="_blank">
+						Section 2.1</a> of the VoID Specification.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						foaf:homepage is an inverse functional property (IFP) which means that it should be unique and precisely identify the catalog. This allows smushing various descriptions of the catalog when different URIs are used.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Example:</td>
+					<td>
+						The foaf:homepage for the ChemSpider RDF dataset is
+						<a href="http://rdf.chemspider.com/" target="_blank">
+						http://rdf.chemspider.com/</a>.
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#foaf:page">foaf:page</a>, 
+						<a href="#dcat:landingPage">dcat:landingPage</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="foaf:page" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://xmlns.com/foaf/spec/#term_page" target="_blank">
+						<code>foaf:page</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						A page about the dataset.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://xmlns.com/foaf/spec/#Document">foaf:Document</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						Specifies a webpage or document for the resource. Points
+						to secondary sources of infotmation, e.g. catalogue records.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Example:</td>
+					<td>
+						For the ChemSpider RDF dataset, the foaf:page property 
+						could point to the associated MIRIAM record
+						<a href="http://www.ebi.ac.uk/miriam/main/collections/MIR:00000138" target="_blank">
+						http://www.ebi.ac.uk/miriam/main/collections/MIR:00000138</a>.
+						
+						For more details see 
+						<a href="http://www.w3.org/TR/void/#webpage" target="_blank">
+						Section 2.1</a> of the VoID Specification.
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#foaf:homepage">foaf:homepage</a>, 
+						<a href="#dcat:landingPage">dcat:landingPage</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+	<!-- end foaf -->
 	</section>
 
 	<section id="void">
