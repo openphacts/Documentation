@@ -15,7 +15,7 @@
 		customcss:            "http://www.openphacts.org/specs/css/ops.css",
 		specStatus:           "ED",
 		shortName:            "datadesc",
-		publishDate:   "2013-04-02",
+		publishDate:   "2013-04-09",
 		previousMaturity: "WD",
 		previousPublishDate:  "2012-10-19",
 		//previousURI : "http://www.cs.manchester.ac.uk/~graya/ops/2012/WD-mappingspec-20120615/",
@@ -161,11 +161,27 @@
 		The dataset description defined in this specification declares the 
 		properties that should be included in the description of dataset or its 
 		links. The information is exchanged using the Vocabulary of Interlinked 
-		Datasets [[VOID]]. The 
-		<a href="http://openphacts.cs.man.ac.uk/Void-Editor/">VoID Editor</a>
-		can be used to create dataset descriptions, although in general they
-		should be generated as part of the data creation pipeline.
+		Datasets [[VOID]]. 
 	</p>
+	<section id="tooling">
+		<h3>Tooling</h3>
+		<p>	
+			The 
+			<a href="http://openphacts.cs.man.ac.uk/Void-Editor/">VoID Editor</a>
+			can be used to create dataset descriptions. This is a useful tool
+			for prototyping the first version of a dataset description. Ideally
+			the generation of dataset descriptions should be incorporated as 
+			part of the data creation pipeline.
+		</p>
+		<p>
+			A <a href="http://openphacts.cs.man.ac.uk:9090/OPS-IMS/validate">
+			validator</a> is provided to verify whether a dataset description 
+			conforms to the latest stable version of these specifications. This 
+			could be accessed automatically by the data creation pipeline to 
+			ensure that newly created dataset descriptions remain conformant.
+		</p>
+	<!-- end tooling -->
+	</section>
 	<!-- end introduction -->
 </section>
 
