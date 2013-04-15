@@ -679,37 +679,6 @@
 		</p>
 	<!-- end dataset-subset -->	
 	</section>
-	</section>
-	<section id="dataset-access">
-		<h3 id="dataset-access">Dataset Access</h3>
-		<h4 id="dataset-dump">Data Dump</h4>
-		<ul>
-			<li>
-				Must provide the location of a dataset dump using the
-				<a href="http://rdfs.org/ns/void#dataDump" target="_blank">
-				<code>void:dataDump</code></a> predicate.
-			</li>
-		</ul>
-		<p>
-			For more details see 
-			<a href="http://www.w3.org/TR/void/#dumps" target="_blank">
-			Section 3.3</a> of the VoID Specification.
-		</p>
-		<h4 id="dataset-sparql">SPARQL Endpoint</h4>
-		<ul>
-			<li>
-				May provide the location of a dataset SPARQL endpoint using the
-				<a href="http://rdfs.org/ns/void#sparqlEndpoint" target="_blank">
-				<code>void:sparqlEndpoint</code></a> predicate.
-			</li>
-		</ul>
-		<p>
-			For more details see 
-			<a href="http://www.w3.org/TR/void/#sparql" target="_blank">
-			Section 3.2</a> of the VoID Specification.
-		</p>
-	<!-- end dataset-access-update -->
-	</section>
 	<section id="dataset-update-frequency">
 		<h3 id="dataset-update">Dataset Update Frequency</h3>
 		<ul>
@@ -2524,6 +2493,49 @@
 				</tr>
 			</tbody>
 		</table>
+		<table id="void:dataDump" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://rdfs.org/ns/void#dataDump" target="_blank">
+						<code>void:dataDump</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						An RDF dump, partial or complete, of a void:Dataset.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Domain:</td>
+					<td><a href="#void:Dataset">void:Dataset</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							Defines the location of an RDF dump file that should be provided in one
+							of the standard RDF serializations, and may be compressed. If the dataset
+							is contained in more than one file, then several values of this property
+							should be given. The files may be password protected.
+						</p>
+						<p>
+							For more details see 
+							<a href="http://www.w3.org/TR/void/#dumps" target="_blank">
+							Section 3.3</a> of the VoID Specification.
+						</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 		<table id="void:exampleResource" class="definition">
 			<thead>
 				<tr>
@@ -2561,6 +2573,46 @@
 							For more details see 
 							<a href="http://www.w3.org/TR/void/#example-resource" target="_blank">
 							Section 4.1</a> of the VoID Specification.
+						</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="void:sparqlEndpoint" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://rdfs.org/ns/void#sparqlEndpoint" target="_blank">
+						<code>void:sparqlEndpoint</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						has a SPARQL endpoint at
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Domain:</td>
+					<td><a href="#void:Dataset">void:Dataset</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							Defines the location of a SPARQL endpoint where the data may be queried.
+						</p>
+						<p>
+							For more details see 
+							<a href="http://www.w3.org/TR/void/#sparql" target="_blank">
+							Section 3.2</a> of the VoID Specification.
 						</p>
 					</td>
 				</tr>
