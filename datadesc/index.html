@@ -1070,6 +1070,7 @@
 	<h2>Classes and Properties</h2>
 	<section id="dcat">
 		<h3 id="dcat">Data Catalog Vocabulary</h3>
+		<h4>Classes</h4>
 		<table id="dcat:Dataset" class="definition">
 			<thead>
 				<tr>
@@ -1095,6 +1096,8 @@
 				</tr>
 			</tbody>
 		</table>
+		
+		<h4>Properties</h4>
 		<table id="dcat:landingPage" class="definition">
 			<thead>
 				<tr>
@@ -1157,6 +1160,7 @@
 	</section>
 	<section id="dcterms">
 		<h3 id="dcterms">Dublin Core Terms</h3>
+		<h4>Properties</h4>
 		<table id="dcterms:description" class="definition">
 			<thead>
 				<tr>
@@ -1398,6 +1402,7 @@
 
 	<section id="dctypes">
 		<h3>Dublin Core Types</h3>
+		<h4>Classes</h4>
 		<table id="dctypes:Dataset" class="definition">
 			<thead>
 				<tr>
@@ -1430,6 +1435,7 @@
 	</section>
 	<section id="dul">
 		<h3>DOLCE+DnS Ultralite Ontology</h3>
+		<h4>Properties</h4>
 		<table id="dul:expresses" class="definition">
 			<thead>
 				<tr>
@@ -1481,6 +1487,7 @@
 	</section>
 	<section id="foaf">
 		<h3>Friend of a Friend</h3>
+		<h4>Properties</h4>
 		<table id="foaf:homepage" class="definition">
 			<thead>
 				<tr>
@@ -1582,12 +1589,94 @@
 				</tr>
 			</tbody>
 		</table>
+		<table id="foaf:primaryTopic" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://xmlns.com/foaf/spec/#term_primaryTopic" target="_blank">
+						<code>foaf:primaryTopic</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						The primary topic of some page or document.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Domain:</td>
+					<td><a href="http://xmlns.com/foaf/spec/#Document">foaf:Document</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							Relates a document, e.g. a DatasetDescription, to the main thing the 
+							document is about, e.g. Dataset. The value of this property is a URI
+							that appears in the dataset description.
+						</p>
+						<p>
+							foaf:primaryTopic is a functional property which means that it can 
+							be used at most once.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#foaf:topic">foaf:topic</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="foaf:topic" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://xmlns.com/foaf/spec/#term_topic" target="_blank">
+						<code>foaf:topic</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						A topic of some page or document.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Domain:</td>
+					<td><a href="http://xmlns.com/foaf/spec/#Document">foaf:Document</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							Relates a document, e.g. a DatasetDescription, to the things that the 
+							document is about, e.g. Datasets.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#foaf:primaryTopic">foaf:primaryTopic</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 		
 	<!-- end foaf -->
 	</section>
 
 	<section id="pav">
 		<h3>Provenance, Authoring and Versioning Ontology</h3>
+		<h4>Properties</h4>
 		<table id="pav:authoredBy" class="definition">
 			<thead>
 				<tr>
@@ -2239,6 +2328,7 @@
 	</section>
 	<section id="voag">
 		<h3>Vocabulary of Attribution and Governance</h3>
+		<h4>Properties</h4>
 		<table id="voag:frequencyOfChange" class="definition">
 			<thead>
 				<tr>
@@ -2289,6 +2379,7 @@
 	
 	<section id="void">
 		<h3>Vocabulary of Interlinked Datasets</h3>	
+		<h4>Classes</h4>
 		<table id="void:Dataset" class="definition">
 			<thead>
 				<tr>
@@ -2329,6 +2420,74 @@
 				</tr>
 			</tbody>
 		</table>
+		<table id="void:DatasetDescription" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Class</th>
+					<th>
+						<a href="http://rdfs.org/ns/void#DatasetDescription" target="_blank">
+						<code>void:DatasetDescription</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						A web resource whose foaf:primaryTopic or foaf:topics include void:Datasets.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Superclass:</td>
+					<td>
+						<code>foaf:Document</code>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						Used to provide metadata about the dataset description document. 
+						For more details, see 
+						<a href="http://www.w3.org/TR/void/#void-file">Section 6.2</a> of 
+						the VoID specification [[VOID]].
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<table id="void:Linkset" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Class</th>
+					<th>
+						<a href="http://rdfs.org/ns/void#Linkset" target="_blank">
+						<code>void:Linkset</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						A collection of RDF links between two void:Datasets.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Superclass:</td>
+					<td>
+						<a href="#void:Dataset"><code>void:Dataset</code></a>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						For more details see 
+						<a href="http://www.w3.org/TR/void/#linkset" target="_blank">
+						Section 1.4</a> of the VoID Specification.
+					</td>
+				</tr>
+			</tbody>
+		</table><h4>Properties</h4>
 		<table id="void:dataDump" class="definition">
 			<thead>
 				<tr>
@@ -2455,39 +2614,7 @@
 				</tr>
 			</tbody>
 		</table>
-		<table id="void:Linkset" class="definition">
-			<thead>
-				<tr>
-					<th>RDF Class</th>
-					<th>
-						<a href="http://rdfs.org/ns/void#Linkset" target="_blank">
-						<code>void:Linkset</code></a>
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="prop">Definition:</td>
-					<td>
-						A collection of RDF links between two void:Datasets.
-					</td>
-				</tr>
-				<tr>
-					<td class="prop">Superclass:</td>
-					<td>
-						<a href="#void:Dataset"><code>void:Dataset</code></a>
-					</td>
-				</tr>
-				<tr>
-					<td class="prop">Usage note:</td>
-					<td>
-						For more details see 
-						<a href="http://www.w3.org/TR/void/#linkset" target="_blank">
-						Section 1.4</a> of the VoID Specification.
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		
 		<table id="void:objectsTarget" class="definition">
 			<thead>
 				<tr>
