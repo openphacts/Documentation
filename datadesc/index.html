@@ -15,7 +15,7 @@
 		customcss:            "http://www.openphacts.org/specs/css/ops.css",
 		specStatus:           "ED",
 		shortName:            "datadesc",
-		publishDate:   "2013-04-02",
+		publishDate:   "2013-04-09",
 		previousMaturity: "WD",
 		previousPublishDate:  "2012-10-19",
 		//previousURI : "http://www.cs.manchester.ac.uk/~graya/ops/2012/WD-mappingspec-20120615/",
@@ -102,6 +102,13 @@
 		border: 1px solid red; 
 		padding: 0.3em 0.5em; 
 	}
+	
+	table.definition {
+		width:100%;
+	}
+	table.definition td.prop {
+		width: 10em;
+	}
     
 </style>
 </head>
@@ -161,11 +168,27 @@
 		The dataset description defined in this specification declares the 
 		properties that should be included in the description of dataset or its 
 		links. The information is exchanged using the Vocabulary of Interlinked 
-		Datasets [[VOID]]. The 
-		<a href="http://openphacts.cs.man.ac.uk/Void-Editor/">VoID Editor</a>
-		can be used to create dataset descriptions, although in general they
-		should be generated as part of the data creation pipeline.
+		Datasets [[VOID]]. 
 	</p>
+	<section id="tooling">
+		<h3>Tooling</h3>
+		<p>	
+			The 
+			<a href="http://openphacts.cs.man.ac.uk/Void-Editor/">VoID Editor</a>
+			can be used to create dataset descriptions. This is a useful tool
+			for prototyping the first version of a dataset description. Ideally
+			the generation of dataset descriptions should be incorporated as 
+			part of the data creation pipeline.
+		</p>
+		<p>
+			A <a href="http://openphacts.cs.man.ac.uk:9090/OPS-IMS/validate">
+			validator</a> is provided to verify whether a dataset description 
+			conforms to the latest stable version of these specifications. This 
+			could be accessed automatically by the data creation pipeline to 
+			ensure that newly created dataset descriptions remain conformant.
+		</p>
+	<!-- end tooling -->
+	</section>
 	<!-- end introduction -->
 </section>
 
@@ -186,6 +209,7 @@
 
 		<pre class="turtle">
 @prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix dctypes: &lt;http://purl.org/dc/dcmitype/&gt; .
 @prefix dul: &lt;http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 @prefix freq: &lt;http://purl.org/cld/freq/&gt; .
@@ -215,83 +239,15 @@
 	<!-- end conventions -->
 </section>
 
-<section id="datasets-mappings" class="informative">
-	<h2 id="datasets-mappings">
-		Datasets and Mapping Relationships
+<section id="existing-vocabularies" class="informative">
+	<h2 id="existing-vocabularies">
+		Vocabularies for Describing Datasets and Mapping Relationships
 	</h2>
 	<p>
-		In this section, we introduce the notion of a dataset and identify three
-		categories of dataset used in Open PHACTS. We then provide an overview 
-		of the vocabularies that will be used for capturing the descriptions of 
-		these datasets and the mappings between the them. 
+		In this section, we introduce the vocabularies that will be used for 
+		capturing the dataset descriptions and the mappings between the 
+		datasets. 
 	</p>
-	<section id="dataset-classification">
-		<h3>Dataset Categories</h3>
-		<p>
-			In Open PHACTS we distinguish three categories of dataset based on 
-			the format in which their data is published and how this was 
-			generated. For each category of dataset, we specify the core 
-			properties that are used to describe the dataset, templates are 
-			given in <a href="#appendix-templates">Appendix A.?</a>. 
-		</p>
-		<ul>
-			<li>
-				<strong>Non-RDF Dataset:</strong>
-				This is a dataset that is published in a non-RDF format, e.g. 
-				as a database dump or a set of web pages. Examples of such 
-				datasets include <a href="http://www.drugbank.ca/">DrugBank</a> and 
-				<a href="http://www.wwpdb.org/">Protein Data Bank</a>. The
-				<a href="#non-rdf-dataset-figure">figure</a> below shows an 
-				overview of the metadata to be captured for a non-RDF dataset.	
-				<div class="image">
-		    		<img
-		    			id="non-rdf-dataset-figure" 
-	    				alt="Non-RDF dataset properties"
-	    				width="600px" 
-	    				src="Non-RDF-Dataset.png"
-	    			/>
-	    		</div>
-			</li>
-			<li>
-				<strong>RDF Dataset:</strong>
-				This is a dataset that is published as RDF, i.e. a set of RDF
-				triples. Examples of such datasets include 
-				<a href="https://www.ebi.ac.uk/chembl/">ChEMBL</a> and 
-				<a href="http://www.uniprot.org/">UniProt</a>. The
-				<a href="#rdf-dataset-figure">figure</a> below shows an 
-				overview of the metadata to be captured for an RDF dataset.	
-				<div class="image">
-		    		<img
-		    			id="rdf-dataset-figure" 
-	    				alt="RDF dataset properties"
-	    				width="600px" 
-	    				src="RDF-Dataset.png"
-	    			/>
-	    		</div>
-			</li>
-			<li>
-				<strong>RDF Conversion:</strong>
-				This is a dataset that is originally published in a non-RDF 
-				format but has been converted by some third party publisher
-				into an RDF format. Examples of such datasets include all of 
-				the datasets published by 
-				<a href="http://bio2rdf.org/">Bio2RDF</a>. The
-				<a href="#rdf-conversion-figure">figure</a> below shows an 
-				overview of the metadata to be captured for a non-RDF dataset 
-				converted by a third party into RDF.	
-				<div class="image">
-		    		<img
-		    			id="rdf-conversion-figure" 
-	    				alt="RDF conversion dataset properties"
-	    				width="600px" 
-	    				src="RDF-conversion.png"
-	    			/>
-	    		</div>
-			</li>
-		</ul>
-		
-	<!-- end dataset-classification -->
-	</section>
 	<section id="void-overview">
 		<h3>Vocabulary of Interlinked Datasets (VoID)</h3>		
 		<p>
@@ -573,143 +529,91 @@
 	</p>
 
 	<p>
-		It is recommended that the generation of the VoID description for a
+		The <a href="#tooling">tooling section</a> contains details of tools to
+		help with the creation of dataset descriptions. However, it is 
+		recommended that the generation of the VoID description for a
 		dataset is carried out as part of the creation of the RDF version of 
-		the dataset. To help understand some of the principles of the VoID
-		description, that is to help you get started there is a
-		<a href="http://openphacts.cs.man.ac.uk/Void-Editor/">VoID 
-		Generator</a> which supports the creation of dataset descriptions.
+		the dataset and that these descriptions are passed through the dataset
+		description validator. 
 	</p>
 
+	<section id="dataset-classification">
+		<h3>Dataset Categories</h3>
+		<p>
+			In Open PHACTS we distinguish three categories of dataset based on 
+			the format in which their data is published and how this was 
+			generated. For each category of dataset, we specify the core 
+			properties that are used to describe the dataset, templates are 
+			given in <a href="#appendix-templates">Appendix A.?</a>. 
+		</p>
+		<ul>
+			<li>
+				<strong>Non-RDF Dataset:</strong>
+				This is a dataset that is published in a non-RDF format, e.g. 
+				as a database dump or a set of web pages. Examples of such 
+				datasets include <a href="http://www.drugbank.ca/">DrugBank</a> and 
+				<a href="http://www.wwpdb.org/">Protein Data Bank</a>. The
+				<a href="#non-rdf-dataset-figure">figure</a> below shows an 
+				overview of the metadata to be captured for a non-RDF dataset.	
+				<div class="image">
+		    		<img
+		    			id="non-rdf-dataset-figure" 
+	    				alt="Non-RDF dataset properties"
+	    				width="600px" 
+	    				src="Non-RDF-Dataset.png"
+	    			/>
+	    		</div>
+			</li>
+			<li>
+				<strong>RDF Dataset:</strong>
+				This is a dataset that is published as RDF, i.e. a set of RDF
+				triples. Examples of such datasets include 
+				<a href="https://www.ebi.ac.uk/chembl/">ChEMBL</a> and 
+				<a href="http://www.uniprot.org/">UniProt</a>. The
+				<a href="#rdf-dataset-figure">figure</a> below shows an 
+				overview of the metadata to be captured for an RDF dataset.	
+				<div class="image">
+		    		<img
+		    			id="rdf-dataset-figure" 
+	    				alt="RDF dataset properties"
+	    				width="600px" 
+	    				src="RDF-Dataset.png"
+	    			/>
+	    		</div>
+			</li>
+			<li>
+				<strong>RDF Conversion:</strong>
+				This is a dataset that is originally published in a non-RDF 
+				format but has been converted by some third party publisher
+				into an RDF format. Examples of such datasets include all of 
+				the datasets published by 
+				<a href="http://bio2rdf.org/">Bio2RDF</a>. The
+				<a href="#rdf-conversion-figure">figure</a> below shows an 
+				overview of the metadata to be captured for a non-RDF dataset 
+				converted by a third party into RDF.	
+				<div class="image">
+		    		<img
+		    			id="rdf-conversion-figure" 
+	    				alt="RDF conversion dataset properties"
+	    				width="600px" 
+	    				src="RDF-Conversion.png"
+	    			/>
+	    		</div>
+			</li>
+		</ul>
+		
+	<!-- end dataset-classification -->
+	</section>
+
 	<section id="dataset-metadata">
-		<h3 id="dataset-general-metadata">General Dataset Metadata</h3>
+		<h3 id="dataset-general-metadata">Core Dataset Metadata</h3>
 
-		<h4 id="dataset-type">Type</h4>
-		<ul>
-			<li>
-				Must declare that we have a dataset using 
-				<a href="http://rdfs.org/ns/void#Dataset" target="_blank">
-				<code>void:Dataset</code></a>.
-			</li>
-		</ul>
-		<p>
-			For more details see 
-			<a href="http://www.w3.org/TR/void/#dataset" target="_blank">
-			Section 1.3</a> of the VoID Specification.
-		</p>
-
-		<h4 id="dataset-title">Title</h4>
-		<ul>
-			<li>
-				Must provide a name for the dataset using the 
-				<a href="http://purl.org/dc/terms/title" target="_blank">
-				<code>dcterms:title</code></a> predicate.
-			</li>
-		</ul>
-		<p>
-			For more details see 
-			<a href="http://www.w3.org/TR/void/#dublin-core" target="_blank">
-			Section 2.2</a> of the VoID Specification.
-		</p>
-
-		<h4 id="dataset-description">Description</h4>
-		<ul>
-			<li>
-				Must provide a description of the dataset using the 
-				<a href="http://purl.org/dc/terms/description" target="_blank">
-				<code>dcterms:description</code></a> predicate.
-			</li>
-		</ul>
-		<p>
-			For more details see 
-			<a href="http://www.w3.org/TR/void/#dublin-core" target="_blank">
-			Section 2.2</a> of the VoID Specification.
-		</p>
-
-		<h4 id="dataset-webpages">Webpages</h4>
-		<ul>
-			<li>
-				Must provide a link to the homepage for the dataset using 
-				the <a href="http://xmlns.com/foaf/spec/#term_homepage">
-				<code>foaf:homepage</code></a> predicate.
-			</li>
-			<li>
-				May provide links to other pages that discuss the dataset 
-				using the <a href="http://xmlns.com/foaf/spec/#term_page">
-				<code>foaf:page</code></a> predicate.
-			</li>
-		</ul>
-		<p>
-			An example of an external page that may be linked is the bioDBcore
-			[[BioDBcore]] entry, see <a href="#BioDBcore">Section 7.2</a>.
-		</p>
-		<p>
-			For more details see 
-			<a href="http://www.w3.org/TR/void/#webpage" target="_blank">
-			Section 2.1</a> of the VoID Specification.
-		</p>
-
-		<h4 id="dataset-license">License</h4>
-		<ul>
-			<li>
-				Must declare the license under which the dataset is
-				published using the 
-				<a href="http://purl.org/dc/terms/license" target="_blank">
-				<code>dcterms:license</code></a> predicate.
-			</li>
-		</ul>
-		<p>
-			Where possible, we recommend publishing data under an open license
-			to enable reuse of the data with appropriate acknowledgement. For
-			Open PHACTS, the recommended license is <a
-			href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>. 
-			A list of alternative licenses are available in <a
-			href="http://www.w3.org/TR/void/#license">Section 2.4</a> of the 
-			W3C note on VoID.
-		</p>
-		<p>
-			For more details see 
-			<a href="http://www.w3.org/TR/void/#license" target="_blank">
-			Section 2.4</a> of the VoID Specification.
-		</p>
-
-		<h4 id="dataset-namespace">Namespace</h4>
-		<ul>
-			<li>
-				Must declare the URI namespace for the resources in the 
-				dataset using the 
-				<a href="http://rdfs.org/ns/void#uriSpace" target="_blank">
-				<code>void:uriSpace</code></a> predicate.
-			</li>
-		</ul>
-		<p>
-			Note that the object of the <code>void:uriSpace</code> predicate
-			is a literal, not a URI.
-		</p>
-		<p>
-			For more details see 
-			<a href="http://www.w3.org/TR/void/#pattern" target="_blank">
-			Section 4.2</a> of the VoID Specification.
-		</p>
 	<!-- end dataset-metadata -->			
 	</section>
 	<section id="dataset-prov-version">
 		<h3 id="dataset-provenance-version">Provenance and Version</h3>
 
 		<h4 id="dataset-version">Version</h4>
-		<ul>
-			<li>
-				Must declare the version of the dataset using the
-				<a href="http://purl.org/pav/" target="_blank"> 
-				<code>pav:version</code></a> predicate, where this exists for
-				the dataset.
-			</li>
-			<li>
-				Should link back to the previous version of the dataset using the
-				<a href="http://purl.org/pav/" target="_blank"> 
-				<code>pav:previousVersion</code></a> predicate.
-			</li>
-		</ul>
 		<p>
 			Not all dataset have the notion of a version number. Where the
 			dataset does have this notion, it must be given in the 
@@ -720,104 +624,9 @@
 
 		<h4 id="dataset-provenance">Provenance of Data Origin</h4>
 		<p>
-			Details of the origin of the data must be provided using one of the 
-			following groups of predicates. 
+			Details of the origin of the data SHOULD be provided as a Dataset 
+			description of the appropriate form, i.e. Non-RDF or RDF.
 		</p> 	
-		<ul>
-			<li>
-				If the dataset and its description are accessed from their
-				original location, then the the following metadata must be
-				available from the VoID description at that site:
-				<ul>
-					<li>
-						<a href="http://purl.org/dc/terms/publisher" target="_blank">
-						<code>dcterms:publisher</code></a> to capture who 
-						published the data.
-					</li>
-					<li>
-						<a href="http://purl.org/dc/terms/created" target="_blank">
-						<code>dcterms:created</code></a> to capture when the
-						dataset was created.
-					</li>
-					<li>
-						<a href="http://purl.org/dc/terms/modified" target="_blank">
-						<code>dcterms:modified</code></a> to capture when the 
-						last update was made.
-					</li>
-				</ul>
-				Note that we require both <code>dcterms:created</code> and
-				<code>dcterms:modified</code> to be declared. This ensures that
-				we know which version of the dataset has been used. 
-			</li>
-			<li>
-				If the dataset has been retrieved from another location,
-				i.e. it has already been published as RDF and this is a 
-				replica of that data, then the following metadata must
-				be given:
-				<ul>
-					<li>
-						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:retrievedFrom</code></a> to capture the 
-						location of the original source.
-					</li>
-					<li>
-						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:retrievedOn</code></a> to capture when the
-						retrieval was made.
-					</li>
-					<li>
-						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:retrievedBy</code></a> to capture who made the
-						retrieval. 
-					</li>
-				</ul>
-			</li>
-			<li>
-				If the dataset is imported from another data source, i.e.
-				the knowledge content is unchanged but the format of the 
-				data has been changed (e.g. XML to RDF transformation), then 
-				the following metadata must be given:
-				<ul>
-					<li>
-						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:importedFrom</code></a> to capture the 
-						location of the original source.
-					</li>
-					<li>
-						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:importedOn</code></a> to capture when the 
-						import was made.
-					</li>
-					<li>
-						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:importedBy</code></a> to capture who made the
-						import.
-					</li>
-				</ul>
-			</li>
-			<li>
-				If the dataset is derived from another data source, i.e.
-				the knowledge content has changed, then the following 
-				metadata must be provided:
-				<ul>
-					<li>
-						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:derivedFrom</code></a> to capture the 
-						relationship to the original data source.
-					</li>
-					<li>
-						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:createdOn</code></a> to capture when the 
-						dataset was made.
-					</li>
-					<li>
-						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:createdBy</code></a> to capture who made the
-						dataset. 
-					</li>
-				</ul>
-			</li>
-		</ul>		
 		<p>
 			Note that the object of the <code>pav:xxxBy</code> predicate is 
 			a URI. 
@@ -1659,6 +1468,1220 @@
 	</section>
 </section>
 
+<section id="appendix-properties" class="appendix">
+	<h2>Classes and Properties</h2>
+	<section id="dcat">
+		<h3 id="dcat">Data Catalog Vocabulary</h3>
+		<table id="dcat:Dataset" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Class</th>
+					<th>
+						<a href="http://www.w3.org/ns/dcat#Dataset" target="_blank">
+						<code>dcat:Dataset</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						A collection of data, published or curated by a single 
+						source, and available for access or download in one or 
+						more formats.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Sub class of:</td>
+					<td><a href="#dctypes:Dataset">dctypes:Dataset</a>
+				</tr>
+			</tbody>
+		</table>
+		<table id="dcat:landingPage" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://www.w3.org/ns/dcat#landingPage" target="_blank">
+						<code>dcat:landingPage</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						A Web page that can be navigated to in a Web browser to 
+						gain access to the dataset, its distributions and/or 
+						additional information.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Sub property of:</td>
+					<td><a href="#foaf:page">foaf:page</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Domain:</td>
+					<td><a href="#dcat:Dataset">dcat:Dataset</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://xmlns.com/foaf/spec/#Document">foaf:Document</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						Used to specify a link to a human readable web page
+						documenting the underlying dataset.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Example:</td>
+					<td>
+						For the RDF conversion of the DrugBank dataset this 
+						property should point to
+						<a href="http://www.drugbank.ca/" target="_blank">
+						http://www.drugbank.ca/</a> since this resource provides
+						information about the contents of the dataset.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#foaf:homepage">foaf:homepage</a>, 
+						<a href="#foaf:page">foaf:page</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+	<!-- end dcat -->
+	</section>
+	<section id="dcterms">
+		<h3 id="dcterms">Dublin Core Terms</h3>
+		<table id="dcterms:description" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/dc/terms/description" target="_blank">
+						<code>dcterms:description</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						An account of the resource.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						Provides a human readable description of the dataset. 
+						For more details see 
+						<a href="http://www.w3.org/TR/void/#dublin-core" target="_blank">
+						Section 2.2</a> of the VoID Specification.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="dcterms:issued" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/dc/terms/issued" target="_blank">
+						<code>dcterms:issued</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						Date of formal issuance (e.g., publication) of the resource.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td>
+						<a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a>
+						 typed as 
+						 <a href="http://www.w3.org/TR/xmlschema-2/#date">xsd:date</a>
+						 .  
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							The date is encoded as a literal in "yyyy-mm-dd" form (
+						 	<a href="http://www.w3.org/TR/NOTE-datetime">ISO 8601 Date and Time Formats</a>
+						 	). If the specific day or month are not known, then 01 should be specified.
+						 </p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#pav:createdOn">pav:createdOn</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="dcterms:license" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/dc/terms/license" target="_blank">
+						<code>dcterms:license</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						A legal document giving official permission to do 
+						something with the resource.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							Declares the license under which the dataset is 
+							published.
+						</p>
+						<p>
+							Where possible, we recommend publishing data under an open license
+							to enable reuse of the data with appropriate acknowledgement. For
+							Open PHACTS, the recommended license is <a
+							href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>. 
+							A list of alternative licenses are available in <a
+							href="http://www.w3.org/TR/void/#license">Section 2.4</a> of the 
+							W3C note on VoID.
+						</p>
+						<p>
+							For more details see 
+							<a href="http://www.w3.org/TR/void/#license" target="_blank">
+							Section 2.4</a> of the VoID Specification.
+						</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="dcterms:publisher" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/dc/terms/publisher" target="_blank">
+						<code>dcterms:publisher</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						An entity responsible for making the resource available.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Example:</td>
+					<td>
+						For ChEMBL, the publisher would be the EBI:
+						<a href="http://www.ebi.ac.uk/" target="_blank">http://www.ebi.ac.uk/</a>.
+						This is different from the value for the homepage in this
+						case.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#dcat:landingPage">dcat:landingPage</a>,
+						<a href="#foaf:homepage">foaf:homepage</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="dcterms:title" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/dc/terms/title" target="_blank">
+						<code>dcterms:title</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						A name given to the resource.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						Used to declare the short name of the dataset. For more 
+						details see 
+						<a href="http://www.w3.org/TR/void/#dublin-core" target="_blank">
+						Section 2.2</a> of the VoID Specification.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	<!-- end dcterms -->
+	</section>
+
+	<section id="dctypes">
+		<h3>Dublin Core Types</h3>
+		<table id="dctypes:Dataset" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Class</th>
+					<th>
+						<a href="http://purl.org/dc/dcmitype/Dataset" target="_blank">
+						<code>dctypes:Dataset</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						Data encoded in a defined structure.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						Used to declare the type of a dataset published in a
+						format other than RDF.
+						For a dataset published in RDF use 
+						<a href="#void:Dataset"><code>void:Dataset</code></a>.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	<!-- end dctypes -->
+	</section>
+	
+	<section id="foaf">
+		<h3>Friend of a Friend</h3>
+		<table id="foaf:homepage" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://xmlns.com/foaf/spec/#term_homepage" target="_blank">
+						<code>foaf:homepage</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						A homepage for the dataset.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://xmlns.com/foaf/spec/#Document">foaf:Document</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						Specifies the homepage for the resource. For more details 
+						see 
+						<a href="http://www.w3.org/TR/void/#webpage" target="_blank">
+						Section 2.1</a> of the VoID Specification.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						foaf:homepage is an inverse functional property (IFP) which means that it should be unique and precisely identify the catalog. This allows smushing various descriptions of the catalog when different URIs are used.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Example:</td>
+					<td>
+						The foaf:homepage for the ChemSpider RDF dataset is
+						<a href="http://rdf.chemspider.com/" target="_blank">
+						http://rdf.chemspider.com/</a>.
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#foaf:page">foaf:page</a>, 
+						<a href="#dcat:landingPage">dcat:landingPage</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="foaf:page" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://xmlns.com/foaf/spec/#term_page" target="_blank">
+						<code>foaf:page</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						A page about the dataset.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://xmlns.com/foaf/spec/#Document">foaf:Document</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						Specifies a webpage or document for the resource. Points
+						to secondary sources of infotmation, e.g. catalogue records.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Example:</td>
+					<td>
+						For the ChemSpider RDF dataset, the foaf:page property 
+						could point to the associated MIRIAM record
+						<a href="http://www.ebi.ac.uk/miriam/main/collections/MIR:00000138" target="_blank">
+						http://www.ebi.ac.uk/miriam/main/collections/MIR:00000138</a>.
+						
+						For more details see 
+						<a href="http://www.w3.org/TR/void/#webpage" target="_blank">
+						Section 2.1</a> of the VoID Specification.
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#foaf:homepage">foaf:homepage</a>, 
+						<a href="#dcat:landingPage">dcat:landingPage</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+	<!-- end foaf -->
+	</section>
+
+	<section id="pav">
+		<h3>Provenance, Authoring and Versioning Ontology</h3>
+		<table id="pav:authoredBy" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/pav/authoredBy" target="_blank">
+						<code>pav:authoredBy</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						An agent that originated or gave existence to the work 
+						that is expressed by the digital resource.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							The author of the content of a resource may be 
+							different from the creator of the resource 
+							representation (although they are often the same). 
+							See <a href="#pav:createdBy">pav:createdBy</a> for 
+							a discussion.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Example:</td>
+					<td>
+						The object of the triple should point to a URL that 
+						representes the person responsible for authoring
+						the content, e.g.
+						<a href="http://orcid.org/0000-0002-5711-4872" target="_blank">http://orcid.org/0000-0002-5711-4872</a>.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#pav:createdBy">pav:createdBy</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="pav:createdBy" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/pav/createdBy" target="_blank">
+						<code>pav:createdBy</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						An agent primary responsible for making the digital 
+						artifact or resource representation.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							This property is distinct from forming the content, 
+							which is indicated with pav:contributedBy or its 
+							subproperties; 
+							<a href="#pav:authoredBy">pav:authoredBy</a>, which 
+							identifies who authored the knowledge expressed by 
+							this resource; and pav:curatedBy, which identifies 
+							who curated the knowledge into its current form.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Example:</td>
+					<td>
+						The object of the triple should point to a URL that 
+						representes the person or tool responsible for creating
+						the digital artifact, e.g.
+						<a href="http://orcid.org/0000-0002-5711-4872" target="_blank">http://orcid.org/0000-0002-5711-4872</a>.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#pav:authoredBy">pav:authoredBy</a>,
+						<a href="#pav:createdWith">pav:createdWith</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="pav:createdOn" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/pav/createdOn" target="_blank">
+						<code>pav:createdOn</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						The date of creation of the resource.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td>
+						<a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a>
+						 typed as 
+						 <a href="http://www.w3.org/TR/xmlschema-2/#dateTime">xsd:dateTime</a>
+						 .  
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						The dateTime is encoded as a literal in "yyyy-mm-ddThh:mm:sszzzzz" form (
+						 <a href="http://www.w3.org/TR/NOTE-datetime">ISO 8601 Date and Time Formats</a>
+						 ). If the specific day or month are not known, then 01 should be specified.
+						 If the specific hour, minute or second are not known, then 00 should be
+						 specified. If the timezone is not known then Z should be specified.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#dcterms:issued">dcterms:issued</a>,
+						<a href="#pav:lastUpdateOn">pav:lastUpdateOn</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="pav:createdWith" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/pav/createdWith" target="_blank">
+						<code>pav:createdWith</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						The software/tool used by the creator 
+						(<a href="#pav:createdBy">pav:createdBy</a>) when 
+						making the digital resource.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							The specific version of a tool/script that was used
+							to created the resource.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Example:</td>
+					<td>
+						The versioned GitHub URL used to perform an RDF conversion:
+						<a href="https://github.com/openphacts/chembl.rdf/commit/97c900460b46481aac07dfb11807a3f49fc92b2e">https://github.com/openphacts/chembl.rdf/commit/97c900460b46481aac07dfb11807a3f49fc92b2e</a>
+				</tr>
+<!-- 				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#pav:createdWith">pav:createdWith</a>
+					</td>
+				</tr>
+ -->			</tbody>
+		</table>
+		<table id="pav:derivedFrom" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/pav/derivedFrom" target="_blank">
+						<code>pav:derivedFrom</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						Derived from a different resource. 
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							Derivation conserns itself with derived knowledge. 
+							If this resource has the same content as the other 
+							resource, but has simply been transcribed to fit a 
+							different model (like XML -> RDF or SQL -> CVS), use 
+							<a href="#pav:importedFrom">pav:importedFrom</a>. 
+							If a resource was simply retrieved, use 
+							pav:retrievedFrom. If the content has however been 
+							further refined or modified, 
+							<a href="#pav:derivedFrom">pav:derivedFrom</a> 
+							should be used.
+						</p>
+						<p>
+							Details about who performed the derivation may be 
+							indicated with pav:contributedBy and its 
+							subproperties.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#pav:importedFrom">pav:importedFrom</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="pav:importedBy" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/pav/importedBy" target="_blank">
+						<code>pav:importedBy</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						An entity responsible for importing the data.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							The importer is usually a software entity which has 
+							done the transcription from the original source.
+						</p>
+						<p>
+							Note that pav:importedBy may overlap with 
+							<a href="#pav:createdWith">pav:createdWith</a>.
+						</p>
+						<p>
+							The source for the import should be given with 
+							<a href="#pav:importedFrom">pav:importedFrom</a>. 
+							The time of the import should be given with 
+							<a href="#pav:importedOn">pav:importedOn</a>.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#pav:createdWith">pav:createdWith</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="pav:importedFrom" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/pav/importedFrom" target="_blank">
+						<code>pav:importedFrom</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						The original source of imported information.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							Import means that the content has been preserved, 
+							but transcribed somehow, for instance to fit a 
+							different representation model. Examples of import 
+							are when the original was JSON and the current 
+							resource is RDF, or where the original was an 
+							document scan, and this resource is the plain text 
+							found through OCR.
+						</p>
+						<p>
+							The imported resource does not have to be complete, 
+							but should be consistent with the knowledge conveyed 
+							by the original resource.
+						</p>
+						<p>
+							If additional knowledge has been contributed, 
+							<a href="#pav:derivedFrom">pav:derivedFrom</a> 
+							would be more appropriate.
+						</p>
+						<p>
+							If the resource has been copied verbatim from the 
+							original representation (e.g. downloaded), use 
+							pav:retrievedFrom.
+						</p>
+						<p>
+							To indicate which agent(s) performed the import, 
+							use <a href="#pav:importedBy">pav:importedBy</a>. 
+							Use <a href="#pav:importedOn">pav:importedOn</a> 
+							to indicate when it happened.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#pav:derivedFrom">pav:derivedFrom</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="pav:importedOn" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/pav/importedOn" target="_blank">
+						<code>pav:importedOn</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						The date this resource was imported from a source 
+						(<a href="#pav:importedFrom">pav:importedFrom</a>).
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td>
+						<a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a>
+						 typed as 
+						 <a href="http://www.w3.org/TR/xmlschema-2/#dateTime">xsd:dateTime</a>
+						 .  
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							If the source is later reimported, this should be 
+							indicated with 
+							<a href="#pav:lastRefreshedOn">pav:lastRefreshedOn</a>.
+						</p>
+						<p>
+							The source of the import should be given with 
+							<a href="#pav:importedFrom">pav:importedFrom</a>. 
+							The agent that performed the import should be given 
+							with <a href="#pav:importedBy">pav:importedBy</a>.
+						</p>
+						<p>
+							The dateTime is encoded as a literal in "yyyy-mm-ddThh:mm:sszzzzz" form (
+						 	<a href="http://www.w3.org/TR/NOTE-datetime">ISO 8601 Date and Time Formats</a>
+						 	). If the specific day or month are not known, then 01 should be specified.
+						 	If the specific hour, minute or second are not known, then 00 should be
+						 	specified. If the timezone is not known then Z should be specified.
+						 </p>
+					</td>
+				</tr>
+<!-- 				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#dcterms:issued">dcterms:issued</a>,
+						<a href="#pav:lastUpdateOn">pav:lastUpdateOn</a>
+					</td>
+				</tr>
+ -->			</tbody>
+		</table>		
+		<table id="pav:lastRefreshedOn" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/pav/lastRefreshedOn" target="_blank">
+						<code>pav:lastRefreshedOn</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						The date of the last re-import of the resource.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td>
+						<a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a>
+						 typed as 
+						 <a href="http://www.w3.org/TR/xmlschema-2/#dateTime">xsd:dateTime</a>
+						 .  
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							This property is used in addition to 
+							<a href="#pav:importedOn">pav:importedOn</a> if 
+							this version has been updated due to a re-import. 
+							If the re-import created a new resource rather than 
+							refreshing an existing, then 
+							<a href="#pav:importedOn">pav:importedOn</a> should 
+							be used together with 
+							<a href="#pav:previousVersion">pav:previousVersion</a>.
+						</p>
+						<p>
+							The dateTime is encoded as a literal in "yyyy-mm-ddThh:mm:sszzzzz" form (
+						 	<a href="http://www.w3.org/TR/NOTE-datetime">ISO 8601 Date and Time Formats</a>
+						 	). If the specific day or month are not known, then 01 should be specified.
+						 	If the specific hour, minute or second are not known, then 00 should be
+						 	specified. If the timezone is not known then Z should be specified.
+						 </p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#pav:importedOn">pav:importedOn</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="pav:lastUpdateOn" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/pav/lastUpdateOn" target="_blank">
+						<code>pav:lastUpdateOn</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						The date of the last update of the resource.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td>
+						<a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a>
+						 typed as 
+						 <a href="http://www.w3.org/TR/xmlschema-2/#dateTime">xsd:dateTime</a>
+						 .  
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							An update is a change which did not warrant making a 
+							new resource related using <a href="#pav:previousVersion">pav:previousVersion</a>, for 
+							instance correcting a spelling mistake.
+						</p>
+						<p>
+							The dateTime is encoded as a literal in "yyyy-mm-ddThh:mm:sszzzzz" form (
+						 	<a href="http://www.w3.org/TR/NOTE-datetime">ISO 8601 Date and Time Formats</a>
+						 	). If the specific day or month are not known, then 01 should be specified.
+						 	If the specific hour, minute or second are not known, then 00 should be
+						 	specified. If the timezone is not known then Z should be specified.
+						 </p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#pav:createdOn">pav:createdOn</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="pav:previousVersion" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/pav/previousVersion" target="_blank">
+						<code>pav:previousVersion</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						The previous version of a resource in a lineage.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							For instance a news article updated to correct 
+							factual information would point to the previous 
+							version of the article with pav:previousVersion. If 
+							however the content has significantly changed so 
+							that the two resources no longer share lineage (say 
+							a new news article that talks about the same facts), 
+							they should be related using pav:derivedFrom.
+						</p>
+						<p>
+							A version number of this resource can be provided 
+							using the data property pav:version.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#pav:version">pav:version</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="pav:version" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/pav/version" target="_blank">
+						<code>pav:version</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						The version number of a resource.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						This is a freetext string, typical values are "1.5" or 
+						"21". The URI identifying the previous version can be 
+						provided using prov:previousVersion.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#pav:previousVersion">pav:previousVersion</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	<!-- end pav -->
+	</section>
+	<section id="void">
+		<h3>Vocabulary of Interlinked Datasets</h3>
+		<table id="void:Dataset" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Class</th>
+					<th>
+						<a href="http://rdfs.org/ns/void#Dataset" target="_blank">
+						<code>void:Dataset</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						A set of RDF triples that are published, maintained or 
+						aggregated by a single provider.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						Used to declare the type of a dataset published in RDF.
+						For a dataset not published in RDF use 
+						<a href="#dctypes:Dataset"><code>dctypes:Dataset</code></a>.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="void:subset" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://rdfs.org/ns/void#subset" target="_blank">
+						<code>void:subset</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						has subset
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Domain:</td>
+					<td><a href="#void:Dataset">void:Dataset</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="#void:Dataset">void:Dataset</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							In the VoID note [[VOID]], the <code>void:subset</code> 
+							property is used for both <em>subset of</em> and 
+							<em>has subset</em>. The declared semantics for the 
+							property is <em>has subset</em>. Within Open PHACTS, the 
+							property must be used with the <em>has subset</em> 
+							semantics.
+						</p>
+						<p>
+							For more details see 
+							<a href="http://www.w3.org/TR/void/#subset" target="_blank">
+							Section 4.4</a> of the VoID Specification.
+						</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="void:uriRegexPattern" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://rdfs.org/ns/void#uriRegexPattern" target="_blank">
+						<code>void:uriRegexPattern</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						Defines a regular expression pattern matching URIs in 
+						the dataset.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Domain:</td>
+					<td><a href="#void:Dataset">void:Dataset</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						For more details see 
+						<a href="http://www.w3.org/TR/void/#pattern" target="_blank">
+						Section 4.2</a> of the VoID Specification.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Example:</td>
+					<td>
+						For the ChemSpider RDF dataset, the value would be
+						<code>"^http://rdf\\.chemspider\\.com/"</code>.
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#void:uriSpace">void:uriSpace</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="void:uriSpace" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://rdfs.org/ns/void#uriSpace" target="_blank">
+						<code>void:uriSpace</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						A URI that is a common string prefix of all the entity 
+						URIs in a void:Dataset.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Domain:</td>
+					<td><a href="#void:Dataset">void:Dataset</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						For more details see 
+						<a href="http://www.w3.org/TR/void/#pattern" target="_blank">
+						Section 4.2</a> of the VoID Specification.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Example:</td>
+					<td>
+						For the ChemSpider RDF dataset, the value would be
+						<code>"http://rdf.chemspider.com/"</code>.
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#void:uriRegexPattern">void:uriRegexPattern</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	<!-- end void -->
+	</section>
+<!-- end appendix-properties -->
+</section>
+
 <section id="appendix-vocabulary-terms" class="appendix">
 	<h2 id="appendix-vocabulary-terms">Suggested Vocabulary Terms</h2>
 	<section id="appendix-topics-vocab">
@@ -1924,7 +2947,8 @@
 		<pre class="turtle">
 @prefix : &lt;http://linkedchemistry.info/void.ttl#&gt;.
 
-@prefix dcterms: &lt;http://purl.org/dc/terms/&gt;.
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix dctypes: &lt;http://purl.org/dc/dcmitype/&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 @prefix freq: &lt;http://purl.org/cld/freq/&gt; .
 @prefix pav: &lt;http://purl.org/pav/&gt;.
@@ -1992,7 +3016,7 @@
 
 :chembl_dataset
 # Metadata about the original data source
-    a dcterms:Dataset;
+    a dctypes:Dataset;
     dcterms:title "ChEMBL"@en;
     dcterms:description """ChEMBL is a database of bioactive drug-like small molecules, it contains 2-D structures, calculated properties (e.g. logP, Molecular Weight, Lipinski Parameters, etc.) and abstracted bioactivities (e.g. binding constants, pharmacology and ADMET data)."""@en;
     foaf:homepage &lt;http://www.ebi.ac.uk/chembl/&gt;;
