@@ -682,27 +682,6 @@
 	<section id="dataset-topic-resources">
 		<h3 id="dataset-topics-resources">Vocabularies, Topics, and 
 			Example Resources</h3>
-		<h4 id="dataset-topcis">Dataset Topics</h4>
-		<ul>
-			<li>
-				Should declare the topics covered using the
-				<a href="http://purl.org/dc/terms/subject" target="_blank">
-				<code>dcterms:subject</code></a> predicate.
-			</li>
-		</ul>
-		<p>
-			Multiple topics can be declared. If the data is split into 
-			subsets, then the topics should be associated with the subsets. 
-			BioPortal [[BioPortalWeb]] [[BioPortal]] can be used to search for
-			suitable vocabulary terms for topics. DBPedia URIs may also be used.
-			A list of common terms relevant for Open PHACTS is given in 
-			<a href="#appendix-topics-vocab">Appendix A.1</a>.
-		</p>
-		<p>
-			For more details see 
-			<a href="http://www.w3.org/TR/void/#subject" target="_blank">
-			Section 2.5</a> of the VoID Specification.
-		</p>
 		<h4 id="dataset-resources">Example Resources</h4>
 		<ul>
 			<li>
@@ -1703,6 +1682,48 @@
 					<td>
 						<a href="#dcat:landingPage">dcat:landingPage</a>,
 						<a href="#foaf:homepage">foaf:homepage</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="dcterms:subject" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/dc/terms/subject" target="_blank">
+						<code>dcterms:subject</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						The topic of the dataset.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							Declared the topics covered by the dataset.
+							Multiple topics can be declared. If the data is split into 
+							subsets, then the topics should be associated with the subsets. 
+							BioPortal [[BioPortalWeb]] [[BioPortal]] can be used to search for
+							suitable vocabulary terms for topics. DBPedia URIs may also be used.
+							A list of common terms relevant for Open PHACTS is given in 
+							<a href="#appendix-topics-vocab">Appendix A.2</a>.
+						</p>
+						<p>
+							For more details see 
+							<a href="http://www.w3.org/TR/void/#subject" target="_blank">
+							Section 2.5</a> of the VoID Specification.
+						</p>
 					</td>
 				</tr>
 			</tbody>
