@@ -538,7 +538,7 @@
 	</p>
 
 	<section id="dataset-classification">
-		<h3>Dataset Categories</h3>
+		<h3 id="dataset-categories">Dataset Categories</h3>
 		<p>
 			In Open PHACTS we distinguish three categories of dataset based on 
 			the format in which their data is published and how this was 
@@ -546,62 +546,147 @@
 			properties that are used to describe the dataset, templates are 
 			given in <a href="#appendix-templates">Appendix A.?</a>. 
 		</p>
-		<ul>
-			<li>
-				<strong>Non-RDF Dataset:</strong>
-				This is a dataset that is published in a non-RDF format, e.g. 
-				as a database dump or a set of web pages. Examples of such 
-				datasets include <a href="http://www.drugbank.ca/">DrugBank</a> and 
-				<a href="http://www.wwpdb.org/">Protein Data Bank</a>. The
-				<a href="#non-rdf-dataset-figure">figure</a> below shows an 
-				overview of the metadata to be captured for a non-RDF dataset.	
-				<div class="image">
-		    		<img
-		    			id="non-rdf-dataset-figure" 
-	    				alt="Non-RDF dataset properties"
-	    				width="600px" 
-	    				src="Non-RDF-Dataset.png"
-	    			/>
-	    		</div>
-			</li>
-			<li>
-				<strong>RDF Dataset:</strong>
-				This is a dataset that is published as RDF, i.e. a set of RDF
-				triples. Examples of such datasets include 
-				<a href="https://www.ebi.ac.uk/chembl/">ChEMBL</a> and 
-				<a href="http://www.uniprot.org/">UniProt</a>. The
-				<a href="#rdf-dataset-figure">figure</a> below shows an 
-				overview of the metadata to be captured for an RDF dataset.	
-				<div class="image">
-		    		<img
-		    			id="rdf-dataset-figure" 
-	    				alt="RDF dataset properties"
-	    				width="600px" 
-	    				src="RDF-Dataset.png"
-	    			/>
-	    		</div>
-			</li>
-			<li>
-				<strong>RDF Conversion:</strong>
-				This is a dataset that is originally published in a non-RDF 
-				format but has been converted by some third party publisher
-				into an RDF format. Examples of such datasets include all of 
-				the datasets published by 
-				<a href="http://bio2rdf.org/">Bio2RDF</a>. The
-				<a href="#rdf-conversion-figure">figure</a> below shows an 
-				overview of the metadata to be captured for a non-RDF dataset 
-				converted by a third party into RDF.	
-				<div class="image">
-		    		<img
-		    			id="rdf-conversion-figure" 
-	    				alt="RDF conversion dataset properties"
-	    				width="600px" 
-	    				src="RDF-Conversion.png"
-	    			/>
-	    		</div>
-			</li>
-		</ul>
-		
+		<h4 id="non-rdf-dataset">Non-RDF Dataset</h4>
+		<p>
+			This is a dataset that is published in a non-RDF format, e.g. 
+			as a database dump or a set of web pages. Examples of such 
+			datasets include <a href="http://www.drugbank.ca/">DrugBank</a> and 
+			<a href="http://www.wwpdb.org/">Protein Data Bank</a>. The
+			<a href="#non-rdf-dataset-figure">figure</a> below shows an 
+			overview of the metadata to be captured for a non-RDF dataset.	
+		</p>
+		<div class="image">
+	    	<img
+	    		id="non-rdf-dataset-figure" 
+    			alt="Non-RDF dataset properties"
+    			width="600px" 
+    			src="Non-RDF-Dataset.png"
+    		/>
+    	</div>
+    	<p>
+    		The properties for a non-RDF dataset are:
+    	</p>
+    	<ul>
+    		<li>
+    			MUST
+    			<ul>
+    				<li>Declare the type to be <a href="#dctypes:Dataset">dctypes:Dataset</a>;</li>
+    				<li>Provide a short title <a href="#dcterms:title">dcterms:title</a>;</li>
+    				<li>Provide a description of the dataset <a href="#dcterms:description">dcterms:description</a>;</li>
+    				<li>Link to the publisher <a href="#dcterms:publisher">dcterms:publisher</a>;</li>
+    				<li>Link to the dataset webpage <a href="#foaf:homepage">foaf:homepage</a>;</li>
+    				<li>Link to documentation about the dataset <a href="#dcat:landingPage">dcat:landingPage</a>;</li>
+    				<li>Link to the dataset license <a href="#dcterms:license">dcterms:license</a>;</li>
+    				<li>Date on which the dataset was published <a href="#dcterms:issued">dcterms:issued</a>;</li>
+    				<li>Link to one or more <a href="#distribution-format">distribution format descriptions</a> for the dataset <a href="#dcat:distribution">dcat:distribution</a>.</li> 
+    			</ul>
+    		</li>
+    		<li>
+    			SHOULD
+    			<ul>
+    				<li>Declare the author of the dataset <a href="#pav:authoredBy">pav:authoredBy</a>;</li>
+    				<li>Declare when the dataset was authored <a href="#pav:authoredOn">pav:authoredOn</a>;</li>
+    				<li>Declare who created the digital representation of the dataset <a href="#pav:createdBy">pav:createdBy</a>;</li>
+    				<li>Declare when the digital representation of the dataset was created <a href="#pav:createdOn">pav:createdOn</a>;</li>
+    				<li>Declare the dataset version if it exists <a href="#pav:version">pav:version</a>;</li>
+    				<li>Link to the previous version of the dataset <a href="#pav:previousVersion">pav:previousVersion</a>.</li>
+    			</ul>
+    		</li>
+    	</ul>
+		<h4 id="rdf-dataset">RDF Dataset</h4>
+		<p>
+			This is a dataset that is published as RDF, i.e. a set of RDF
+			triples. Examples of such datasets include 
+			<a href="https://www.ebi.ac.uk/chembl/">ChEMBL</a> and 
+			<a href="http://www.uniprot.org/">UniProt</a>. The
+			<a href="#rdf-dataset-figure">figure</a> below shows an 
+			overview of the metadata to be captured for an RDF dataset.
+		</p>	
+		<div class="image">
+		 	<img
+		    	id="rdf-dataset-figure" 
+	    		alt="RDF dataset properties"
+	    		width="600px" 
+	    		src="RDF-Dataset.png"
+	    	/>
+	    </div>
+    	<p>
+    		The properties for an RDF dataset are:
+    	</p>
+    	<ul>
+    		<li>
+    			MUST
+    			<ul>
+    				<li>Declare the type to be <a href="#void:Dataset">void:Dataset</a>;</li>
+    				<li>Provide a short title <a href="#dcterms:title">dcterms:title</a>;</li>
+    				<li>Provide a description of the dataset <a href="#dcterms:description">dcterms:description</a>;</li>
+    				<li>Link to the publisher <a href="#dcterms:publisher">dcterms:publisher</a>;</li>
+    				<li>Link to the dataset webpage <a href="#foaf:homepage">foaf:homepage</a>;</li>
+    				<li>Link to documentation about the dataset <a href="#dcat:landingPage">dcat:landingPage</a>;</li>
+    				<li>Link to the dataset license <a href="#dcterms:license">dcterms:license</a>;</li>
+    				<li>Date on which the dataset was published <a href="#dcterms:issued">dcterms:issued</a>;</li>
+    				<li>Link to the files that contain the RDF data <a href="#void:dataDump">void:dataDump</a>.</li>
+    			</ul>
+    		</li>
+    		<li>
+    			SHOULD
+    			<ul>
+    				<li>Declare the author of the dataset <a href="#pav:authoredBy">pav:authoredBy</a>;</li>
+    				<li>Declare when the dataset was authored <a href="#pav:authoredOn">pav:authoredOn</a>;</li>
+    				<li>Declare who created the digital representation of the dataset <a href="#pav:createdBy">pav:createdBy</a>;</li>
+    				<li>Declare when the digital representation of the dataset was created <a href="#pav:createdOn">pav:createdOn</a>;</li>
+    				<li>Declare the dataset version if it exists <a href="#pav:version">pav:version</a>;</li>
+    				<li>Link to the previous version of the dataset <a href="#pav:previousVersion">pav:previousVersion</a>.</li>
+    			</ul>
+    		</li>
+    		<li>
+    			MAY
+    			<ul>
+    				<li>Link to one or more <a href="#distribution-format">distribution format descriptions</a> for the dataset <a href="#dcat:distribution">dcat:distribution</a>;</li> 
+    				<li>Link to a SPARQL endpoint containing the data <a href="#void:sparqlEndpoint">void:sparqlEndpoint</a>.</li>
+    			</ul>
+    		</li>
+    	</ul>
+		<h4 id="rdf-conversion">RDF Conversion</h4>
+		<p>
+			This is a dataset that is originally published in a non-RDF 
+			format but has been converted by some third party publisher
+			into an RDF format. Examples of such datasets include all of 
+			the datasets published by 
+			<a href="http://bio2rdf.org/">Bio2RDF</a>. The
+			<a href="#rdf-conversion-figure">figure</a> below shows an 
+			overview of the metadata to be captured for a non-RDF dataset 
+			converted by a third party into RDF.
+		</p>	
+		<div class="image">
+	  		<img
+	   			id="rdf-conversion-figure" 
+  				alt="RDF conversion dataset properties"
+   				width="600px" 
+   				src="RDF-Conversion.png"
+   			/>
+   		</div>		
+    	<p>
+    		The properties for a dataset converted into RDF are:
+    	</p>
+    	<ul>
+    		<li>
+    			MUST
+    			<ul>
+    				<li>Provide a description of the <a href="#rdf-dataset">RDF dataset</a>;</li>
+    				<li>Link to a <a href="#non-rdf-dataset">Non-RDF Dataset</a> using <a href="#pav:importedFrom">pav:importedFrom</a>.</li>
+    			</ul>
+    		</li>
+    		<li>
+    			SHOULD
+    			<ul>
+    				<li>Declare who imported the dataset <a href="#pav:importedBy">pav:importedBy</a>;</li>
+    				<li>Declare when the initial import was made using <a href="#pav:importedOn">pav:importedOn</a>;</li>
+    				<li>Declare when the import has been refreshed using <a href="#pav:lastRefreshedOn">pav:lastRefreshedOn</a>;</li>
+					<li>Declare the specific version of the tool or script used to conduct the import using <a href="#pav:createdWith">pav:createdWith</a>.</li>
+    			</ul>
+    		</li>
+    	</ul>
 	<!-- end dataset-classification -->
 	</section>
 
@@ -678,6 +763,12 @@
 			Section 4.4</a> of the VoID Specification.
 		</p>
 	<!-- end dataset-subset -->	
+	</section>
+	<section id="distribution-format">
+		<h3>Distribution Format</h3>
+		<p class="todo">
+			Complete the details of this section!
+		</p>
 	</section>
 	<section id="dataset-examples" class="informative">
 		<h3 id="dataset-examples">Examples</h3>
@@ -1096,8 +1187,104 @@
 				</tr>
 			</tbody>
 		</table>
+		<table id="dcat:Distribution" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Class</th>
+					<th>
+						<a href="http://www.w3.org/ns/dcat#Distribution" target="_blank">
+						<code>dcat:Distribution</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						Represents a specific available form of a dataset. Each dataset might be 
+						available in different forms, these forms might represent different formats 
+						of the dataset or different endpoints. Examples of distributions include 
+						a downloadable CSV file, an API or an RSS feed.
+					</td>
+				</tr>
+			</tbody>
+		</table>
 		
 		<h4>Properties</h4>
+		<table id="dcat:distribution" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://www.w3.org/ns/dcat#distribution" target="_blank">
+						<code>dcat:distribution</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						Connects a dataset to its available distributions.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Domain:</td>
+					<td><a href="#dcat:Dataset">dcat:Dataset</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="#dcat:Distribution">dcat:Distribution</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						Used to specify a link between a dataset and a description of a distribution
+						of the dataset.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Example:</td>
+					<td>
+						The ChEMBL dataset is available in multiple distribution formats. Each one
+						would be described giving properties such as the <a href="#dcat:mediaType">
+						format</a> and <a href="#dcat:downloadURL">download URL</a>.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="dcat:downloadURL" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://www.w3.org/ns/dcat#downloadURL" target="_blank">
+						<code>dcat:downloadURL</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						This is a direct link to a downloadable file in a given format. 
+						For example, CSV file or RDF file. The format is described by the 
+						distribution's <a href="#dcat:mediaType">dcat:mediaType</a>.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						The value is a URL. The URL may require access credentials, e.g. username
+						and password.
+					</td>
+				</tr>
+			</tbody>
+		</table>
 		<table id="dcat:landingPage" class="definition">
 			<thead>
 				<tr>
@@ -1151,6 +1338,37 @@
 					<td>
 						<a href="#foaf:homepage">foaf:homepage</a>, 
 						<a href="#foaf:page">foaf:page</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="dcat:mediaType" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://www.w3.org/ns/dcat#mediaType" target="_blank">
+						<code>dcat:mediaType</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						The media type of the distribution as defined by 
+						<a href="http://www.iana.org/assignments/media-types/" target="_blank">IANA</a>.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://purl.org/dc/terms/MediaTypeOrExtent" target="_blank">dcterms:MediaTypeOrExtent</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						This property SHOULD be used when the media type of the distribution is 
+						defined in IANA, otherwise dcterms:format MAY be used with different values.
 					</td>
 				</tr>
 			</tbody>
