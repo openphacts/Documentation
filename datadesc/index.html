@@ -366,7 +366,7 @@
 			[[Halpin2010]], but it is expected that the main relationships used
 			will be those given in the table.)
 		</p>
-		<table>
+		<table id="MappingRelationships">
 			<caption>Standard generic mapping predicates</caption>
 			<thead>
 				<tr>
@@ -719,305 +719,31 @@
 
 	<section id="linkset-metadata">
 		<h3 id="linkset-general-metadata">General Linkset Metadata</h3>
-
-		<h4 id="linkset-type">Type</h4>
-		<ul>
-			<li>
-				Must declare that we have a linkset using 
-				<a href="http://rdfs.org/ns/void#Linkset" target="_blank">
-				<code>void:Linkset</code></a>.
-			</li>
-		</ul>
-		<p>
-			For more details see 
-			<a href="http://www.w3.org/TR/void/#linkset" target="_blank">
-			Section 1.4</a> of the VoID Specification.
-		</p>
-
-		<h4 id="linkset-title">Title</h4>
-		<ul>
-			<li>
-				Must provide the title of the linkset using the
-				<a href="http://purl.org/dc/terms/title" target="_blank">
-				<code>dcterms:title</code></a> predicate.
-			</li>
-		</ul>
-		<p>
-			For more details see 
-			<a href="http://www.w3.org/TR/void/#dublin-core" target="_blank">
-			Section 2.2</a> of the VoID Specification.
-		</p>
-		<h4 id="linkset-description">Description</h4>
-		<ul>
-			<li>
-				Must provide a description of the linkset using the  
-				<a href="http://purl.org/dc/terms/description" target="_blank">
-				<code>dcterms:description</code></a> predicate.
-			</li>
-		</ul>
-		<p>
-			For more details see 
-			<a href="http://www.w3.org/TR/void/#dublin-core" target="_blank">
-			Section 2.2</a> of the VoID Specification.
-		</p>
 		<p>
 			Note that for linksets there is unlikely to be a web page
 			directly dedicated to the linkset, as such that part of the
 			dataset metadata is not stated as a requirement.
 		</p>
-
-		<h4 id="linkset-license">License</h4>
-		<ul>
-			<li>
-				Must declare the license under which the linkset is published 
-				using the 
-				<a href="http://purl.org/dc/terms/license" target="_blank">
-				<code>dcterms:license</code></a> predicate.
-			</li>
-		</ul>
-		<p>
-			Where possible, we recommend publishing data under an open license
-			to enable reuse of the data with appropriate acknowledgement. For
-			Open PHACTS, the recommended license is <a
-			href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>. 
-			A list of alternative licenses are available in <a
-			href="http://www.w3.org/TR/void/#license">Section 2.4</a> of the 
-			W3C note on VoID.
-		</p>		
 		<p class="note">
 			The license under which a linkset is published may be different 
 			from that of the datasets that it links, even if it is a subset of
 			one of the datasets.
 		</p>
-		<p>
-			For more details see 
-			<a href="http://www.w3.org/TR/void/#license" target="_blank">
-			Section 2.4</a> of the VoID Specification.
-		</p>		
 	<!-- end linkset-metadata -->
-	</section>
-	<section id="link-info">
-		<h3 id="linkset-information">Link Information</h3>
-		<h4 id="linkset-targets">Target Datasets</h4>
-		<ul>
-			<li>
-				Must declare the datasets that are linked using the 
-				<a href="http://rdfs.org/ns/void#subjectsTarget" target="_blank">
-				<code>void:subjectsTarget</code></a> and 
-				<a href="http://rdfs.org/ns/void#objectsTarget" target="_blank">
-				<code>void:objectsTarget</code></a> predicates.
-			</li>
-		</ul>		
-		<p>
-			Note that the object of the above predicates are the URIs of the
-			respective datasets as declared in a VoID description. The datasets 
-			may themselves be a subset of a larger dataset. Where the datasets
-			do not provide a VoID description, the minimal required information 
-			must be provided in the linkset description. This is detailed in
-			<a href="#linkset-min-dataset-desc">Section 5.5</a>. 
-		</p>
-		<p>
-			For more details see 
-			<a href="http://www.w3.org/TR/void/#target" target="_blank">
-			Section 5.1</a> of the VoID Specification.
-		</p>		
-		
-		<h4 id="linkset-relationship">Link Relationship</h4>
-		<ul>
-			<li>
-				Must declare the link predicate using the 
-				<a href="http://rdfs.org/ns/void#linkPredicate" target="_blank">
-				<code>void:linkPredicate</code></a> predicate.
-			</li>
-		</ul>	
-		<p>
-			For more details see 
-			<a href="http://www.w3.org/TR/void/#link-predicate" target="_blank">
-			Section 5.3</a> of the VoID Specification.
-		</p>		
-		
-		<h4 id="linkset-justification">Link Justification</h4>
-		<ul>
-			<li>
-				Must declare the reason/circumstance under which the link holds
-				using the 
-				<a href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#expresses" target="_blank">
-				<code>dul:expresses</code></a> predicate and an object 
-				from an open vocabulary.
-			</li>
-		</ul>
-		<p>
-			The link justification provides the reason/circumstance why 
-			instances in the two datasets can be considered equivalent. 
-			For example, two chemical compounds have the same InChI Key or 
-			have the same chemical formula.
-		</p>  
-		<p class="todo">
-			Need to ensure that by using <code>dul:expresses</code> we are not
-			inferring other contradictory consequences.
-		</p>
-		<p>
-			Currently recommended vocabulary terms for the justification can be
-			found in <a href="#appendix-link-justifications">Appendix A.3</a>.
-		</p>
-	<!-- end link-info -->
 	</section>
 	<section id="linkset-provenance">
 
 		<h3 id="linkset=provenance">Provenance</h3>
 		
-		<h4 id="linkset-subset">Subset</h4>
-		<ul>
-			<li>
-				If the linkset is a subset of another dataset, then
-				this must be declared using the 
-				<a href="http://rdfs.org/ns/void#subset" target="_blank">
-				<code>void:subset</code></a> predicate.
-			</li>
-		</ul>	
-		<p>
-			Note that the dataset URI is the subject of the 
-			<code>void:subset</code> triple and the linkset URI is the object.
-			If the dataset VoID description contains the declaration, there is
-			no need to repeat it in the linkset document. However, the linkset
-			documents can be used to declare additional subsets. A subset 
-			inherits properties from its parent. 
-		</p>
-		<p>
-			For more details see 
-			<a href="http://www.w3.org/TR/void/#linkset-subset" target="_blank">
-			Section 5.2</a> of the VoID Specification.
-		</p>		
 		
 		<h4 id="linkset-source">Link Source</h4>
-		<ul>
-			<li>
-				Must declare how the links were asserted.
-				<ul>
-					<li>
-						Manually asserted links are declared using the 
-						authorship properties:
-						<ul>
-							<li>
-								<a href="http://purl.org/pav/" target="_blank">
-								<code>pav:authoredBy</code></a> to capture who 
-								made the assertions encoded in the links.
-							</li>
-							<li>
-								<a href="http://purl.org/pav/" target="_blank">
-								<code>pav:authorOn</code></a> to capture when 
-								the assertions were made.
-							</li>
-						</ul>
-					</li>
-					<li>
-						Computer derived links are declared by asserting the
-						tool used to generate the links using the property 
-						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:createdWith</code></a>. 
-					</li>
-				</ul>
-			</li>
-		</ul>
 		<p>
 			Additional information about the settings used when running an 
 			automated link generation tool such as Silk [[SILK]] can be 
 			captured in an associated provenance graph encoded using PROV-O 
 			[[PROV-O]].
-		</p>
-		
-		<h4 id="linkset-creation">Linkset Creation Details</h4>
-		<ul>
-			<li>
-				Must declare who created the linkset, i.e. encoded the 
-				knowledge into triples or operated the computer generation tool,
-				with the property 
-				<a href="http://purl.org/pav/" target="_blank">
-				<code>pav:createdBy</code></a>.
-			</li>
-			<li>
-				Must declare when the linkset was created using the 
-				<a href="http://purl.org/pav/" target="_blank">
-				<code>pav:createdOn</code></a> predicate.
-			</li>
-		</ul>
-		<p>In this version of the specification, it is assumed that the creator
-		of the linkset has accessed the most recent version of the dataset.</p>
-		
-		<h4 id="linkset-version">Linkset Version</h4>
-		<ul>
-			<li>
-				Must declare a version number for the linkset when this exists 
-				using the
-				<a href="http://purl.org/pav/" target="_blank">
-				<code>pav:version</code></a> predicate.
-			</li>
-			<li>
-				Should link back to the previous version of the linkset using the
-				<a href="http://purl.org/pav/" target="_blank"> 
-				<code>pav:previousVersion</code></a> predicate.
-			</li>
-		</ul>
-		
-<!-- 
- 		<h4 id="linkset-target-access">Dataset Access</h4>
-		<ul>
-			<li>
-				Must declare, for each dataset that is not a parent for the 
-				linkset, where, when and by whom it was accessed using:
-				<ul>
-					<li>
-						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:sourceAccessedAt</code></a>
-					</li>
-					<li>
-						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:sourceAccessedBy</code></a>
-					</li>
-					<li>
-						<a href="http://purl.org/pav/" target="_blank">
-						<code>pav:sourceAccessedOn</code></a>
-					</li>
-				</ul>
-				For the linkset parent dataset, this information may be omitted
-				if the linkset is generated as part of the dataset creation
-				process.
-			</li>
-		</ul>
-		<p>
-			A linkset should point to the dataset descriptions of the datasets 
-			that it uses. These descriptions should be provided by the dataset 
-			provider as part of the dataset publishing process [[OPS-RDF]]. 
-			However, it is necessary to state when the dataset was accessed for 
-			the purpose of creating the linkset. Note that these triples have 
-			the linkset URI as the subject and duplicate the information 
-			provided in the <a href="#linkset-targets">Target Datasets section</a>.
-		</p>
- -->
-		
-	<!-- end linkset-provenance -->
-	</section>
-	<section id="linkset-stats">
-		<h3 id="linkset-statistics">Linkset Statistics</h3>
-		<ul>
-			<li>
-				Should declare the number of links in the linkset using the
-				<a href="http://rdfs.org/ns/void#triples" target="_blank">
-				<code>void:triples</code></a> predicate. 
-			</li>
-		</ul>
-		<p>
-			Providing the number of triples included in the linkset allows for 
-			applications using the linkset to validate that the entire linkset 
-			has been successfully loaded.
-		</p>
-		<p>
-			For more details see 
-			<a href="http://www.w3.org/TR/void/#statistics" target="_blank">
-			Section 4.6</a> of the VoID Specification.
 		</p>		
-
-	<!-- end linkset-stats -->
+	<!-- end linkset-provenance -->
 	</section>
 	<section id="linkset-min-dataset-desc">
 		<h3 id="linkset-minimal-dataset-desc">Minimal Dataset Description</h3>
@@ -1702,7 +1428,57 @@
 		</table>
 	<!-- end dctypes -->
 	</section>
-	
+	<section id="dul">
+		<h3>DOLCE+DnS Ultralite Ontology</h3>
+		<table id="dul:expresses" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#expresses" target="_blank">
+						<code>dul:expresses</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						A relation between a resource and a meaning.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							The link justification provides the reason/circumstance why 
+							instances in the two datasets can be considered equivalent. 
+							For example, two chemical compounds have the same InChI Key or 
+							have the same chemical formula.
+						</p>  
+						<p>
+							Currently recommended vocabulary terms for the justification can be
+							found in <a href="#appendix-link-justifications">Appendix A.4</a>.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Example:</td>
+					<td>
+						The ChemSpider to ChEMBL Molecules Linkset expresses equivalence based on
+						having the same InChI key. This is given with the object value
+						<a href="http://semanticscience.org/resource/CHEMINF_000059" target="_blank">
+						http://semanticscience.org/resource/CHEMINF_000059</a>.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	<!-- end dul -->
+	</section>
 	<section id="foaf">
 		<h3>Friend of a Friend</h3>
 		<table id="foaf:homepage" class="definition">
@@ -1859,6 +1635,44 @@
 					<td class="prop">See also:</td>
 					<td>
 						<a href="#pav:createdBy">pav:createdBy</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="pav:authoredOn" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://purl.org/pav/authoredOn" target="_blank">
+						<code>pav:authoredOn</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						The date this resource was authored.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td>
+						<a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a>
+						 typed as 
+						 <a href="http://www.w3.org/TR/xmlschema-2/#dateTime">xsd:dateTime</a>
+						 .  
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						The dateTime is encoded as a literal in "yyyy-mm-ddThh:mm:sszzzzz" form (
+						 <a href="http://www.w3.org/TR/NOTE-datetime">ISO 8601 Date and Time Formats</a>
+						 ). If the specific day or month are not known, then 01 should be specified.
+						 If the specific hour, minute or second are not known, then 00 should be
+						 specified. If the timezone is not known then Z should be specified.
 					</td>
 				</tr>
 			</tbody>
@@ -2474,7 +2288,7 @@
 	</section>
 	
 	<section id="void">
-		<h3>Vocabulary of Interlinked Datasets</h3>
+		<h3>Vocabulary of Interlinked Datasets</h3>	
 		<table id="void:Dataset" class="definition">
 			<thead>
 				<tr>
@@ -2491,6 +2305,18 @@
 					<td>
 						A set of RDF triples that are published, maintained or 
 						aggregated by a single provider.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Superclass:</td>
+					<td>
+						<a href="#dctypes:Dataset"><code>dctypes:Dataset</code></a>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Subclass:</td>
+					<td>
+						<a href="#void:Linkset"><code>void:Linkset</code></a>
 					</td>
 				</tr>
 				<tr>
@@ -2588,6 +2414,136 @@
 				</tr>
 			</tbody>
 		</table>
+		<table id="void:linkPredicate" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://rdfs.org/ns/void#linkPredicate" target="_blank">
+						<code>void:linkPredicate</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						a link predicate
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Domain:</td>
+					<td><a href="#void:Linkset">void:Linkset</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Property">rdfs:Property</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							Specifies the mapping relationship which should be one of the properties
+							given in the <a href="#MappingRelationships">Mapping Relationships Table</a>.
+						</p>
+						<p>
+							For more details see 
+							<a href="http://www.w3.org/TR/void/#link-predicate" target="_blank">
+							Section 5.3</a> of the VoID Specification.
+						</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="void:Linkset" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Class</th>
+					<th>
+						<a href="http://rdfs.org/ns/void#Linkset" target="_blank">
+						<code>void:Linkset</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						A collection of RDF links between two void:Datasets.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Superclass:</td>
+					<td>
+						<a href="#void:Dataset"><code>void:Dataset</code></a>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						For more details see 
+						<a href="http://www.w3.org/TR/void/#linkset" target="_blank">
+						Section 1.4</a> of the VoID Specification.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="void:objectsTarget" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://rdfs.org/ns/void#objectsTarget" target="_blank">
+						<code>void:objectsTarget</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						The dataset describing the objects of the triples contained in the Linkset.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Domain:</td>
+					<td><a href="#void:Linkset">void:Linkset</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="#void:Dataset">void:Dataset</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Superproperty:</td>
+					<td><a href="#void:target">void:target</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							Should point to a versioned URI of a dataset that appears in this or 
+							another VoID file.
+							The datasets may themselves be a subset of a larger dataset. Where the 
+							datasets do not provide a VoID description, the minimal required 
+							information must be provided in the linkset description. This is detailed 
+							in <a href="#linkset-min-dataset-desc">Section 5.5</a>. 
+						</p>
+						<p>
+							This property may only appear once per Linkset (owl:FunctionalProperty).
+						</p>
+						<p>
+								For more details see <a href="http://www.w3.org/TR/void/#target" target="_blank"> Section 5.1</a> of the VoID Specification.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#void:subjectsTarget">void:subjectsTarget</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 		<table id="void:sparqlEndpoint" class="definition">
 			<thead>
 				<tr>
@@ -2626,6 +2582,61 @@
 						</p>
 					</td>
 				</tr>
+			</tbody>
+		</table>
+		<table id="void:subjectsTarget" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://rdfs.org/ns/void#subjectsTarget" target="_blank">
+						<code>void:subjectsTarget</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						The dataset describing the subjects of triples contained in the Linkset.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Domain:</td>
+					<td><a href="#void:Linkset">void:Linkset</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="#void:Dataset">void:Dataset</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Superproperty:</td>
+					<td><a href="#void:target">void:target</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							Should point to a versioned URI of a dataset that appears in this or 
+							another VoID file.
+							The datasets may themselves be a subset of a larger dataset. Where the 
+							datasets do not provide a VoID description, the minimal required 
+							information must be provided in the linkset description. This is detailed 
+							in <a href="#linkset-min-dataset-desc">Section 5.5</a>. 
+						</p>
+						<p>
+							This property may only appear once per Linkset (owl:FunctionalProperty).
+						</p>
+						<p>
+								For more details see <a href="http://www.w3.org/TR/void/#target"
+								target="_blank"> Section 5.1</a> of the VoID Specification.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">See also:</td>
+					<td>
+						<a href="#void:objectsTarget">void:objectsTarget</a>
 			</tbody>
 		</table>
 		<table id="void:subset" class="definition">
@@ -2669,6 +2680,96 @@
 							<a href="http://www.w3.org/TR/void/#subset" target="_blank">
 							Section 4.4</a> of the VoID Specification.
 						</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="void:target" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://rdfs.org/ns/void#target" target="_blank">
+						<code>void:target</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						One of the two datasets linked by the Linkset.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Domain:</td>
+					<td><a href="#void:Linkset">void:Linkset</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="#void:Dataset">void:Dataset</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Subproperties:</td>
+					<td><a href="#void:subjectsTarget">void:subjectsTarget</a>, <a href="#void:objectsTarget">void:objectsTarget</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						It is recommended that one of the sub-properties be used.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="void:triples" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://rdfs.org/ns/void#triples" target="_blank">
+						<code>void:triples</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						The total number of triples contained in a void:Dataset.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Domain:</td>
+					<td><a href="#void:Dataset">void:Dataset</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td>
+						<a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a>
+						typed as 
+						<a href="http://www.w3.org/TR/xmlschema-2/#integer">xsd:integer</a>
+						.  
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							Providing the number of triples included in the linkset allows for 
+							applications using the linkset to validate that the entire linkset 
+							has been successfully loaded.
+						</p>
+						<p>
+							For more details see 
+							<a href="http://www.w3.org/TR/void/#statistics" target="_blank">
+							Section 4.6</a> of the VoID Specification.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Example:</td>
+					<td>
+						<code>:chemSpider_drugbank_linkset void:triples "6428"^^xsd:nonNegativeInteger.</code>
 					</td>
 				</tr>
 			</tbody>
