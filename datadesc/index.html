@@ -679,33 +679,6 @@
 		</p>
 	<!-- end dataset-subset -->	
 	</section>
-	<section id="dataset-update-frequency">
-		<h3 id="dataset-update">Dataset Update Frequency</h3>
-		<ul>
-			<li>
-				Should state the expected update frequency of the dataset using
-				the 
-				<a href="http://voag.linkedmodel.org/schema/voag#frequencyOfChange" target="_blank">
-				<code>voag:frequencyOfChange</code></a> predicate together with
-				a frequency term drawn from the 
-				<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/">
-				Frequency Vocabulary</a>. 
-			</li>
-		</ul>
-		<p>
-			The terms from the Frequency Vocabulary have been reproduced in 
-			<a href="#appendix-frequency-vocabulary">Appendix A.2</a>.
-		</p>
-		<!-- 
-		<p>
-			Considered a wide range of vocabularies here, including 
-			<a href="http://purl.org/NET/dady">DADY</a>. Dady not suitable due 
-			to the lack of specificaiton of the frequency terms. It also seemed
-			overly complicated.
-		</p>
-		 -->
-	<!-- end dataset-update-frequency -->
-	</section>
 	<section id="dataset-other">
 		<h3 id="dataset-other-metadata">Other Metadata</h3>
 		<p>
@@ -2463,6 +2436,56 @@
 		</table>
 	<!-- end pav -->
 	</section>
+	<section id="voag">
+		<h3>Vocabulary of Attribution and Governance</h3>
+		<table id="voag:frequencyOfChange" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://voag.linkedmodel.org/schema/voag#frequencyOfChange" target="_blank">
+						<code>voag:frequencyOfChange</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						Frequency of change
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							Defines the frequency with which the dataset is expected to publish
+							new versions. Should be used to provide a frequency term drawn from the
+							<a href="http://dublincore.org/groups/collections/frequency/2007-03-09/">
+							Frequency Vocabulary</a>.
+						</p>
+						<p>
+							The terms from the Frequency Vocabulary have been reproduced in 
+							<a href="#appendix-frequency-vocabulary">Appendix A.3</a>.
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Warning:</td>
+					<td>
+						We are considering abolishing the use of this predicate in favour of 
+						<a href="http://dublincore.org/documents/2012/06/14/dcmi-terms/?v=terms#terms-accrualPeriodicity">
+						<code>dcterms:accrualPeriod</code></a>.
+				</tr>
+			</tbody>
+		</table>
+	<!-- end voag -->
+	</section>
+	
 	<section id="void">
 		<h3>Vocabulary of Interlinked Datasets</h3>
 		<table id="void:Dataset" class="definition">
