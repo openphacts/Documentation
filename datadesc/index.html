@@ -679,28 +679,6 @@
 		</p>
 	<!-- end dataset-subset -->	
 	</section>
-	<section id="dataset-topic-resources">
-		<h3 id="dataset-topics-resources">Vocabularies, Topics, and 
-			Example Resources</h3>
-		<h4 id="dataset-resources">Example Resources</h4>
-		<ul>
-			<li>
-				Should be declared using the 
-				<a href="http://rdfs.org/ns/void#exampleResource" target="_blank">
-				<code>void:exampleResource</code></a> predicate.
-			</li>
-		</ul>
-		<p>
-			Multiple resources can be declared. If the data is split into 
-			subsets, then the example resources should be associated with the
-			subsets.
-		</p>
-		<p>
-			For more details see 
-			<a href="http://www.w3.org/TR/void/#example-resource" target="_blank">
-			Section 4.1</a> of the VoID Specification.
-		</p>
-	<!-- end dataset-topic-resource -->
 	</section>
 	<section id="dataset-access">
 		<h3 id="dataset-access">Dataset Access</h3>
@@ -2546,6 +2524,48 @@
 				</tr>
 			</tbody>
 		</table>
+		<table id="void:exampleResource" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://rdfs.org/ns/void#exampleResource" target="_blank">
+						<code>void:exampleResource</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						example resource of dataset.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Domain:</td>
+					<td><a href="#void:Dataset">void:Dataset</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							Multiple resources can be declared. If the data is split into 
+							subsets, then the example resources should be associated with the
+							subsets.
+						</p>
+						<p>
+							For more details see 
+							<a href="http://www.w3.org/TR/void/#example-resource" target="_blank">
+							Section 4.1</a> of the VoID Specification.
+						</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 		<table id="void:subset" class="definition">
 			<thead>
 				<tr>
@@ -2706,7 +2726,7 @@
 				</tr>
 				<tr>
 					<td class="prop">Range:</td>
-					<td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a></td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
 				</tr>
 				<tr>
 					<td class="prop">Usage note:</td>
