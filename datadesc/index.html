@@ -682,20 +682,6 @@
 	<section id="dataset-topic-resources">
 		<h3 id="dataset-topics-resources">Vocabularies, Topics, and 
 			Example Resources</h3>
-		<h4 id="dataset-vocabularies">Dataset Vocabularies</h4>
-		<ul>
-			<li>
-				Should declare the vocabularies and ontologies that encode
-				the data using the 
-				<a href="http://rdfs.org/ns/void#vocabulary" target="_blank">
-				<code>void:vocabulary</code></a> predicate.
-			</li>
-		</ul>
-		<p>
-			For more details see 
-			<a href="http://www.w3.org/TR/void/#vocabularies" target="_blank">
-			Section 4.3</a> of the VoID Specification.
-		</p>
 		<h4 id="dataset-topcis">Dataset Topics</h4>
 		<ul>
 			<li>
@@ -2672,6 +2658,46 @@
 					<td class="prop">See also:</td>
 					<td>
 						<a href="#void:uriRegexPattern">void:uriRegexPattern</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table id="void:vocabulary" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://rdfs.org/ns/void#vocabulary" target="_blank">
+						<code>void:vocabulary</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						A vocabulary that is used in the dataset.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Domain:</td>
+					<td><a href="#void:Dataset">void:Dataset</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							Declare the vocabularies and ontologies that encode the data.
+						</p>
+						<p>
+							For more details see 
+							<a href="http://www.w3.org/TR/void/#vocabularies" target="_blank">
+							Section 4.3</a> of the VoID Specification.
+						</p>
 					</td>
 				</tr>
 			</tbody>
