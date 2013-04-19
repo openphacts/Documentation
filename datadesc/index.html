@@ -905,35 +905,42 @@
 	<section id="document-descriptor">
 		<h3 id="void-document-metadata">VoID Document Metadata</h3>
 		<p>
-			VoID documents describing datasets and linksets must contain a 
+			VoID documents describing datasets and linksets MUST contain a 
 			metadata block describing the VoID document using the following 
 			properties:
 		</p>
 		<ul>
-			<li>
-				Must declare that this is the VoID document descriptor with 
-				<a href="http://rdfs.org/ns/void#DatasetDescription" target="_blank">
-				<code>void:DatasetDescription</code></a>.
+			<li>MUST
+				<ul>
+					<li>
+						Declare the type to be <a href="#void:DatasetDescription">
+						<code>void:DatasetDescription</code></a>.
+					</li>
+					<li>
+						Declare the creator of the VoID descriptor using 
+						<a href="#pav:createdBy"><code>pav:createdBy</code></a>.
+					</li>
+					<li>
+						Declare when the VoID descriptor was created using 
+						<a href="#pav:createdOn"><code>pav:createdOn</code></a>.
+					</li>
+					<li>
+						Declare when the VoID descriptor was last updated using 
+						<a href="#pav:lastUpdateOn"><code>pav:lastUpdateOn</code></a>.
+					</li>
+				</ul>
 			</li>
-			<li>
-				Must declare who created the VoID descriptor using 
-				<a href="http://purl.org/pav/createdBy" target="_blank">
-				<code>pav:createdBy</code></a>.
-			</li>
-			<li>
-				Must declare when the VoID descriptor was created using 
-				<a href="http://purl.org/pav/createdOn" target="_blank">
-				<code>pav:createdOn</code></a>.
-			</li>
-			<li>
-				Must declare when the VoID descriptor was last updated using 
-				<a href="http://purl.org/pav/lastUpdateOn" target="_blank">
-				<code>pav:lastUpdateOn</code></a>.
-			</li>
-			<li>
-				Should declare the primary dataset being described using 
-				<a href="http://xmlns.com/foaf/spec/#term_primaryTopic" target="_blank">
-				<code>foaf:primaryTopic</code></a>.
+			<li>SHOULD
+				<ul>
+					<li>
+						Declare the primary dataset being described using 
+						<a href="#foaf:primaryTopic"><code>foaf:primaryTopic</code></a>.
+					</li>
+					<li>
+						Link to the previous version of the dataset description
+						<a href="#pav:previousVersion">pav:previousVersion</a>.
+					</li>
+				</ul>
 			</li>
 		</ul>
 		<p>
@@ -949,11 +956,11 @@
 		</p>
 		<pre class="turtle">
 &lt;&gt; a void:DatasetDescription ;
-    dcterms:title "ChemSpider VoID Description"^^xsd:string ;
-    pav:createdBy &lt;http://www.chemspider.com/&gt; ;
+	dcterms:title "ChemSpider VoID Description"^^xsd:string ;
+	pav:createdBy &lt;http://www.chemspider.com/&gt; ;
 	pav:createdOn "2012-05-02T13:50:34Z"^^xsd:dateTime;
 	pav:lastUpdateOn "2012-08-10T13:52:12Z"^^xsd:dateTime;
-    foaf:primaryTopic :chemSpiderDataset .    
+	foaf:primaryTopic :chemSpiderDataset .    
 		</pre>
 	<!-- end document-descriptor -->
 	</section>
@@ -963,36 +970,50 @@
 		<p>
 			Several mechanisms for deploying VoID descriptions are given in
 			<a href="http://www.w3.org/TR/void/#deploying">Section 6</a> of the
-			VoID Note [[VOID]].
+			VoID Note [[VOID]]. In this section we provide recommendations for
+			good practice within the Open PHACTS project.
 		</p>
 		<section id="deploying-dataset-void">
 			<h4 id="deploying-dataset-desc">Deploying a Dataset Description</h4>
 			<p>
-				For datasets that are being published in their own domain, with
-				dereferenceable URIs, then we recommend placing the dataset's
-				VoID description in the root directory in a file called
-				<code>void.ttl</code>, with a local "hash URI" for the dataset 
-				(and any subsets). For example, for ChemSpider we would have a 
-				URI such as 
-				<code>http://rdf.chemspider.com/void.ttl#chemSpiderDataset</code>. 
-				When the code is being hosted on an external service, then the 
-				VoID descriptor should be provided in the dataset's home 
-				directory. For example, for the RDF encoding of ChEMBL this 
-				would be
-				<code>http://linkedchemistry.info/chembl/void.ttl#chembl-rdf</code>. 
-				Examples of the VoID descriptors are given in 
-				<a href="#appendix-dataset-examples">Appendix A</a>.
+				The current dataset description for a dataset SHOULD be 
+				available from a well known location relative to the dataset.
+				Best practice for this well known location is a file called
+				<code>void.ttl</code> in the root directory for the dataset.
+				However, we recommend that a <code>HTTP 302</code> redirect is
+				used to derefenece to a versioned copy of the VoID file. 
 			</p>
 			<p>
-				Each RDF document containing the data should then contain a
-				backlink to the dataset descriptor. For example, the ChEMBL-RDF
+				For example, for ChemSpider we would have a 
+				URI such as 
+				<code>http://rdf.chemspider.com/void.ttl#chemSpiderDataset</code>
+				which redirects to a versioned URI such as
+				<code>http://rdf.chemspider.com/20130408/void.ttl#chemSpiderDataset</code>.
+			</p>
+			<p>  
+				Examples of the VoID descriptors are given in the example
+				dataset descriptions in  
+				<a href="#appendix-dataset-examples">Appendix B</a>.
+			</p>
+		<!-- end deploying-dataset-void -->
+		</section>
+		<section id="dataset-deployment">
+			<h4>Dataset Deployment</h4>
+			<p>
+				Each RDF document containing the data MUST contain a
+				backlink using <a href="#void:inDataset">void:inDataset</a> to 
+				the dataset descriptor. For example, the ChEMBL-RDF
 				molecule m1, there would be the triple:
 			</p>
 			<pre class="turtle">
 &lt;http://linkedchemistry.info/chembl/chemblid/molecule/m1&gt; void:inDataset 
     &lt;http://linkedchemistry.info/chembl/chemblid/void.ttl#chembl-rdf_compounds&gt; .    
 			</pre>
-		<!-- end deploying-dataset-void -->
+			<p class="todo">
+				Resolve completely how we are doing versioning!<br/>
+				Should the backlinks point to the versioned dataset description?
+			</p>
+		<!-- end dataset-deployment -->
 		</section>
 		<section id=linkset-files>
 			<h4 id="deploying-linkset-desc">Deploying a Linkset Description</h4>
@@ -1006,8 +1027,8 @@
 			<p>
 				It is also permitted to separate the link triples from the 
 				linkset metadata. In this case, the file containing the links
-				must provide a link back to the linkset desription using the
-				<a href="http://rdfs.org/ns/void#inDataset" target="_blank">
+				MUST provide a link back to the linkset desription using the
+				<a href="#void:inDataset">
 				<code>void:inDataset</code></a> predicate. The example below 
 				shows how a set of links can refer back to the linkset 
 				description given in the ChEMBL-RDF VoID description file.
@@ -1025,18 +1046,18 @@
 	<section id=external-files>
 		<h3 id="external-file">External VoID Files</h3>
 		<p>
-			Tooling being developed within Open PHACTS should support the 
-			predicates stated in this document. However, they should also be
+			Tooling being developed within Open PHACTS SHOULD support the 
+			predicates stated in this document. However, they SHOULD also be
 			able to read VoID files from external sources that do not comply
 			completely with this specification, but do comply with the VoID
 			standard [[VOID]]. An example would be the use of the
-			<a href="http://rdfs.org/ns/void#target" target="_blank">
+			<a href="#void:target">
 			<code>void:target</code></a> predicate instead of the 
-			<a href="http://rdfs.org/ns/void#subjectsTarget" target="_blank">
+			<a href="#void:subjectsTarget">
 			<code>void:subjectsTarget</code></a> and 
-			<a href="http://rdfs.org/ns/void#objectsTarget" target="_blank">
-			<code>void:objectsTarget</code></a> predicates. Such usage should 
-			not be the norm and should result in warnings being generated.
+			<a href="#void:objectsTarget">
+			<code>void:objectsTarget</code></a> predicates. Such usage SHOULD 
+			not be the norm and SHOULD result in warnings being generated.
 		</p>
 			
 	</section>
@@ -2804,6 +2825,52 @@
 				</tr>
 			</tbody>
 		</table>
+		<table id="void:inDataset" class="definition">
+			<thead>
+				<tr>
+					<th>RDF Property</th>
+					<th>
+						<a href="http://rdfs.org/ns/void#inDataset" target="_blank">
+						<code>void:inDataset</code></a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="prop">Definition:</td>
+					<td>
+						Points to the void:Dataset that a document is a part of.
+					</td>
+				</tr>
+				<tr>
+					<td class="prop">Domain:</td>
+					<td><a href="#foaf:Document">foaf:Document</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Range:</td>
+					<td><a href="#void:Dataset">void:Dataset</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Superproperty:</td>
+					<td><a href="#dcterms:isPartOf">dcterms:isPartOf</a></td>
+				</tr>
+				<tr>
+					<td class="prop">Usage note:</td>
+					<td>
+						<p>
+							Links a file containing the RDF dataset to the 
+							description of the dataset. 
+						</p>
+						<p>
+							For more details see 
+							<a href="http://www.w3.org/TR/void/#backlinks" 
+								target="_blank">Section 6.3</a> of the VoID 
+								Specification.
+						</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 		<table id="void:linkPredicate" class="definition">
 			<thead>
 				<tr>
@@ -2845,7 +2912,6 @@
 				</tr>
 			</tbody>
 		</table>
-		
 		<table id="void:objectsTarget" class="definition">
 			<thead>
 				<tr>
