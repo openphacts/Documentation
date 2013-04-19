@@ -637,6 +637,7 @@
     				<li>Declare when the digital representation of the dataset was created <a href="#pav:createdOn">pav:createdOn</a>;</li>
     				<li>Declare the dataset version if it exists <a href="#pav:version">pav:version</a>;</li>
     				<li>Link to the previous version of the dataset <a href="#pav:previousVersion">pav:previousVersion</a>.</li>
+    				<li>Define the pattern for the URIs used for resources in the dataset using either <a href="#void:uriSpace">void:uriSpace</a> or <a href="#void:uriRegexPattern">void:uriRegexPattern</a>;</li>
     			</ul>
     		</li>
     		<li>
@@ -807,9 +808,57 @@
 		circumstances, and which (if any) tools were used to generate the link 
 		(e.g. [[SILK]]).
 	</p>
+    	<p>
+			A linkset should point to the dataset descriptions of the datasets 
+			that it uses. These descriptions should be provided by the dataset 
+			provider as part of the dataset publishing process [[OPS-RDF]]. 
+			However, there are occasions when one or both of the linked 
+			datasets do not provide a VoID dataset description. 
+		</p>
 
-	<section id="linkset-metadata">
-		<h3 id="linkset-general-metadata">General Linkset Metadata</h3>
+		<div class="image">
+	 		<img
+	   			id="linkset-figure" 
+  				alt="Linkset properties"
+   				width="100%" 
+   				src="Linkset.png"
+   			/>
+   		</div>		
+    	<p>
+    		The properties for a dataset converted into RDF are:
+    	</p>
+    	<ul>
+    		<li>
+    			MUST
+    			<ul>
+    				<li>Declare the type to be <a href="#void:Linkset">void:Linkset</a>;</li>
+    				<li>Declare a title for the linkset <a href="#dcterms:title">dcterms:title</a>;</li>
+    				<li>Provide a description, detailing what has been linked and how, using <a href="#dcterms:description">dcterms:description</a>;</li>
+    				<li>Link to the publisher <a href="#dcterms:publisher">dcterms:publisher</a>;</li>
+    				<li>Link to the dataset license <a href="#dcterms:license">dcterms:license</a>;</li>
+					<li>Date on which the dataset was published <a href="#dcterms:issued">dcterms:issued</a>;</li>
+					<li>Link to the files that contain the RDF data <a href="#void:dataDump">void:dataDump</a>;</li>
+    				<li>Link to a description of the <a href="#rdf-dataset">RDF dataset</a> that is the subject of the links using <a href="#void:subjectsTarget">void:subjectsTarget</a>;</li>
+    				<li>Link to a description of the <a href="#rdf-dataset">RDF dataset</a> that is the object of the links using <a href="#void:objectsTarget">void:objectsTarget</a>;</li>
+    				<li>Declare the <a href="#MappingRelationships">mapping relationship</a> used in the linkset <a href="#void:linkPredicate">void:linkPredicate</a>;</li>
+    				<li>Declare the reason why the datasets are linked <a href="#dul:expresses">dul:expresses</a> with one of the reasons given in <a href="#appendix-link-justifications">Appendix B.3</a>;</li>
+    			</ul>
+    		</li>
+    		<li>
+    			SHOULD
+    			<ul>
+    				
+    				
+    				<li>Declare who authored the linkset <a href="#pav:authoredBy">pav:authoredBy</a>;</li>
+    				<li>Declare when the author generated the links <a href="#pav:authoredOn">pav:authoredOn</a>;</li>
+    				<li>Declare who created the linkset <a href="#pav:createdBy">pav:createdBy</a>;</li>
+    				<li>Declare when the links were created <a href="#pav:createdOn">pav:createdOn</a>;</li>
+					<li>Declare the specific version of the tool or script used to generate the links using <a href="#pav:createdWith">pav:createdWith</a>.</li>
+					<li>Declare if the linkset is a subset of a dataset <a href="#void:subset">void:subset</a>;</li>
+    			</ul>
+    		</li>
+    	</ul>
+
 		<p>
 			Note that for linksets there is unlikely to be a web page
 			directly dedicated to the linkset, as such that part of the
@@ -820,51 +869,12 @@
 			from that of the datasets that it links, even if it is a subset of
 			one of the datasets.
 		</p>
-	<!-- end linkset-metadata -->
-	</section>
-	<section id="linkset-provenance">
-
-		<h3 id="linkset=provenance">Provenance</h3>
-		
-		
-		<h4 id="linkset-source">Link Source</h4>
 		<p>
 			Additional information about the settings used when running an 
 			automated link generation tool such as Silk [[SILK]] can be 
 			captured in an associated provenance graph encoded using PROV-O 
 			[[PROV-O]].
 		</p>		
-	<!-- end linkset-provenance -->
-	</section>
-	<section id="linkset-min-dataset-desc">
-		<h3 id="linkset-minimal-dataset-desc">Minimal Dataset Description</h3>
-		
-		<p>
-			A linkset should point to the dataset descriptions of the datasets 
-			that it uses. These descriptions should be provided by the dataset 
-			provider as part of the dataset publishing process [[OPS-RDF]]. 
-			However, there are occasions when one or both of the linked 
-			datasets do not provide a VoID dataset description. The following
-			set of properties must then be provided in the linkset document. 
-			Other properties may also be given.  
-		</p>
-		<ul>
-			<li>
-				All aspects of <a href="#dataset-metadata">General Dataset 
-				Metadata</a>.
-			</li>
-			<li>
-				All aspects of <a href="#dataset-prov-version">Provenance and
-				Version</a> metadata.
-			</li>
-			<li>
-				Where applicable, the information should be specified about a
-				subset of the data and details from 
-				<a href="#dataset-subsets">Distinguishing Subsets</a> provided.
-			</li>
-		</ul>
-	<!-- end linkset-min-dataset-desc -->
-	</section>
 	<section id="linkset-examples" class="informative">
 		<h3 id=linkset-examples>Examples</h3>
 		<p>
