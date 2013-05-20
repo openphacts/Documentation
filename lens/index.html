@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Scientific Lenses</title>
+<script src='js/respec.js' class='remove'></script>
+<meta http-equiv='Content-Type' content='text/html;charset=utf-8' />
+<script class='remove'>
+	var respecConfig = {
+    	// document info
+		//orguri:               "http://www.cs.manchester.ac.uk/~graya/ops/",
+		orguri:               "http://www.openphacts.org/specs/",
+		orgicon:              "<a href='http://www.openphacts.org/'><img height='100' src='http://www.openphacts.org/specs/logo/ops.png' alt='Open PHACTS'/></a>",
+		customorg:            "Open PHACTS",
+		customcss:            "http://www.openphacts.org/specs/css/ops.css",
+		specStatus:           "ED",
+		shortName:            "lens",
+		publishDate:   "2013-05-20",
+		previousMaturity: "ED",
+		//previousPublishDate:  "2012-10-19",
+		//previousURI : "http://www.cs.manchester.ac.uk/~graya/ops/2012/WD-mappingspec-20120615/",
+		copyrightStart:       "2013",
+		overrideCopyright:    "<p class='copyright'>This document is licensed under a <a class='subfoot' href='http://creativecommons.org/licenses/sa-by/3.0/' rel='license'>Creative Commons ShareAlike Attribution 3.0 License</a>.</p>",
+		edDraftURI:           "http://www.cs.man.ac.uk/~graya/ops/2012/ED-lens/",
+		// lcEnd:  "2010-08-06",
+		// extraCSS:             ["../css/respec.css"],
+		extraCSS:             ["http://dev.w3.org/2009/dap/ReSpec.js/css/respec.css"],
+
+		// editors
+		editors:  [
+			{ name: "Alasdair J G Gray (ORCID: 0000-0002-5711-4872)", url: "http://orcid.org/0000-0002-5711-4872",
+			company: "University of Manchester", companyURL: "http://www.manchester.ac.uk/" },
+		],
+		authors:  [
+			//{ name: "Christian Brenninkmeijer",
+			//company: "University of Manchester", companyURL: "http://www.manchester.ac.uk/" },
+			//{ name: "Chris Evelo",
+			//company: "Maastricht University", companyURL: "http://www.maastrichtuniversity.nl/" },
+			//{ name: "Carole Goble",
+			//company: "University of Manchester", companyURL: "http://www.manchester.ac.uk/" },
+			//{ name: "Alasdair J G Gray", url: "http://www.cs.man.ac.uk/~graya",
+			//company: "University of Manchester", companyURL: "http://www.manchester.ac.uk/" },
+			//{ name: "Andra Waagmeester",
+			//company: "Maastricht University", companyURL: "http://www.maastrichtuniversity.nl/" },
+			//{ name: "Egon Willighagen", url: "http://chem-bla-ics.blogpost.com/",
+			//company: "Maastricht University", companyURL: "http://www.maastrichtuniversity.nl/" },
+		],
+          
+		// WG
+		//wg:           "People Who Like To Write Specs Help Group",
+		//wgURI:        "http://berjon.com/",
+		//wgPublicList: "spec-writers-anonymous",
+		//wgPatentURI:  "",
+	};
+</script>
+<style type="text/css">
+	pre {
+		background: #d0ddee;
+		padding: 1.3em 2em;
+		margin-left: 0;
+	}
+	.todo::before {
+		content: "ToDo";
+		display: block;
+		width: 150px;
+		margin: -1.5em 0 0.5em 0;
+		font-weight: bold;
+		border: 1px solid #CFF6D9;
+		background: white;
+		padding: 3px 1em;
+	}
+	p.todo {
+		margin: 1em 0em 0em;
+		padding: 1em;
+		border: 2px solid #CFF6D9;
+		background: #E2FFF0;
+	}
+	
+	
+	table { 
+		border-collapse: collapse; 
+		margin: 1.5em auto 2em; 
+	}
+	table caption { 
+		margin-bottom: 0.2em; 
+	}
+	th { 
+		background: #ddd; 
+	}
+	th, td { 
+		border: 1px solid #888; 
+		margin: 0; 
+		padding: 0.3em 0.5em; 
+	}
+	th.details { 
+		width: 5.2em; 
+	}
+	.image { margin-left: auto; margin-right: auto; text-align: center; }
+
+	.issue {
+		background: #fd9; 
+		border: 1px solid red; 
+		padding: 0.3em 0.5em; 
+	}
+	
+	table.definition {
+		width:100%;
+	}
+	table.definition td.prop {
+		width: 10em;
+	}
+    
+</style>
+</head>
+
+<body>
+<section id="abstract">
+	This is a specification for defining a scientific lens: a filter for varying
+	the linksets that are activated to achieve associations between datasets that
+	meet a set scientific working assumptions. The specification defines the
+	attributes that need to be stated in order that the Open PHACTS Identity
+	Mapping Service can apply the lens to control the active linksets.
+</section>
+
+<section id="sotd">
+	<h4>Disclaimer</h4>
+		<p>
+			The research leading to these results has received support from the
+			Innovative Medicines Initiative (<a href="http://www.imi.europa.eu/">IMI</a>)
+			Joint Undertaking under grant agreement n° 115191, resources of which
+			are composed of financial contribution from the European Union's
+			Seventh Framework Programme (FP7/2007-2013) and EFPIA companies’ in
+			kind contribution.<br /> <img src="http://www.openphacts.org/specs/logo/imi.jpg" height="80" /> <img
+				src="http://www.openphacts.org/specs/logo/eu.jpg" height="80"
+			/> <img src="http://www.openphacts.org/specs/logo/efpia.jpg" height="80" />
+		</p>
+	<h4>Intended audience</h4>
+		<p>
+			This lens specification is intended for application developers and
+			data providers. First so that applications can understand and enable
+			users to apply lenses. Second to enable the creation of lenses. 
+			Finally to enable linksets to be associated with lenses. 
+		</p>
+</section>
+
+<section id="introduction" class="informative">
+	<h2>Introduction</h2>
+	<p>
+		The Open PHACTS platform [[OPS-ARCH]] relies on data and the interlinks
+		published by a variety of sources. For example, details of chemicals are
+		derived from <a href="http://www.chemspider.com/">ChemSpider</a>, 
+		<a href="https://www.ebi.ac.uk/chembl/">ChEMBL</a>, and 
+		<a href="http://www.drugbank.ca/">DrugBank</a>. This specification 
+		defines scientific lenses which enable the relationships between datasets
+		to be varied to meet the scientific assumptions required. For example,
+		the ChemSpider record for imatinib mesylate can be related to the 
+		DrugBank record imatinib in several ways: first because one is the 
+		salt-form of the other and secondly because they share the same drug
+		name, viz Gleevec. There are circumstances where scientists would like
+		to keep the records separate, i.e. where they are concerned about 
+		analysing chemcicals based on their weight, whereas in other cases they
+		would like the records to be integrated as they are about the same drug.
+	</p>
+	<p>
+		The Open PHACTS project has produced a set of guidelines aimed at data 
+		providers for publishing their data within the OPS system [[!OPS-RDF]]. 
+		The RDF guide provides details about modelling your data as RDF. In 
+		another specification, we have stated the metadata that 
+		should be published to describe the dataset and the links to other 
+		datasets [[!OPS-METADATA]]. This specification builds upon both of these.
+	</p>
+	<p>
+		This specification declares the properties that should be included in 
+		the definition of a scientific lens. The properties should enable 
+		user faciing applications to support scientists in choosing between 
+		lenses. Equally, the properties should enable the application of lenses
+		to switch on/off linksets in a given scenario.  
+	</p>
+	<!-- end introduction -->
+</section>
+
+<section id="conventions">
+	<h2>Document Conventions</h2>
+	<section id="conformance">
+		<!-- This includes standard text about conformance -->
+	</section>
+	
+	<section id="rdf-syntax">
+		<h3>RDF Syntax and Namespaces</h3>
+		<p>
+			All examples in this document are written in the <a
+			href="http://www.w3.org/TR/turtle/">Turtle RDF syntax</a> 
+			[[TURTLE]]. Throughout the document, the following namespaces are 
+			used:
+		</p>
+
+		<pre class="turtle">
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+		</pre>
+
+		<p>
+			Furthermore, we assume that the empty prefix is bound to the base 
+			URL of the current file like this:
+		</p>
+
+		<pre class="turtle">@prefix : &lt;#&gt; .</pre>
+
+		<p>
+			This allows us to quickly mint new identifiers in the local 
+			namespace.
+		</p>
+		<!-- end rdf-syntax -->
+	</section>
+	<!-- end conventions -->
+</section>
+
+</body>
+
+</html>
