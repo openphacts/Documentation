@@ -195,6 +195,7 @@
 		</p>
 
 		<pre class="turtle">
+@prefix bdb: &lt;http://www.bridgedb.org/.../...#&gt; .
 @prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
@@ -215,6 +216,37 @@
 		<!-- end rdf-syntax -->
 	</section>
 	<!-- end conventions -->
+</section>
+
+<section id="lens-specification">
+	<h2>Lens Specification</h2>
+	
+	<p class="todo">
+	  Do we want to capture metadata about who created a lens and when?<br/>
+	  Do we want to make a lens a kind of nanopublication?
+	</p>
+
+<pre class="example" id="ex:general-chemistry-lens">
+@prefix CHEBI: &lt;http://purl.obolibrary.org/obo#&gt; .
+@prefix CHEMINF: &lt;http://semanticscience.org/resource/&gt; .
+
+:lens-1 a bdb:Lens ;
+  dcterms:title "General Chemistry Lens"@en ;
+  dcterms:description "Default chemistry lens that matches compounds based on their structure matching according to their InChI string."@en ; 
+  bdb:enabledJustifications CHEMINF:CHEMINF_000059, CHEBI:is_tautomer_of.
+</pre>
+
+<pre class="example" id="ex:chemistry-hierarchy-lens">
+@prefix CHEBI: &lt;http://purl.obolibrary.org/obo#&gt; .
+@prefix CHEMINF: &lt;http://semanticscience.org/resource/&gt; .
+
+:lens-2 a bdb:Lens ;
+  dcterms:title "Chemistry Hierarchy Relationships Lens"@en ;
+  dcterms:description "Lens that matches chemical compounds if they have some hierarchical relationship with another compound, e.g. shared structure, salt-form, acid-base, etc."@en ;
+  bdb:enabledJustifications CHEMINF:CHEMINF_000059, CHEBI:is_tautomer_of, CHEBI:has_parts, 
+</pre>
+	
+<!-- end lens-specification -->
 </section>
 
 </body>
