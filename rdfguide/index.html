@@ -120,12 +120,17 @@
     <ol>
       <li>Resource Description Framework (RDF) to be used [[RDFPrimer]]</li>
       <li>Every primary concept should be typed, and have a label (we recommend rdfs:label and skos:prefLabel), including language specification</li>
-      <li>Relations, like interactions, modeled as concepts (rather than predicate) do not require a label</li>
+      <li>Specific relations, like interaction data, modeled as concepts (rather than predicate) do not require a label</li>
       <li>Ontologies used for classes and predicates must be openly available</li>
       <li>A VoID specification of your data (see <a href="#sec:step9">Step 9</a>)
     </ol>
-    <p class="note">
-      Somewhere, probably later in this specification, we should detail that relations (like interactions) can be modeled as classes as well as predicates.
+    <h3>Why sometimes relationship labels may be omitted</h3>
+    <p>
+      Relations can be modeled as both a predicate and a concept. In the former type it is commonly the relation
+      type that is represented by a predicate. For example, "binds to" clearly has a label. But if the relationship is
+      a unique one, for example, a specific binding affinity with which you want to associate further information,
+      you would commonly model this as a concept instead of a predicate. In such cases, you can ommit the label,
+      which is favored over labels like "an affinity between target X and compound Y".
     </p>
     <p>
       Open PHACTS does not specify requirements or guidelines around:
