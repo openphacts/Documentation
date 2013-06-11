@@ -623,10 +623,8 @@ ex:m1/full_mwt cheminf:SIO_000300 "341.748" .
     <h3>Open PHACTS validators</h3>
     <p>
       In addition to the tools mentioned above, the Manchester University team has developed a few
-      <a href="http://openphacts.cs.man.ac.uk:9090/OPS-IMS/validate">validation webservices</a>. Among these,
-      is a <a href="http://openphacts.cs.man.ac.uk:9090/OPS-IMS/validateVoid">validator specifically aimed
-      at VoID provenance information</a>, as required and dictated by the the Open PHACTS
-      data set description specification [[Gray2012]].
+      <a href="http://openphacts.cs.man.ac.uk:9090/OPS-IMS/validate">validation webservices</a>,
+      including validators for RDF documents.
     </p>
     <h3>Tools available for validation</h3>
     <p>Below is a brief overview of tools that may assist the triple generation.</p>
@@ -750,7 +748,35 @@ http://rdf.openmolecules.net/?InChI=1S/CH4/h1H4
     </p>
   </section>
   <section>
-    <h2><a name="sec:step9">Step 9</a>: advertise your data (in Open PHACTS)</h2>
+    <h2><a name="sec:step11">Step 9</a>: write up the metadata</h2>
+    <!-- yeah, never mind the step mismatch. This is why anchors should not have numbers... -->
+    <p>
+      Now that you know what data you started with, what the RDF looks like, how you generated it,
+      and how you make it available, you must document this provenance. In Open PHACTS the
+      <i>Dataset Descriptions for the Open Pharmacological Space</i> specification details out
+      how you are expecting to do this in very much detail [[Gray2012]]. The key ontology used
+      by this specification is the VoID (Vocabulary of Interlinked Datasets ontology [[Cyganiak2011b]].
+    </p>
+    <p>
+      The data you should record includes but is not limited to:
+      <ul>
+        <li>copyright owners and data license/waiver inforamtion (see <a href="#sec:step0">Step 0</a>)</li>
+        <li>who made the conversion and how</li>
+        <li>information on what kind of entities are describes (see <a href="#sec:step2">Step 2</a>)</li>
+        <li>how people can access the RDF (see <a href="#sec:step8">Step 8</a>)</li>
+        <li>what data sets you are linking to (see <a href="#sec:step5">Step 5</a>)</li>
+      </ul>
+    </p>
+    <h3>Open PHACTS VoID validator</h3>
+    <p>
+      The Manchester University team has developed a
+      <a href="http://openphacts.cs.man.ac.uk:9090/OPS-IMS/validateVoid">validator specifically aimed
+      at VoID provenance information</a>, and verified compliance with the Open PHACTS
+      data set description specification [[Gray2012]].
+    </p>
+  </section>
+  <section>
+    <h2><a name="sec:step9">Step 10</a>: advertise your data (in Open PHACTS)</h2>
     <p>
       The final step in creating RDF, is to advertise your RDF as to get it used, and to get it linked
       to. Various options can be considered, such as announcing the data on mailing lists, on the Open PHACTS
@@ -760,9 +786,8 @@ http://rdf.openmolecules.net/?InChI=1S/CH4/h1H4
       Like with conference posters, advertising RDF goes with certain requirements. Similar to the requirement
       that conference posters must be of a certain size, advertising RDF data sets must include, for example,
       license (or waiver) information (see <a href="#sec:step0">Step 0</a>), what ontologies are used (see <a href="#sec:step4">Step 4</a>), and their embedding in the Linked Open Data
-      network (see <a href="#sec:step5">Step 5</a>). For example, this can be done by providing a
-      specification using VoID (Vocabulary of Interlinked Datasets [[Cyganiak2011b]]; VoID is the Open PHACTS selection,
-      as specified in the Open PHACTS Identity Mapping Specification [[Gray2012]].
+      network (see <a href="#sec:step5">Step 5</a>). The VoID-encoded meta data from <a href="#sec:step11">Step 11</a>
+      can be reused.
     </p>
     <p>
       Additionally, your data point should be registered with the appropriate registries. One of these is the
@@ -774,7 +799,7 @@ http://rdf.openmolecules.net/?InChI=1S/CH4/h1H4
     </p>
   </section>
   <section>
-    <h2><a name="sec:step10">Step 10</a>: compare your results with community standards</h2>
+    <h2><a name="sec:step10">Step 11</a>: compare your results with community standards</h2>
     <p>
       It is useful to compare your results at the end with what others have been doing. One option is to look
       at the Linked Open Data stars scheme.
