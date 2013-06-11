@@ -20,5 +20,6 @@ berjon.biblio = {
    "Turtle"       : "D. Backett, T. berners-Lee, Turtle - Terse RDF Triple Language, 2011, <a href=\"http://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/\">http://www.w3.org/TR/2004/REC-rdf-syntax-grammar-20040210/</a>.",
    "NTriples"     : "See <a href=\"http://www.w3.org/TR/rdf-testcases/#ntriples\">http://www.w3.org/TR/rdf-testcases/#ntriples</a>",
    "Notation3"    : "T. Berners-Lee, D. Connolly, Notation3 (N3): A readable RDF syntax, 2011, <a href=\"http://www.w3.org/TeamSubmission/2011/SUBM-n3-20110328/\">http://www.w3.org/TeamSubmission/2011/SUBM-n3-20110328/</a>",
-   "Erling2011"   : "O. Erling, Benchmarks, Redux (part 1): On RDF Benchmarks, 2011, <a href=\"http://www.openlinksw.com/weblog/oerling/?id=1658\">http://www.openlinksw.com/weblog/oerling/?id=1658</a>"
+   "Erling2011"   : "O. Erling, Benchmarks, Redux (part 1): On RDF Benchmarks, 2011, <a href=\"http://www.openlinksw.com/weblog/oerling/?id=1658\">http://www.openlinksw.com/weblog/oerling/?id=1658</a>",
+   "Marx2013"     : "E. Marx, P. Salas, K. Breitman, J. Viterbo, M.A. Casanova, 2013. RDB2RDF: A relational to RDF plug-in for eclipse. Softw. Pract. Exper. 43(4):435-447, doi:<a href=\"URL http://dx.doi.org/10.1002/spe.2145\">10.1002/spe.2145</a>"
 }
