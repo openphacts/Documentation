@@ -176,7 +176,7 @@
         <p> All examples in this document are written in the <a href="http://www.w3.org/TR/turtle/">Turtle
             RDF syntax</a> [[TURTLE]]. Throughout the document, the following
           namespaces are used: </p>
-        <pre class="turtle">@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+        <pre class="turtle">@prefix cito: &lt;http://prul.org/spar/cito/&gt; .<br>@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
 @prefix dctypes: &lt;http://purl.org/dc/dcmitype/&gt; .
 @prefix dul: &lt;http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
@@ -476,7 +476,8 @@
                   <li>Declare when the dataset was authored <a href="#pav:authoredOn">pav:authoredOn</a>;</li>
                   <li>Declare the theme of the dataset <a href="http://www.w3.org/TR/2013/WD-vocab-dcat-20130312/#class-dataset">dcat:theme</a>
                     and link to topics from a controlled vocabulary;</li>
-                  <li>Declare the literature reference for the dataset <span style="background-color: #ffff33;">???</span>.</li>
+                  <li>Declare the literature reference for the dataset&nbsp;<a href="#cito:citeAsAuthority">cito:citeAsAuthority</a><span
+                      style="background-color: #ffff33;"></span>.</li>
                 </ul>
               </ul>
             </dd>
@@ -951,6 +952,38 @@
     </section>
     <section id="appendix-properties" class="appendix">
       <h2>Vocabularies for Datasets Descriptions</h2>
+      <section id="cito">
+        <h3 id="cito">Citation Typing Ontology</h3>
+        <h4>Properties</h4>
+        <table id="cito:citeAsAuthority" class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property</th>
+              <th> <a href="http://purl.org/spar/cito/citesAsAuthority" target="_blank">
+                  <code>cito:citeAsAuthority</code></a> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td> The citing entity cites the cited entity as one that provides
+                an authoritative description or definition of the subject under
+                discussion. </td>
+            </tr>
+            <tr>
+              <td class="prop">Usage note:</td>
+              <td> Used to specify the recommended citation for a dataset;
+                particularly when this is a requirement of the dataset license.
+              </td>
+            </tr>
+            <tr>
+              <td class="prop">Example:</td>
+              <td> The&nbsp;UniProt license requires credit is given by citing a
+                specific publication.&nbsp; </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- end of cito --> </section>
       <section id="dcat">
         <h3 id="dcat">Data Catalog Vocabulary</h3>
         <h4>Classes</h4>
