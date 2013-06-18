@@ -187,72 +187,118 @@
       meaning (i.e. the semantics) to the data.
     </p>
     <p>
-      Input (with a header on the first line):
+      Input tables with header on the first line, for names, smiles, and properties:
       <pre>
-Pet;Species;Subspecies;Owner;Address;Food
-Doger;Dog;Dachshund;Frank Smith;Mainstreet 1 London;Bones
+ID:MW
+1:180.1578
+2:151.1629
+      </pre>
+      <pre>
+ID:Synonym
+1:aspirin
+1:acetyl salicylic acid
+2:paracetamol
+      </pre>
+      <pre>
+ID:SMILES
+1:O=C(O)c1ccccc1(OC(=O)C)
+1:CC(=O)Oc1ccccc1C(O)=O
+2:O=C(Nc1ccc(O)cc1)C
       </pre>
     </p>
-    <p class="note">This example needs to be replaced with one from the life sciences.</p>
     <p> 
       Output:
       <pre class="turtle">
 @prefix any23: &lt;http://any23.org/tmp/> .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#> .
-@prefix csv: &lt;http://vocab.sindice.net/csv/> .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
+@prefix props: &lt;http://any23.org/tmp/propsTable/> .
+@prefix names: &lt;http://any23.org/tmp/synonymsTable/> .
+@prefix smiles: &lt;http://any23.org/tmp/smilesTable/> .
 
-&lt;any23:col0> &lt;rdfs:label> "Pet" ;
-   &lt;csv:columnPosition> "0"^^xsd:integer .
+props:row1
+  any23:molid "1" ;
+  any23:mw "180.1578" .
 
-&lt;any23:col1> &lt;rdfs:label> "Species" ;
-   &lt;csv:columnPosition> "1"^^xsd:integer .
+props:row2
+  any23:molid "2" ;
+  any23:mw "151.1629" .
 
-&lt;any23:col2> &lt;rdfs:label> "Subspecies" ;
-   &lt;csv:columnPosition> "2"^^xsd:integer .
+names:row1
+  any23:molid "1" ;
+  rdfs:label "aspirin" .
 
-&lt;any23:col3> &lt;rdfs:label> "Owner" ;
-   &lt;csv:columnPosition> "3"^^xsd:integer .
+names:row2
+  any23:molid "1" ;
+  rdfs:label "acetyl salicylic acid" .
 
-&lt;any23:col4> &lt;rdfs:label> "Address" ;
-   &lt;csv:columnPosition> "4"^^xsd:integer .
+names:row3
+  any23:molid "2" ;
+  rdfs:label "paracetamol" .
 
-&lt;any23:col5> &lt;rdfs:label> "Food" ;
-   &lt;csv:columnPosition> "5"^^xsd:integer .
+smiles:row1
+  any23:molid "1" ;
+  any23:smiles "O=C(O)c1ccccc1(OC(=O)C)" .
 
-&lt;any23:row/0> a &lt;csv:Row> ;
-   &lt;any23:col0> "Doger"^^xsd:string ;
-   &lt;any23:col1> "Dog"^^xsd:string ;
-   &lt;any23:col2> "Dachshund"^^xsd:string ;
-   &lt;any23:col3> "Frank Smith"^^xsd:string ;
-   &lt;any23:col4> "Mainstreet 1 London"^^xsd:string ;
-   &lt;any23:col5> "Bones"^^xsd:string .
+smiles:row2
+  any23:molid "1" ;
+  any23:smiles "CC(=O)Oc1ccccc1C(O)=O" .
 
-&lt;any23:> &lt;csv:row> &lt;any23:row/0> .
+smiles:row3
+  any23:molid "2" ;
+  any23:smiles "O=C(Nc1ccc(O)cc1)C" .
       </pre>
     </p>
     <p>
-      Importantly, the use of columns and rows in the RDF must be removed. Better would be:
+      Importantly, the notion of columns and rows in the RDF must be removed. Better would be:
       <pre class="turtle">
 @prefix any23: &lt;http://any23.org/tmp/> .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#> .
+@prefix compound: &lt;http://any23.org/tmp/compound/> .
+
+compound:molid1
+  rdfs:label "aspirin" ;
+  rdfs:label "acetyl salicylic acid" ;
+  any23:smiles "O=C(O)c1ccccc1(OC(=O)C)" ;
+  any23:smiles "CC(=O)Oc1ccccc1C(O)=O" ;
+  any23:mw "180.1578" .
+
+compound:molid2
+  rdfs:label "paracetamol" ;
+  any23:smiles "O=C(Nc1ccc(O)cc1)C" ;
+  any23:mw "151.1629" .
+      </pre>
+    </p>
+    <p>
+      One can notice that identifiers used in relational databases typically find a role in
+      the URI of resources, as was used in this example too.
+    </p>
+    <h3>Also data types</h3>
+    <p>
+      Another important difference is that tables require an external schema to provide meaning.
+      RDF is much more self-explanatory. Therefore, one must not only think about the structure,
+      but also about data types. With this approach, we can futher improve the semantic equivalent
+      of the three tables:
+      <pre class="turtle">
+@prefix any23: &lt;http://any23.org/tmp/> .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#> .
+@prefix compound: &lt;http://any23.org/tmp/compound/> .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#> .
 
-&lt;any23:Pet> &lt;rdfs:label> "Pet" .
-&lt;any23:species> &lt;rdfs:label> "Species" .
-&lt;any23:subspecies> &lt;rdfs:label> "Subspecies" .
-&lt;any23:owner> &lt;rdfs:label> "Owner" .
-&lt;any23:address> &lt;rdfs:label> "Address" .
-&lt;any23:food> &lt;rdfs:label> "Food" .
+compound:molid1
+  rdfs:label "aspirin"@en ;
+  rdfs:label "acetyl salicylic acid"@en ;
+  any23:smiles "O=C(O)c1ccccc1(OC(=O)C)" ;
+  any23:smiles "CC(=O)Oc1ccccc1C(O)=O" ;
+  any23:mw "180.1578"^^xsd:float .
 
-&lt;any23:doger> a &lt;any23:Pet> ;
-&lt;rdfs:label> "Doger"^^xsd:string ;
-&lt;any23:species> "Dog"^^xsd:string ;
-&lt;any23:subspecies> "Dachshund"^^xsd:string ;
-&lt;any23:owner> "Frank Smith"^^xsd:string ;
-&lt;any23:address> "Mainstreet 1 London"^^xsd:string ;
-&lt;any23:food> "Bones"^^xsd:string .
+compound:molid2
+  rdfs:label "paracetamol"@en ;
+  any23:smiles "O=C(Nc1ccc(O)cc1)C" ;
+  any23:mw "151.1629"^^xsd:float .
       </pre>
+      Be aware of making assumptions that are not true. For example, the enriched example above
+      assumes that all labels are all in English, which is not generally true for compound
+      databases.
     </p>
   </section>
   <section> 
