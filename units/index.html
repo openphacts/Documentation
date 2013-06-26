@@ -154,7 +154,7 @@ chembl:a31876 chembl:standardUnit &lt;http://www.openphacts.org/units/Nanomolar&
         made. The script that converts the activities is written in Groovy, an extension of Java,
         and a Java Map is used, instantiated in the Groovy syntax:
       </p>
-      <pre>
+      <pre class="example sh_html">
 unitMappings = [
   nM:"http://www.openphacts.org/units/Nanomolar",
   uM:"http://www.openphacts.org/units/Micromolar",
@@ -171,7 +171,7 @@ unitMappings = [
         Using this information, we can look up which units we are exposing as QUDT, and create
         triples accordingly. The ChEMBL-RDF scripts use the following Groovy code:
       </p>
-      <pre>
+      <pre class="example sh_html">
     // this returns the "standard_units" field of the SQL query result row
     units = row.standard_units
     if (units != null &amp;&amp; unitMappings.containsKey(units)) {
@@ -192,7 +192,7 @@ unitMappings = [
       <p>
         This code results in RDF as given earlier:
       </p>
-      <pre>
+      <pre class="example sh_html">
 chembl:a31876 chembl:standardValue "24000.0"^^xsd:float .
 chembl:a31876 chembl:standardUnit &lt;http://www.openphacts.org/units/Nanomolar&gt; .
       </pre>
