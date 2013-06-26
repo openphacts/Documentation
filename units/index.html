@@ -148,13 +148,11 @@ chembl:a31876 chembl:standardUnit &lt;http://www.openphacts.org/units/Nanomolar&
     <section>
       <h3>Example: ChEMBL-RDF</h3>
       <p>
-        The ChEMBL-RDF data sets are creating using a set of PHP and Groovy scripts. First provide
-        a minimal set of triples. The choice of the PHP language is chosen so that the script can
-        also be used in an LAMP environment to provide triples when using dereferencible URIs.
+        The ChEMBL-RDF data sets (prior to ChEMBL 15) are created using a set of PHP and Groovy scripts [[Willighagen2013]].
         The input of these scripts, a relational database, provides textual representations of
         units. Therefore, the matching between ChEMBL data and QUDT units has to be explicitly
         made. The script that converts the activities is written in Groovy, an extension of Java,
-        and a Java Map is used:
+        and a Java Map is used, instantiated in the Groovy syntax:
       </p>
       <pre>
 unitMappings = [
