@@ -14,7 +14,7 @@
           customcss:            "../css/ops.css",
           specStatus:           "ED",
           shortName:            "units",
-          // publishDate:   "2012-11-21",
+          publishDate:   "2013-06-26",
           // previousMaturity: "WD",
           // previousPublishDate:  "2009-03-15",
           // previousURI : "http://dev.w3.org/2009/dap/ReSpec.js/documentation.html",
@@ -365,6 +365,23 @@ ops:PicogramPerMilliliter
  qudt:conversionMultiplier 0.000001 ;
  qudt:conversionOffset 0.0 ;
  qudt:symbol "pg/cm^3"^^xsd:string .
+
+ops:MilligramPerDeciliter 
+ rdf:type qudt:MassPerVolumeUnit, qudt:SIDerivedUnit, qudt:DerivedUnit ;
+ rdfs:label "Milligram per Deciliter"^^xsd:string ;
+ qudt:abbreviation "mg/dL"^^xsd:string ;
+ qudt:conversionMultiplier 100.0 ;
+ qudt:conversionOffset 0.0 .
+
+ops:SquareAngstrom
+ rdf:type qudt:AreaUnit, qudt:SIDerivedUnit ;
+ rdfs:label "Square Ångström"^^xsd:string ;
+ qudt:abbreviation "Å^2"^^xsd:string ;
+ qudt:conversionMultiplier
+  0.00000000000000000001 ;
+ qudt:conversionOffset
+  "0.0"^^xsd:double ; 
+ qudt:symbol "Å^2"^^xsd:string .
     </pre>
   </section>
 </body>
