@@ -272,12 +272,25 @@ Output:
     0.1 μM = 100.00000000000001 nM
     20.0 C = 293.0 K
     </pre>
+    <h3>Unit Ontology support</h3>
+    <p>
+      jQUDT knows about some mappings between resources from the Unit Ontology (UO) [[UO2013]] and QUDT,
+      allowing (some) units to be constructed from UO URIs too.
+    </p>
+    <pre class="example sh_html" title="Creating a nanomolar unit from a UO URI.">
+UnitOntologyFactory factory = UnitOntologyFactory.getInstance();
+Unit unit = factory.getUnit("http://purl.obolibrary.org/obo/UO_0000065");
+    </pre>
+    <p>
+      A full list of mappings can be found in <a href="#unitontologyMappings">Appendix B</a>.
   </section>
 
   <section class="appendix">
-    <h2>Units defined by QUDT</h2>
+    <h2 id="qudtUnits">Units defined by Open PHACTS extending QUDT</h2>
     <p>
-      The following list is the list of additional units by Open PHACTS before.
+      The following list is the list of additional units by Open PHACTS.
+      The list is currently available <a href="https://github.com/openphacts/jqudt/blob/master/src/main/resources/onto/ops.ttl">from
+      the Open PHACTS GitHub repository</a>.
     </p>
     <pre>
 @prefix dc:      &lt;http://purl.org/dc/elements/1.1/> .
@@ -381,6 +394,29 @@ ops:SquareAngstrom
   "0.0"^^xsd:double ; 
  qudt:symbol "Å^2"^^xsd:string .
     </pre>
+  </section>
+
+  <section class="appendix">
+    <h2 id="unitontologyMappings">Mappings between the Unit Ontology and QUDT</h2>
+    <table>
+      <tr><td><b>Unit Ontology</b></td><td><b>QUDT</b></td></tr>
+      <tr><td>uo:UO_0000065</td><td>ops:Nanomolar</td></tr>
+      <tr><td>uo:UO_0000064</td><td>ops:Micromolar</td></tr>
+      <tr><td>uo:UO_0000066</td><td>ops:Picomolar</td></tr>
+      <tr><td>uo:UO_0000062</td><td>ops:Molar</td></tr>
+      <tr><td>uo:UO_0000063</td><td>ops:Millimolar</td></tr>
+      <tr><td>uo:UO_0000175</td><td>ops:GramPerLiter</td></tr>
+      <tr><td>uo:UO_0000274</td><td>ops:MicrogramPerMilliliter</td></tr>
+      <tr><td>uo:EFO_0004385</td><td>ops:PicogramPerMilliliter</td></tr>
+      <tr><td>uo:UO_0000275</td><td>ops:NanogramPerMilliliter</td></tr>
+      <tr><td>uo:UO_0000176</td><td>ops:MilligramPerMilliliter</td></tr>
+      <tr><td>uo:EFO_0004374</td><td>ops:MilligramPerDeciliter</td></tr>
+      <tr><td>uo:UO_0000187</td><td>qudt:floatPercentage</td></tr>
+      <tr><td>uo:UO_0000032</td><td>qudt:Hour</td></tr>
+      <tr><td>uo:UO_0000031</td><td>qudt:MinuteTime</td></tr>
+      <tr><td>uo:UO_0000010</td><td>qudt:SecondTime</td></tr>
+      <tr><td>uo:UO_0000033</td><td>qudt:Day</td></tr>
+    </table>
   </section>
 </body>
 
