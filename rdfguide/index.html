@@ -35,7 +35,7 @@
                 company: "University of Bonn", companyURL: "http://www.b-it-center.de/" },
              { name: "Andra Waagmeester",
                 company: "Maastricht University", companyURL: "http://www.maastrichtuniversity.nl/" },
-             { name: "Marc Zimmerman",
+             { name: "Marc Zimmermann",
                 company: "Fraunhofer SCAI", companyURL: "http://www.scai.fraunhofer.de/" },
              { name: "Egon Willighagen", url: "http://chem-bla-ics.blogpost.com/",
                 company: "Maastricht University", companyURL: "http://www.maastrichtuniversity.nl/" },
@@ -129,14 +129,6 @@
       <li>Ontologies used for classes and predicates must be openly available</li>
       <li>A VoID specification of your data (see <a href="#sec:step9">Step 9</a>)
     </ol>
-    <h3>Why sometimes relationship labels may be omitted</h3>
-    <p>
-      Relations can be modeled as both a predicate and a concept. In the former type it is commonly the relation
-      type that is represented by a predicate. For example, "binds to" clearly has a label. But if the relationship is
-      a unique one, for example, a specific binding affinity with which you want to associate further information,
-      you would commonly model this as a concept instead of a predicate. In such cases, you can omit the label,
-      which is favored over labels like "an affinity between target X and compound Y".
-    </p>
     <p>
       Open PHACTS does not specify requirements or guidelines around:
     </p>
@@ -166,7 +158,7 @@
       do is to provide clarity as to whether the data is Open or not. 
     </p>
     <p>
-      VoID should be use to encode license information for data sets to be used in Open PHACTS [[OPSDD]].
+      VoID should be used to encode license information for data sets to be used in Open PHACTS [[OPSDD]].
       The Dublin Core ontology [[Nilsson2008]] is a common alternative, and the given example is purely
       illustrative for encoding license information in RDF:<br />
       <img src="img/licenseData.png" width="60%"/>
@@ -181,8 +173,8 @@
       data was previously stored.
     </p>
     <p>
-      So, the following code example shows bad practices. This generated example RDF shows a pet database,
-      listing pets living in the same household in European capitals, including the food these pets eat. The
+      So, the following code example shows bad practices. This generated example RDF shows a compound database,
+      listing molecules, their synonyms, mol weight and SMILES representations. The
       RDF output reflects the original data structure, and adds little useful
       meaning (i.e. the semantics) to the data.
     </p>
@@ -307,7 +299,7 @@ compound:molid2
       The first step in creating your RDF is to create a list of all concepts that are found in your
       data. Are there proteins, metabolites, cell cultures, organisms, targets, assays? At what level are
       those concepts represented in your data? Are they protein names without exactly known point
-      mutations, are the accurate masses resulting from metabolomics experiments, are the exact metabolic
+      mutations? Are the accurate masses resulting from metabolomics experiments? Are the exact metabolic
       structures known? Are there multiple identifiers known? Does your data contain references with a
       PubMed identifier or a DOI? In this step you define the types, rather than the entities: you
       observe that they are proteins, but do not enumerate each of them.
@@ -437,10 +429,9 @@ compound:molid2
     </ul>
     <h4>Genomic data</h4>
     <ul>
-      <li>Simple Knowledge Organization System (SKOS) - <a href="http://www.w3.org/2004/02/skos/core#">http://www.w3.org/2004/02/skos/core#</a> - Strongly recommended</li>
-      <li>RDF Schema (RDFS) - <a href="http://www.w3.org/2000/01/rdf-schema#">http://www.w3.org/2000/01/rdf-schema#</a></li>
-      <li>Web Ontology Language (OWL) 2 - <a href="http://www.w3.org/2002/07/owl#">http://www.w3.org/2002/07/owl#</a>,
-        See <a href="http://www.w3.org/TR/owl2-overview/">OWL 2 Web Ontology Language Document Overview (Second Edition)</a></li>
+      <li>ENTREZGENE - <a href="http://www.ncbi.nlm.nih.gov/gene?term=">http://www.ncbi.nlm.nih.gov/gene?term=</a></li>
+      <li>GO (gene ontology) - <a href="http://amigo.geneontology.org/cg-bin/amigo/term-details.cgi?term=GO:">http://amigogeneontology.org/cg-bin/amigo/term-details.cgi?term=GO:</a></li>
+      <li>UinProtKB - <a href="http://www.uniprot.org/unitprot/">http://www.uniprot.org/unitprot/</a></li>
     </ul>
     <h4>Pathways</h4>
     <ul>
@@ -589,6 +580,14 @@ ex:methane rdfs:label “methaan”@nl .
       those entities, then a label may be omitted. An example is the molecular weight property in
       the next section.
     </p>
+    <h3>Why sometimes relationship labels may be omitted</h3>
+    <p>
+      Relations can be modeled as both a predicate and a concept. In the former type it is commonly the relation
+      type that is represented by a predicate. For example, "binds to" clearly has a label. But if the relationship is
+      a unique one, for example, a specific binding affinity with which you want to associate further information,
+      you would commonly model this as a concept instead of a predicate. In such cases, you can omit the label,
+      which is favored over labels like "an affinity between target X and compound Y".
+    </p>
     <h3>No blank nodes</h3>
     <p>
       Blank nodes must not be used, following for example the Banff Manifesto [[banffmanifesto]];
@@ -699,7 +698,7 @@ ex:m1/full_mwt cheminf:SIO_000300 "341.748" .
       including validators for RDF documents.
     </p>
     <h3>Tools available for validation</h3>
-    <p>Below is a brief overview of tools that may assist the triple generation.</p>
+    <p>Below is a brief overview of tools that may assist the triple validation.</p>
     <h4>W3C RDF Validation</h4>
     <p>
       Description: Webpage that accepts raw triple content and URLs pointing to RDF documents.<br />
