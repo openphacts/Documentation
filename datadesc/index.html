@@ -14,7 +14,7 @@
 		customcss:            "http://www.openphacts.org/specs/css/ops.css",
 		specStatus:           "ED",
 		shortName:            "datadesc",
-		publishDate:   "2013-06-17",
+		publishDate:   "2013-07-02",
 		previousMaturity: "WD",
 		previousPublishDate:  "2012-10-19",
 		//previousURI : "http://www.cs.manchester.ac.uk/~graya/ops/2012/WD-mappingspec-20120615/",
@@ -341,15 +341,31 @@
               </td>
               <td> Transitive Symmetric </td>
             </tr>
+            <tr>
+              <td><a href="http://www.w3.org/2004/02/skos/core#broadMatch" target="_blank"><code>skos:broadMatch</code></a>
+              </td>
+              <td>This link indicates that the target resource is more general
+                than the subject resource. See <a href="http://www.w3.org/TR/skos-reference/#mapping">http://www.w3.org/TR/skos-reference/#mapping</a>.<br>
+              </td>
+              <td>Inverse of <a href="http://www.w3.org/2004/02/skos/core#narrowMatch"
+                  target="_blank"><code>skos:narrowMatch</code></a> </td>
+            </tr>
+            <tr>
+              <td><a href="http://www.w3.org/2004/02/skos/core#narrowMatch" target="_blank"><code>skos:narrowMatch</code></a>
+              </td>
+              <td>This link indicates that the target resource is more specific
+                than the subject resource. See <a href="http://www.w3.org/TR/skos-reference/#mapping">http://www.w3.org/TR/skos-reference/#mapping</a>.<br>
+              </td>
+              <td>Inverse of <a href="http://www.w3.org/2004/02/skos/core#broadMatch"
+                  target="_blank"><code>skos:broadMatch</code></a> </td>
+            </tr>
           </tbody>
         </table>
-        <p> Note that there are domain specific relationship that may also be
-          used to express the relationship between two data instances. For
-          example, ChEBI provides a set of relationships including for example <a
-            href="http://www.ebi.ac.uk/chebi/userManualForward.do#has%20part" target="_blank"><code>http://purl.obolibrary.org/obo#has_part</code></a>
-          and <a href="http://www.ebi.ac.uk/chebi/userManualForward.do#is%20conjugate%20base%20of"
-            target="_blank"><code>http://purl.obolibrary.org/obo#is_conjugate_acid_of</code></a>.
-        </p>
+        <!-- <p>Note that there are domain specific relationship that may
+          also be used to express the relationship between two data instances.          For example, ChEBI provides a set of relationships including for
+          example <a href="http://www.ebi.ac.uk/chebi/userManualForward.do#has%20part"            target="_blank"><code>http://purl.obolibrary.org/obo#has_part</code></a>
+          and <a href="http://www.ebi.ac.uk/chebi/userManualForward.do#is%20conjugate%20base%20of"            target="_blank"><code>http://purl.obolibrary.org/obo#is_conjugate_acid_of</code></a>.
+        </p>        -->
         <h4 id="justifications">Mapping Justifications</h4>
         <p> A key feature of the Open PHACTS platform is its ability to allow
           multiple views of the linked data which is achieved by applying <em>scientific
