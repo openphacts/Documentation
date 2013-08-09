@@ -14,7 +14,7 @@
 		customcss:            "http://www.openphacts.org/specs/css/ops.css",
 		specStatus:           "ED",
 		shortName:            "datadesc",
-		publishDate:   "2013-07-02",
+		publishDate:   "2013-08-09",
 		previousMaturity: "WD",
 		previousPublishDate:  "2012-10-19",
 		//previousURI : "http://www.cs.manchester.ac.uk/~graya/ops/2012/WD-mappingspec-20120615/",
@@ -342,6 +342,11 @@
               <td> Transitive Symmetric </td>
             </tr>
             <tr>
+              <th>Hierarchical Relationship</th>
+              <th>Description</th>
+              <th>Properties</th>
+            </tr>
+            <tr>
               <td><a href="http://www.w3.org/2004/02/skos/core#broadMatch" target="_blank"><code>skos:broadMatch</code></a>
               </td>
               <td>This link indicates that the target resource is more general
@@ -362,10 +367,7 @@
           </tbody>
         </table>
         <!-- <p>Note that there are domain specific relationship that may
-          also be used to express the relationship between two data instances.          For example, ChEBI provides a set of relationships including for
-          example <a href="http://www.ebi.ac.uk/chebi/userManualForward.do#has%20part"            target="_blank"><code>http://purl.obolibrary.org/obo#has_part</code></a>
-          and <a href="http://www.ebi.ac.uk/chebi/userManualForward.do#is%20conjugate%20base%20of"            target="_blank"><code>http://purl.obolibrary.org/obo#is_conjugate_acid_of</code></a>.
-        </p>        -->
+          also be used to express the relationship between two data instances.          For example, ChEBI provides a set of relationships including for          example <a href="http://www.ebi.ac.uk/chebi/userManualForward.do#has%20part"            target="_blank"><code>http://purl.obolibrary.org/obo#has_part</code></a>          and <a href="http://www.ebi.ac.uk/chebi/userManualForward.do#is%20conjugate%20base%20of"            target="_blank"><code>http://purl.obolibrary.org/obo#is_conjugate_acid_of</code></a>.        </p>        -->
         <h4 id="justifications">Mapping Justifications</h4>
         <p> A key feature of the Open PHACTS platform is its ability to allow
           multiple views of the linked data which is achieved by applying <em>scientific
@@ -413,118 +415,114 @@
         and that these descriptions are passed through the dataset description
         validator. </p>
       <section id="dataset-model">
-        <h3 id="dataset-model">Dataset Description Model</h3>
-        <p>In Open PHACTS we follow the community profile for dataset
-          descriptions emerging from the <a target="_blank" href="http://www.w3.org/blog/hcls/">W3C
-            Healthcare and Life Sciences </a>(HCLS) Interest Group. The dataset
-          description model is depicted in the figure below. The model consists
-          of three types of resources; the properties for which are specified
-          below. </p>
-        <p class="todo">Add diagram of dataset description model</p>
-        <p class="note"> This recommendation places stricter requirements on the
-          dataset descriptions to be generated than the W3C HCLS community
-          profile. For example, we require some properties to be provided that
-          are optional in the community profile, e.g. we require a link to a
-          page describing the resource. At times this recommendation uses more
-          specialised vocabulary terms; however these are sub-properties of the
-          equivalent community profile properties.</p>
-        <p style="background-color: #ffff33;">templates are given in <a href="#appendix-templates">Appendix
-            A.?</a>. </p>
-        <dl>
-          <dt>Time-invariant Description (Abstract): </dt>
-          <dd>For every dataset there is a time invariant resource, which will
-            be located at a well known unchanging URI,&nbsp; that provides the
-            name and description of the dataset together with pointers to the
-            various versions of the dataset, including the current one. The
-            properties for the time-invariant description are:
+        <h3 id="dataset-model">Dataset Description Checklists</h3>
+        <p> The following gives a checklist of the properties for describing a
+          dataset and associated resources. Subsequent sections give guidance on
+          the values to use with these properties and full details of the
+          predicates used can be found in <a href="#appendix-properties">Appendix
+            A</a>.</p>
+        <p class="todo">Need to ensure that all of the predicates used are
+          correctly linked to the tables in the appendix.</p>
+        <h4 id="dataset-checklist">Dataset Description</h4>
+        <ul>
+          <li>MUST</li>
+          <ul>
+            <li>Declare the type to be
+              <ul>
+                <li><a href="#dctypes:Dataset">dctypes:Dataset</a> for non-RDF
+                  datasets or</li>
+                <li><a href="#void:Dataset">void:Dataset</a> for RDF datasets;</li>
+              </ul>
+            </li>
+            <li>Provide a short title <a href="#dcterms:title">dcterms:title</a>
+              as a string literal;</li>
+            <li>Provide a description of the dataset aimed at someone who does
+              not know the dataset <a href="#dcterms:description">dcterms:description</a>
+              as a string literal; </li>
+            <li>Link to the publisher <a href="#dcterms:publisher">dcterms:publisher</a>
+              as a URI;</li>
+            <li>Link to a web page providing documentation about the dataset <a
+                href="#dcat:landingPage">dcat:landingPage</a> as a URI;</li>
+            <li>Link to the dataset license <a href="#dcterms:license">dcterms:license</a>
+              as a URI;</li>
+            <li>Date on which the dataset was published <a href="#dcterms:issued">dcterms:issued</a>
+              as an xsd:dateTime;</li>
+            <li>Link to the data download
+              <ul>
+                <li>For non-RDF data use <a href="#dcat:distribution">dcat:distribution</a>
+                  to link to a <a href="#distribution-checklist">dataset
+                    distribution description</a>;</li>
+                <li>For RDF data use <a href="#void:dataDump">void:dataDump</a>
+                  to point to the RDF or compressed RDF file(s).</li>
+              </ul>
+            </li>
+          </ul>
+          <li>SHOULD</li>
+          <ul>
+            <li>Declare the dataset version when it exists <a href="#pav:version">pav:version</a>
+              as a string literal;</li>
+            <li>Link to the previous version of the dataset <a href="#pav:previousVersion">pav:previousVersion</a>
+              as a URI pointing to the previous dataset description;</li>
+            <li>Indicate the update frequency of the dataset using <a href="#dcterms:accrualPeriodicity">dcterms:accrualPeriodicity</a>
+              and a value from <a href="#appendix-frequency-vocabulary">frequency
+                of change vocabulary</a>.</li>
+            <li>Provide links to the data sources used to create the data</li>
             <ul>
-              <li>MUST</li>
+              <li>For RDF conversions of existing datasets </li>
               <ul>
-                <li>Declare the type to be <a href="#dctypes:Dataset">dctypes:Dataset</a>;</li>
-                <li>Provide a short title <a href="#dcterms:title">dcterms:title</a>;</li>
-                <li>Provide a description of the dataset <a href="#dcterms:description">dcterms:description</a>;</li>
-                <li>Link to the versioned dataset description for the current
-                  version of the dataset <span style="background-color: #ffff33;">???</span>.</li>
+                <li> MUST
+                  <ul>
+                    <li>Link to the dataset description of the version of the
+                      file imported using <a href="#pav:importedFrom">pav:importedFrom</a>.</li>
+                  </ul>
+                </li>
+                <li> SHOULD
+                  <ul>
+                    <li>Declare who imported the dataset <a href="#pav:importedBy">pav:importedBy</a>;</li>
+                    <li>Declare when the initial import was made using <a href="#pav:importedOn">pav:importedOn</a>;</li>
+                    <li>Declare when the import has been refreshed using <a href="#pav:lastRefreshedOn">pav:lastRefreshedOn</a>;</li>
+                    <li>Declare the specific version of the tool or script used
+                      to conduct the import using <a href="#pav:createdWith">pav:createdWith</a>.</li>
+                  </ul>
+                </li>
               </ul>
-              <li>SHOULD</li>
-              <ul>
-                <li>Link to the versioned dataset descriptions of the previous
-                  versions of the dataset <span style="background-color: #ffff33;">???</span>.</li>
-              </ul>
+              <li>For specifying sources from which this dataset is derived a
+                link to the dataset description of the version of the file
+                imported using <a href="#pav:derivedFrom">pav:derivedFrom</a>.</li>
             </ul>
-          </dd>
-          <dl>
-            <dt>Versioned Description (Abstract):</dt>
-            <dd>For every <em>release</em> of a dataset, a versioned
-              description is created. This provides the properties that are
-              associated with all formats of the dataset, i.e. database dump
-              file or RDF file, including the release date for this version and
-              the version number.<br>
-              <ul>
-                <li>MUST</li>
-                <ul>
-                  <li>Declare the type to be <a href="#dctypes:Dataset">dctypes:Dataset</a>;</li>
-                  <li>Provide a short title <a href="#dcterms:title">dcterms:title</a>;</li>
-                  <li>Provide a description of the dataset <a href="#dcterms:description">dcterms:description</a>;</li>
-                  <li>Link to the publisher <a href="#dcterms:publisher">dcterms:publisher</a>;</li>
-                  <li>Link to a web page providing documentation about the
-                    dataset <a href="#dcat:landingPage">dcat:landingPage</a>;</li>
-                  <li>Link to the dataset license <a href="#dcterms:license">dcterms:license</a>;</li>
-                  <li>Date on which the dataset was published <a href="#dcterms:issued">dcterms:issued</a>;</li>
-                  <li>Link to at least one formatted dataset description using <a
-                      href="#dcat:distribution">dcat:distribution</a>.</li>
-                </ul>
-                <li>SHOULD</li>
-                <ul>
-                  <li>Declare the dataset version if it exists <a href="#pav:version">pav:version</a>;</li>
-                  <li>Link to the previous version of the dataset <a href="#pav:previousVersion">pav:previousVersion</a>;</li>
-                  <li>Link to the formatted dataset description for any sources
-                    used in the creation of the data, see&nbsp;<a href="#dataset-provenance">Dataset
-                      Provenance</a> for the appropriate predicate to use;</li>
-                  <li>Declare who created the digital representation of the
-                    dataset <a href="#pav:createdBy">pav:createdBy</a>;</li>
-                  <li>Declare when the digital representation of the dataset was
-                    created <a href="#pav:createdOn">pav:createdOn</a>.</li>
-                </ul>
-                <li>MAY</li>
-                <ul>
-                  <li>Declare the author of the dataset <a href="#pav:authoredBy">pav:authoredBy</a>;</li>
-                  <li>Declare when the dataset was authored <a href="#pav:authoredOn">pav:authoredOn</a>;</li>
-                  <li>Declare the theme of the dataset <a href="http://www.w3.org/TR/2013/WD-vocab-dcat-20130312/#class-dataset">dcat:theme</a>
-                    and link to topics from a controlled vocabulary;</li>
-                  <li>Declare the literature reference for the dataset&nbsp;<a href="#cito:citeAsAuthority">cito:citeAsAuthority</a><span
-                      style="background-color: #ffff33;"></span>.</li>
-                </ul>
-              </ul>
-            </dd>
-            <dt>Formatted Dataset Description:</dt>
-            <dd>For every format that a dataset is released in, e.g. database
-              dump or RDF file, the properties associated with that format are
-              provided, e.g. the format of the file. Details of the properties
-              to be provided are given in <a id="dataset-formats" href="#dataset-formats">Dataset
-                Formats</a> as they depend upon the format of the dataset.</dd>
-          </dl>
-          <!-- end dataset-model -->
-        </dl>
-      </section>
-      <section id="dataset-format">
-        <h3 id="dataset-formats">Dataset Formats</h3>
-        <p>In Open PHACTS we distinguish between datasets published as RDF and
-          those which are published in some other data format, e.g. database
-          dumpfile or chemistry SD File. Generally the non-RDF datasets are used
-          as a source for some dataset used in the Open PHACTS Discovery
-          Platform or published alongside the RDF version.
-          <!-- Since we are actively
-        using the RDF version of datasets in the Open PHACTS Discovery Platform,        we are a lot more prescriptive about the content of their datasetdescriptions. --></p>
-        <p class="todo">Is there anyway to link from the formatted dataset
-          description back to the versioned dataset desription?</p>
-        <h4 id="non-rdf-dataset">Non-RDF Dataset</h4>
-        <p> The properties for a non-RDF dataset are: </p>
+            <li>Identify distinct subsets of the data and link to the
+              descriptions of these using <a href="#void:subset">void:subset</a></li>
+          </ul>
+          <ul>
+            <li>Provide a link to an example resource <a href="#void:exampleResource">void:exampleResource</a>.</li>
+          </ul>
+          <li>MAY</li>
+          <ul>
+            <li>Link to a SPARQL endpoint containing the data <a href="#void:sparqlEndpoint">void:sparqlEndpoint</a>.</li>
+            <li>Define the pattern for the URIs used for resources in the subset
+              using either <a href="#void:uriSpace">void:uriSpace</a> or <a href="#void:uriRegexPattern">void:uriRegexPattern</a>.</li>
+            <li>Declare the vocabularies used to model the RDF data with <a href="#void:vocabulary">void:vocabulary</a>.</li>
+            <li>Declare the author of the dataset <a href="#pav:authoredBy">pav:authoredBy</a>;</li>
+            <li>Declare when the dataset was authored <a href="#pav:authoredOn">pav:authoredOn</a>;</li>
+            <li>Declare who created the digital representation of the dataset <a
+                href="#pav:createdBy">pav:createdBy</a>;</li>
+            <li>Declare when the digital representation of the dataset was
+              created <a href="#pav:createdOn">pav:createdOn</a>.</li>
+            <li>Declare the theme of the dataset <a href="http://www.w3.org/TR/2013/WD-vocab-dcat-20130312/#class-dataset">dcat:theme</a>
+              and link to topics from a controlled vocabulary;</li>
+            <li>Declare the literature reference for the dataset&nbsp;<a href="#cito:citeAsAuthority">cito:citeAsAuthority</a><span
+                style="background-color: #ffff33;"></span>.</li>
+            <li>Link to other webpages describing the dataset using <a href="#foaf:page">foaf:page</a>.</li>
+          </ul>
+        </ul>
+        <p class="todo">Provide other properties such as vocabulary, update
+          frequency, etc.</p>
+        <h4 id="distribution-checklist">Dataset Distribution</h4>
         <ul>
           <li> MUST
             <ul>
-              <li>Declare the type to be <a href="#dctypes:Dataset">dctypes:Dataset</a>;</li>
-              <li>Declare the format of the file using <a href="dcat:mediaType">dcat:mediaType</a>
+              <li>Declare the type to be <a href="#dcat:Distribution">dcat:Distribution</a>;</li>
+              <li>Declare the format of the file using <a href="#dcat:mediaType">dcat:mediaType</a>
                 and a type drawn from <a target="_blank" href="http://www.iana.org/assignments/media-types">IANA</a>;</li>
               <li>Declare the location of the file <a href="#dcat:downloadURL">dcat:downloadURL</a>.</li>
             </ul>
@@ -538,145 +536,148 @@
             </ul>
           </li>
         </ul>
-        <h4 id="rdf-dataset">RDF Dataset</h4>
-        <p>Datasets may be broken up into several parts, e.g. based on their
-          logical structure or for distribution purposes. To aid the accurate
-          description of files and interlinking of datasets, we recommend that
-          the RDF formatted-versioned dataset descriptions are broken up into
-          these logical parts. For example, ChEMBL consists of information about
-          molecules and targets, these would be represented as two distinct
-          subsets.</p>
-        <p class="note"> In the VoID note [[VOID]], the <code>void:subset</code>
-          property is used for both <em>subset of</em> and <em>has subset</em>.
-          The declared semantics for the property is <em>has subset</em>.
-          Within Open PHACTS, the property must be used with the <em>has subset</em>
-          semantics. </p>
-        <p> For more details see <a href="http://www.w3.org/TR/void/#subset" target="_blank">
-            Section 4.4</a> of the VoID Specification. </p>
-        <p>The properties for an RDF dataset composed of multiple subsets are:</p>
-        <ul>
-          <li>MUST</li>
-          <ul>
-            <li>Declare the type to be <a href="#void:Dataset">void:Dataset</a>;</li>
-            <li>Provide an RDF Subset Description for each subset and link to
-              them with <a href="#void:subset">void:subset</a>.</li>
-          </ul>
-          <li>SHOULD</li>
-          <ul>
-            <li>Declare the vocabularies used with <a href="#void:vocabulary">void:vocabulary</a>.</li>
-          </ul>
-          <li>MAY</li>
-          <ul>
-            <li>Link to a SPARQL endpoint containing the data <a href="#void:sparqlEndpoint">void:sparqlEndpoint</a>.</li>
-          </ul>
-        </ul>
-        <p>The properties for an <span style="font-weight: bold;">RDF Subset
-            Description</span> are:</p>
-        <ul>
-          <li>MUST
-            <ul>
-              <li>Declare the type to be <a href="#void:Dataset">void:Dataset</a>;</li>
-              <li>Provide a short title for the subset <a href="#dcterms:title">dcterms:title</a>;</li>
-              <li>Provide a description of the subset <a href="#dcterms:description">dcterms:description</a>;</li>
-              <li>Link to the files that contain the RDF data <a href="#void:dataDump">void:dataDump</a>.</li>
-            </ul>
-          </li>
-          <li>SHOULD
-            <ul>
-              <li>Date on which the subset was published <a href="#dcterms:issued">dcterms:issued</a>;</li>
-              <li>Declare the size of the file <a href="#dcat:byteSize">dcat:byteSize</a>;</li>
-              <li>Declare the subset version if it exists <a href="#pav:version">pav:version</a>;</li>
-              <li>Link to the previous version of the subset <a href="#pav:previousVersion">pav:previousVersion</a>;</li>
-              <li>Define the pattern for the URIs used for resources in the
-                subset using either <a href="#void:uriSpace">void:uriSpace</a>
-                or <a href="#void:uriRegexPattern">void:uriRegexPattern</a>.</li>
-            </ul>
-          </li>
-          <li> MAY
-            <ul>
-              <li>Declare who created the digital representation of the subset <a
-                  href="#pav:createdBy">pav:createdBy</a>;</li>
-              <li>Declare when the digital representation of the subset was
-                created <a href="#pav:createdOn">pav:createdOn</a>.</li>
-            </ul>
-          </li>
-        </ul>
-        <p>The properties for an <span style="font-weight: bold;">RDF dataset
-            without subsets</span> are: <br>
-          (these are the same properties as for an RDF datatset and its subset
-          with the omission of the title and description):</p>
-        <ul>
-          <li> MUST
-            <ul>
-              <li>Declare the type to be <a href="#void:Dataset">void:Dataset</a>;</li>
-              <li>Link to the files that contain the RDF data <a href="#void:dataDump">void:dataDump</a>.</li>
-            </ul>
-          </li>
-          <li> SHOULD
-            <ul>
-              <li>Date on which the dataset was published <a href="#dcterms:issued">dcterms:issued</a>;</li>
-              <li>Declare the size of the file <a href="#dcat:byteSize">dcat:byteSize</a>;</li>
-              <li>Declare the dataset version if it exists <a href="#pav:version">pav:version</a>;</li>
-              <li>Link to the previous version of the dataset <a href="#pav:previousVersion">pav:previousVersion</a>;</li>
-              <li>Declare the vocabularies used with <a href="#void:vocabulary">void:vocabulary</a>;</li>
-              <li>Define the pattern for the URIs used for resources in the
-                dataset using either <a href="#void:uriSpace">void:uriSpace</a>
-                or <a href="#void:uriRegexPattern">void:uriRegexPattern</a>.</li>
-            </ul>
-          </li>
-          <li> MAY
-            <ul>
-              <li>Declare who created the digital representation of the dataset
-                <a href="#pav:createdBy">pav:createdBy</a>;</li>
-              <li>Declare when the digital representation of the dataset was
-                created <a href="#pav:createdOn">pav:createdOn</a>;</li>
-              <li>Link to a SPARQL endpoint containing the data <a href="#void:sparqlEndpoint">void:sparqlEndpoint</a>.</li>
-            </ul>
-          </li>
-        </ul>
-        <!-- end dataset-format --> </section>
-      <section id="dataset-prov">
-        <h3 id="dataset-provenance">Provenance</h3>
+        <!-- end dataset-model --> </section>
+      <section id="dataset-guidance">
+        <h3 id="dataset-provenance">Guidance</h3>
         We distinguish between different types of dataset for the way in which
         the provenance for the datasets sources should be declared.<br>
-        <h4 id="rdf-conversion">RDF Conversion</h4>
-        <p> This is a dataset that is originally published in a non-RDF format
-          but has been converted by some third party publisher into an RDF
-          format. The <a href="http://bio2rdf.org/">Bio2RDF</a> conversion of
-          datasets are a good example of this variety of dataset. There will
-          only be a single source from which an RDF conversion is imported.</p>
-        <p> The provenance properties for a dataset converted into RDF are: </p>
+        <h4 id="rdf-conversion">Basic Metadata</h4>
+        <p>The <span style="font-style: italic;">title</span> given for a
+          dataset is used in the apps built upon the Open PHACTS Discovery
+          Platform and tabular lists of the datasets that have been loaded into
+          the platform. As such, the title should be unique&nbsp; and short. For
+          example, we would suggest using strings like "ChEMBL" or "UniProt".
+          Each distinguished subset should have its own unique title so that it
+          is clear in a user interface which part of a dataset is being used,
+          e.g. "ChEMBL Molecule" for the subset of ChEMBL that contains data
+          about molecules.</p>
+        <p>The <span style="font-style: italic;">description</span> for a
+          dataset should allow someone knowledgeable of the domain, but not
+          familiar with the dataset, to understand the content of the dataset
+          and decide upon its merit. Ideally it should be no more than a
+          paragraph. Typically the paragraph about the dataset on the public web
+          page is suitable.</p>
+        <p>The <em>publisher</em> for a dataset is the organisation that is
+          responsible for the creation and maintenance for the dataset. This
+          predicate should point to the web page for the organisation. For
+          example, the publisher of the ChemSpider datset is the Royal Society
+          of Chemisty and the value for this property is <a href="http://www.rsc.org/">http://www.rsc.org/</a>.</p>
+        <p>The <span style="font-style: italic;">landing page</span> for a
+          dataset should point to the public facing web page that gives details
+          of the dataset. For a dataset such as the RDF conversion of DrugBank
+          we suggest that this predicate points to the original DrugBank web
+          page, viz.&nbsp;<a href="http://www.drugbank.ca/">http://www.drugbank.ca/</a>,
+          rather than the base resource of the RDF conversion. This is to allow
+          scientific users of the data to be able to get straight to the
+          information about the dataset. Other pages associated with the
+          dataset, e.g. the <a href="http://identifiers.org/">Identifiers.org</a>
+          page, can be linked to using <a href="#foaf:page">foaf:page</a>. Note
+          that it is important not to use <a href="#foaf:homepage">foaf:homepage</a>
+          due to the inverse functional property of the predicate.</p>
+        <p>For most datasets a <em>license</em> has already been chosen and
+          this needs to be stated as a URI in the description. For licenses that
+          require a <em>citation</em> to be given, the citation information can
+          be captured using the <a href="#cito:citeAsAuthority">cito:citeAsAuthority</a>
+          property. For new datasets a suitable dataset should be chosen. Below
+          are a list of licenses suggested in VoID [[VOID]]. Note that the final
+          two are not specifically designed for data.</p>
         <ul>
-          <li> MUST
-            <ul>
-              <li>Link to the <a href="#dataset-formats">Formatted Dataset
-                  Description</a> of the file imported using <a href="#pav:importedFrom">pav:importedFrom</a>.</li>
-            </ul>
-          </li>
-          <li> SHOULD
-            <ul>
-              <li>Declare who imported the dataset <a href="#pav:importedBy">pav:importedBy</a>;</li>
-              <li>Declare when the initial import was made using <a href="#pav:importedOn">pav:importedOn</a>;</li>
-              <li>Declare when the import has been refreshed using <a href="#pav:lastRefreshedOn">pav:lastRefreshedOn</a>;</li>
-              <li>Declare the specific version of the tool or script used to
-                conduct the import using <a href="#pav:createdWith">pav:createdWith</a>.</li>
-            </ul>
-          </li>
+          <li><a href="http://www.opendatacommons.org/licenses/pddl/" style="color: rgb(102, 0, 153); background-color: transparent; background-position: initial initial; background-repeat: initial initial;">Public
+              Domain Dedication and License (PDDL)</a><span class="Apple-converted-space">&nbsp;</span>—
+            “Public Domain for data/databases”<br>
+            <code>http://www.opendatacommons.org/licenses/pddl/</code></li>
+          <li><a href="http://www.opendatacommons.org/licenses/by/" style="color: rgb(102, 0, 153); background-color: transparent; background-position: initial initial; background-repeat: initial initial;">Open
+              Data Commons Attribution (ODC-By)</a><span class="Apple-converted-space">&nbsp;</span>—
+            “Attribution for data/databases”<br>
+            <code>http://www.opendatacommons.org/licenses/by/</code></li>
+          <li><a href="http://www.opendatacommons.org/licenses/odbl/" style="color: rgb(102, 0, 153); background-color: transparent; background-position: initial initial; background-repeat: initial initial;">Open
+              Database License (ODC-ODbL)</a><span class="Apple-converted-space">&nbsp;</span>—
+            “Attribution Share-Alike for data/databases”<br>
+            <code>http://www.opendatacommons.org/licenses/odbl/</code></li>
+          <li><a href="http://creativecommons.org/publicdomain/zero/1.0/" style="color: rgb(102, 0, 153); background-color: transparent; background-position: initial initial; background-repeat: initial initial;">CC0
+              1.0 Universal</a><span class="Apple-converted-space">&nbsp;</span>—
+            “Creative Commons public domain waiver”<br>
+            <code>http://creativecommons.org/publicdomain/zero/1.0/</code></li>
+          <li><a href="http://creativecommons.org/licenses/by-sa/3.0/" style="color: rgb(102, 0, 153); background-color: transparent; background-position: initial initial; background-repeat: initial initial;">Creative
+              Commons Attribution-ShareAlike (CC-BY-SA)</a><br>
+            <code>http://creativecommons.org/licenses/by-sa/3.0/</code></li>
+          <li><a href="http://www.gnu.org/copyleft/fdl.html" style="color: rgb(102, 0, 153); background-color: transparent; background-position: initial initial; background-repeat: initial initial;">GNU
+              Free Documentation License (GFDL)</a><br>
+            <code>http://www.gnu.org/copyleft/fdl.html</code></li>
         </ul>
-        <h4 id="dataset-derived">Derived Data</h4>
-        <p>This is a dataset which has been used to inform in some way the
-          dataset that is being published.</p>
+        <p>The <em>date issued</em> property is used to capture the date a
+          dataset is issued for public release which may also be the date it was
+          created. This can be used to distinguish the version of a dataset
+          where there are no version numbers, e.g. the ConceptWiki dataset. The
+          date issued should be specified as an <code>xsd:dateTime</code>
+          literal. Where values are unknown then these should be set to the
+          start of the time period, e.g. for a dataset issued on the 23 July
+          2013 but we do not need to capture the time we would use the literal
+          value <code>"2013-07-23T00:00:00"^^xsd:dateTime</code>.</p>
+        <p>For datasets which have a <em>version</em> number, then this should
+          be provided as a string literal. For example, ChEMBL would use the
+          literal value <code>"16"^^xsd:string</code> for their version 16
+          release.</p>
+        <p>It is useful to point to an <em>example resource</em> in the dataset
+          to allow a user to quickly look at a record in the data. For each
+          subset, a suitable example should be supplied. Other information such
+          as the <em>URI namespace</em> and the <em>identifier pattern</em>
+          can also be supplied.</p>
+        <p>Other metadata about the dataset, e.g. the author and creator of the
+          content, can be captured using PAV [[PAV]]. The values for these
+          resources should not be locally defined values, but link to external
+          representations for individuals that can be reused. We recommend the
+          use of <a href="http://orcid.org/">ORCID</a> identifiers.</p>
         <ul>
-          <li>MUST</li>
-          <ul>
-            <li>Link to the <a href="#dataset-formats">Formatted Dataset
-                Description</a> of the file imported using <a href="#pav:derivedFrom">pav:derivedFrom</a>.</li>
+          <ul style="color: rgb(0, 0, 0); font-family: sans-serif; font-size: medium; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
           </ul>
         </ul>
-        <!-- end dataset-prov --> </section>
+        <h4 id="rdf-conversion">Provenance and Change</h4>
+        <p>A dataset description should link to the description of the <em>previous
+            version</em> of the dataset. This provides a backward pointing chain
+          to all the previous versions of the dataset.</p>
+        <p>The anticipated <em>update frequency </em>of the dataset is
+          captured to allow for the detection of dataset updates.</p>
+        <p>The provenance of an RDF conversion of an existing dataset is
+          captured using the PAV imported properties [[PAV]]. The <em>imported
+            from</em> property should point to the dataset description for the
+          original dataset. Where this does not exist, it should be supplied
+          conforming to these guidelines. Details of the script used for the
+          conversion including the version number are captured with the <code>pav:createdWith</code>
+          property.</p>
+        <p>Sources of data from which the dataset derives should be captured by
+          pointing to dataset descriptions for the sources. Where these are not
+          available, or it is unclear, the associated <a href="http://identifiers.org/">Identifiers.org</a>
+          page may be linked to. However, the version or file used should be
+          captured.</p>
+        <h4>Distribution Information</h4>
+        <p>For an <em>RDF dataset</em> the file(s) containing the data should
+          be linked to; standard file extensions and content-negotiation should
+          be used to allow for the automated parsing of the file. This is to
+          enable the Open PHACTS Discovery Platform to load the data and make it
+          available to users of the platform. The <em>vocabularies</em> used to
+          model the data can be declared. The SPARQL endpoint can also be
+          supplied when this exists.</p>
+        <p>For a <em>non-RDF dataset</em> it is unknown what format the data
+          file will be provided in, so a description of the file should be
+          provided. Standard media types from <a href="http://www.iana.org/assignments/media-types">IANA</a>
+          should be used. Some common ones for the datasets in Open PHACTS are
+          included below. (A comprehensive list is available from <a href="http://reference.sitepoint.com/html/mime-types-full">Sitepoint</a>.)</p>
+        <ul>
+          <li>Comma separated values: "text/csv"</li>
+          <li>Molfile: "chemical/x-mdl-molfile"</li>
+          <li>RDF/XML: "application/rdf+xml"</li>
+          <li>SDF: "chemical/x-mdl-sdfile"</li>
+          <li>Tab separated values: "text/tab-separated-values"</li>
+          <li>Turtle: "text/turtle"</li>
+          <li>XML: "text/xml"</li>
+        </ul>
+        <!-- end dataset-guidance --> </section>
       <section id="dataset-examples" class="informative">
         <h3 id="dataset-examples">Examples</h3>
-        <p> Example VoID dataset descriptions can be found in <a href="#appendix-dataset-examples">Appendix
+        <p class="todo">The examples need updating!<br>
+        </p>
+        <p>Example VoID dataset descriptions can be found in <a href="#appendix-dataset-examples">Appendix
             B</a>. The first example is for the ChemSpider dataset (see <a href="#ChemSpider-VoID-Descriptor">Appendix
             B.1</a>). Note this example is derived from the existing
           non-conformant ChemSpider VoID description available from <a href="http://rdf.chemspider.com/void.rdf">
