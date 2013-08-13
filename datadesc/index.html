@@ -179,7 +179,6 @@
         <p class="todo">Finalise BridgeDB namespace prefix.</p>
         <pre class="turtle">@prefix bdb: &lt;http://bridgedb.org/???/&gt; .<br>@prefix cito: &lt;http://prul.org/spar/cito/&gt; .<br>@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .<br>@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
 @prefix dctypes: &lt;http://purl.org/dc/dcmitype/&gt; .
-@prefix dul: &lt;http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 @prefix freq: &lt;http://purl.org/cld/freq/&gt; .
 @prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
@@ -397,7 +396,7 @@
         <pre class="turtle">@prefix chembl: &lt;http://linkedchemistry.info/chembl/chemblid/&gt; .
 
 :cs2chembl_inchi void:linkPredicate skos:exactMatch .
-:cs2chembl_inchi dul:expresses &lt;http://semanticscience.org/resource/CHEMINF_000059&gt; .
+:cs2chembl_inchi bdb:linksetJustification &lt;http://semanticscience.org/resource/CHEMINF_000059&gt; .
 
 &lt;http://rdf.chemspider.com/48&gt; skos:exactMatch chembl:CHEMBL146554 .
       	</pre>
@@ -729,7 +728,7 @@
                   dataset</a> that is the object of the links using <a href="#void:objectsTarget">void:objectsTarget</a>;</li>
               <li>Declare the <a href="#MappingRelationships">mapping
                   relationship</a> used in the linkset <a href="#void:linkPredicate">void:linkPredicate</a>;</li>
-              <li>Declare the reason why the datasets are linked <a href="#dul:expresses">dul:expresses</a>
+              <li>Declare the reason why the datasets are linked <a href="#bdb:linksetJustification">bdb:linksetJustification</a>
                 with one of the reasons given in <a href="#appendix-link-justifications">Appendix
                   B.3</a>;</li>
             </ul>
@@ -1639,49 +1638,6 @@
           </tbody>
         </table>
         <!-- end dctypes --> </section>
-      <section id="dul">
-        <h3>DOLCE+DnS Ultralite Ontology</h3>
-        <h4>Properties</h4>
-        <table id="dul:expresses" class="definition">
-          <thead>
-            <tr>
-              <th>RDF Property</th>
-              <th> <a href="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#expresses"
-                  target="_blank"> <code>dul:expresses</code></a> </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="prop">Definition:</td>
-              <td> A relation between a resource and a meaning. </td>
-            </tr>
-            <tr>
-              <td class="prop">Range:</td>
-              <td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
-            </tr>
-            <tr>
-              <td class="prop">Usage note:</td>
-              <td>
-                <p> The link justification provides the reason/circumstance why
-                  instances in the two datasets can be considered equivalent.
-                  For example, two chemical compounds have the same InChI Key or
-                  have the same chemical formula. </p>
-                <p> Currently recommended vocabulary terms for the justification
-                  can be found in <a href="#appendix-link-justifications">Appendix
-                    A.4</a>. </p>
-              </td>
-            </tr>
-            <tr>
-              <td class="prop">Example:</td>
-              <td> The ChemSpider to ChEMBL Molecules Linkset expresses
-                equivalence based on having the same InChI key. This is given
-                with the object value <a href="http://semanticscience.org/resource/CHEMINF_000059"
-                  target="_blank">
-                  http://semanticscience.org/resource/CHEMINF_000059</a>. </td>
-            </tr>
-          </tbody>
-        </table>
-        <!-- end dul --> </section>
       <section id="foaf">
         <h3>Friend of a Friend</h3>
         <h4>Properties</h4>
@@ -3253,7 +3209,6 @@
         <pre class="turtle">@prefix : &lt;http://linkedchemistry.info/void.ttl&gt;.
 
 @prefix dcterms: &lt;http://purl.org/dc/terms/&gt;.
-@prefix dul: &lt;http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 @prefix freq: &lt;http://purl.org/cld/freq/&gt; .
 @prefix pav: &lt;http://purl.org/pav/&gt;.
@@ -3294,7 +3249,7 @@
     void:subjectsTarget &lt;http://linkedchemistry.info/void.ttl#chemblrdf_compounds&gt; ;
     void:objectsTarget &lt;http://rdf.chemspider.com/void.ttl#chemSpiderDataset_chembl_subset&gt; ;
     void:linkPredicate skos:exactMatch ;
-    dul:expresses &lt;http://semanticscience.org/resource/CHEMINF_000059&gt; ;
+    bdb:linksetJustification &lt;http://semanticscience.org/resource/CHEMINF_000059&gt; ;
 # Linkset provenance
     pav:authoredOn "2012-02-22T10:59:38Z"^^xsd:dateTime ;
     pav:authoredBy &lt;http://www.chemspider.com/&gt; ;
@@ -3333,7 +3288,6 @@ chembl:CHEMBL144103 skos:exactMatch &lt;http://rdf.chemspider.com/60&gt; .
         <pre class="turtle">@prefix : &lt;http://rdf.chemspider.com/void.ttl#&gt;.
 
 @prefix dcterms: &lt;http://purl.org/dc/terms/&gt;.
-@prefix dul: &lt;http://www.ontologydesignpatterns.org/ont/dul/DUL.owl&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 @prefix freq: &lt;http://purl.org/cld/freq/&gt; .
 @prefix pav: &lt;http://purl.org/pav/&gt;.
@@ -3396,7 +3350,7 @@ chembl:CHEMBL144103 skos:exactMatch &lt;http://rdf.chemspider.com/60&gt; .
 	void:subjectsTarget &lt;http://rdf.chemspider.com/void.ttl#chemSpiderDataset_drugbank_subset&gt;;
 	void:objectsTarget :drugbank_drugs_dataset;
 	void:linkPredicate skos:exactMatch;
-	dul:expresses &lt;http://semanticscience.org/resource/CHEMINF_000059&gt;;
+	bdb:linksetJustification &lt;http://semanticscience.org/resource/CHEMINF_000059&gt;;
 # Linkset Provenance 
 	pav:authoredBy &lt;http://www.chemspider.com/&gt;;
 	pav:authoredOn "2012-02-23T09:08:29Z"^^xsd:dateTime;
