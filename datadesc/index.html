@@ -678,15 +678,15 @@
         <p class="todo">The examples need updating!<br>
         </p>
         <p>Example VoID dataset descriptions can be found in <a href="#appendix-dataset-examples">Appendix
-            B</a>. The first example is for the ChemSpider dataset (see <a href="#ChemSpider-VoID-Descriptor">Appendix
-            B.1</a>). Note this example is derived from the existing
+            C</a>. The first example is for the ChemSpider dataset (see <a href="#ChemSpider-VoID-Descriptor">Appendix
+            C.1</a>). Note this example is derived from the existing
           non-conformant ChemSpider VoID description available from <a href="http://rdf.chemspider.com/void.rdf">
             http://rdf.chemspider.com/void.rdf</a>. </p>
         <p> The second example is for the RDF representation of the ChEMBL
-          database, given in <a href="#ChEMBL-RDF-VoID-Descriptor"> Appendix
-            B.2</a>. This demonstrates the level of information required to
-          track the provenance from a source dataset through to the RDF
-          representation. It also contains subset definitions. </p>
+          database, given in <a href="#ChEMBL-RDF-VoID-Descriptor"> Appendix C.2</a>.
+          This demonstrates the level of information required to track the
+          provenance from a source dataset through to the RDF representation. It
+          also contains subset definitions. </p>
         <!-- end dataset-examples --> </section>
       <!-- end dataset-description --> </section>
     <section id="linkset-description">
@@ -730,7 +730,7 @@
                   relationship</a> used in the linkset <a href="#void:linkPredicate">void:linkPredicate</a>;</li>
               <li>Declare the reason why the datasets are linked <a href="#bdb:linksetJustification">bdb:linksetJustification</a>
                 with one of the reasons given in <a href="#appendix-link-justifications">Appendix
-                  B.3</a>;</li>
+                  B.2</a>;</li>
             </ul>
           </li>
           <li> SHOULD
@@ -837,7 +837,7 @@
             which redirects to a versioned URI such as <code>http://rdf.chemspider.com/20130408/void.ttl#chemSpiderDataset</code>.
           </p>
           <p> Examples of the VoID descriptors are given in the example dataset
-            descriptions in <a href="#appendix-dataset-examples">Appendix B</a>.
+            descriptions in <a href="#appendix-dataset-examples">Appendix C</a>.
           </p>
           <!-- end deploying-dataset-void --> </section>
         <section id="dataset-deployment">
@@ -1045,7 +1045,7 @@
             </tr>
             <tr>
               <td class="prop">Usage note:</td>
-              <td> <a href="#appendix-link-justifications">Appendix B.1</a>
+              <td> <a href="#appendix-link-justifications">Appendix B.2</a>
                 gives the set of values that are expected to be used within the
                 Open PHACTS Discovery Platform for declaring equivalence
                 conditions. These include saying that the datasets are
@@ -1091,7 +1091,7 @@
             </tr>
             <tr>
               <td class="prop">Usage note:</td>
-              <td> <a href="#appendix-topics-vocab">Appendix B.2</a> gives the
+              <td> <a href="#appendix-topics-vocab">Appendix B.1</a> gives the
                 set of values that are expected to be used within the Open
                 PHACTS Discovery Platform. </td>
             </tr>
@@ -1163,7 +1163,7 @@
             </tr>
             <tr>
               <td class="prop">Usage note:</td>
-              <td> <a href="#appendix-topics-vocab">Appendix B.2</a> gives the
+              <td> <a href="#appendix-topics-vocab">Appendix B.1</a> gives the
                 set of values that are expected to be used within the Open
                 PHACTS Discovery Platform. </td>
             </tr>
@@ -2892,6 +2892,92 @@
       <!-- end appendix-properties --> </section>
     <section id="appendix-vocabulary-terms" class="appendix">
       <h2 id="appendix-vocabulary-terms">Suggested Vocabulary Terms</h2>
+      <section id="appendix-topics-vocab">
+        <h3 id="topics-vocabulary-terms">Vocabulary Terms for Dataset Topics</h3>
+        <p>This section lists suggested vocabulary terms for the dataset topics
+          metadata that are relevant for Open PHACTS. Where possible, we draw
+          our terminology from the <a target="_blank" href="https://code.google.com/p/semanticscience/wiki/SIO">Semantic
+            Science Integrated Ontology</a>.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Concept Type</th>
+              <th>URI</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Chemical Entity</td>
+              <td><a target="_blank" href="http://semanticscience.org/resource/SIO_010004">http://semanticscience.org/resource/SIO_010004</a></td>
+              <td>A chemical entity is a material entity that pertains to
+                chemistry.</td>
+            </tr>
+            <tr>
+              <td>Disease</td>
+              <td><a target="_blank" href="http://semanticscience.org/resource/SIO_010299">http://semanticscience.org/resource/SIO_010299</a></td>
+              <td>disease is the outward manifestation of one or more disorders</td>
+            </tr>
+            <tr>
+              <td>Drug<br>
+              </td>
+              <td><a target="_blank" href="http://semanticscience.org/resource/SIO_010038">http://semanticscience.org/resource/SIO_010038</a><br>
+              </td>
+              <td>A drug is a chemical entity that regulates a biological
+                process.</td>
+            </tr>
+            <tr>
+              <td>Gene<br>
+              </td>
+              <td><a target="_blank" href="http://semanticscience.org/resource/SIO_010035">http://semanticscience.org/resource/SIO_010035</a><br>
+              </td>
+              <td>A gene is part of a nucleic acid that contains all the
+                necessary elements to encode a functional transcript.</td>
+            </tr>
+            <tr>
+              <td>Ligand<br>
+              </td>
+              <td><a target="_blank" href="http://semanticscience.org/resource/SIO_010432">http://semanticscience.org/resource/SIO_010432</a><br>
+              </td>
+              <td>a ligand is a molecule that is part of a complex by weakly
+                interacting with another molecule</td>
+            </tr>
+            <tr>
+              <td>mRNA</td>
+              <td><a target="_blank" href="http://semanticscience.org/resource/SIO_010099">http://semanticscience.org/resource/SIO_010099</a><br>
+              </td>
+              <td>a messenger RNA is a ribonucleic acid that contains an
+                untranslated region (UTR) and protein coding sequence and lacks
+                introns.<br>
+              </td>
+            </tr>
+            <tr>
+              <td>Pathway</td>
+              <td><a target="_blank" href="http://semanticscience.org/resource/SIO_001107">http://semanticscience.org/resource/SIO_001107</a></td>
+              <td>a pathway is an effective specification that outlines a set of
+                actions that forms a way to achieve an objective.</td>
+            </tr>
+            <tr>
+              <td>Protein</td>
+              <td><a target="_blank" href="http://semanticscience.org/resource/SIO_010043">http://semanticscience.org/resource/SIO_010043</a></td>
+              <td>a protein is an organic polymer that is composed of one or
+                more linear polymers of amino acids.</td>
+            </tr>
+            <tr>
+              <td>RNA</td>
+              <td><a target="_blank" href="http://semanticscience.org/resource/SIO_010009">http://semanticscience.org/resource/SIO_010009</a></td>
+              <td>a ribonucleic acid is an organic polymer composed of a
+                sequence of ribonucleotide residues.</td>
+            </tr>
+            <tr>
+              <td>Target</td>
+              <td><a target="_blank" href="http://semanticscience.org/resource/SIO_010423">http://semanticscience.org/resource/SIO_010423</a></td>
+              <td><em>(None given in ontology)</em><br>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- end appendix-topics-vocab --> </section>
       <section id="appendix-link-justifications" class="appendix">
         <h3 id="link-justification-vocab">Link Justification Vocabulary Terms</h3>
         <p class="todo"> Add list of known vocabulary terms to be used for link
@@ -3000,7 +3086,8 @@
               <td>Has part</td>
               <td><a target="_blank" href="http://www.obofoundry.org/ro/ro.owl#has_part">http://www.obofoundry.org/ro/ro.owl#has_part</a></td>
               <td>Used to denote that one resource is a part of the other. <br>
-                (The resulting resource will keep the type of the parent resource.)</td>
+                (The resulting resource will keep the type of the parent
+                resource.)</td>
             </tr>
             <tr>
               <td>mRNA</td>
@@ -3011,8 +3098,8 @@
             <tr>
               <td>Protein</td>
               <td><a target="_blank" href="http://semanticscience.org/resource/SIO_010043">http://semanticscience.org/resource/SIO_010043</a></td>
-              <td>Used to denote that the protein resources linked are conceptually
-                the same protein.</td>
+              <td>Used to denote that the protein resources linked are
+                conceptually the same protein.</td>
             </tr>
             <tr>
               <td>Protein coding gene</td>
@@ -3035,97 +3122,13 @@
           </tbody>
         </table>
         <!-- end appendix-link-justifications --> </section>
-      <section id="appendix-topics-vocab">
-        <h3 id="topics-vocabulary-terms">Vocabulary Terms for Dataset Topics</h3>
-        <p>This section lists suggested vocabulary terms for the dataset topics
-          metadata that are relevant for Open PHACTS. Where possible, we draw
-          our terminology from the <a target="_blank" href="https://code.google.com/p/semanticscience/wiki/SIO">Semantic
-            Science Integrated Ontology</a>.</p>
-        <table>
-          <thead>
-            <tr>
-              <th>Concept Type</th>
-              <th>URI</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Chemical Entity</td>
-              <td><a target="_blank" href="http://semanticscience.org/resource/SIO_010004">http://semanticscience.org/resource/SIO_010004</a></td>
-              <td>A chemical entity is a material entity that pertains to
-                chemistry.</td>
-            </tr>
-            <tr>
-              <td>Disease</td>
-              <td><a target="_blank" href="http://semanticscience.org/resource/SIO_010299">http://semanticscience.org/resource/SIO_010299</a></td>
-              <td>disease is the outward manifestation of one or more disorders</td>
-            </tr>
-            <tr>
-              <td>Drug<br>
-              </td>
-              <td><a target="_blank" href="http://semanticscience.org/resource/SIO_010038">http://semanticscience.org/resource/SIO_010038</a><br>
-              </td>
-              <td>A drug is a chemical entity that regulates a biological
-                process.</td>
-            </tr>
-            <tr>
-              <td>Gene<br>
-              </td>
-              <td><a target="_blank" href="http://semanticscience.org/resource/SIO_010035">http://semanticscience.org/resource/SIO_010035</a><br>
-              </td>
-              <td>A gene is part of a nucleic acid that contains all the
-                necessary elements to encode a functional transcript.</td>
-            </tr>
-            <tr>
-              <td>Ligand<br>
-              </td>
-              <td><a target="_blank" href="http://semanticscience.org/resource/SIO_010432">http://semanticscience.org/resource/SIO_010432</a><br>
-              </td>
-              <td>a ligand is a molecule that is part of a complex by weakly
-                interacting with another molecule</td>
-            </tr>
-            <tr>
-              <td>mRNA</td>
-              <td><a target="_blank" href="http://semanticscience.org/resource/SIO_010099">http://semanticscience.org/resource/SIO_010099</a><br>
-              </td>
-              <td>a messenger RNA is a ribonucleic acid that contains an
-                untranslated region (UTR) and protein coding sequence and lacks
-                introns.<br>
-              </td>
-            </tr>
-            <tr>
-              <td>Pathway</td>
-              <td><a target="_blank" href="http://semanticscience.org/resource/SIO_001107">http://semanticscience.org/resource/SIO_001107</a></td>
-              <td>a pathway is an effective specification that outlines a set of
-                actions that forms a way to achieve an objective.</td>
-            </tr>
-            <tr>
-              <td>Protein</td>
-              <td><a target="_blank" href="http://semanticscience.org/resource/SIO_010043">http://semanticscience.org/resource/SIO_010043</a></td>
-              <td>a protein is an organic polymer that is composed of one or
-                more linear polymers of amino acids.</td>
-            </tr>
-            <tr>
-              <td>RNA</td>
-              <td><a target="_blank" href="http://semanticscience.org/resource/SIO_010009">http://semanticscience.org/resource/SIO_010009</a></td>
-              <td>a ribonucleic acid is an organic polymer composed of a
-                sequence of ribonucleotide residues.</td>
-            </tr>
-            <tr>
-              <td>Target</td>
-              <td><a target="_blank" href="http://semanticscience.org/resource/SIO_010423">http://semanticscience.org/resource/SIO_010423</a></td>
-              <td><em>(None given in ontology)</em><br>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <!-- end appendix-topics-vocab --> </section>
       <section id="appendix-species-terms">
         <h3 id="species-terms">Species Terms used in OPS</h3>
         <p>The species terms used in the Open PHACTS Discovery Platform are
           drawn from the NCBI Taxonomy. Below the subset for the species that
-          appear in the Discovery Platform are given.</p>
+          appear in the Discovery Platform are given. These can be discovered
+          using the <a target="_blank" href="http://bioportal.bioontology.org/ontologies/47845?p=terms">BioPortal
+            browser</a>.</p>
         <ul>
           <li>Bos Taurus: <a target="_blank" href="http://purl.obolibrary.org/obo/NCBITaxon_9913">http://purl.obolibrary.org/obo/NCBITaxon_9913</a></li>
           <li>Caenorhabditis Elegans: <a target="_blank" href="http://purl.obolibrary.org/obo/NCBITaxon_6239">http://purl.obolibrary.org/obo/NCBITaxon_6239</a></li>
