@@ -768,15 +768,72 @@
         <!-- End linkset-checklist --> </section>
       <section id="linkset-guidance">
         <h3 id="linkset-guidance">Guidance</h3>
-        <p>Note that for linksets there is unlikely to be a web page directly
+        <h4>Basic Metadata</h4>
+        <p>The <em>title</em> given to a linkset is used in apps when
+          displaying details of the linkset. A title should be short, idealy
+          stating which datasets are linked, e.g. ConceptWiki-ChemSpider
+          Linkset.</p>
+        <p>The <em>description</em> for a linkset should give a textual summary
+          of the linkset. That is, it should state which datasets have been
+          linked and the reason for the equivalence. It should be expressed in
+          terminology aimed at an app user.</p>
+        <p>See <a href="#dataset-guidance">Section 4.2</a> for guidance about <em>publisher</em>,
+          <em>license</em>, <em>issued date</em> and <em>data dump</em>. Note
+          that for linksets there is unlikely to be a web page directly
           dedicated to the linkset, as such that part of the dataset metadata is
-          not stated as a requirement. </p>
-        <p class="note"> The license under which a linkset is published may be
-          different from that of the datasets that it links, even if it is a
-          subset of one of the datasets. </p>
-        <p> Additional information about the settings used when running an
-          automated link generation tool such as Silk [[SILK]] can be captured
-          in an associated provenance graph encoded using PROV-O [[PROV-O]]. </p>
+          not stated as a requirement. The license under which a linkset is
+          published may be different from that of the datasets that it links,
+          even if it is a subset of one of the datasets. </p>
+        <h4>Link Metadata</h4>
+        <p>The <em>link predicate</em> is used to specify the mapping
+          relationship used to relate the concepts in the linkset. This is used
+          to state the degree of equivalence there is between the resources in
+          the subject and object dataset. See <a href="#mapping-relationships">Section
+            3.2</a> for the different mapping relationships and their meaning.</p>
+        <p>The <em>link justification</em> is used to capture the notion of
+          equivalence captured between the resources in the two datasets, e.g.
+          they are conceptually the same gene (<a target="_blank" href="http://semanticscience.org/resource/SIO_010035">http://semanticscience.org/resource/SIO_010035</a>)
+          or the gene produces the protein and thus is used as a proxy for the
+          protein (<a target="_blank" href="http://semanticscience.org/resource/SIO_000985">http://semanticscience.org/resource/SIO_000985</a>).
+          <a href="#appendix-link-justifications">Appendix B.2</a> gives the set
+          of justifications used in the Open PHACTS Discovery Platform.</p>
+        <p>The <em>subjects target</em> and <em>objects target</em> predicates
+          should point to dataset descriptions contained in a VoID file. This
+          may be a resource in the same file or in some other file. However,
+          they should point to a description of a specific version of a dataset.
+          For example, for a link to version 16 of the ChEMBL molecules dataset
+          the objects target value would be <code>http://rdf.ebi.ac.uk/dataset/chembl/16.2/void.ttl#chembl_rdf_molecule_dataset</code>.
+          Descriptions of the datasets loaded in the Open PHACTS Discovery
+          Platform are available through the <a target="_blank" href="https://dev.openphacts.org/docs"><code>/sources</code></a>
+          method.</p>
+        <p>The <em>subjects datatype</em> and <em>objects datatype</em>
+          predicates should specify the type of the resources that are linked.
+          This may be different from the datatype of the whole dataset. For
+          example, ConceptWiki has among other things data about genes,
+          proteins, and chemicals. However a specific linkset such as to
+          ChemSpider only contains identifiers that are chemicals. This linkset
+          would have the subjects datatype set to chemical entity (<a target="_blank"
+            href="http://semanticscience.org/resource/SIO_010004">http://semanticscience.org/resource/SIO_010004</a>).
+          The set of data types used in the Open PHACTS Discovery Platform are
+          available in <a href="#appendix-topics-vocab">Appendix B.1</a>.</p>
+        <p>The <em>subjects species</em> and <em>objects species</em>
+          predicates are used to state when a linkset is limited to biological
+          targets from a particular species. For example, for a linkset between
+          mouse proteins and human proteins the subjects species would be mouse
+          (<a target="_blank" href="http://purl.obolibrary.org/obo/NCBITaxon_10090">http://purl.obolibrary.org/obo/NCBITaxon_10090</a>)
+          while the objects species would be human (<a target="_blank" href="http://purl.obolibrary.org/obo/NCBITaxon_9606">http://purl.obolibrary.org/obo/NCBITaxon_9606</a>).
+          <a href="#appendix-species-terms">Appendix B.3</a> gives the set of
+          species used in the Open PHACTS Discovery Platform.</p>
+        <h4>Provenance Metadata</h4>
+        <p>The <em>subset</em> predicate is used to identify those linksets
+          that have been extracted from a larger dataset, e.g. linksets
+          extracted from ChEMBL are a subset of the ChEMBL dataset.</p>
+        <p><em>Author</em> and <em>creator</em> information can be provided to
+          allow the tracing of who is making the claims of equivalence
+          represented by the links in the linkset. The values for these
+          resources should not be locally defined values, but link to external
+          representations for individuals that can be reused. We recommend the
+          use of <a href="http://orcid.org/">ORCID</a> identifiers. </p>
         <!-- End linkset-guidance --> </section>
       <section id="linkset-examples" class="informative">
         <h3 id="linkset-examples">Examples</h3>
@@ -785,6 +842,7 @@
           be reused (see <a href="#CS2ChEMBLLinkset">Appendix C.1</a>). The
           second example shows the declaration of a dataset's metadata in the
           linkset file (see <a href="#CS2DBLinkset">Appendix C.2</a>). </p>
+        <p class="todo">Examples need updating!</p>
         <!-- end linkset-examples --> </section>
       <!-- end linkset-description --> </section>
     <section id="exchanging-descriptions">
