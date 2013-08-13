@@ -713,22 +713,34 @@
           <li> MUST
             <ul>
               <li>Declare the type to be <a href="#void:Linkset">void:Linkset</a>;</li>
-              <li>Declare a title for the linkset <a href="#dcterms:title">dcterms:title</a>;</li>
+              <li>Declare a title for the linkset <a href="#dcterms:title">dcterms:title</a>
+                as a string literal;</li>
               <li>Provide a description, detailing what has been linked and how,
-                using <a href="#dcterms:description">dcterms:description</a>;</li>
-              <li>Link to the publisher <a href="#dcterms:publisher">dcterms:publisher</a>;</li>
-              <li>Link to the dataset license <a href="#dcterms:license">dcterms:license</a>;</li>
-              <li>Date on which the dataset was published <a href="#dcterms:issued">dcterms:issued</a>;</li>
-              <li>Link to the files that contain the RDF data <a href="#void:dataDump">void:dataDump</a>;</li>
+                using <a href="#dcterms:description">dcterms:description</a> as
+                a string literal;</li>
+              <li>Link to the publisher <a href="#dcterms:publisher">dcterms:publisher</a>
+                as a URI;</li>
+              <li>Link to the dataset license <a href="#dcterms:license">dcterms:license</a>
+                as a URI;</li>
+              <li>Date on which the dataset was published <a href="#dcterms:issued">dcterms:issued</a>
+                as an xsd:dateTime;</li>
+              <li>Link to the files that contain the RDF data <a href="#void:dataDump">void:dataDump</a>
+                as a URI of the RDF file(s) or compressed RDF file(s);</li>
               <li>Link to a description of the <a href="#rdf-dataset">RDF
                   dataset</a> that is the subject of the links using <a href="#void:subjectsTarget">void:subjectsTarget</a>;</li>
-              <li>Declare the type of concept being linked in the subjects using
-              </li>
+              <li>Declare the type of concept being linked in the subject
+                dataset using <a href="#bdb:subjectsDatatype">bdb:subjectsDatatype</a>
+                and a type drawn from <a href="#appendix-topics-vocab">Appendix
+                  B.1</a>.</li>
               <li>Link to a description of the <a href="#rdf-dataset">RDF
                   dataset</a> that is the object of the links using <a href="#void:objectsTarget">void:objectsTarget</a>;</li>
+              <li>Declare the type of concept being linked in the object dataset
+                using <a href="#bdb:objectsDatatype">bdb:objectsDatatype</a>
+                and a type drawn from <a href="#appendix-topics-vocab">Appendix
+                  B.1</a>.</li>
               <li>Declare the <a href="#MappingRelationships">mapping
                   relationship</a> used in the linkset <a href="#void:linkPredicate">void:linkPredicate</a>;</li>
-              <li>Declare the reason why the datasets are linked <a href="#bdb:linksetJustification">bdb:linksetJustification</a>
+              <li>Declare the notion of equivalence using <a href="#bdb:linksetJustification">bdb:linksetJustification</a>
                 with one of the reasons given in <a href="#appendix-link-justifications">Appendix
                   B.2</a>;</li>
             </ul>
@@ -736,6 +748,12 @@
           <li> SHOULD
             <ul>
               <li>Declare if the linkset is a subset of a dataset <a href="#void:subset">void:subset</a>;</li>
+              <li>Declare the species of the subject of the links using <a href="#bdb:subjectsSpecies">bdb:subjectsSpecies</a>
+                and a species drawn from <a href="#appendix-species-terms">Appendix
+                  B.3</a>.</li>
+              <li>Declare the species of the object of the links using <a href="#bdb:subjectsSpecies">bdb:objectsSpecies</a>
+                and a species drawn from <a href="#appendix-species-terms">Appendix
+                  B.3</a>.</li>
             </ul>
           </li>
           <li> MAY
