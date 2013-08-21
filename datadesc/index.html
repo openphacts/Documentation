@@ -382,7 +382,7 @@
         <p> The ability to classify linksets for use under different scientific
           lenses relies on the justification given in the linkset. A set of
           vocabulary terms for providing justifications are given in <a href="#appendix-link-justifications">Appendix
-            A.3</a>. </p>
+            B.2</a>. </p>
         <h4 id="mapping-example">Example</h4>
         <p> The following example declares that the ChemSpider α-Ketoisovaleric
           acid concept with the <a href="http://www.chemspider.com/48">CSID 48</a>
@@ -391,7 +391,7 @@
             ChEMBL ID CHEMBL146554</a>. The relationship is drawn from
           ChemSpider based on the compounds sharing the same structure based on
           their InChI Keys (in this case the compound has the same InChI Key
-          QHKABHOOEWYVLI-UHFFFAOYSA-N in both data sets.). Only the triples
+          QHKABHOOEWYVLI-UHFFFAOYSA-N in both data sets). Only the triples
           directly related to declaring the link are given in the example. </p>
         <pre class="turtle">@prefix chembl: &lt;http://linkedchemistry.info/chembl/chemblid/&gt; .
 
@@ -445,7 +445,7 @@
                 href="#dcat:landingPage">dcat:landingPage</a> as a URI;</li>
             <li>Link to the dataset license <a href="#dcterms:license">dcterms:license</a>
               as a URI;</li>
-            <li>Date on which the dataset was published <a href="#dcterms:issued">dcterms:issued</a>
+            <li>Provide the date on which the dataset was published <a href="#dcterms:issued">dcterms:issued</a>
               as an xsd:dateTime;</li>
             <li>Link to the data download
               <ul>
@@ -515,15 +515,14 @@
             <li>Link to other webpages describing the dataset using <a href="#foaf:page">foaf:page</a>.</li>
           </ul>
         </ul>
-        <p class="todo">Provide other properties such as vocabulary, update
-          frequency, etc.</p>
         <h4 id="distribution-checklist">Dataset Distribution</h4>
         <ul>
           <li> MUST
             <ul>
               <li>Declare the type to be <a href="#dcat:Distribution">dcat:Distribution</a>;</li>
               <li>Declare the format of the file using <a href="#dcat:mediaType">dcat:mediaType</a>
-                and a type drawn from <a target="_blank" href="http://www.iana.org/assignments/media-types">IANA</a>;</li>
+                and a type drawn from <a target="_blank" href="http://www.iana.org/assignments/media-types">IANA</a>
+                (see <a href="#dataset-distribution">below</a> for details);</li>
               <li>Declare the location of the file <a href="#dcat:downloadURL">dcat:downloadURL</a>.</li>
             </ul>
           </li>
@@ -559,7 +558,9 @@
           responsible for the creation and maintenance for the dataset. This
           predicate should point to the web page for the organisation. For
           example, the publisher of the ChemSpider datset is the Royal Society
-          of Chemisty and the value for this property is <a href="http://www.rsc.org/">http://www.rsc.org/</a>.</p>
+          of Chemisty and the value for this property is <a href="http://www.rsc.org/">http://www.rsc.org/</a>.
+          Ideally the publisher's page should be marked up with RDFa so that it
+          is machine processable.</p>
         <p>The <span style="font-style: italic;">landing page</span> for a
           dataset should point to the public facing web page that gives details
           of the dataset. For a dataset such as the RDF conversion of DrugBank
@@ -630,7 +631,24 @@
           <ul style="color: rgb(0, 0, 0); font-family: sans-serif; font-size: medium; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
           </ul>
         </ul>
-        <h4 id="rdf-conversion">Provenance and Change</h4>
+        <h4 id="dataset-structure">Structure</h4>
+        <p>A dataset that can be separated into multiple parts, e.g. ChEMBL can
+          be split into ChEMBL.molecule, ChEMBL.Target, etc, should have this
+          structure captured in the dataset description using th <code>void:subset</code>
+          property. Each distinct subset should be described as a dataset in its
+          own right, although common parts of information can be inherited from
+          the parent. However, each should have a meaningful <em>title</em> and
+          <em>description</em> for display purposes.</p>
+        <p class="note">
+          <meta charset="utf-8">
+          In the VoID note [[VOID]], the <code><span>void:subset</span></code>
+          property is used for both 'subset of' and 'has subset'. The declared
+          semantics for the property is has subset. Within Open PHACTS, the
+          property must be used with the has subset semantics.</p>
+        <p>The <em>vocabularies</em> used in the RDF representation of a
+          dataset can be declared using the <code><span>void:vocabulary</span></code>
+          property.</p>
+        <h4 id="dataset-provenance">Provenance and Change</h4>
         <p>A dataset description should link to the description of the <em>previous
             version</em> of the dataset. This provides a backward pointing chain
           to all the previous versions of the dataset.</p>
@@ -648,13 +666,12 @@
           available, or it is unclear, the associated <a href="http://identifiers.org/">Identifiers.org</a>
           page may be linked to. However, the version or file used should be
           captured.</p>
-        <h4>Distribution Information</h4>
+        <h4 id="dataset-distribution">Distribution Information</h4>
         <p>For an <em>RDF dataset</em> the file(s) containing the data should
           be linked to; standard file extensions and content-negotiation should
           be used to allow for the automated parsing of the file. This is to
           enable the Open PHACTS Discovery Platform to load the data and make it
-          available to users of the platform. The <em>vocabularies</em> used to
-          model the data can be declared. The SPARQL endpoint can also be
+          available to users of the platform. The SPARQL endpoint can also be
           supplied when this exists.</p>
         <p>For a <em>non-RDF dataset</em> it is unknown what format the data
           file will be provided in, so a description of the file should be
@@ -693,8 +710,9 @@
         about its content and how it was created. The metadata associated with a
         link is essential for enabling its reuse by others. It enables a
         consumer of the link to understand which datasets are linked (including
-        which version), who claimed the link, under what circumstances, and
-        which (if any) tools were used to generate the link (e.g. [[SILK]]). </p>
+        which version), who claimed the link, under what circumstances, the
+        level of curation of the the links, and which (if any) tools were used
+        to generate the link (e.g. [[SILK]]). </p>
       <p> A linkset should point to the dataset descriptions of the datasets
         that it uses. These descriptions should be provided by the dataset
         provider as part of the dataset publishing process [[OPS-RDF]]. However,
@@ -720,7 +738,7 @@
                 as a URI;</li>
               <li>Link to the dataset license <a href="#dcterms:license">dcterms:license</a>
                 as a URI;</li>
-              <li>Date on which the dataset was published <a href="#dcterms:issued">dcterms:issued</a>
+              <li>Provide the date on which the dataset was published <a href="#dcterms:issued">dcterms:issued</a>
                 as an xsd:dateTime;</li>
               <li>Link to the files that contain the RDF data <a href="#void:dataDump">void:dataDump</a>
                 as a URI of the RDF file(s) or compressed RDF file(s);</li>
@@ -833,8 +851,7 @@
           represented by the links in the linkset. The values for these
           resources should not be locally defined values, but link to external
           representations for individuals that can be reused. We recommend the
-          use of <a href="http://orcid.org/">ORCID</a> identifiers.
-          </p>
+          use of <a href="http://orcid.org/">ORCID</a> identifiers. </p>
         <!-- End linkset-guidance --> </section>
       <section id="linkset-examples" class="informative">
         <h3 id="linkset-examples">Examples</h3>
