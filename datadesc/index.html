@@ -366,8 +366,9 @@
             </tr>
           </tbody>
         </table>
-        <!-- <p>Note that there are domain specific relationship that may
-          also be used to express the relationship between two data instances.          For example, ChEBI provides a set of relationships including for          example <a href="http://www.ebi.ac.uk/chebi/userManualForward.do#has%20part"            target="_blank"><code>http://purl.obolibrary.org/obo#has_part</code></a>          and <a href="http://www.ebi.ac.uk/chebi/userManualForward.do#is%20conjugate%20base%20of"            target="_blank"><code>http://purl.obolibrary.org/obo#is_conjugate_acid_of</code></a>.        </p>        -->
+        <!-- 
+          <p>Note that there are domain specific relationship that may          also be used to express the relationship between two data instances.          For example, ChEBI provides a set of relationships including for                    example <a href="http://www.ebi.ac.uk/chebi/userManualForward.do#has%20part"            target="_blank"><code>http://purl.obolibrary.org/obo#has_part</code></a>          and <a href="http://www.ebi.ac.uk/chebi/userManualForward.do#is%20conjugate%20base%20of"           target="_blank"><code>http://purl.obolibrary.org/obo#is_conjugate_acid_of</code></a>.                  </p>        
+        -->
         <h4 id="justifications">Mapping Justifications</h4>
         <p> A key feature of the Open PHACTS platform is its ability to allow
           multiple views of the linked data which is achieved by applying <em>scientific
@@ -639,9 +640,7 @@
           own right, although common parts of information can be inherited from
           the parent. However, each should have a meaningful <em>title</em> and
           <em>description</em> for display purposes.</p>
-        <p class="note">
-          <meta charset="utf-8">
-          In the VoID note [[VOID]], the <code><span>void:subset</span></code>
+        <p class="note"> In the VoID note [[VOID]], the <code><span>void:subset</span></code>
           property is used for both 'subset of' and 'has subset'. The declared
           semantics for the property is has subset. Within Open PHACTS, the
           property must be used with the has subset semantics.</p>
@@ -872,6 +871,11 @@
           Section 6</a> of the VoID specification for more details. </p>
       <section id="document-descriptor">
         <h3 id="void-document-metadata">VoID Document Metadata</h3>
+        <p>The primary purpose of the VoID document metadata is to provide
+          details of who created the description of the dataset and when. It
+          also points to the main (parent) dataset resource described in the
+          document.</p>
+        <h4>Metadata Checklist</h4>
         <p> VoID documents describing datasets and linksets MUST contain a
           metadata block describing the VoID document using the following
           properties: </p>
@@ -880,33 +884,74 @@
             <ul>
               <li> Declare the type to be <a href="#void:DatasetDescription">
                   void:DatasetDescription</a>. </li>
-              <li> Declare when the VoID descriptor was issued using <a href="#dcterms:issued">dcterms:issued</a>.
-              </li>
+              <li> Declare when the VoID descriptor was issued using <a href="#dcterms:issued">dcterms:issued</a>
+                as an <code>xsd:dateTime</code>. </li>
+              <li>Declare the primary dataset being described using <a href="#foaf:primaryTopic">foaf:primaryTopic</a>
+                with the object being a resource defined in the document. </li>
             </ul>
           </li>
           <li>SHOULD
             <ul>
-              <li> Declare the primary dataset being described using <a href="#foaf:primaryTopic">foaf:primaryTopic</a>.
-              </li>
-              <li> Declare the creator of the VoID descriptor using <a href="#pav:createdBy">pav:createdBy</a>.
-              </li>
-              <li> Declare when the VoID descriptor was created using <a href="#pav:createdOn">pav:createdOn</a>.
-              </li>
-              <li> Link to the previous version of the dataset description <a href="#pav:previousVersion">pav:previousVersion</a>.
-              </li>
+              <li> Declare the creator of the VoID descriptor using <a href="#pav:createdBy">pav:createdBy</a>
+                as a URI. </li>
+              <li>Link to the previous version of the dataset description <a href="#pav:previousVersion">pav:previousVersion</a>
+                as a versioned URI.</li>
+            </ul>
+          </li>
+          <li>MAY
+            <ul>
+              <li>Declare a title for the VoID descriptor using <a href="#dcterms:title">dcterms:title</a>
+                as a string literal.</li>
+              <li>Provide a description of the VoID descriptor using <a href="#dcterms:description">dcterms:description</a>
+                as a string literal.</li>
+              <li> Declare when the VoID descriptor was created using <a href="#pav:createdOn">pav:createdOn</a>
+                as an <code>xsd:dateTime</code>. </li>
+              <li>Declare when the VoID descriptor was last updated using <a href="#pav:lastUpdateOn">pav:lastUpdateOn</a>
+                as an <code>xsd:dateTime</code>.</li>
+              <li>Declare the tool used to create the VoID descriptor using <a
+                  href="#pav:createdWith">pav:createdWith</a> as a versioned
+                URI.</li>
             </ul>
           </li>
         </ul>
-        <p> Of course, other properties may also be declared, e.g. a title using
-          <code>dcterms:title</code>. For more details, see <a href="http://www.w3.org/TR/void/#void-file">Section
-            6.2</a> of the VoID specification [[VOID]]. </p>
-        <p> An example is given below for the ChemSpider deployment. Note the
-          use of an empty-string relative URI (&lt;&gt;) as a syntactic shortcut
-          for the URI of the document that contains the statements. </p>
+        <p> Of course, other properties may also be declared. For more details,
+          see <a href="http://www.w3.org/TR/void/#void-file">Section 6.2</a> of
+          the VoID specification [[VOID]]. </p>
+        <h4>Guidance</h4>
+        <p>The <em>date issued</em> property is used to capture the date that
+          the dataset description is ready for use, i.e. its publication date.
+          This is captured as an <code>xsd:dateTime</code> literal, where
+          unknown values should be set to the start of the valid time period.
+          The dataset description issued date may be different from the date of
+          issue of the dataset and also the creation and last modified dates,
+          the latter two of these may be captured using the predicates from the
+          PAV vocabulary.</p>
+        <p>The <em>primary topic </em>of the dataset description document is
+          the resource that describes the dataset. This should be a locally
+          defined resource.</p>
+        <p>The person responsible for publishing the dataset as RDF is most
+          likely also the creator of the VoID description for it. This is
+          captured with the <em>created by</em> property. We recommend the use
+          of an <a target="_blank" href="http://orcid.org/">ORCID</a>
+          identifier, but any valid URI will suffice. The resulting resource
+          should be available as RDF.</p>
+        <p>The tool used to create the VoID document can be captured using <a href="#pav:createdWith">pav:createdWith</a>.
+          The VoID Editor would be one example, but ideally this should be the
+          script that performs data publishing pipeline, of which the generation
+          of the VoID description is part of.</p>
+        <p>When a <em>title</em> is provided then this should be short as it
+          will be used in apps to display details of the dataset description.
+          When a <em>description</em> is provided, then these should provide a
+          summary of the process of the creation of the dataset and be
+          understandable to those outside of the immediate development team.</p>
+        <h4>Example</h4>
+        <p> An example is given below based on the ChemSpider deployment. (Note
+          the use of an empty-string relative URI (&lt;&gt;) as a syntactic
+          shortcut for the URI of the document that contains the statements; the
+          real deployment has a date versioned URI such as
+          ftp://ftp.rsc-us.org/OPS/20130408/void_2013-04-08.ttl.)</p>
         <pre class="turtle">&lt;&gt; a void:DatasetDescription ;
-	dcterms:title "ChemSpider VoID Description"^^xsd:string ;
-	pav:createdBy &lt;http://www.chemspider.com/&gt; ;
-	pav:createdOn "2012-05-02T13:50:34Z"^^xsd:dateTime;
+        dcterms:issued "2013-08-22T10:33:00Z"^^xsd:dateTime;<br>	pav:createdBy &lt;http://orcid.org/0000-0002-5711-4872&gt;;<br>	pav:createdOn "2012-05-02T13:50:34Z"^^xsd:dateTime;
 	pav:lastUpdateOn "2012-08-10T13:52:12Z"^^xsd:dateTime;
 	foaf:primaryTopic :chemSpiderDataset .    
 		</pre>
@@ -917,6 +962,11 @@
             href="http://www.w3.org/TR/void/#deploying">Section 6</a> of the
           VoID Note [[VOID]]. In this section we provide recommendations for
           good practice within the Open PHACTS project. </p>
+        <p>We recommend that the dataset description is made available as a
+          separate file from the data that it describes. This enables the use of
+          the description without downloading the entire dataset in
+          catalogues/registries and by tools such as the Open PHACTS Identity
+          Mapping Service (IMS) [[IMS]].</p>
         <section id="deploying-dataset-void">
           <h4 id="deploying-dataset-desc">Deploying a Dataset Description</h4>
           <p> The current dataset description for a dataset SHOULD be available
@@ -928,9 +978,6 @@
           <p> For example, for ChemSpider we would have a URI such as <code>http://rdf.chemspider.com/void.ttl#chemSpiderDataset</code>
             which redirects to a versioned URI such as <code>http://rdf.chemspider.com/20130408/void.ttl#chemSpiderDataset</code>.
           </p>
-          <p> Examples of the VoID descriptors are given in the example dataset
-            descriptions in <a href="#appendix-dataset-examples">Appendix C</a>.
-          </p>
           <!-- end deploying-dataset-void --> </section>
         <section id="dataset-deployment">
           <h4>Dataset Deployment</h4>
@@ -941,19 +988,26 @@
           <pre class="turtle">&lt;http://linkedchemistry.info/chembl/chemblid/molecule/m1&gt; void:inDataset 
     &lt;http://linkedchemistry.info/chembl/chemblid/void.ttl#chembl-rdf_compounds&gt; .    
 			</pre>
-          <p class="todo"> Resolve completely how we are doing versioning!<br>
-            Should the backlinks point to the versioned dataset description? </p>
+          <h4>Guidance</h4>
+          <p>The above deployment example points to the unversioned dataset
+            description, which SHOULD redirect to the current latest version.
+            This is the approach for serving linked data pages and is valid
+            providing that the data item remains in the latest version of the
+            dataset.</p>
+          <p>When creating a datadump, the <em>in dataset</em> link should
+            point to the corresponding versioned dataset description.</p>
           <!-- end dataset-deployment --> </section>
         <section id="linkset-files">
           <h4 id="deploying-linkset-desc">Deploying a Linkset Description</h4>
           <p> For the purposes of Open PHACTS, it is anticipated that linksets
             will be materialised as separate documents from the datasets. This
             is to allow their loading into the identity mapping service [[IMS]].
-            These linkset files will contain the metadata about the linkset as
-            well as the links. </p>
-          <p> It is also permitted to separate the link triples from the linkset
-            metadata. In this case, the file containing the links MUST provide a
-            link back to the linkset desription using the <a href="#void:inDataset">
+          </p>
+          <p>It is recommended that the linkset is described in the main dataset
+            description document. Where there is no dataset description document
+            it is recommend that a separate dataset description document is
+            created for the linkset. The file containing the links MUST provide
+            a link back to the linkset desription using the <a href="#void:inDataset">
               <code>void:inDataset</code></a> predicate. The example below shows
             how a set of links can refer back to the linkset description given
             in the ChEMBL-RDF VoID description file. </p>
@@ -966,7 +1020,7 @@
         <!-- end deploying-void --> </section>
       <section id="external-files">
         <h3 id="external-file">External VoID Files</h3>
-        <p> Tooling being developed within Open PHACTS SHOULD support the
+        <p> Tooling being developed within Open PHACTS MUST support the
           predicates stated in this document. However, they SHOULD also be able
           to read VoID files from external sources that do not comply completely
           with this specification, but do comply with the VoID standard
