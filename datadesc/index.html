@@ -14,7 +14,7 @@
 		customcss:            "http://www.openphacts.org/specs/css/ops.css",
 		specStatus:           "ED",
 		shortName:            "datadesc",
-		publishDate:   "2013-08-22",
+		publishDate:   "2013-08-23",
 		previousMaturity: "WD",
 		previousPublishDate:  "2012-10-19",
 		//previousURI : "http://www.cs.manchester.ac.uk/~graya/ops/2012/WD-mappingspec-20120615/",
@@ -861,15 +861,14 @@
             D</a>. The example shows how a linkset can be included as part of a
           complete dataset description (see <a href="#ChEMBL-RDF-VoID-Descriptor">Appendix
             C.1</a>) and also link to an external dataset description.</p>
-          <!-- end linkset-examples -->
-      </section>
+        <!-- end linkset-examples --> </section>
       <!-- end linkset-description --> </section>
     <section id="exchanging-descriptions">
       <h2 id="deploy-exchange-void">Deploying and Exchanging VoID Documents</h2>
-      <p> The two preceeding sections have prescribed the metadata required to
-        describe datasets and the linksets that inter-relate them. This section
-        outlines the expected deployment and exchange mechanisms and should be
-        read in conjunction with <a href="http://www.w3.org/TR/void/#deploying">
+      <p> The two preceeding sections have prescribed the metadata
+        required to describe datasets and the linksets that inter-relate them.
+        This section outlines the expected deployment and exchange mechanisms
+        and should be read in conjunction with <a href="http://www.w3.org/TR/void/#deploying">
           Section 6</a> of the VoID specification for more details. </p>
       <section id="document-descriptor">
         <h3 id="void-document-metadata">VoID Document Metadata</h3>
@@ -3579,8 +3578,7 @@
         <li> <a href="examples/chembl-rdf-void.ttl">Download file</a> </li>
         <li> <a href="examples/chembl-rdf-void.png">View graph</a> </li>
       </ul>
-      <pre class="turtle">
-:chembl_targetcmpt_uniprot_linkset a void:Linkset ;
+      <pre class="turtle">:chembl_targetcmpt_uniprot_linkset a void:Linkset ;
 	dcterms:title "ChEMBL Target Component to UniProt Linkset" ;
 	dcterms:description "The ChEMBL Target Component to UniProt Linkset relating target components to their corresponding entry in UniProt based on their sequence." ;
 	dcterms:publisher <http: www.ebi.ac.uk=""> ;
