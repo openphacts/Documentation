@@ -186,7 +186,6 @@
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 @prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
-@prefix voag: &lt;http://voag.linkedmodel.org/schema/voag#&gt; .
 @prefix void: &lt;http://rdfs.org/ns/void#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 		</pre>
@@ -509,7 +508,8 @@
             <li>Declare when the digital representation of the dataset was
               created <a href="#pav:createdOn">pav:createdOn</a>.</li>
             <li>Declare the theme of the dataset <a href="http://www.w3.org/TR/2013/WD-vocab-dcat-20130312/#class-dataset">dcat:theme</a>
-              and link to topics from a controlled vocabulary;</li>
+              and link to topics from a controlled vocabulary suggested values
+              are given in <a href="#appendix-topics-vocab">Appendix B.1</a>;</li>
             <li>Declare the literature reference for the dataset&nbsp;<a href="#cito:citeAsAuthority">cito:citeAsAuthority</a><span
                 style="background-color: #ffff33;"></span>.</li>
             <li>Link to other webpages describing the dataset using <a href="#foaf:page">foaf:page</a>.</li>
@@ -761,7 +761,8 @@
           </li>
           <li> SHOULD
             <ul>
-              <li>Declare if the linkset is a subset of a dataset <a href="#void:subset">void:subset</a>;</li>
+              <li>Declare if the linkset is a subset of a dataset <a href="#void:subset">void:subset</a>
+                (Note that the linkset resource is the object of this triple);</li>
               <li>Declare the species of the subject of the links using <a href="#bdb:subjectsSpecies">bdb:subjectsSpecies</a>
                 and a species drawn from <a href="#appendix-species-terms">Appendix
                   B.3</a>.</li>
@@ -848,7 +849,9 @@
         <h4>Provenance Metadata</h4>
         <p>The <em>subset</em> predicate is used to identify those linksets
           that have been extracted from a larger dataset, e.g. linksets
-          extracted from ChEMBL are a subset of the ChEMBL dataset.</p>
+          extracted from ChEMBL are a subset of the ChEMBL dataset. Note that
+          the dataset resource is the subject of the triple and the linkset
+          resource is the object.</p>
         <p><em>Author</em> and <em>creator</em> information can be provided to
           allow the tracing of who is making the claims of equivalence
           represented by the links in the linkset. The values for these
@@ -2430,47 +2433,6 @@
           </tbody>
         </table>
         <!-- end pav --> </section>
-      <section id="voag">
-        <h3>Vocabulary of Attribution and Governance</h3>
-        <h4>Properties</h4>
-        <table id="voag:frequencyOfChange" class="definition">
-          <thead>
-            <tr>
-              <th>RDF Property</th>
-              <th> <a href="http://voag.linkedmodel.org/schema/voag#frequencyOfChange"
-                  target="_blank"> <code>voag:frequencyOfChange</code></a> </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="prop">Definition:</td>
-              <td> Frequency of change </td>
-            </tr>
-            <tr>
-              <td class="prop">Range:</td>
-              <td><a href="http://www.w3.org/2000/01/rdf-schema#Resource">rdfs:Resource</a></td>
-            </tr>
-            <tr>
-              <td class="prop">Usage note:</td>
-              <td>
-                <p> Defines the frequency with which the dataset is expected to
-                  publish new versions. Should be used to provide a frequency
-                  term drawn from the <a href="http://dublincore.org/groups/collections/frequency/2007-03-09/">
-                    Frequency Vocabulary</a>. </p>
-                <p> The terms from the Frequency Vocabulary have been reproduced
-                  in <a href="#appendix-frequency-vocabulary">Appendix A.3</a>.
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td class="prop">Warning:</td>
-              <td> We are considering abolishing the use of this predicate in
-                favour of <a href="http://dublincore.org/documents/2012/06/14/dcmi-terms/?v=terms#terms-accrualPeriodicity">
-                  <code>dcterms:accrualPeriod</code></a>. </td>
-            </tr>
-          </tbody>
-        </table>
-        <!-- end voag --> </section>
       <section id="void">
         <h3>Vocabulary of Interlinked Datasets</h3>
         <h4>Classes</h4>
@@ -3506,119 +3468,102 @@
         <!-- end ChemSpider-VoID --> </section>
       <section id="ChEMBL-RDF-VoID-Descriptor">
         <h3 id="chemble-rdf-void">ChEMBL-RDF VoID Descriptor</h3>
-        <p> Below we provide the VoID document for the ChEMBL-RDF dataset, which
-          is a conversion of the ChEMBL database. The VoID file would be located
-          at <code>http://linkedchemistry.info/void.ttl</code>. </p>
+        <p> Below we provide an example of part of the VoID document for the
+          ChEMBL-RDF dataset; derived from the file available at&nbsp; <a target="_blank"
+            href="ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/16.0/void.ttl.gz">ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/16.0/void.ttl.gz</a>.
+        </p>
         <ul>
           <li> <a href="examples/chembl-rdf-void.ttl">Download file</a> </li>
           <li> <a href="examples/chembl-rdf-void.png">View graph</a> </li>
         </ul>
         <!-- Example copy and pasted from examples/chembl-rdf-void.ttl -->
-        <pre class="turtle">@prefix : &lt;http://linkedchemistry.info/void.ttl#&gt;.
+        <pre class="turtle">@prefix : &lt;http://rdf.ebi.ac.uk/dataset/chembl/16.2/void.ttl#&gt; .
+@prefix cco: &lt;http://rdf.ebi.ac.uk/terms/chembl#&gt; .
+@prefix chembl: &lt;http://rdf.ebi.ac.uk/resource/chembl/&gt; .
+@prefix chembl_activity: &lt;http://rdf.ebi.ac.uk/resource/chembl/activity/&gt; .
+@prefix chembl_assay: &lt;http://rdf.ebi.ac.uk/resource/chembl/assay/&gt; .
+@prefix chembl_bio_cmpt: &lt;http://rdf.ebi.ac.uk/resource/chembl/biocomponent/&gt; .
+@prefix chembl_document: &lt;http://rdf.ebi.ac.uk/resource/chembl/document/&gt; .
+@prefix chembl_journal: &lt;http://rdf.ebi.ac.uk/resource/chembl/journal/&gt; .
+@prefix chembl_molecule: &lt;http://rdf.ebi.ac.uk/resource/chembl/molecule/&gt; .
+@prefix chembl_protclass: &lt;http://rdf.ebi.ac.uk/resource/chembl/protclass/&gt; .
+@prefix chembl_source: &lt;http://rdf.ebi.ac.uk/resource/chembl/source/&gt; .
+@prefix chembl_target: &lt;http://rdf.ebi.ac.uk/resource/chembl/target/&gt; .
+@prefix chembl_target_cmpt: &lt;http://rdf.ebi.ac.uk/resource/chembl/targetcomponent/&gt; .
 
+@prefix bdb: &lt;http://bridgedb.org/vocab#&gt; .
+@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
 @prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
 @prefix dctypes: &lt;http://purl.org/dc/dcmitype/&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 @prefix freq: &lt;http://purl.org/cld/freq/&gt; .
-@prefix pav: &lt;http://purl.org/pav/&gt;.
-@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
-@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;.
-@prefix voag: &lt;http://voag.linkedmodel.org/schema/voag#&gt; .
-@prefix void: &lt;http://rdfs.org/ns/void#&gt;.
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;.
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix pav: &lt;http://purl.org/pav/&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix sd: &lt;http://www.w3.org/ns/sparql-service-description#&gt; .
+@prefix sio: &lt;http://semanticscience.org/resource/&gt; .
+@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
+@prefix uniprot: &lt;http://purl.uniprot.org/uniprot/&gt; .
+@prefix void: &lt;http://rdfs.org/ns/void#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-# Metadata about this file
-&lt;&gt; 
-    a void:DatasetDescription;
-    dcterms:title "ChEMBL-RDF VoID Description"@en;
-    dcterms:description 
-        """This is the VoID description for a ChEMBL-RDF dataset."""@en;
-    pav:createdBy &lt;http://egonw.github.com/#me&gt; ;
-    pav:createdOn "2012-08-12T16:56:07Z"^^xsd:dateTime;
-    pav:lastUpdateOn "2012-09-14T12:21:12Z"^^xsd:dateTime;
-    pav:previousVersion &lt;http://semantics.bigcat.unimaas.nl/chembl/v13_ops/chembl-rdf-void.ttl&gt;;
-    foaf:primaryTopic :chemblrdf_dataset.
+&lt;http://rdf.ebi.ac.uk/dataset/chembl/16.example/void.ttl#&gt; a void:DatasetDescription ;
+	pav:createdBy &lt;http://orcid.org/0000-0002-8011-0300&gt; ;
+	pav:contributedBy &lt;http://orcid.org/0000-0002-5711-4872&gt; ;
+	pav:createdOn "2009-10-28T00:00:00.000Z"^^xsd:dateTime ;
+	pav:lastUpdateOn "2013-08-23T00:00:00.000+01:00"^^xsd:dateTime ;
+	dcterms:issued "2013-08-23T00:00:00.000+01:00"^^xsd:dateTime;
+	pav:previousVersion &lt;http://rdf.ebi.ac.uk/dataset/chembl/16.2/void.ttl#&gt;;
+	foaf:primaryTopic :chembl_rdf_dataset .
 
-:chemblrdf_dataset
-# General metadata
-    a void:Dataset;
-    dcterms:title "ChEMBL-RDF 13.OPS.2"@en;
-    dcterms:description "The ChEMBL database in RDF format."@en;
-    foaf:homepage &lt;http://github.com/egonw/chembl.rdf/&gt;;
-    foaf:page &lt;http://www.biosharing.org/biodbcore-000015&gt;;
-    dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
-    void:uriSpace "http://linkedchemistry.info/chembl/"^^xsd:string ;
-# Provenance
-	pav:version "v13_ops";
-	pav:previousVersion &lt;http://semantics.bigcat.unimaas.nl/chembl/v13_ops/chembl-rdf-void.ttl#chemblrdf_dataset&gt;;
-    pav:importedFrom :chembl_dataset;
-    pav:importedBy &lt;http://egonw.github.com/#me&gt; ;
-    pav:importedOn "2012-05-15T15:34:40Z"^^xsd:dateTime;
-    pav:createdWith &lt;https://github.com/openphacts/chembl.rdf&gt;;
-# Subsets
-    void:subset :chemblrdf_compounds, :chemblrdf_targets ;
-# Vocabularies, topics, resources
-	void:vocabulary 
-		&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;,
-		&lt;http://www.w3.org/2000/01/rdf-schema#&gt;,
-		&lt;http://www.w3.org/2002/07/owl#&gt;,
-		&lt;http://www.w3.org/2001/XMLSchema#&gt;,
-		&lt;http://purl.org/dc/elements/1.1/&gt;, 
-		&lt;http://purl.org/ontology/bibo/&gt;,
-		&lt;http://xmlns.com/foaf/0.1/&gt;, 
-		&lt;http://purl.org/spar/cito/&gt;, 
-		&lt;http://www.w3.org/2004/02/skos/core#&gt; ,
-		&lt;http://purl.obolibrary.org/obo#&gt;,
-		&lt;http://www.blueobelisk.org/ontologies/chemoinformatics-algorithms/#&gt;,
-		&lt;http://www.blueobelisk.org/chemistryblogs/&gt;,
-		&lt;http://www.nmrshiftdb.org/onto#&gt;,
-		&lt;http://www.ifomis.org/bfo/1.1/snap#&gt;,
-		&lt;http://semanticscience.org/resource/&gt;,
-		&lt;http://purl.org/obo/owl/CHEBI#&gt;;
-# Update frequency
-	#Need to verify the update frequency!
-	voag:frequencyOfChange freq:semiannual;
-# Other metadata
-    void:distinctSubjects "18018451"^^xsd:integer ;
-	.
+:chembl_rdf_dataset a void:Dataset ;
+	dcterms:title "The ChEMBL Database" ;
+	dcterms:description "ChEMBL is a database of bioactive drug-like small molecules, it contains 2-D structures, calculated properties (e.g. logP, Molecular Weight, Lipinski Parameters, etc.) and abstracted bioactivities (e.g. binding constants, pharmacology and ADMET data). The data is abstracted and curated from the primary scientific literature, and cover a significant fraction of the SAR and discovery of modern drugs." ;
+	pav:createdBy &lt;http://orcid.org/0000-0002-8011-0300&gt; ;
+	pav:createdOn "2009-10-28T00:00:00.000Z"^^xsd:dateTime ;
+	pav:lastUpdateOn "2013-05-07T00:00:00.000+01:00"^^xsd:dateTime ;
+	dcterms:issued "2013-08-23T00:00:00.000+01:00"^^xsd:dateTime ;
+	pav:version "16.example" ;
+	pav:previousVersion &lt;http://rdf.ebi.ac.uk/dataset/chembl/16.2/void.ttl#chembl_rdf_dataset&gt; ;
+	dcat:landingPage &lt;https://www.ebi.ac.uk/chembl&gt; ;
+	foaf:page &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/&gt; ;
+	dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
+	void:uriSpace "http://rdf.ebi.ac.uk/resource/chembl/" ;
+	dcterms:publisher &lt;http://www.ebi.ac.uk/&gt; ;
+	void:subset :chembl_rdf_molecule_dataset , :chembl_rdf_target_dataset , :chembl_rdf_targetcmpt_dataset ;
+	void:vocabulary &lt;http://purl.org/ontology/bibo&gt; , &lt;http://www.bioassayontology.org/bao&gt; , &lt;http://semanticscience.org/ontology/cheminf.owl&gt; , &lt;http://purl.org/spar/cito&gt; , &lt;http://purl.org/dc/terms&gt; , &lt;http://www.w3.org/2002/07/owl&gt; , &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns&gt; , &lt;http://www.w3.org/2000/01/rdf-schema&gt; , &lt;http://semanticscience.org/ontology/sio.owl&gt; , &lt;http://www.w3.org/2004/02/skos/core&gt; , &lt;http://www.w3.org/2001/XMLSchema&gt; ;
+	void:exampleResource chembl_molecule:CHEMBL941 ;
+	void:sparqlEndpoint &lt;http://rdf.ebi.ac.uk/dataset/chembl/sparql&gt; ;
+	dcterms:accrualPeriodicity freq:quarterly .
 
-:chembl_dataset
-# Metadata about the original data source
-    a dctypes:Dataset;
-    dcterms:title "ChEMBL"@en;
-    dcterms:description """ChEMBL is a database of bioactive drug-like small molecules, it contains 2-D structures, calculated properties (e.g. logP, Molecular Weight, Lipinski Parameters, etc.) and abstracted bioactivities (e.g. binding constants, pharmacology and ADMET data)."""@en;
-    foaf:homepage &lt;http://www.ebi.ac.uk/chembl/&gt;;
-    dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
-    pav:version "13"^^xsd:integer ;
-    dcterms:publisher &lt;http://www.ebi.ac.uk/chembl/&gt;;
-    dcterms:created "2012-02-29T00:00:00Z"^^xsd:dateTime;
-    dcterms:modified "2012-02-29T00:00:00Z"^^xsd:dateTime;
-    .
+:chembl_rdf_molecule_dataset a void:Dataset ;
+	dcterms:title "ChEMBL Molecules Dataset" ;
+	dcterms:description "The ChEMBL Molecules Dataset about drug-like small molecules containing calculated properties (e.g. logP, Molecular Weight, Lipinski Parameters, etc.)." ;
+	void:uriSpace &lt;http://rdf.ebi.ac.uk/resource/chembl/molecule/&gt; ;
+	void:exampleResource chembl_molecule:CHEMBL941 ;
+	void:dataDump &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/16.example/chembl_16.example_molecule.ttl.gz&gt; ;
+	dcat:theme sio:SIO_010004.
 
-:chemblrdf_compounds
-# Subset metadata
-    a void:Dataset ;
-    dcterms:title "ChEMBL Molecules"@en;
-    dcterms:description "The subset of ChEMBL data relating to molecules."@en;
-    void:uriSpace "linkedchemistry.info/chembl/molecule/"^^xsd:string ;
-    dcterms:subject &lt;http://dbpedia.org/resource/Molecule&gt; ;
-    void:exampleResource &lt;http://linkedchemistry.info/chembl/molecule/m1&gt;;	
-    void:dataDump &lt;http://semantics.bigcat.unimaas.nl/chembl/v13_ops/compounds.nt.gz&gt; ;
-    .
-  
-:chemblrdf_targets
-# Subset metadata
-    a void:Dataset ;
-    dcterms:title "ChEMBL Targets"@en;
-    dcterms:description "The subset of ChEMBL data relating to targets which are single proteins."@en;
-    void:uriSpace "linkedchemistry.info/chembl/target/"^^xsd:string ;
-    dcterms:subject &lt;http://dbpedia.org/resource/Protein&gt; ;
-    void:exampleResource &lt;http://linkedchemistry.info/chembl/target/t1&gt;;	
-    void:dataDump &lt;http://semantics.bigcat.unimaas.nl/chembl/v13_ops/targets.nt.gz&gt; ;
-    .
+:chembl_rdf_target_dataset a void:Dataset ;
+	dcterms:title "ChEMBL Target Dataset" ;
+	dcterms:description "The ChEMBL Target Dataset containing abstracted bioactivities (e.g. binding constants, pharmacology and ADMET data)" ;
+	void:uriSpace &lt;http://rdf.ebi.ac.uk/resource/chembl/target/&gt; ;
+	void:exampleResource chembl_target:CHEMBL2242 ;
+	void:dataDump &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/16.example/chembl_16.example_target.ttl.gz&gt; ;
+	void:subset :chembl_target_targetcmpt_linkset ;
+	dcat:theme sio:SIO_010423 .
 
-    	</pre>
+:chembl_rdf_targetcmpt_dataset a void:Dataset ;
+	dcterms:title "ChEMBL Target Component Dataset" ;
+	dcterms:description "The ChEMBL Target Component Dataset about proteins that are contained in targets." ;
+	void:uriSpace &lt;http://rdf.ebi.ac.uk/resource/chembl/targetcomponent/&gt; ;
+	void:exampleResource chembl_target_cmpt:CHEMBL_TC_583 ;
+	void:dataDump &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/16.example/chembl_16.example_targetcmpt.ttl.gz&gt; ;
+	void:subsets :chembl_targetcmpt_uniprot_linkset ;
+	dcat:theme sio:SIO_010043 .
+
+        </pre>
         <!-- end ChEMBL-RDF-VoID --> </section>
       <!-- end appendix-dataset-examples --> </section>
     <section id="appendix-example-linksets" class="appendix">
