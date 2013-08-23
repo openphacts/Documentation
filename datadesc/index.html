@@ -3471,16 +3471,16 @@
         <p> Below we provide an example of the dataset description document for
           the RDF conversion of the DrugBank dataset. The dataset description
           consists of a parent resource describing the RDF representation of
-          DrugBank, the original DrugBank data that was used to generate the
-          RDF including details of its distribution, and the two distinct subsets that make up the DrugBank dataset. The example dataset description is
+          DrugBank, the original DrugBank data that was used to generate the RDF
+          including details of its distribution, and the two distinct subsets
+          that make up the DrugBank dataset. The example dataset description is
           available as:</p>
         <ul>
           <li> <a href="examples/drugbank_void.ttl">Download file</a> </li>
           <li> <a href="examples/drugbank_void.png">View graph</a> </li>
         </ul>
         <!-- Example copy and pasted from examples/drugbank_void.ttl -->
-        <pre class="turtle">
-@prefix bdb: &lt;http://bridgedb.org/vocab#&gt; .
+        <pre class="turtle">@prefix bdb: &lt;http://bridgedb.org/vocab#&gt; .
 @prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
 @prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
 @prefix dctypes: &lt;http://purl.org/dc/dcmitype/&gt; .
@@ -3573,181 +3573,37 @@
       <!-- end appendix-dataset-examples --> </section>
     <section id="appendix-example-linksets" class="appendix">
       <h2 id="example-linksets">Example Linksets</h2>
-      <section id="CS2ChEMBLLinkset">
-        <h3 id="cs2chembl-linkset">ChemSpider to ChEMBL-RDF Compounds Linkset</h3>
-        <p> Below is the start of the linkset file relating ChemSpider compounds
-          with ChEMBL-RDF compounds. The linkset reuses the VoID descriptions
-          already provided for the datasets, but augments these with additional
-          metadata. </p>
+      <h3 id="chembl-uniprot-linkset">ChEMBL Target Component to UniProt Linkset</h3>
+      <p>Below is the linkset description relating the ChEMBL target component
+        subset of ChEMBL to the UniProt dataset. The linkset description is
+        included in the dataset description for the ChEMBL dataset and the links
+        are contained in a separate file with a backlink using the <code>void:inDataset</code>
+        predicate.</p>
+      <p>The example dataset description is available as:</p>
         <ul>
-          <li> <a href="examples/chemspider2chemblrdf-linkset.ttl">Download
-              file</a> </li>
-          <li> <a href="examples/chemspider2chemblrdf-linkset.png">View graph</a>
-          </li>
+          <li> <a href="examples/chembl-rdf-void.ttl">Download file</a> </li>
+          <li> <a href="examples/chembl-rdf-void.png">View graph</a> </li>
         </ul>
-        <!-- Example copy/pasted from examples/chemspider2chemblrdf-linkset.ttl -->
-        <pre class="turtle">@prefix : &lt;http://linkedchemistry.info/void.ttl&gt;.
+	<pre class="turtle">
 
-@prefix dcterms: &lt;http://purl.org/dc/terms/&gt;.
-@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-@prefix freq: &lt;http://purl.org/cld/freq/&gt; .
-@prefix pav: &lt;http://purl.org/pav/&gt;.
-@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
-@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;.
-@prefix voag: &lt;http://voag.linkedmodel.org/schema/voag#&gt; .
-@prefix void: &lt;http://rdfs.org/ns/void#&gt;.
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;.
-
-@prefix chembl: &lt;http://linkedchemistry.info/chemblid/&gt; .
-
-# Metadata about this file
-&lt;&gt;
-    a void:DatasetDescription;
-    dcterms:title "ChEMBL-RDF Compounds to ChemSpider linkset"@en;
-    dcterms:description """A VoID linkset that links compounds in ChEMBL-RDF
-        with compounds in ChemSpider."""@en; 
-    pav:createdBy &lt;http://egonw.github.com/#me&gt; ;
-    pav:createdOn "2012-08-13T15:00:00Z"^^xsd:dateTime ;
-    pav:lastUpdateOn "2012-09-14T11:15:32Z"^^xsd:dateTime ;
-    foaf:primaryTopic :chembl-rdf-compounds_cs_linkset ;
-    .
-
-# Pointer to the subset description in the ChEMBL VoID file
-&lt;http://linkedchemistry.info/void.ttl#chemblrdf_compounds&gt;
-	# Linkset declared as a subset. Inherits properties
-    void:subset :chembl-rdf-compounds_cs_linkset .
-
-:chembl-rdf-compounds_cs_linkset
-# General linkset metadata
-    a void:Linkset ;
-    dcterms:title "ChEMBL-RDF Compounds ChemSpider Linkset"@en;
-    dcterms:description "Linkset relating ChEMBL-RDF compounds to ChemSpider compounds."@en;
-    #Explicit declaration of license for the linkset is preferred
-    dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
-# Link information
-    void:subjectsTarget &lt;http://linkedchemistry.info/void.ttl#chemblrdf_compounds&gt; ;
-    void:objectsTarget &lt;http://rdf.chemspider.com/void.ttl#chemSpiderDataset_chembl_subset&gt; ;
-    void:linkPredicate skos:exactMatch ;
-    bdb:linksetJustification &lt;http://semanticscience.org/resource/CHEMINF_000059&gt; ;
-# Linkset provenance
-    pav:authoredOn "2012-02-22T10:59:38Z"^^xsd:dateTime ;
-    pav:authoredBy &lt;http://www.chemspider.com/&gt; ;
-    pav:createdBy &lt;http://egonw.github.com/#me&gt; ;
-    pav:createdOn "2012-05-15T11:29:01Z"^^xsd:dateTime ;
-# Linkset statistics
-    void:triples "1073967"^^xsd:integer ;
-    .
-
-chembl:CHEMBL1236438 skos:exactMatch &lt;http://rdf.chemspider.com/43&gt; .
-chembl:CHEMBL144103 skos:exactMatch &lt;http://rdf.chemspider.com/60&gt; .
-#...
-		</pre>
-        <p class="note"> An alternative deployment strategy for this linkset
-          would be to include the linkset metadata in the ChEMBL-RDF VoID
-          description file as a subset of the ChEMBL-RDF dataset. The linkset
-          metadata must then include the predicate <code>void:dataDump</code>
-          to point to the file containing the links. The file containing the
-          links must include the corresponding predicate <code>void:inDataset</code>
-          pointing back to the linkset description. </p>
-        <!-- end CS2ChEMBLLinkset --> </section>
-      <section id="CS2DBLinkset">
-        <h3>ChemSpider to DrugBank Linkset</h3>
-        <p> Below is the linkset file relating ChemSpider compounds to DrugBank
-          drugs. As there is no VoID file available for the DrugBank dataset,
-          the VoID information is included in the linkset, following the minimal
-          information prescribed in <a href="#linkset-min-dataset-desc">Section
-            5.5</a>. For ChemSpider, the VoID information is imported from the
-          ChemSpider location. </p>
-        <ul>
-          <li> <a href="examples/chemspider2drugbank-linkset.ttl">Download file</a>
-          </li>
-          <li> <a href="examples/chemspider2drugbank-linkset.png">View graph</a>
-          </li>
-        </ul>
-        <pre class="turtle">@prefix : &lt;http://rdf.chemspider.com/void.ttl#&gt;.
-
-@prefix dcterms: &lt;http://purl.org/dc/terms/&gt;.
-@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-@prefix freq: &lt;http://purl.org/cld/freq/&gt; .
-@prefix pav: &lt;http://purl.org/pav/&gt;.
-@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
-@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;.
-@prefix voag: &lt;http://voag.linkedmodel.org/schema/voag#&gt; .
-@prefix void: &lt;http://rdfs.org/ns/void#&gt;.
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;.
-
-# Metadata about this file
-&lt;&gt; 
-	a void:DatasetDescription;
-	dcterms:title "ChemSpider to DrugBank Linkset VoID Description"@en;
-	dcterms:description 
-		"""This is an example VoID description for a ChemSpider linkset. 
-		   The linkset relates ChemSpider identifiers with DrugBank identifiers.
-		   The links have been generated as the chemicals share the same structure."""@en;
-	pav:createdBy &lt;http://www.cs.man.ac.uk/~graya/me.ttl&gt;;
-	pav:createdOn "2012-08-13T16:43:25Z"^^xsd:dateTime;
-	pav:lastUpdateOn "2012-10-16T10:22:43Z"^^xsd:dateTime;
-	foaf:primaryTopic :chemSpider_drugbank_linkset;
-	.
-	
-# Pointer to the ChemSpider dataset
-&lt;http://rdf.chemspider.com/void.ttl#chemSpiderDataset_drugbank_subset&gt;
-	# declare that the linkset is a subset of ChemSpider
-	void:subset :chemSpider_drugbank_linkset;
-	.
-	
-# Need to declare dataset metadata about DrugBank as no VoID file
-## Note this is just a minimal amount of information as prescribed in Section 5.5
-:drugbank_drugs_dataset
-# General Dataset Metadata
-	a void:Dataset;
-	dcterms:title "DrugBank Drugs Dataset"@en;
-	dcterms:description "A subset of the DrugBank database containing the information relating to drugs."@en;	
-	foaf:homepage &lt;http://www4.wiwiss.fu-berlin.de/drugbank/&gt;;
-	foaf:page &lt;http://www.drugbank.ca/&gt;;
-	dcterms:license &lt;http://www.drugbank.ca/about#cite&gt;;
-	void:uriSpace "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/"^^xsd:string;
-# Provenance and Version	
-	pav:version "3.0";
-	pav:retrievedOn "2011-11-30T11:01:59Z"^^xsd:dateTime;
-	pav:retrievedFrom &lt;http://www4.wiwiss.fu-berlin.de/drugbank/drugbank_dump.nt.bz2&gt;;
-	pav:retrievedBy [
-		a foaf:Person;
-		foaf:name "Antonis Loizou"^^xsd:string.
-		];
-	.
-	
-# Description of the linkset from ChemSpider to DrugBank
-:chemSpider_drugbank_linkset
-# General Linkset Metadata
-	a void:Linkset;
-	dcterms:title "ChemSpider DrugBank Linkset"@en;
-	dcterms:description "Linkset relating ChemSpider compounds to DrugBank drugs."@en;
-	dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
-# Link Information
-	void:subjectsTarget &lt;http://rdf.chemspider.com/void.ttl#chemSpiderDataset_drugbank_subset&gt;;
-	void:objectsTarget :drugbank_drugs_dataset;
-	void:linkPredicate skos:exactMatch;
-	bdb:linksetJustification &lt;http://semanticscience.org/resource/CHEMINF_000059&gt;;
-# Linkset Provenance 
-	pav:authoredBy &lt;http://www.chemspider.com/&gt;;
-	pav:authoredOn "2012-02-23T09:08:29Z"^^xsd:dateTime;
-	pav:createdBy &lt;http://www.cs.man.ac.uk/~graya/me.ttl&gt;;
-	pav:createdOn "2012-08-13T15:29:31Z"^^xsd:dateTime;
-# Linkset statistics
-	void:triples "6428"^^xsd:nonNegativeInteger;
-	.
-
-# Location of the triples
-## Note that the triples would not contain the void header information as 
-## that is in this file. I have assumed the same location as the subset 
-## above, but this needs to change to a correct location.
-## The file containing the triples should contain the following backlink
-## |uriOfTheData| void:inDataset &lt;http://rdf.chemspider.com/void-example.rdf#chemSpider_drugbank_linkset&gt;.
-		</pre>
-        <!-- end CS2DBLinkset --> </section>
+:chembl_targetcmpt_uniprot_linkset a void:Linkset ;
+	dcterms:title "ChEMBL Target Component to UniProt Linkset" ;
+	dcterms:description "The ChEMBL Target Component to UniProt Linkset relating target components to their corresponding entry in UniProt based on their sequence." ;
+	dcterms:publisher <http://www.ebi.ac.uk/> ;
+	dcterms:license <http://creativecommons.org/licenses/by-sa/3.0/> ;
+	dcterms:issued "2013-07-26T10:02:03.000+01:00"^^xsd:dateTime ;
+	void:dataDump <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/16.example/chembl_16.example_targetcmpt_uniprot_ls.ttl.gz> ;
+	void:subjectsTarget :chembl_rdf_targetcmpt_dataset ;
+	bdb:subjectsDatatype sio:SIO_010043;
+	void:objectsTarget <http://purl.uniprot.org/void#UniProtDataset_2013_08> ;
+	bdb:objectsDatatype sio:SIO_010043;
+	void:linkPredicate skos:exactMatch ;
+	bdb:linksetJustification sio:SIO_010043 ;
+	pav:authoredBy <http://orcid.org/0000-0002-8011-0300> ;
+	pav:authoredOn "2013-07-26T10:02:03.000+01:00"^^xsd:dateTime ;
+	pav:createdBy <http://orcid.org/0000-0002-8011-0300> ;
+	pav:createdOn "2013-07-26T10:02:03.000+01:00"^^xsd:dateTime .
+</pre>
       <!-- end appendix-example-linksets --> </section>
   </body>
 </html>
