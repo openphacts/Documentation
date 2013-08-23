@@ -3362,116 +3362,17 @@
         <!-- end appendix-frequency-vocabulary --> </section>
       <!-- end appendix-vocabulary-terms --> </section>
     <section id="appendix-dataset-examples" class="appendix">
-      <h2 id="example-dataset">Example Dataset VoID Descriptors</h2>
-      <section id="ChemSpider-VoID-Descriptor">
-        <h3 id="chemspider-void">ChemSpider VoID Descriptor</h3>
-        <p> The ChemSpider site already has a VoID descriptor available from <a
-            href="http://rdf.chemspider.com/void.rdf">
-            http://rdf.chemspider.com/void.rdf</a>. This has been created with a
-          previous version of the VoID specification. Below is a suggested
-          updated version which conforms with the requirements of this
-          specification. </p>
-        <ul>
-          <li> <a href="examples/chemspider-void.ttl">Download file</a> </li>
-          <li> <a href="examples/chemspider-void.png">View graph</a> </li>
-        </ul>
-        <!-- Example copy and pasted from examples/chemspider-void.ttl -->
-        <pre class="RDF" title="ChemSpiders VoID Descriptor as published in RDF/turtle">@prefix : &lt;http://rdf.chemspider.com/void.ttl#&gt;.
-
-@prefix dcterms: &lt;http://purl.org/dc/terms/&gt;.
-@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-@prefix freq: &lt;http://purl.org/cld/freq/&gt; .
-@prefix pav: &lt;http://purl.org/pav/&gt;.
-@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;.
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
-@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;.
-@prefix voag: &lt;http://voag.linkedmodel.org/schema/voag#&gt; .
-@prefix void: &lt;http://rdfs.org/ns/void#&gt;.
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;.
-
-# Metadata about this file
-&lt;http://rdf.chemspider.com/void.ttl&gt; 
-	a void:DatasetDescription;
-	dcterms:title "A VoID Description of the ChemSpider Dataset"@en;
-	dcterms:description 
-		"""This is an example VoID description for the ChemSpider dataset. 
-		   It is derived from the existing VoID description and updating it to the latest
-		   version of the VoID specification."""@en;
-	pav:createdBy &lt;http://www.cs.man.ac.uk/~graya/me.ttl&gt;;
-	pav:createdOn "2012-05-02T14:48:03Z"^^xsd:dateTime;
-	pav:lastUpdateOn "2012-08-10T09:32:49Z"^^xsd:dateTime;
-	pav:derivedFrom &lt;http://rdf.chemspider.com/void.rdf&gt;;
-	foaf:primaryTopic :chemSpiderDataset;
-	.
-
-# Description of the ChemSpider dataset
-:chemSpiderDataset 
-# General metadata
-	a void:Dataset;
-	dcterms:title "ChemSpider"@en;
-	dcterms:description "ChemSpider's Public Dataset"@en;
-	foaf:homepage &lt;http://rdf.chemspider.com/&gt;;
-	foaf:page &lt;http://www.chemspider.com/&gt;;
-	dcterms:license &lt;http://www.chemspider.com/Disclaimer.aspx&gt;;
-	void:uriSpace "http://rdf.chemspider.com/"^^xsd:string;
-#Provenance
-	dcterms:publisher &lt;http://www.chemspider.com/&gt;;
-	dcterms:created "2007-03-01T00:00:00"^^xsd:dateTime;
-	dcterms:modified "2012-10-16T00:00:00"^^xsd:dateTime;#Subsets
-	void:subset :chemSpiderDataset_chembl_subset,:chemSpiderDataset_drugbank_subset;
-#Vocabularies, topics, resources
-	void:vocabulary &lt;http://purl.org/dc/elements/1.1/&gt;,
-		&lt;http://purl.org/dc/terms/&gt;,
-		&lt;http://www.openarchives.org/ore/terms/&gt;,
-		&lt;http://www.polymerinformatics.com/ChemAxiom/ChemDomain.owl#&gt;,
-		&lt;http://xmlns.com/foaf/0.1/&gt;;
-	dcterms:subject &lt;http://dbpedia.org/resource/Molecule&gt;;
-	void:exampleResource &lt;http://rdf.chemspider.com/2157&gt;;
-#Dataset Access	
-	void:sparqlEndpoint &lt;http://rdf.chemspider.com/sparql&gt;;
-#Update Frequency
-	voag:frequencyOfChange freq:continuous;
-#Other Metadata
-	# Technical features
-	void:feature &lt;http://www.w3.org/ns/formats/RDF_XML&gt;;
-	# Dataset statistics
-	void:triples "1157624328"^^xsd:nonNegativeInteger;
-	.
-
-:chemSpiderDataset_chembl_subset
-#General Metadata
-	a void:Dataset;
-	dcterms:title "ChemSpider ChEMBL Subset"@en;
-	dcterms:description "The slice of ChemSpider data that corresponds to ChEMBL molecules."@en;
-#Provenance
-	pav:retrievedFrom &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_13/chembl_13.sdf.gz&gt;;
-	pav:retrievedOn "2012-08-02T10:23:56Z"^^xsd:dateTime;
-	pav:retrievedBy &lt;http://www.chemspider.com/&gt; ;
-#Dataset Access
-	void:dataDump &lt;https://www.dropbox.com/sh/6zboa8z9i9vrzyl/7NxayhkUH0/ChEMBL20120731.zip&gt;;
-	.
-
-# Description of the ChemSpider subset relating to DrugBank
-:chemSpiderDataset_drugbank_subset
-#General Metadata
-	a void:Dataset;
-	dcterms:title "ChemSpider DrugBank Subset"@en;
-	dcterms:description "Data corresponding to DrugBank."@en;
-#Provenance
-	pav:retrievedFrom &lt;http://www.drugbank.ca/system/downloads/current/structures/all.sdf.zip&gt;;
-	pav:retrievedOn "2012-08-02T10:24:06Z"^^xsd:dateTime;
-	pav:retrievedBy &lt;http://www.chemspider.com/&gt; ;
-#Dataset Access
-	void:dataDump &lt;https://www.dropbox.com/sh/6zboa8z9i9vrzyl/qcFZzbLM77/DrugBank20120731.zip&gt;;
-	.
-    	</pre>
-        <!-- end ChemSpider-VoID --> </section>
+      <h2 id="example-dataset">Example Dataset Descriptions</h2>
       <section id="ChEMBL-RDF-VoID-Descriptor">
-        <h3 id="chemble-rdf-void">ChEMBL-RDF VoID Descriptor</h3>
-        <p> Below we provide an example of part of the VoID document for the
-          ChEMBL-RDF dataset; derived from the file available at&nbsp; <a target="_blank"
-            href="ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/16.0/void.ttl.gz">ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/16.0/void.ttl.gz</a>.
+        <h3 id="chemble-rdf-void">ChEMBL-RDF Dataset Description</h3>
+        <p> Below we provide an example of part of the dataset description
+          document for the ChEMBL-RDF dataset; derived from the file available
+          at&nbsp; <a target="_blank" href="ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/16.0/void.ttl.gz">ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/16.0/void.ttl.gz</a>.
         </p>
+        <p>The dataset description consists of a parent resource with three
+          distinct subsets. (Note that the actual ChEMBL description contains
+          many more subsets.)</p>
+        <p>The example dataset description is available as:</p>
         <ul>
           <li> <a href="examples/chembl-rdf-void.ttl">Download file</a> </li>
           <li> <a href="examples/chembl-rdf-void.png">View graph</a> </li>
@@ -3565,6 +3466,110 @@
 
         </pre>
         <!-- end ChEMBL-RDF-VoID --> </section>
+      <section id="DrugBank-conversion-VoID">
+        <h3 id="DrugBankVoID">DrugBank RDF Conversion Dataset Description</h3>
+        <p> Below we provide an example of the dataset description document for
+          the RDF conversion of the DrugBank dataset. The dataset description
+          consists of a parent resource describing the RDF representation of
+          DrugBank, the original DrugBank data that was used to generate the
+          RDF including details of its distribution, and the two distinct subsets that make up the DrugBank dataset. The example dataset description is
+          available as:</p>
+        <ul>
+          <li> <a href="examples/drugbank_void.ttl">Download file</a> </li>
+          <li> <a href="examples/drugbank_void.png">View graph</a> </li>
+        </ul>
+        <!-- Example copy and pasted from examples/drugbank_void.ttl -->
+        <pre class="turtle">
+@prefix bdb: &lt;http://bridgedb.org/vocab#&gt; .
+@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix dctypes: &lt;http://purl.org/dc/dcmitype/&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix freq: &lt;http://purl.org/cld/freq/&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix pav: &lt;http://purl.org/pav/&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix sd: &lt;http://www.w3.org/ns/sparql-service-description#&gt; .
+@prefix sio: &lt;http://semanticscience.org/resource/&gt; .
+@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
+@prefix uniprot: &lt;http://purl.uniprot.org/uniprot/&gt; .
+@prefix void: &lt;http://rdfs.org/ns/void#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix : &lt;#&gt; .
+
+# VoID Header for the DrugBank RDF dataset
+&lt;&gt;
+	rdf:type void:DatasetDescription ;
+	dcterms:title "DrugBank VoID Description"@en ;
+	dcterms:description "The VoID description for the RDF representation of the DrugBank dataset."@en ;
+	pav:createdBy &lt;https://orcid.org/0000-0002-5711-4872&gt; ;
+	pav:createdOn "2012-10-30T16:08:36Z"^^xsd:dateTime ;
+	pav:lastUpdateOn "2013-08-23T16:00:00Z"^^xsd:dateTime ;
+	dcterms:issued "2013-08-23T16:00:00Z"^^xsd:dateTime ;
+	foaf:primaryTopic :drugbank_rdf .
+
+# Metadata about the original DrugBank dataset
+:drugbank rdf:type dctypes:Dataset ;
+	dcterms:title "DrugBank dataset"@en ;
+	dcterms:description "The DrugBank database is a unique bioinformatics and cheminformatics resource that combines detailed drug (i.e. chemical, pharmacological and pharmaceutical) data with comprehensive drug target (i.e. sequence, structure, and pathway) information. The database contains 6811 drug entries including 1528 FDA-approved small molecule drugs, 150 FDA-approved biotech (protein/peptide) drugs, 87 nutraceuticals and 5080 experimental drugs. Additionally, 4294 non-redundant protein (i.e. drug target/enzyme/transporter/carrier) sequences are linked to these drug entries. Each DrugCard entry contains more than 150 data fields with half of the information being devoted to drug/chemical data and the other half devoted to drug target or protein data."@en ;
+	dcterms:publisher &lt;http://www.drugbank.ca/&gt; ;
+	dcat:landingPage &lt;http://www.drugbank.ca/&gt; ;
+	dcterms:license &lt;http://www.drugbank.ca/about#cite&gt; ;
+	dcterms:issued "2009-01-01T00:00:00T"^^xsd:dateTime;
+	dcat:distribution :drugbank-distribution;
+	pav:version "2.5" ;
+	foaf:page &lt;http://thedatahub.org/dataset/drugbank&gt; ;
+	. 
+
+# Metadata about the distribution of the DrugBank dataset
+:drugbank-distribution rdf:type dcat:Distribution ;
+	dcat:mediaType "text";
+	dcat:downloadURL &lt;http://www.drugbank.ca/system/downloads/2.5/drugcards.zip&gt;.
+
+
+# Metadata about the RDF representation of DrugBank
+:drugbank-rdf rdf:type void:Dataset ;
+	dcterms:title "DrugBank RDF"@en;
+	dcterms:description """An RDF representation of the DrugBank dataset taken from Free University of Berlin.
+	
+	The DrugBank database is a unique bioinformatics and cheminformatics resource that combines detailed drug (i.e. chemical, pharmacological and pharmaceutical) data with comprehensive drug target (i.e. sequence, structure, and pathway) information. The database contains 6811 drug entries including 1528 FDA-approved small molecule drugs, 150 FDA-approved biotech (protein/peptide) drugs, 87 nutraceuticals and 5080 experimental drugs. Additionally, 4294 non-redundant protein (i.e. drug target/enzyme/transporter/carrier) sequences are linked to these drug entries. Each DrugCard entry contains more than 150 data fields with half of the information being devoted to drug/chemical data and the other half devoted to drug target or protein data."""@en;
+	dcterms:publisher &lt;http://www4.wiwiss.fu-berlin.de/&gt; ;
+	dcat:landingPage &lt;http://www.drugbank.ca/&gt; ;
+	dcterms:license &lt;http://www.drugbank.ca/about#cite&gt; ;
+	dcterms:issued 	"2010-08-31T00:00:00Z"^^xsd:dateTime;
+	void:dataDump &lt;http://www4.wiwiss.fu-berlin.de/drugbank/drugbank_dump.nt&gt; ;
+	pav:version "2.5" ;
+	pav:importedFrom :drugbank ;
+	pav:importedBy &lt;mailto:anja@anjeve.de&gt; ;
+	pav:importedOn "2008-11-17T20:52:39"^^xsd:dateTime ;
+	pav:createdWith &lt;https://github.com/anjeve/lodd/tree/master/datasets/DrugBank&gt; ;
+	void:subset :db-drugs, :db-targets ; 
+	void:sparqlEndpoint &lt;http://www4.wiwiss.fu-berlin.de/drugbank/sparql&gt; ;
+	void:uriSpace "http://www4.wiwiss.fu-berlin.de/drugbank/resource/"^^xsd:string ;
+	void:vocabulary &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;,
+		&lt;http://www.w3.org/2002/07/owl#&gt;,
+		&lt;http://xmlns.com/foaf/0.1/&gt;,
+		&lt;http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/&gt;,
+		&lt;http://www.w3.org/2000/01/rdf-schema#&gt;;	
+	foaf:page &lt;http://www4.wiwiss.fu-berlin.de/drugbank/&gt; ;
+	foaf:page &lt;http://thedatahub.org/dataset/fu-berlin-drugbank&gt; ;
+	void:triples "765936"^^xsd:integer .
+
+# Subset containing drug compound information
+:db-drugs rdf:type void:Dataset ;
+	void:uriSpace "http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/"^^xsd:string ;
+	dcat:theme &lt;http://semanticscience.org/resource/SIO_010038&gt; ;
+	void:exampleResource &lt;http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/DB00001&gt; ;
+	void:triples "4772"^^xsd:integer .
+
+# Subset containing target information
+:db-targets rdf:type void:Dataset ;
+	void:uriSpace "http://www4.wiwiss.fu-berlin.de/drugbank/resource/targets/"^^xsd:string ;
+	dcat:theme &lt;http://semanticscience.org/resource/SIO_010423&gt; ;
+	void:exampleResource &lt;http://www4.wiwiss.fu-berlin.de/drugbank/resource/targets/1&gt; .
+        </pre>
+        <!-- end DrugBank-conversion-VoID --> </section>
       <!-- end appendix-dataset-examples --> </section>
     <section id="appendix-example-linksets" class="appendix">
       <h2 id="example-linksets">Example Linksets</h2>

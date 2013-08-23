@@ -1,5 +1,5 @@
 
-BASEFILES=(chembl-rdf-void chemspider-void chemspider2chemblrdf-linkset chemspider2drugbank-linkset)
+BASEFILES=(chembl-rdf-void chemspider-void chemspider2chemblrdf-linkset chemspider2drugbank-linkset drugbank_void)
 
 for file in ${BASEFILES[@]}; do
 	rapper -i turtle -o dot $file.ttl > $file.dot
