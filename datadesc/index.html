@@ -809,7 +809,13 @@
           relationship used to relate the concepts in the linkset. This is used
           to state the degree of equivalence there is between the resources in
           the subject and object dataset. See <a href="#mapping-relationships">Section
-            3.2</a> for the different mapping relationships and their meaning.</p>
+            3.2</a> for the different mapping relationships and their meaning.
+          Within Open PHACTS we encourage the use of <code>skos:exactMatch</code>
+          or <code>skos:closeMatch</code> rather than <code>owl:sameAs</code>
+          as the linking predicate. This is because <code>owl:sameAs</code> has
+          a very precise meaning with the consequence that the two resources can
+          be merged together. In general <code>skos:exactMatch</code> provides
+          the appropriate level of equivalence.</p>
         <p>The <em>link justification</em> is used to capture the notion of
           equivalence captured between the resources in the two datasets, e.g.
           they are conceptually the same gene (<a target="_blank" href="http://semanticscience.org/resource/SIO_010035">http://semanticscience.org/resource/SIO_010035</a>)
@@ -867,10 +873,10 @@
       <!-- end linkset-description --> </section>
     <section id="exchanging-descriptions">
       <h2 id="deploy-exchange-void">Deploying and Exchanging VoID Documents</h2>
-      <p> The two preceeding sections have prescribed the metadata
-        required to describe datasets and the linksets that inter-relate them.
-        This section outlines the expected deployment and exchange mechanisms
-        and should be read in conjunction with <a href="http://www.w3.org/TR/void/#deploying">
+      <p> The two preceeding sections have prescribed the metadata required to
+        describe datasets and the linksets that inter-relate them. This section
+        outlines the expected deployment and exchange mechanisms and should be
+        read in conjunction with <a href="http://www.w3.org/TR/void/#deploying">
           Section 6</a> of the VoID specification for more details. </p>
       <section id="document-descriptor">
         <h3 id="void-document-metadata">VoID Document Metadata</h3>
