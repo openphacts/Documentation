@@ -441,8 +441,6 @@
           the values to use with these properties and full details of the
           predicates used can be found in <a href="#appendix-properties">Appendix
             A</a>.</p>
-        <p class="todo">Need to ensure that all of the predicates used are
-          correctly linked to the tables in the appendix.</p>
         <h4 id="dataset-checklist">Dataset Description</h4>
         <ul>
           <li>MUST</li>
@@ -540,7 +538,7 @@
               individual.</li>
             <li>Declare when the digital representation of the dataset was
               created <a href="#pav:createdOn">pav:createdOn</a> and an <code>xsd:dateTime</code>.</li>
-            <li>Declare the theme of the dataset <a href="http://www.w3.org/TR/2013/WD-vocab-dcat-20130312/#class-dataset">dcat:theme</a>
+            <li>Declare the theme of the dataset <a href="#dcat:theme">dcat:theme</a>
               and link to topics from a controlled vocabulary suggested values
               are given in <a href="#appendix-topics-vocab">Appendix B.1</a>.</li>
             <li>Declare the literature reference for the dataset&nbsp;<a href="#cito:citeAsAuthority">cito:citeAsAuthority</a><span
@@ -774,14 +772,14 @@
                 as an <code>xsd:dateTime</code>.</li>
               <li>Link to the files that contain the RDF data <a href="#void:dataDump">void:dataDump</a>
                 as a URI of the RDF file(s) or compressed RDF file(s).</li>
-              <li>Link to a description of the <a href="#rdf-dataset">RDF
-                  dataset</a> that is the subject of the links using <a href="#void:subjectsTarget">void:subjectsTarget</a>.</li>
+              <li>Link to a description of the <a href="#dataset-checklist">dataset</a>
+                that is the subject of the links using <a href="#void:subjectsTarget">void:subjectsTarget</a>.</li>
               <li>Declare the type of concept being linked in the subject
                 dataset using <a href="#bdb:subjectsDatatype">bdb:subjectsDatatype</a>
                 and a type drawn from <a href="#appendix-topics-vocab">Appendix
                   B.1</a>.</li>
-              <li>Link to a description of the <a href="#rdf-dataset">RDF
-                  dataset</a> that is the object of the links using <a href="#void:objectsTarget">void:objectsTarget</a>.</li>
+              <li>Link to a description of the <a href="#dataset-checklist">dataset</a>
+                that is the object of the links using <a href="#void:objectsTarget">void:objectsTarget</a>.</li>
               <li>Declare the type of concept being linked in the object dataset
                 using <a href="#bdb:objectsDatatype">bdb:objectsDatatype</a>
                 and a type drawn from <a href="#appendix-topics-vocab">Appendix
@@ -1487,6 +1485,37 @@
           </tbody>
         </table>
         <h4>Properties</h4>
+        <table id="dcat:byteSize" class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property</th>
+              <th> <a href="http://www.w3.org/ns/dcat#byteSize" target="_blank">
+                  <code>dcat:byteSize</code></a> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td> ???. </td>
+            </tr>
+            <tr>
+              <td class="prop">Domain:</td>
+              <td>???</td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td>???</td>
+            </tr>
+            <tr>
+              <td class="prop">Usage note:</td>
+              <td> ??? </td>
+            </tr>
+            <tr>
+              <td class="prop">Example:</td>
+              <td> ??? </td>
+            </tr>
+          </tbody>
+        </table>
         <table id="dcat:distribution" class="definition">
           <thead>
             <tr>
@@ -1621,10 +1650,58 @@
             </tr>
           </tbody>
         </table>
+        <table id="dcat:theme" class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property</th>
+              <th> <a href="http://www.w3.org/ns/dcat#theme" target="_blank"> <code>dcat:theme</code></a>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td> The </td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td><a href="http://purl.org/" target="_blank">d???t</a></td>
+            </tr>
+            <tr>
+              <td class="prop">Usage note:</td>
+              <td> ???. </td>
+            </tr>
+          </tbody>
+        </table>
+        http://www.w3.org/TR/2013/WD-vocab-dcat-20130312/#class-dataset
         <!-- end dcat --> </section>
       <section id="dcterms">
         <h3 id="dcterms">Dublin Core Terms</h3>
         <h4>Properties</h4>
+        <table id="dcterms:accrualPeriodicity" class="definition">
+          <thead>
+            <tr>
+              <th>RDF Property</th>
+              <th> <a href="http://purl.org/dc/terms/accrualPeriodicity" target="_blank">
+                  <code>dcterms:accurualPeriodicity</code></a> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prop">Definition:</td>
+              <td> <br>
+              </td>
+            </tr>
+            <tr>
+              <td class="prop">Range:</td>
+              <td><a href="#appendix-frequency-vocabulary">Frequency</a></td>
+            </tr>
+            <tr>
+              <td class="prop">Usage note:</td>
+              <td>Indicates the expected update frequency of the dataset. </td>
+            </tr>
+          </tbody>
+        </table>
         <table id="dcterms:description" class="definition">
           <thead>
             <tr>
