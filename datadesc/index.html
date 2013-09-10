@@ -112,8 +112,9 @@
   <body>
     <section id="abstract"> This is a specification for the metadata to
       described datasets, and the linksets that relate them, to enable their use
-      within the Open PHACTS platform. The specification defines the metadata
-      properties that are expected to describe datasets and linksets. Details of
+      within the Open PHACTS discovery platform. The specification defines the
+      metadata properties that are expected to describe datasets and linksets;
+      detailing the creation and publication of the dataset. Details of
       deploying dataset descriptions and an exchange format for linkset files
       are also given. </section>
     <section id="sotd">
@@ -129,26 +130,26 @@
           height="80"> </p>
       <h4>Intended audience</h4>
       <p> This dataset and linkset description specification is intended for
-        data providers who want to publish their data as RDF, and link it to
-        other datasets. A basic knowledge of RDF is assumed. </p>
+        data providers. The principle data format in Open PHACTS is RDF, as such
+        a basic knowledge of RDF is assumed. </p>
       <p> Details for converting a dataset and publishing it as RDF are given in
         the Open PHACTS RDF guidelines specification [[OPS-RDF]]. </p>
     </section>
     <section id="introduction" class="informative">
       <h2>Introduction</h2>
-      <p> The Open PHACTS platform [[OPS-ARCH]] relies on data and the
+      <p> The Open PHACTS Discovery Platform [[OPS-ARCH]] relies on data and the
         interlinks published by a variety of sources. For example, details of
         chemicals are derived from <a href="http://www.chemspider.com/">ChemSpider</a>,
         <a href="https://www.ebi.ac.uk/chembl/">ChEMBL</a>, and <a href="http://www.drugbank.ca/">DrugBank</a>.
         This specification provides details of the metadata expected to describe
         the datasets and the links that relate the instances in those datasets.
       </p>
-      <p> The Open PHACTS project has produced a set of guidelines aimed at data
-        providers for publishing their data within the OPS system [[!OPS-RDF]].
-        The RDF guide provides details about modelling your data as RDF. This
-        specification builds on the RDF Guidelines by defining the metadata that
-        should be published to describe the dataset and the links to other
-        datasets. </p>
+      <p> Open PHACTS has produced a set of guidelines aimed at data providers
+        for publishing their data within the Open PHACTS Discovery Platform
+        [[!OPS-RDF]]. The RDF guide provides details about modelling your data
+        as RDF. This specification builds on the RDF Guidelines by defining the
+        metadata that should be published to describe the dataset and the links
+        to other datasets. </p>
       <p> The dataset description defined in this specification declares the
         properties that should be included in the description of dataset or its
         links. The information is exchanged using the Vocabulary of Interlinked
@@ -368,16 +369,17 @@
         <!-- 
           <p>Note that there are domain specific relationship that may          also be used to express the relationship between two data instances.          For example, ChEBI provides a set of relationships including for                    example <a href="http://www.ebi.ac.uk/chebi/userManualForward.do#has%20part"            target="_blank"><code>http://purl.obolibrary.org/obo#has_part</code></a>          and <a href="http://www.ebi.ac.uk/chebi/userManualForward.do#is%20conjugate%20base%20of"           target="_blank"><code>http://purl.obolibrary.org/obo#is_conjugate_acid_of</code></a>.                  </p>                -->
         <h4 id="justifications">Mapping Justifications</h4>
-        <p> A key feature of the Open PHACTS platform is its ability to allow
-          multiple views of the linked data which is achieved by applying <em>scientific
-            lenses</em> over the data [[OPS-LENSES]]. For example, when
-          performing an early stage exploratory task it is desirable to retrieve
-          as much data as possible and as such the system enables the use of a
-          lens whereby compounds are matched on their structural skeleton. Once
-          the research has progressed further, the need for stricter
-          relationships becomes apparent and the structure lens is switched for
-          one which matches compounds on their full chemical structure, i.e.
-          including their charges and stereo-chemistry. </p>
+        <p> A key feature of the Open PHACTS Discovery Platform is its ability
+          to allow multiple views of the linked data which is achieved by
+          applying <em>scientific lenses</em> over the data [[OPS-LENSES]]. For
+          example, when performing an early stage exploratory task it is
+          desirable to retrieve as much data as possible and as such the system
+          enables the use of a lens whereby compounds are matched on their
+          structural skeleton. Once the research has progressed further, the
+          need for stricter relationships becomes apparent and the structure
+          lens is switched for one which matches compounds on their full
+          chemical structure, i.e. including their charges and stereo-chemistry.
+        </p>
         <p> The ability to classify linksets for use under different scientific
           lenses relies on the justification given in the linkset, i.e. the
           notion of operational equivalence, or alternative the interpretation,
@@ -449,22 +451,22 @@
               <ul>
                 <li><a href="#dctypes:Dataset">dctypes:Dataset</a> for non-RDF
                   datasets or</li>
-                <li><a href="#void:Dataset">void:Dataset</a> for RDF datasets;</li>
+                <li><a href="#void:Dataset">void:Dataset</a> for RDF datasets.</li>
               </ul>
             </li>
             <li>Provide a short title <a href="#dcterms:title">dcterms:title</a>
-              as a string literal;</li>
+              as a string literal.</li>
             <li>Provide a description of the dataset aimed at someone who does
               not know the dataset <a href="#dcterms:description">dcterms:description</a>
-              as a string literal; </li>
+              as a string literal.</li>
             <li>Link to the publisher <a href="#dcterms:publisher">dcterms:publisher</a>
-              as a URI;</li>
+              as a URI.</li>
             <li>Link to a web page providing documentation about the dataset <a
-                href="#dcat:landingPage">dcat:landingPage</a> as a URI;</li>
+                href="#dcat:landingPage">dcat:landingPage</a> as a URI.</li>
             <li>Link to the dataset license <a href="#dcterms:license">dcterms:license</a>
-              as a URI;</li>
+              as a URI.</li>
             <li>Provide the date on which the dataset was published <a href="#dcterms:issued">dcterms:issued</a>
-              as an xsd:dateTime;</li>
+              as an xsd:dateTime.</li>
             <li>Link to the data download
               <ul>
                 <li>For non-RDF data use <a href="#dcat:distribution">dcat:distribution</a>
@@ -478,9 +480,9 @@
           <li>SHOULD</li>
           <ul>
             <li>Declare the dataset version when it exists <a href="#pav:version">pav:version</a>
-              as a string literal;</li>
+              as a string literal.</li>
             <li>Link to the previous version of the dataset <a href="#pav:previousVersion">pav:previousVersion</a>
-              as a URI pointing to the previous dataset description;</li>
+              as a URI pointing to the previous dataset description.</li>
             <li>Indicate the update frequency of the dataset using <a href="#dcterms:accrualPeriodicity">dcterms:accrualPeriodicity</a>
               and a value from <a href="#appendix-frequency-vocabulary">frequency
                 of change vocabulary</a>.</li>
@@ -496,11 +498,15 @@
                 </li>
                 <li> SHOULD
                   <ul>
-                    <li>Declare who imported the dataset <a href="#pav:importedBy">pav:importedBy</a>;</li>
-                    <li>Declare when the initial import was made using <a href="#pav:importedOn">pav:importedOn</a>;</li>
-                    <li>Declare when the import has been refreshed using <a href="#pav:lastRefreshedOn">pav:lastRefreshedOn</a>;</li>
+                    <li>Declare who imported the dataset using <a href="#pav:importedBy">pav:importedBy</a>
+                      with a URI for the individual;</li>
+                    <li>Declare when the initial import was made using <a href="#pav:importedOn">pav:importedOn</a>
+                      and an <code>xsd:dateTime</code>;</li>
+                    <li>Declare when the import has been refreshed using <a href="#pav:lastRefreshedOn">pav:lastRefreshedOn</a>
+                      and an <code><span>xsd:dateTime</span></code>;</li>
                     <li>Declare the specific version of the tool or script used
-                      to conduct the import using <a href="#pav:createdWith">pav:createdWith</a>.</li>
+                      to conduct the import using <a href="#pav:createdWith">pav:createdWith</a>
+                      pointing to the URI representing the script.</li>
                   </ul>
                 </li>
               </ul>
@@ -509,48 +515,62 @@
                 imported using <a href="#pav:derivedFrom">pav:derivedFrom</a>.</li>
             </ul>
             <li>Identify distinct subsets of the data and link to the
-              descriptions of these using <a href="#void:subset">void:subset</a></li>
+              descriptions of these using <a href="#void:subset">void:subset</a>
+              and creating resources to describe each subset.</li>
           </ul>
           <ul>
-            <li>Provide a link to an example resource <a href="#void:exampleResource">void:exampleResource</a>.</li>
+            <li>Provide a link to an example resource <a href="#void:exampleResource">void:exampleResource</a>
+              and a URI.</li>
           </ul>
           <li>MAY</li>
           <ul>
-            <li>Link to a SPARQL endpoint containing the data <a href="#void:sparqlEndpoint">void:sparqlEndpoint</a>.</li>
+            <li>Link to a SPARQL endpoint containing the data <a href="#void:sparqlEndpoint">void:sparqlEndpoint</a>
+              given as a URI.</li>
             <li>Define the pattern for the URIs used for resources in the subset
-              using either <a href="#void:uriSpace">void:uriSpace</a> or <a href="#void:uriRegexPattern">void:uriRegexPattern</a>.</li>
-            <li>Declare the vocabularies used to model the RDF data with <a href="#void:vocabulary">void:vocabulary</a>.</li>
-            <li>Declare the author of the dataset <a href="#pav:authoredBy">pav:authoredBy</a>;</li>
-            <li>Declare when the dataset was authored <a href="#pav:authoredOn">pav:authoredOn</a>;</li>
+              using either <a href="#void:uriSpace">void:uriSpace</a> or <a href="#void:uriRegexPattern">void:uriRegexPattern</a>
+              as a string literal.</li>
+            <li>Declare the vocabularies used to model the RDF data with <a href="#void:vocabulary">void:vocabulary</a>
+              and a list of URIs.</li>
+            <li>Declare the author of the dataset <a href="#pav:authoredBy">pav:authoredBy</a>
+              and a URI for the author.</li>
+            <li>Declare when the dataset was authored <a href="#pav:authoredOn">pav:authoredOn</a>
+              and an <code>xsd:dateTime</code>.</li>
             <li>Declare who created the digital representation of the dataset <a
-                href="#pav:createdBy">pav:createdBy</a>;</li>
+                href="#pav:createdBy">pav:createdBy</a> and a URI for the
+              individual.</li>
             <li>Declare when the digital representation of the dataset was
-              created <a href="#pav:createdOn">pav:createdOn</a>.</li>
+              created <a href="#pav:createdOn">pav:createdOn</a> and an <code>xsd:dateTime</code>.</li>
             <li>Declare the theme of the dataset <a href="http://www.w3.org/TR/2013/WD-vocab-dcat-20130312/#class-dataset">dcat:theme</a>
               and link to topics from a controlled vocabulary suggested values
-              are given in <a href="#appendix-topics-vocab">Appendix B.1</a>;</li>
+              are given in <a href="#appendix-topics-vocab">Appendix B.1</a>.</li>
             <li>Declare the literature reference for the dataset&nbsp;<a href="#cito:citeAsAuthority">cito:citeAsAuthority</a><span
-                style="background-color: #ffff33;"></span>.</li>
-            <li>Link to other webpages describing the dataset using <a href="#foaf:page">foaf:page</a>.</li>
+                style="background-color: #ffff33;"></span> as a URI.</li>
+            <li>Link to other webpages describing the dataset using <a href="#foaf:page">foaf:page</a>
+              and the URIs for the pages.</li>
           </ul>
         </ul>
         <h4 id="distribution-checklist">Dataset Distribution</h4>
         <ul>
           <li> MUST
             <ul>
-              <li>Declare the type to be <a href="#dcat:Distribution">dcat:Distribution</a>;</li>
+              <li>Declare the type to be <a href="#dcat:Distribution">dcat:Distribution</a>.</li>
               <li>Declare the format of the file using <a href="#dcat:mediaType">dcat:mediaType</a>
                 and a type drawn from <a target="_blank" href="http://www.iana.org/assignments/media-types">IANA</a>
-                (see <a href="#dataset-distribution">below</a> for details);</li>
-              <li>Declare the location of the file <a href="#dcat:downloadURL">dcat:downloadURL</a>.</li>
+                (see <a href="#dataset-distribution">below</a> for details).</li>
+              <li>Declare the location of the file <a href="#dcat:downloadURL">dcat:downloadURL</a>
+                and the URI.</li>
             </ul>
           </li>
           <li> SHOULD
             <ul>
-              <li>Declare the date the file was issued <a href="#dcterms:issued">dcterms:issued</a>;</li>
-              <li>Declare the size of the file <a href="#dcat:byteSize">dcat:byteSize</a>;</li>
-              <li>Declare the version of the file if it exists <a href="#pav:version">pav:version</a>;</li>
-              <li>Link to the previous version of the file <a href="#pav:previousVersion">pav:previousVersion</a>.</li>
+              <li>Declare the date the file was issued <a href="#dcterms:issued">dcterms:issued</a>
+                as an <code>xsd:dateTime</code>.</li>
+              <li>Declare the size of the file <a href="#dcat:byteSize">dcat:byteSize</a>
+                as an <code>xsd:integer</code>.</li>
+              <li>Declare the version of the file if it exists <a href="#pav:version">pav:version</a>
+                as a string literal.</li>
+              <li>Link to the previous version of the file <a href="#pav:previousVersion">pav:previousVersion</a>
+                as a URI.</li>
             </ul>
           </li>
         </ul>
@@ -576,8 +596,8 @@
         <p>The <em>publisher</em> for a dataset is the organisation that is
           responsible for the creation and maintenance for the dataset. This
           predicate should point to the web page for the organisation. For
-          example, the publisher of the ChemSpider datset is the Royal Society
-          of Chemisty and the value for this property is <a href="http://www.rsc.org/">http://www.rsc.org/</a>.
+          example, the publisher of the ChemSpider dataset is the Royal Society
+          of Chemistry and the value for this property is <a href="http://www.rsc.org/">http://www.rsc.org/</a>.
           Ideally the publisher's page should be marked up with RDFa so that it
           is machine processable.</p>
         <p>The <span style="font-style: italic;">landing page</span> for a
@@ -699,10 +719,8 @@
         <ul>
           <li>Comma separated values: "text/csv"</li>
           <li>Molfile: "chemical/x-mdl-molfile"</li>
-          <li>RDF/XML: "application/rdf+xml"</li>
           <li>SDF: "chemical/x-mdl-sdfile"</li>
           <li>Tab separated values: "text/tab-separated-values"</li>
-          <li>Turtle: "text/turtle"</li>
           <li>XML: "text/xml"</li>
         </ul>
         <!-- end dataset-guidance --> </section>
@@ -720,13 +738,13 @@
       <!-- end dataset-description --> </section>
     <section id="linkset-description">
       <h2 id="linkset-desc">Describing Linksets</h2>
-      <p> A linkset is itself a dataset, and as such should provide the metadata
+      <p> A linkset is itself a dataset, and as such should provide metadata
         about its content and how it was created. The metadata associated with a
         link is essential for enabling its reuse by others. It enables a
         consumer of the link to understand which datasets are linked (including
-        which version), who claimed the link, under what circumstances, the
-        level of curation of the the links, and which (if any) tools were used
-        to generate the link (e.g. [[SILK]]). </p>
+        version information), who claimed the link, under what circumstances,
+        the level of curation of the the links, and which (if any) tools were
+        used to generate the link (e.g. [[SILK]]). </p>
       <p> A linkset should point to the dataset descriptions of the datasets
         that it uses. These descriptions should be provided by the dataset
         provider as part of the dataset publishing process [[OPS-RDF]]. However,
@@ -742,43 +760,44 @@
         <ul>
           <li> MUST
             <ul>
-              <li>Declare the type to be <a href="#void:Linkset">void:Linkset</a>;</li>
+              <li>Declare the type to be <a href="#void:Linkset">void:Linkset</a>.</li>
               <li>Declare a title for the linkset <a href="#dcterms:title">dcterms:title</a>
-                as a string literal;</li>
+                as a string literal.</li>
               <li>Provide a description, detailing what has been linked and how,
                 using <a href="#dcterms:description">dcterms:description</a> as
-                a string literal;</li>
+                a string literal.</li>
               <li>Link to the publisher <a href="#dcterms:publisher">dcterms:publisher</a>
-                as a URI;</li>
+                as a URI.</li>
               <li>Link to the dataset license <a href="#dcterms:license">dcterms:license</a>
-                as a URI;</li>
+                as a URI.</li>
               <li>Provide the date on which the dataset was published <a href="#dcterms:issued">dcterms:issued</a>
-                as an xsd:dateTime;</li>
+                as an <code>xsd:dateTime</code>.</li>
               <li>Link to the files that contain the RDF data <a href="#void:dataDump">void:dataDump</a>
-                as a URI of the RDF file(s) or compressed RDF file(s);</li>
+                as a URI of the RDF file(s) or compressed RDF file(s).</li>
               <li>Link to a description of the <a href="#rdf-dataset">RDF
-                  dataset</a> that is the subject of the links using <a href="#void:subjectsTarget">void:subjectsTarget</a>;</li>
+                  dataset</a> that is the subject of the links using <a href="#void:subjectsTarget">void:subjectsTarget</a>.</li>
               <li>Declare the type of concept being linked in the subject
                 dataset using <a href="#bdb:subjectsDatatype">bdb:subjectsDatatype</a>
                 and a type drawn from <a href="#appendix-topics-vocab">Appendix
                   B.1</a>.</li>
               <li>Link to a description of the <a href="#rdf-dataset">RDF
-                  dataset</a> that is the object of the links using <a href="#void:objectsTarget">void:objectsTarget</a>;</li>
+                  dataset</a> that is the object of the links using <a href="#void:objectsTarget">void:objectsTarget</a>.</li>
               <li>Declare the type of concept being linked in the object dataset
                 using <a href="#bdb:objectsDatatype">bdb:objectsDatatype</a>
                 and a type drawn from <a href="#appendix-topics-vocab">Appendix
                   B.1</a>.</li>
               <li>Declare the <a href="#MappingRelationships">mapping
-                  relationship</a> used in the linkset <a href="#void:linkPredicate">void:linkPredicate</a>;</li>
+                  relationship</a> used in the linkset <a href="#void:linkPredicate">void:linkPredicate</a>
+                as a URI.</li>
               <li>Declare the notion of equivalence using <a href="#bdb:linksetJustification">bdb:linksetJustification</a>
                 with one of the reasons given in <a href="#appendix-link-justifications">Appendix
-                  B.2</a>;</li>
+                  B.2</a>.</li>
             </ul>
           </li>
           <li> SHOULD
             <ul>
               <li>Declare if the linkset is a subset of a dataset <a href="#void:subset">void:subset</a>
-                (Note that the linkset resource is the object of this triple);</li>
+                (Note that the linkset resource is the object of this triple).</li>
               <li>Declare the species of the subject of the links using <a href="#bdb:subjectsSpecies">bdb:subjectsSpecies</a>
                 and a species drawn from <a href="#appendix-species-terms">Appendix
                   B.3</a>.</li>
@@ -789,12 +808,17 @@
           </li>
           <li> MAY
             <ul>
-              <li>Declare who authored the linkset <a href="#pav:authoredBy">pav:authoredBy</a>;</li>
-              <li>Declare when the author generated the links <a href="#pav:authoredOn">pav:authoredOn</a>;</li>
-              <li>Declare who created the linkset <a href="#pav:createdBy">pav:createdBy</a>;</li>
-              <li>Declare when the links were created <a href="#pav:createdOn">pav:createdOn</a>;</li>
+              <li>Declare who authored the linkset <a href="#pav:authoredBy">pav:authoredBy</a>
+                as a URI.</li>
+              <li>Declare when the author generated the links <a href="#pav:authoredOn">pav:authoredOn</a>
+                as an <code>xsd:dateTime</code>.</li>
+              <li>Declare who created the linkset <a href="#pav:createdBy">pav:createdBy</a>
+                as URI.</li>
+              <li>Declare when the links were created <a href="#pav:createdOn">pav:createdOn</a>
+                as an <code>xsd:dateTime</code>.</li>
               <li>Declare the specific version of the tool or script used to
-                generate the links using <a href="#pav:createdWith">pav:createdWith</a>.</li>
+                generate the links using <a href="#pav:createdWith">pav:createdWith</a>
+                as a URI.</li>
             </ul>
           </li>
         </ul>
@@ -809,7 +833,8 @@
         <p>The <em>description</em> for a linkset should give a textual summary
           of the linkset. That is, it should state which datasets have been
           linked and the reason for the equivalence. It should be expressed in
-          terminology aimed at an app user.</p>
+          terminology aimed at an app user. It should be expected to be a few
+          sentences.</p>
         <p>See <a href="#dataset-guidance">Section 4.2</a> for guidance about <em>publisher</em>,
           <em>license</em>, <em>issued date</em> and <em>data dump</em>. Note
           that for linksets there is unlikely to be a web page directly
@@ -848,7 +873,7 @@
           For example, for a link to version 16 of the ChEMBL molecules dataset
           the objects target value would be <code>http://rdf.ebi.ac.uk/dataset/chembl/16.2/void.ttl#chembl_rdf_molecule_dataset</code>.
           Descriptions of the datasets loaded in the Open PHACTS Discovery
-          Platform are available through the <a target="_blank" href="https://dev.openphacts.org/docs"><code>/sources</code></a>
+          Platform are available through the <a target="_blank" href="https://dev.openphacts.org/docs"><code>http://beta.openphacts.org/sources</code></a>
           method.</p>
         <p>The <em>subjects datatype</em> and <em>objects datatype</em>
           predicates should specify the type of the resources that are linked.
@@ -873,7 +898,8 @@
           that have been extracted from a larger dataset, e.g. linksets
           extracted from ChEMBL are a subset of the ChEMBL dataset. Note that
           the dataset resource is the subject of the triple and the linkset
-          resource is the object.</p>
+          resource is the object as the predicate expresses a has subset
+          relationship.</p>
         <p><em>Author</em> and <em>creator</em> information can be provided to
           allow the tracing of who is making the claims of equivalence
           represented by the links in the linkset. The values for these
@@ -988,10 +1014,10 @@
         <p> Several mechanisms for deploying VoID descriptions are given in <a
             href="http://www.w3.org/TR/void/#deploying">Section 6</a> of the
           VoID Note [[VOID]]. In this section we provide recommendations for
-          good practice within the Open PHACTS project. </p>
+          good practice within Open PHACTS. </p>
         <p>We recommend that the dataset description is made available as a
           separate file from the data that it describes. This enables the use of
-          the description without downloading the entire dataset in
+          the description, without needing to download the entire dataset, in
           catalogues/registries and by tools such as the Open PHACTS Identity
           Mapping Service (IMS) [[IMS]].</p>
         <section id="deploying-dataset-void">
@@ -1130,7 +1156,7 @@
           <!-- end pav-ontology --> </section>
         <section id="prov-vocab">
           <h4 id="prov-vocab">Provenance Vocabulary</h4>
-          <p> The Provenance Vocabulary [[PRV]]] is another lightweight
+          <p> The Provenance Vocabulary [[PRV]] is another lightweight
             vocabulary of provenance predicates with an emphasis on data
             creation and data access on the Web. </p>
         </section>
@@ -1648,10 +1674,9 @@
             <tr>
               <td class="prop">Usage note:</td>
               <td>
-                <p> The date is encoded as a literal in "yyyy-mm-dd" form ( <a
-                    href="http://www.w3.org/TR/NOTE-datetime">ISO 8601 Date and
-                    Time Formats</a> ). If the specific day or month are not
-                  known, then 01 should be specified. </p>
+                <p> The date is encoded as a literal in "yyyy-mm-dd" form (<a href="http://www.w3.org/TR/NOTE-datetime">ISO
+                    8601 Date and Time Formats</a>). If the specific day or
+                  month are not known, then 01 should be specified. </p>
               </td>
             </tr>
             <tr>
@@ -2023,8 +2048,8 @@
             <tr>
               <td class="prop">Usage note:</td>
               <td> The dateTime is encoded as a literal in
-                "yyyy-mm-ddThh:mm:sszzzzz" form ( <a href="http://www.w3.org/TR/NOTE-datetime">ISO
-                  8601 Date and Time Formats</a> ). If the specific day or month
+                "yyyy-mm-ddThh:mm:sszzzzz" form (<a href="http://www.w3.org/TR/NOTE-datetime">ISO
+                  8601 Date and Time Formats</a>). If the specific day or month
                 are not known, then 01 should be specified. If the specific
                 hour, minute or second are not known, then 00 should be
                 specified. If the timezone is not known then Z should be
@@ -2096,8 +2121,8 @@
             <tr>
               <td class="prop">Usage note:</td>
               <td> The dateTime is encoded as a literal in
-                "yyyy-mm-ddThh:mm:sszzzzz" form ( <a href="http://www.w3.org/TR/NOTE-datetime">ISO
-                  8601 Date and Time Formats</a> ). If the specific day or month
+                "yyyy-mm-ddThh:mm:sszzzzz" form (<a href="http://www.w3.org/TR/NOTE-datetime">ISO
+                  8601 Date and Time Formats</a>). If the specific day or month
                 are not known, then 01 should be specified. If the specific
                 hour, minute or second are not known, then 00 should be
                 specified. If the timezone is not known then Z should be
@@ -2292,8 +2317,8 @@
                   The agent that performed the import should be given with <a href="#pav:importedBy">pav:importedBy</a>.
                 </p>
                 <p> The dateTime is encoded as a literal in
-                  "yyyy-mm-ddThh:mm:sszzzzz" form ( <a href="http://www.w3.org/TR/NOTE-datetime">ISO
-                    8601 Date and Time Formats</a> ). If the specific day or
+                  "yyyy-mm-ddThh:mm:sszzzzz" form (<a href="http://www.w3.org/TR/NOTE-datetime">ISO
+                    8601 Date and Time Formats</a>). If the specific day or
                   month are not known, then 01 should be specified. If the
                   specific hour, minute or second are not known, then 00 should
                   be specified. If the timezone is not known then Z should be
@@ -2333,8 +2358,8 @@
                   should be used together with <a href="#pav:previousVersion">pav:previousVersion</a>.
                 </p>
                 <p> The dateTime is encoded as a literal in
-                  "yyyy-mm-ddThh:mm:sszzzzz" form ( <a href="http://www.w3.org/TR/NOTE-datetime">ISO
-                    8601 Date and Time Formats</a> ). If the specific day or
+                  "yyyy-mm-ddThh:mm:sszzzzz" form (<a href="http://www.w3.org/TR/NOTE-datetime">ISO
+                    8601 Date and Time Formats</a>). If the specific day or
                   month are not known, then 01 should be specified. If the
                   specific hour, minute or second are not known, then 00 should
                   be specified. If the timezone is not known then Z should be
@@ -2373,8 +2398,8 @@
                   resource related using <a href="#pav:previousVersion">pav:previousVersion</a>,
                   for instance correcting a spelling mistake. </p>
                 <p> The dateTime is encoded as a literal in
-                  "yyyy-mm-ddThh:mm:sszzzzz" form ( <a href="http://www.w3.org/TR/NOTE-datetime">ISO
-                    8601 Date and Time Formats</a> ). If the specific day or
+                  "yyyy-mm-ddThh:mm:sszzzzz" form (<a href="http://www.w3.org/TR/NOTE-datetime">ISO
+                    8601 Date and Time Formats</a>). If the specific day or
                   month are not known, then 01 should be specified. If the
                   specific hour, minute or second are not known, then 00 should
                   be specified. If the timezone is not known then Z should be
