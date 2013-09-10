@@ -405,10 +405,27 @@
       <!-- end existing-vocabularies --> </section>
     <section id="dataset-decscription">
       <h2 id="dataset-describing">Describing Datasets</h2>
-      <p> We assume that an RDF representation of the dataset has been generated
-        according to the Open PHACTS RDF Guidelines [[OPS-RDF]]. This section
-        describes the information that must appear in the VoID description for
-        the dataset. </p>
+      <p><br>
+        In this section we specify the metadata expected to describe a dataset –
+        its origins, publication and content. These descriptions should be made
+        at the level of the entire dataset, not each individual record, i.e. it
+        is the metadata that would be expected within a catalogue record such as
+        <a target="_blank" href="http://www.ebi.ac.uk/miriam/">MIRIAM</a> or <a
+          target="_blank" href="http://datahub.io">Datahub</a>. We define a
+        dataset as follows:</p>
+      <p style="margin-left: 40px;"><em>A dataset is a collection of records
+          that are published, maintained or aggregated by a single provider.</em>
+      </p>
+      <p>Note that this definition is more general than the one given above for
+        a VoID Dataset. Specifically it includes datasets that are not
+        represented as RDF. As such, in the following we sometimes distinguish
+        between RDF and non-RDF datasets; many of the VoID predicates are typed
+        for <a href="#void-dataset"><code>void:Dataset</code></a>, i.e. a set
+        of RDF triples, and cannot be applied to non-RDF datasets.<br>
+      </p>
+      <p>For datasets included in the Open PHACTS linked data cache [[OPS-ARCH]]
+        we assume that an RDF representation of the dataset has been generated
+        according to the Open PHACTS RDF Guidelines [[OPS-RDF]]. </p>
       <p> The <a href="#tooling">tooling section</a> contains details of tools
         to help with the creation of dataset descriptions. However, it is
         recommended that the generation of the VoID description for a dataset is
