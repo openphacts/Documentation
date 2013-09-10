@@ -626,12 +626,13 @@
         <p>The <em>date issued</em> property is used to capture the date a
           dataset is issued for public release which may also be the date it was
           created. This can be used to distinguish the version of a dataset
-          where there are no version numbers, e.g. the ConceptWiki dataset. The
-          date issued should be specified as an <code>xsd:dateTime</code>
-          literal. Where values are unknown then these should be set to the
-          start of the time period, e.g. for a dataset issued on the 23 July
-          2013 but we do not need to capture the time we would use the literal
-          value <code>"2013-07-23T00:00:00"^^xsd:dateTime</code>.</p>
+          where there are no version numbers, e.g. datasets that are continually
+          updated and do not have fixed version numbers, particularly those that
+          contain on-going user generated content. The date issued should be
+          specified as an <code>xsd:dateTime</code> literal. Where values are
+          unknown then these should be set to the start of the time period, e.g.
+          for a dataset issued on the 23 July 2013 but we do not need to capture
+          the time we would use the literal value <code>"2013-07-23T00:00:00"^^xsd:dateTime</code>.</p>
         <p>For datasets which have a <em>version</em> number, then this should
           be provided as a string literal. For example, ChEMBL would use the
           literal value <code>"16"^^xsd:string</code> for their version 16
