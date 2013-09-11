@@ -1,4 +1,4 @@
-@prefix bdb: <http://bridgedb.org/vocab#> .
+@prefix bdb: <http://vocabularies.bridgedb.org/ops#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix dctypes: <http://purl.org/dc/dcmitype/> .

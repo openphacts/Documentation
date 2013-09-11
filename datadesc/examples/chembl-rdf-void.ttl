@@ -12,7 +12,7 @@
 @prefix chembl_target: <http://rdf.ebi.ac.uk/resource/chembl/target/> .
 @prefix chembl_target_cmpt: <http://rdf.ebi.ac.uk/resource/chembl/targetcomponent/> .
 
-@prefix bdb: <http://bridgedb.org/vocab#> .
+@prefix bdb: <http://vocabularies.bridgedb.org/ops#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix dctypes: <http://purl.org/dc/dcmitype/> .
