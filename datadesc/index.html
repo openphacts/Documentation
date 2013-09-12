@@ -161,11 +161,11 @@
           useful tool for prototyping the first version of a dataset
           description. Ideally the generation of dataset descriptions should be
           incorporated as part of the data creation pipeline. </p>
-        <p> A <a href="http://openphacts.cs.man.ac.uk:9090/OPS-IMS/validate">
-            validator</a> is provided to verify whether a dataset description
-          conforms to the latest stable version of these specifications. This
-          could be accessed automatically by the data creation pipeline to
-          ensure that newly created dataset descriptions remain conformant. </p>
+        <p> A <a href="http://openphacts.cs.man.ac.uk/Validator"> validator</a>
+          is provided to verify whether a dataset description conforms to the
+          latest stable version of these specifications. This could be accessed
+          automatically by the data creation pipeline to ensure that newly
+          created dataset descriptions remain conformant. </p>
         <!-- end tooling --> </section>
       <!-- end introduction --> </section>
     <section id="conventions">
@@ -1495,9 +1495,7 @@
           <tbody>
             <tr>
               <td class="prop">Definition:</td>
-              <td>
-                <meta charset="utf-8">
-                The size of a distribution in bytes. </td>
+              <td> The size of a distribution in bytes. </td>
             </tr>
             <tr>
               <td class="prop">Range:</td>
@@ -3528,7 +3526,7 @@
 @prefix chembl_target: &lt;http://rdf.ebi.ac.uk/resource/chembl/target/&gt; .
 @prefix chembl_target_cmpt: &lt;http://rdf.ebi.ac.uk/resource/chembl/targetcomponent/&gt; .
 
-@prefix bdb: &lt;<meta charset="utf-8">http://vocabularies.bridgedb.org/ops#&gt; .
+@prefix bdb: &lt;http://vocabularies.bridgedb.org/ops#&gt; .
 @prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
 @prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
 @prefix dctypes: &lt;http://purl.org/dc/dcmitype/&gt; .
@@ -3616,7 +3614,7 @@
           <li> <a href="examples/drugbank_void.png">View graph</a> </li>
         </ul>
         <!-- Example copy and pasted from examples/drugbank_void.ttl -->
-        <pre class="turtle">@prefix bdb: &lt;<meta charset="utf-8">http://vocabularies.bridgedb.org/ops#&gt; .
+        <pre class="turtle">@prefix bdb: &lt;http://vocabularies.bridgedb.org/ops#&gt; .
 @prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
 @prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
 @prefix dctypes: &lt;http://purl.org/dc/dcmitype/&gt; .
