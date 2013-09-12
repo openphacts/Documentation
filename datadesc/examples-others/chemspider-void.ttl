@@ -1,14 +1,18 @@
 @prefix : <http://rdf.chemspider.com/void.ttl#>.
-@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix bdb: <http://bridgedb.org/???/> .
+@prefix cito: <http://prul.org/spar/cito/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dctypes: <http://purl.org/dc/dcmitype/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix freq: <http://purl.org/cld/freq/> .
-@prefix pav: <http://purl.org/pav/>.
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
-@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
-@prefix voag: <http://voag.linkedmodel.org/schema/voag#> .
-@prefix void: <http://rdfs.org/ns/void#>.
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pav: <http://purl.org/pav/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 # Metadata about this file
 <http://rdf.chemspider.com/void.ttl> 
@@ -18,10 +22,11 @@
 		"""This is an example VoID description for the ChemSpider dataset. 
 		   It is derived from the existing VoID description and updating it to the latest
 		   version of the VoID specification."""@en;
-	pav:createdBy <http://www.cs.man.ac.uk/~graya/me.ttl>;
+	dcterms:issued "2013-08-23T13:30:00Z"^^xsd:dateTime;
+	pav:createdBy <http://orcid.org/0000-0002-5711-4872>;
 	pav:createdOn "2012-05-02T14:48:03Z"^^xsd:dateTime;
-	pav:lastUpdateOn "2012-08-10T09:32:49Z"^^xsd:dateTime;
-	pav:derivedFrom <http://rdf.chemspider.com/void.rdf>;
+	pav:lastUpdateOn "2013-08-23T13:30:00Z"^^xsd:dateTime;
+	pav:previousVersion <https://raw.github.com/openphacts/Documentation/bc1b381337a5e2cdb93446a5035d921c82cf7dfd/datadesc/examples/chemspider-void.ttl>;
 	foaf:primaryTopic :chemSpiderDataset;
 	.
 
@@ -30,30 +35,24 @@
 # General metadata
 	a void:Dataset;
 	dcterms:title "ChemSpider"@en;
-	dcterms:description "ChemSpider's Public Dataset"@en;
-	foaf:homepage <http://rdf.chemspider.com/>;
-	foaf:page <http://www.chemspider.com/>;
-	dcterms:license <http://www.chemspider.com/Disclaimer.aspx>;
-	void:uriSpace "http://rdf.chemspider.com/"^^xsd:string;
-#Provenance
+	dcterms:description "ChemSpider is a free chemical structure database providing fast text and structure search access to over 29 million structures from hundreds of data sources."@en;
 	dcterms:publisher <http://www.chemspider.com/>;
-	dcterms:created "2007-03-01T00:00:00"^^xsd:dateTime;
-	dcterms:modified "2012-10-16T00:00:00"^^xsd:dateTime;
-#Subsets
+	dcat:landingPage <http://www.chemspider.com/>;
+	dcterms:license <http://www.chemspider.com/Disclaimer.aspx>;
+	dcterms:issued "2013-04-08T00:00:00Z"^^xsd:dateTime;
+	pav:previousVersion <https://raw.github.com/openphacts/Documentation/bc1b381337a5e2cdb93446a5035d921c82cf7dfd/datadesc/examples/chemspider-void.ttl#chemSpiderDataset>;
+	dcterms:accrualPeriodicity freq:continuous;
 	void:subset :chemSpiderDataset_chembl_subset,:chemSpiderDataset_drugbank_subset;
-#Vocabularies, topics, resources
+	void:exampleResource <http://rdf.chemspider.com/2157>;
+	void:sparqlEndpoint <http://rdf.chemspider.com/sparql>;
+	void:uriSpace "http://rdf.chemspider.com/"^^xsd:string;
 	void:vocabulary <http://purl.org/dc/elements/1.1/>,
 		<http://purl.org/dc/terms/>,
 		<http://www.openarchives.org/ore/terms/>,
 		<http://www.polymerinformatics.com/ChemAxiom/ChemDomain.owl#>,
 		<http://xmlns.com/foaf/0.1/>;
-	dcterms:subject <http://dbpedia.org/resource/Molecule>;
-	void:exampleResource <http://rdf.chemspider.com/2157>;
-#Dataset Access	
-	void:sparqlEndpoint <http://rdf.chemspider.com/sparql>;
-#Update Frequency
-	voag:frequencyOfChange freq:continuous;
-#Other Metadata
+	dcat:theme <http://semanticscience.org/resource/SIO_010004>;
+	foaf:page <http://rdf.chemspider.com/>;
 	# Technical features
 	void:feature <http://www.w3.org/ns/formats/RDF_XML>;
 	# Dataset statistics
@@ -66,9 +65,8 @@
 	dcterms:title "ChemSpider ChEMBL Subset"@en;
 	dcterms:description "The slice of ChemSpider data that corresponds to ChEMBL molecules."@en;
 #Provenance
-	pav:retrievedFrom <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_13/chembl_13.sdf.gz>;
-	pav:retrievedOn "2012-08-02T10:23:56Z"^^xsd:dateTime;
-	pav:retrievedBy <http://www.chemspider.com> ;
+	pav:derivedFrom <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_13/chembl_13.sdf.gz>;
+	pav:sourceAccessedOn "2012-08-02T10:23:56Z"^^xsd:dateTime;
 #Dataset Access
 	void:dataDump <https://www.dropbox.com/sh/6zboa8z9i9vrzyl/7NxayhkUH0/ChEMBL20120731.zip>;
 	.

@@ -1,7 +1,5 @@
 
-BASEFILES=(chembl-rdf-void chemspider-void chemspider2chemblrdf-linkset chemspider2drugbank-linkset)
-
-for file in ${BASEFILES[@]}; do
-	rapper -i turtle -o dot $file.ttl > $file.dot
+for file in *.ttl; do
+	rapper -i turtle -o dot $file > $file.dot
 	dot -Tpng $file.dot > $file.png
 done
