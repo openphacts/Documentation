@@ -177,8 +177,13 @@
         <p> All examples in this document are written in the <a href="http://www.w3.org/TR/turtle/">Turtle
             RDF syntax</a> [[TURTLE]]. Throughout the document, the following
           namespaces are used: </p>
-        <pre class="turtle">@prefix bdb: &lt;http://vocabularies.bridgedb.org/ops#&gt; .<br>@prefix cito: &lt;http://purl.org/spar/cito/&gt; .<br>@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .<br>@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+        <pre class="turtle">
+@prefix bdb: &lt;http://vocabularies.bridgedb.org/ops#&gt; .
+@prefix cito: &lt;http://purl.org/spar/cito/&gt; .
+@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
 @prefix dctypes: &lt;http://purl.org/dc/dcmitype/&gt; .
+@prefix eco: &lt;http://purl.obolibrary.org/obo/&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 @prefix freq: &lt;http://purl.org/cld/freq/&gt; .
 @prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
@@ -789,7 +794,8 @@
               <li>Declare the notion of equivalence using <a href="#bdb:linksetJustification">bdb:linksetJustification</a>
                 with one of the reasons given in <a href="#appendix-link-justifications">Appendix
                   B.2</a>.</li>
-            </ul>
+				<li>Declare whether the links have been computer generated or manually verified using <a href="#bdb:assertionMethod">bdb:assertionMethod</a> with one of the assertion levels given in <a href="#appendix-assertion-methods">Appendix B.4</a>.</li>
+			</ul>
           </li>
           <li> SHOULD
             <ul>
@@ -1182,18 +1188,19 @@
       <section id="bridgedb">
         <h3 id="bridgedb">BridgeDB Mapping Vocabulary</h3>
         <h4>Properties</h4>
-        <table id="bdb:curationLevel" class="definition">
+        <table id="bdb:assertionMethod" class="definition">
           <thead>
             <tr>
               <th>RDF Property</th>
-              <th> <a href="http://vocabularies.bridgedb.org/ops#curationLevel"
-                  target="_blank"> <code>bdb:curationLevel</code></a> </th>
+              <th> <a href="http://vocabularies.bridgedb.org/ops#assertionMethod"
+                  target="_blank"> <code>bdb:assertionMethod</code></a> </th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td class="prop">Definition:</td>
-              <td> The level of curation of the links in the Linkset. </td>
+              <td> The method by which the links in the Linkset have been
+                asserted.</td>
             </tr>
             <tr>
               <td>Domain:</td>
@@ -1205,14 +1212,24 @@
             </tr>
             <tr>
               <td class="prop">Usage note:</td>
-              <td> <a href="#appendix-curation-levels">Appendix B.4</a> gives
+              <td> <a href="#appendix-assertion-methods">Appendix B.4</a> gives
                 the set of values that are expected to be used within the Open
                 PHACTS Discovery Platform for declaring the curation level of a
                 linkset. </td>
             </tr>
             <tr>
               <td class="prop">Example:</td>
-              <td> <br>
+              <td> A set of links that have been computer generated but verified
+                by a human would have their assertion method declared to be
+                manual, i.e.<br>
+                <div style="margin-left: 40px;"><code>&lt;&gt;
+                    bdb:assertionMethod eco:ECO_0000218 .</code></div>
+                A set of links that have been computer generated and not
+                verified, e.g. those created by the IMS transitive computation
+                would have their assertion method declared to be automatic, i.e.<br>
+                <div style="margin-left: 40px;"><code>&lt;&gt;
+                    bdb:assertionMethod eco:ECO_0000203 .</code></div>
+                <div style="margin-left: 40px;"> </div>
               </td>
             </tr>
           </tbody>
@@ -3154,7 +3171,7 @@
           </thead>
           <tbody>
             <tr>
-              <td>Annotation&nbsp;&nbsp;&nbsp; </td>
+              <td>Annotation </td>
               <td><a target="_blank" href="http://semanticscience.org/resource/SIO_001166">http://semanticscience.org/resource/SIO_001166</a></td>
               <td>An annotation is a written explanatory or critical
                 description, or other in-context information (e.g., pattern,
@@ -3450,10 +3467,17 @@
           <li>Saccharomyces Cerevisiae: <a target="_blank" href="http://purl.obolibrary.org/obo/NCBITaxon_4932">http://purl.obolibrary.org/obo/NCBITaxon_4932</a></li>
         </ul>
         <!-- End appendix-species-terms --> </section>
-      <section id="appendix-curation-levels">
-        <h3 id="curation-levels">Curation Levels</h3>
-        <p class="todo">Capture curation levels.</p>
-        <!-- End appendix-curation-levels --> </section>
+      <section id="appendix-assertion-methods">
+        <h3 id="assertion-method">Assertion Method</h3>
+        <p>Below are the expected terms for specifying the assertion method of
+          the links:</p>
+        <ul>
+          <li>Automatic assertion: <a target="_blank" href="http://purl.obolibrary.org/obo/ECO_0000203">http://purl.obolibrary.org/obo/ECO_0000203</a></li>
+          <li>Manual assertion: <a href="http://purl.obolibrary.org/obo/ECO_0000218">http://purl.obolibrary.org/obo/ECO_0000218</a></li>
+        </ul>
+        <p>Note that a manual assertion includes computer generated assertions
+          that have been manually verified.</p>
+        <!-- End appendix-assertion-methods --> </section>
       <section id="appendix-frequency-vocabulary">
         <h3 id="frequency-vocabulary">Frequency of Change Vocabulary</h3>
         <p> Below are the terms from the frequency of change vocabulary. </p>
@@ -3530,6 +3554,7 @@
 @prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
 @prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
 @prefix dctypes: &lt;http://purl.org/dc/dcmitype/&gt; .
+@prefix eco: &lt;http://purl.obolibrary.org/obo/&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 @prefix freq: &lt;http://purl.org/cld/freq/&gt; .
 @prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
@@ -3718,25 +3743,27 @@
         <li> <a href="examples/chembl-rdf-void.ttl">Download file</a> </li>
         <li> <a href="examples/chembl-rdf-void.png">View graph</a> </li>
       </ul>
-      <pre class="turtle">:chembl_targetcmpt_uniprot_linkset a void:Linkset ;
+      <pre class="turtle">
+:chembl_targetcmpt_uniprot_linkset a void:Linkset ;
 	dcterms:title "ChEMBL Target Component to UniProt Linkset" ;
 	dcterms:description "The ChEMBL Target Component to UniProt Linkset relating target components to their corresponding entry in UniProt based on their sequence." ;
-	dcterms:publisher <http: www.ebi.ac.uk=""> ;
-	dcterms:license <http: creativecommons.org="" licenses="" by-sa="" 3.0=""> ;
+	dcterms:publisher &lt;http://www.ebi.ac.uk/&gt; ;
+	dcterms:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
 	dcterms:issued "2013-07-26T10:02:03.000+01:00"^^xsd:dateTime ;
-	void:dataDump <ftp: ftp.ebi.ac.uk="" pub="" databases="" chembl="" chembl-rdf=""
-16.example="" chembl_16.example_targetcmpt_uniprot_ls.ttl.gz=""> ;
+	void:dataDump &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/chembl-rdf/16.example/chembl_16.example_targetcmpt_uniprot_ls.ttl.gz&gt; ;
 	void:subjectsTarget :chembl_rdf_targetcmpt_dataset ;
 	bdb:subjectsDatatype sio:SIO_010043;
-	void:objectsTarget <http: purl.uniprot.org="" void#uniprotdataset_2013_08=""> ;
+	void:objectsTarget &lt;http://purl.uniprot.org/void#uniprotdataset_2013_08&gt; ;
 	bdb:objectsDatatype sio:SIO_010043;
 	void:linkPredicate skos:exactMatch ;
 	bdb:linksetJustification sio:SIO_010043 ;
-	pav:authoredBy <http: orcid.org="" 0000-0002-8011-0300=""> ;
+	pav:authoredBy &lt;http://orcid.org/0000-0002-8011-0300&gt; ;
 	pav:authoredOn "2013-07-26T10:02:03.000+01:00"^^xsd:dateTime ;
-	pav:createdBy <http: orcid.org="" 0000-0002-8011-0300=""> ;
-	pav:createdOn "2013-07-26T10:02:03.000+01:00"^^xsd:dateTime .
-</http:></http:></http:></ftp:></http:></http:></pre>
+	pav:createdBy &lt;http://orcid.org/0000-0002-8011-0300&gt; ;
+	pav:createdOn "2013-07-26T10:02:03.000+01:00"^^xsd:dateTime ;
+	bdb:assertionMethod eco:ECO_0000218 .
+</pre>
       <!-- end appendix-example-linksets --> </section>
+    
   </body>
 </html>

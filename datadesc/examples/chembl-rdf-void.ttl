@@ -16,6 +16,7 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix dctypes: <http://purl.org/dc/dcmitype/> .
+@prefix eco: <http://purl.obolibrary.org/obo/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix freq: <http://purl.org/cld/freq/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -100,7 +101,8 @@
 	pav:authoredBy <http://orcid.org/0000-0002-8011-0300> ;
 	pav:authoredOn "2013-07-26T10:02:03.000+01:00"^^xsd:dateTime ;
 	pav:createdBy <http://orcid.org/0000-0002-8011-0300> ;
-	pav:createdOn "2013-07-26T10:02:03.000+01:00"^^xsd:dateTime .
+	pav:createdOn "2013-07-26T10:02:03.000+01:00"^^xsd:dateTime ;
+	bdb:assertionMethod eco:ECO_0000218 .
 
 :chembl_targetcmpt_uniprot_linkset a void:Linkset ;
 	dcterms:title "ChEMBL Target Component to UniProt Linkset" ;
@@ -118,4 +120,5 @@
 	pav:authoredBy <http://orcid.org/0000-0002-8011-0300> ;
 	pav:authoredOn "2013-07-26T10:02:03.000+01:00"^^xsd:dateTime ;
 	pav:createdBy <http://orcid.org/0000-0002-8011-0300> ;
-	pav:createdOn "2013-07-26T10:02:03.000+01:00"^^xsd:dateTime .
+	pav:createdOn "2013-07-26T10:02:03.000+01:00"^^xsd:dateTime ;
+	bdb:assertionMethod eco:ECO_0000218 .
