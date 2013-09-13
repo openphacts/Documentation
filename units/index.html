@@ -87,6 +87,32 @@
       explicitly in the database, and it requires search interfaces to still use this unit.
     </p>
   </section>
+<section id="conventions">
+  <h2>Document Conventions</h2>
+  <section id="rdf-syntax">
+    <h3>RDF Syntax and Namespaces</h3>
+    <p>
+      All examples in this document are written in the <a
+      href="http://www.w3.org/TR/turtle/">Turtle RDF syntax</a> 
+      [[TURTLE]]. Throughout the document, the following namespaces are 
+      used:
+    </p>
+    <pre class="turtle">
+@prefix chembl: &lt;http://rdf.farmbio.uu.se/chembl/onto/#&gt; .
+@prefix qudt:   &lt;&gt; .
+@prefix rdf:    &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs:   &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix dc:     &lt;http://purl.org/dc/elements/1.1/> .
+@prefix owl:    &lt;http://www.w3.org/2002/07/owl#> .
+@prefix qudt:   &lt;http://qudt.org/schema/qudt#> .
+@prefix skos:   &lt;http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:    &lt;http://www.w3.org/2001/XMLSchema#> .
+@prefix ops:    &lt;http://www.openphacts.org/units/> .
+@prefix uo:     &lt;http://purl.obolibrary.org/obo/&gt; .
+    </pre>
+  </section>
+  <!-- end conventions -->
+</section>
   <section class='informative'>
     <h2>The QUDT Ontology</h2>
     <p>
