@@ -559,6 +559,56 @@ ops:PartsPerMillion
  qudt:quantityKind quantity:DimensionlessRatio ;
  rdfs:label "Parts per Million"^^xsd:string ;
  qudt:symbol "ppm"^^xsd:string .
+
+ops:LiterPerKilogram
+ rdf:type qudt:VolumePerMassUnit, qudt:SIDerivedUnit ;
+ rdfs:label "liter per kilogram"^^xsd:string ;
+ qudt:abbreviation "l/kg"^^xsd:string ;
+ qudt:conversionMultiplier
+  0.001 ;
+ qudt:conversionOffset
+  "0.0"^^xsd:double ; 
+ qudt:symbol "l/kg"^^xsd:string .
+
+ops:MilliliterPerKilogram
+ rdf:type qudt:VolumePerMassUnit, qudt:SIDerivedUnit ;
+ rdfs:label "milliliter per kilogram"^^xsd:string ;
+ qudt:abbreviation "ml/kg"^^xsd:string ;
+ qudt:conversionMultiplier
+  0.000001 ;
+ qudt:conversionOffset
+  "0.0"^^xsd:double ; 
+ qudt:symbol "ml/kg"^^xsd:string .
+
+ops:LiterPerSecond
+ rdf:type qudt:VolumePerTimeUnit, qudt:SIDerivedUnit ;
+ rdfs:label "liter per second"^^xsd:string ;
+ qudt:abbreviation "L/s"^^xsd:string ;
+ qudt:conversionMultiplier
+  0.001 ;
+ qudt:conversionOffset
+  "0.0"^^xsd:double ; 
+ qudt:symbol "L/s"^^xsd:string .
+
+ops:LiterPerMinute
+ rdf:type qudt:VolumePerTimeUnit, qudt:SIDerivedUnit ;
+ rdfs:label "liter per minute"^^xsd:string ;
+ qudt:abbreviation "L/min"^^xsd:string ;
+ qudt:conversionMultiplier
+  0.06 ;
+ qudt:conversionOffset
+  "0.0"^^xsd:double ; 
+ qudt:symbol "L/min"^^xsd:string .
+
+ops:MicroliterPerMinute
+ rdf:type qudt:VolumePerTimeUnit, qudt:SIDerivedUnit ;
+ rdfs:label "microliter per minute"^^xsd:string ;
+ qudt:abbreviation "μL/min"^^xsd:string ;
+ qudt:conversionMultiplier
+  0.00000006 ;
+ qudt:conversionOffset
+  "0.0"^^xsd:double ; 
+ qudt:symbol "μL/min"^^xsd:string .
     </pre>
   </section>
 
@@ -609,6 +659,10 @@ ops:PartsPerMillion
       <tr><td>uo:UO_0000175</td><td>ops:GramPerLiter</td></tr>
       <tr><td>uo:UO_0000176</td><td>ops:MilligramPerMilliliter</td></tr>
       <tr><td>uo:UO_0000187</td><td>qudt:Percent</td></tr>
+      <tr><td>uo:UO_0000197</td><td>ops:LiterPerKilogram</td></tr>
+      <tr><td>uo:UO_0000198</td><td>ops:MilliliterPerKilogram</td></tr>
+      <tr><td>uo:UO_0000271</td><td>ops:MicroliterPerMinute</td></tr>
+      <tr><td>uo:UO_0000272</td><td>qudt:MillimeterOfMercury</td></tr>
       <tr><td>uo:UO_0000274</td><td>ops:MicrogramPerMilliliter</td></tr>
       <tr><td>uo:UO_0000275</td><td>ops:NanogramPerMilliliter</td></tr>
       <tr><td>uo:UO_0000308</td><td>ops:MilligramPerKilogram</td></tr>
