@@ -13,12 +13,12 @@ REQUIREMENTS
 
 It uses RefSpec.js and a customized version of the matching CSS
 ([license](http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231))
-from http://www.w3.org/TR/respec-js/
+from http://www.w3.org/respec/
 
 DOCUMENTATION
 =============
 
-Details of using the ReSpec are available from http://www.w3.org/respec/. It is strongly recommended that you read that document and look at its HTML source code.
+Details of using the ReSpec are available from http://www.w3.org/respec/guide.html. It is strongly recommended that you read that document and look at its HTML source code.
 
 You may also find looking that the source code of other specifications within this repository a helpful source of information on how to work with the framework.
 
