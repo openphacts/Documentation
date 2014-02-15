@@ -18,7 +18,7 @@ from http://www.w3.org/TR/respec-js/
 DOCUMENTATION
 =============
 
-Details of using the ReSpec are available from http://dev.w3.org/2009/dap/ReSpec.js/documentation.html. It is strongly recommended that you read that document and look at its HTML source code.
+Details of using the ReSpec are available from http://www.w3.org/respec/. It is strongly recommended that you read that document and look at its HTML source code.
 
 You may also find looking that the source code of other specifications within this repository a helpful source of information on how to work with the framework.
 
