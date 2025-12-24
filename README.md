@@ -8,8 +8,8 @@ Moreover, all documents in repository are public and therefore also must feature
 logos for IMI, EFPIA and FP7 as required. Ask Anika for detail if you no longer have them in
 your inbox.
 
-* [Guidelines for exposing data as RDF in Open PHACTS](/rdfguide/)
-* [Encoding units and unit types in RDF using QUDT](/units/)
+* [Guidelines for exposing data as RDF in Open PHACTS](https://openphacts.github.io/Documentation/rdfguide/)
+* [Encoding units and unit types in RDF using QUDT](https://openphacts.github.io/Documentation/units/)
 
 REQUIREMENTS
 ============
