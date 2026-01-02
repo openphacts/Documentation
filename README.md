@@ -10,6 +10,7 @@ your inbox.
 
 * [Guidelines for exposing data as RDF in Open PHACTS](https://openphacts.github.io/Documentation/rdfguide/)
 * [Encoding units and unit types in RDF using QUDT](https://openphacts.github.io/Documentation/units/)
+* [Dataset Descriptions for the Open Pharmacological Space](https://openphacts.github.io/Documentation/datadesc/)
 
 REQUIREMENTS
 ============
